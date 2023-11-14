@@ -1,8 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
+
+@font-face {
+  font-family: "MoonGet";
+  src: url("/asset/moon_get/moon_get-Heavy.otf");
+  src: url("/asset/moon_get/moon_get-Heavy.ttf");
+  /* font-weight: 400; */
+  font-style: normal;
+}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
+/* :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
@@ -24,4 +33,4 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
-}
+} */
