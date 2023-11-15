@@ -12,6 +12,9 @@ const config: Config = {
         manrope: ["Manrope", "sans-serif"], // ITO zavatra ito ao am index.html no misintona azy
         moonGet: ["MoonGet", "sans-serif"], // ITO zavatra ito ao am index.html no misintona azy
       },
+      colors : {
+        whiteGray : "#FFFEFD"
+      }
       // backgroundImage: {
       //   'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
       //   'gradient-conic':

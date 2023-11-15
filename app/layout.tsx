@@ -13,7 +13,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fr">
-      <body className='font-manrope'>{children}</body>
+      <body className='font-manrope bg-red-900'>{children}</body>
     </html>
   )
 }
