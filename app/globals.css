@@ -2,11 +2,17 @@
 
 @font-face {
   font-family: "MoonGet";
-  src: url("/asset/moon_get/moon_get-Heavy.otf");
-  src: url("/asset/moon_get/moon_get-Heavy.ttf");
-  /* font-weight: 400; */
+  src: url("/assets/moon_get/moon_get-Heavy.otf") format("opentype"),
+    url("/assets/moon_get/moon_get-Heavy.ttf") format("truetype");
+  font-weight: normal;
   font-style: normal;
 }
+/* @font-face {
+  font-family: "MoonGet";
+  src: url("/asset/moon_get/moon_get-Heavy.otf");
+  src: url("/asset/moon_get/moon_get-Heavy.ttf");
+  font-style: normal;
+} */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
