@@ -4,7 +4,7 @@ import bg1 from "../public/images/bg1.png";
 import bg2 from "../public/images/bg2.png";
 import bg3 from "../public/images/bg3.png";
 import bg4 from "../public/images/bg4.png";
-import nuage from "../public/svg/nuage.svg";
+import Nuage from "../public/svg/nuage.svg";
 
 export default function Home() {
   return (
@@ -32,8 +32,8 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="absolute top-[58%]">
-          <Image src={nuage} alt="nuage" className="w-full   " />
+        <div className="absolute top-[58%] bg-red-500">
+          <Nuage clasName='w-full'/>
         </div>
       </header>
     </div>

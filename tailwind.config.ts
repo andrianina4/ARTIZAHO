@@ -13,13 +13,15 @@ const config: Config = {
         moonGet: ["MoonGet", "sans-serif"], // ITO zavatra ito ao am index.html no misintona azy
       },
       colors : {
-        whiteGray : "#FFFEFD"
-      }
-      // backgroundImage: {
-      //   'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-      //   'gradient-conic':
-      //     'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-      // },
+        brown : '#917155',
+        whiteGray : "#FFFEFD",
+      },
+      backgroundImage: {
+        'bg-login' : "linear-gradient(0deg, rgba(58, 33, 11, 0.67) 0%, rgba(58, 33, 11, 0.67) 100%), url('/images/bg-login.jpeg')"
+        // 'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        // 'gradient-conic':
+        //   'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      },
     },
   },
   plugins: [],
