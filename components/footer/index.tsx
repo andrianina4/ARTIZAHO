@@ -24,7 +24,7 @@ function Footer({ }: Props) {
                     </div>
                 </div>
 
-                <div className='flex gap-x-20'>
+                <div className='flex gap-x-20 mt-5'>
                     <section className=''>
                         <h2 className='text-base text-white font-extrabold'>MENU</h2>
                         <ul className='flex flex-col gap-y-4 mt-4 text-whiteGray opacity-60'>
