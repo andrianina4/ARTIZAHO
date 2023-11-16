@@ -1,7 +1,7 @@
 import { MenuIcon } from '@/constants/link/icons'
 import { Shopping, User } from '@/constants/link/svg'
 import Image from 'next/image'
-import LogoArtizahoWhite from '../logo/artizaho'
+import LogoArtizahoWhite from './logo'
 
 
 type NavBarProps = {}

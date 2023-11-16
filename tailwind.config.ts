@@ -17,7 +17,8 @@ const config: Config = {
         whiteGray : "#FFFEFD",
       },
       backgroundImage: {
-        'bg-login' : "linear-gradient(0deg, rgba(58, 33, 11, 0.67) 0%, rgba(58, 33, 11, 0.67) 100%), url('/images/bg-login.jpeg')"
+        'bg-login' : "linear-gradient(0deg, rgba(58, 33, 11, 0.67) 0%, rgba(58, 33, 11, 0.67) 100%), url('/images/bg-login.jpeg')",
+        'bg-register' : "linear-gradient(0deg, rgba(58, 33, 11, 0.67) 0%, rgba(58, 33, 11, 0.67) 100%), url('/images/baobab.jpeg')"
         // 'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         // 'gradient-conic':
         //   'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',

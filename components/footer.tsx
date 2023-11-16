@@ -1,5 +1,5 @@
 import React from 'react'
-import { LogoArtizahoWhiteVertical } from '../logo/artizaho'
+import { LogoArtizahoWhiteVertical } from './logo'
 import { FacebookFIcon, InstagramIcon, LinkedinIcon } from '@/constants/link/icons'
 import { Nuage } from '@/constants/link/svg'
 
