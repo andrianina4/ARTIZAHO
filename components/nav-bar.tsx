@@ -11,7 +11,7 @@ type NavBarProps = {}
 function NavBar({ }: NavBarProps) {
   return (
     <nav className='flex justify-between items-center py-7 px-24 w-full max-w-page mx-auto'>
-      <LogoArtizahoWhite />
+      <Link href={link.home}><LogoArtizahoWhite /></Link>
       <ul className='flex gap-x-8 text-whiteGray opacity-60'>
         <li><Link href={link.home}>ACCEUIL</Link></li>
         <li>QUI SOMMES NOUS</li>
