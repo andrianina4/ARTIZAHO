@@ -27,7 +27,9 @@ const config: Config = {
           "linear-gradient(0deg, rgba(58, 33, 11, 0.67) 0%, rgba(58, 33, 11, 0.67) 100%), url('/images/baobab.jpeg')",
         "bg-accueil": "url('/images/bg1.jpg')",
       },
-      
+      maxWidth : {
+        "page" : "1440px"
+      }
     },
   },
   plugins: [require("daisyui")],

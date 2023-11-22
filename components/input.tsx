@@ -21,7 +21,7 @@ function Input(props: InputProps) {
 
 
     return (
-        <div className='bg-white-40% mb-2 py-5 px-6 rounded-2xl flex'>
+        <div className='bg-white-40% mb-2 py-5 px-6 rounded-2xl flex input input-bordered h-14'>
             <input type={definedType} placeholder={placeholder} className='font-manrope text-sm outline-none bg-white-40% flex-1 text-black-60%' />
             {
                 type === 'password'

@@ -12,7 +12,7 @@ export default function Home() {
         <div className="h-full flex flex-col">
           <NavBar />
           <div className="flex justify-center  text-center flex-col h-full items-center">
-            <h4 className="font-moonGet uppercase font-extrabold text-[#F6F6F6]   text-[32px] w-[714px] tracking-[6%]">
+            <h4 className="font-moonGet uppercase font-extrabold text-[#F6F6F6]   text-[32px] w-[714px] tracking-[6%] leading-relaxed">
               Découvrez le savoir-faire <br /> de nos artisans passionnés !
             </h4>
 
