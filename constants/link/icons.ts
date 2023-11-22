@@ -4,6 +4,7 @@ import LinkedinIcon from '../../public/icons/linkedin.svg'
 import InstagramIcon from '../../public/icons/instagram.svg'
 import EyeIcon from '../../public/icons/eye.svg'
 import EyeOffIcon from '../../public/icons/eye-off.svg'
+import SearchIcon from "../../public/icons/search.svg";
 
 export {
     MenuIcon,
@@ -11,5 +12,6 @@ export {
     InstagramIcon,
     LinkedinIcon,
     EyeIcon,
-    EyeOffIcon
+    EyeOffIcon,
+    SearchIcon
 }

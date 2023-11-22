@@ -3,13 +3,11 @@ import Input from '@/components/input'
 import NavBar from '@/components/nav-bar'
 import React from 'react'
 
-type LoginProps = {
+type LoginProps = {};
 
-}
-
-function Login({ }: LoginProps) {
+function Login({}: LoginProps) {
   return (
-    <div className='min-h-screen bg-bg-login bg-cover flex flex-col'>
+    <div className="min-h-screen bg-bg-login bg-cover flex flex-col">
       <header>
         <NavBar />
       </header>
@@ -27,7 +25,7 @@ function Login({ }: LoginProps) {
       </main>
       <Footer />
     </div>
-  )
+  );
 }
 
-export default Login
+export default Login;
