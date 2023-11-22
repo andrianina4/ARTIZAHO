@@ -28,7 +28,7 @@ const config: Config = {
         "bg-accueil": "url('/images/bg1.jpg')",
       },
       maxWidth : {
-        "page" : "1440px"
+        "page" : "1536px"
       }
     },
   },
