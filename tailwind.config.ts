@@ -15,7 +15,9 @@ const config: Config = {
       colors: {
         brown: "#917155",
         whiteGray: "#FFFEFD",
+        "white-40%" : "#F8F8F8",
         "black-40%": "#00000066",
+        "black-60%" : "#000000CC",
         bronze: "#ECA853",
       },
       backgroundImage: {
@@ -23,12 +25,9 @@ const config: Config = {
           "linear-gradient(0deg, rgba(58, 33, 11, 0.67) 0%, rgba(58, 33, 11, 0.67) 100%), url('/images/bg-login.jpeg')",
         "bg-register":
           "linear-gradient(0deg, rgba(58, 33, 11, 0.67) 0%, rgba(58, 33, 11, 0.67) 100%), url('/images/baobab.jpeg')",
-        "bg-accueil": " url('/images/bg1.jpg')",
-        // "linear-gradient(0deg, rgba(58, 33, 11, 0) 0%, rgba(58, 33, 11, 0) 100%), url('/images/bg1.jpg')",
-        // 'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        // 'gradient-conic':
-        //   'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        "bg-accueil": "url('/images/bg1.jpg')",
       },
+      
     },
   },
   plugins: [require("daisyui")],
