@@ -33,7 +33,7 @@ export default function Home() {
         </div>
 
         <div className="absolute top-[58%] bg-red-500">
-          <Nuage clasName='w-full'/>
+          <Nuage className='w-full'/>
         </div>
       </header>
     </div>
