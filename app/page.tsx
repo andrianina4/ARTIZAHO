@@ -11,8 +11,8 @@ import Footer from "@/components/footer";
 import { SearchIcon } from "@/constants/link/icons";
 export default function Home() {
   return (
-    <div className="min-h-screen bg-bg-accueil">
-      <header className="flex flex-col relative ">
+    <div className=" -bg-bg-accueil">
+      <header className="flex flex-col bg-bg-accueil relative ">
         <div className="h-full flex flex-col">
           <NavBar />
           <div className="flex justify-center  text-center flex-col h-full items-center">
@@ -142,8 +142,7 @@ export default function Home() {
         </div>
       </header>
 
-      <div>tedaefzef</div>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }
