@@ -4,11 +4,14 @@ import { Nuage } from "@/constants/link/svg";
 import NavBar from "@/components/nav-bar";
 import Footer from "@/components/footer";
 import { SearchIcon } from "@/constants/link/icons";
+import QuiNousSommes from "./accueil/QuiNousSommes";
+import CardComponent from "@/components/CardComponent";
+import Comment from "@/components/Comment";
 
 export default function Home() {
   return (
-    <div className=" -bg-bg-accueil">
-      <header className="flex flex-col bg-bg-accueil relative ">
+    <div>
+      <header className="flex flex-col bg-bg-accueil relative h-[756px]">
         <div className="h-full flex flex-col">
           <NavBar />
           <div className="flex justify-center  text-center flex-col h-full items-center">
@@ -133,10 +136,81 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="absolute top-[58%] bg-red-500">
-          <Nuage className='w-full'/>
+        <div className="mt-[60px]">
+          <Nuage className="w-full" />
         </div>
       </header>
+
+      <div className="mx-auto w-[1440px]">
+        <QuiNousSommes />
+
+        <div className="flex flex-col   items-start gap-[12px]">
+          <h4 className="uppercase text-xl text-brown font-moonGet font-extrabold tracking-[8%]">
+            les nouveautés
+          </h4>
+          <span className="font-manrope text-sm font-normal text-brown">
+            Liste des nouveaux ateliers
+          </span>
+        </div>
+
+        <div className="flex gap-[16px] ">
+          <CardComponent
+            title="Papier antemoro"
+            description="Dans cet atelier de 2 heures, apprenez à fabriquer du papier à partir de matériaux entièrement végétaux typiquement malgache."
+            label="Papier antemoro : Enveloppe + carte"
+            place="Antananarivo"
+            price={20.0}
+            time="1:30"
+          />
+
+          <CardComponent
+            title="Floral"
+            description="Bienvenue dans l'atelier-boutique de Hanta, où vous pouvez apprendre à créer des compositions florales exceptionnelles."
+            label="Floral : Bouquet en vase"
+            place="Antananarivo"
+            price={35.0}
+            time="1:30"
+          />
+
+          <CardComponent
+            title="Cuir"
+            description="Lain, un maroquinier passionné qui vous propose de vous initier à l'art de la maroquinerie en créant votre propre bracelet."
+            label="Cuir : Bracelet"
+            place="Antananarivo"
+            price={15.0}
+            time="1:30"
+          />
+
+          <CardComponent
+            title="Apiculture"
+            description="Découvrir la vie des abeilles, c'est possible ! L'atelier apiculture d'Artizaho vous propose une immersion totale dans l'univers des abeilles."
+            label="Initiation a l'apiculture"
+            place="Antananarivo"
+            price={9.0}
+            time="1:30"
+          />
+        </div>
+
+        <div className="temoignage flex gap-[30px]">
+          <Comment
+            author="Guy Hawkins"
+            role="President of Sales"
+            comment="Nous mettons en valeur les artisans malgaches pour faire revivre la culture et le savoir-faire en proposant une série d'ateliers ouverts au public."
+          />
+
+          <Comment
+            author="Kristin Watson"
+            role="Marketing Coordinator"
+            comment="Nous mettons en valeur les artisans malgaches pour faire revivre la culture et le savoir-faire en proposant une série d'ateliers ouverts au public."
+          />
+
+          <Comment
+            author="Jerome Bell"
+            role="Web Designer"
+            comment="Nous mettons en valeur les artisans malgaches pour faire revivre la culture et le savoir-faire en proposant une série d'ateliers ouverts au public."
+          />
+        </div>
+      </div>
 
       <Footer />
     </div>

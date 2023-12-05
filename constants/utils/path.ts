@@ -1,7 +1,8 @@
 const link = {
-    'login' : '/auth/se-connecter',
-    'register' : '/auth/s-inscrire',
-    'home' : '/'
-}
+  login: "/auth/se-connecter",
+  register: "/auth/s-inscrire",
+  home: "/",
+  whoare: "/whoare",
+};
 
-export default link
+export default link;

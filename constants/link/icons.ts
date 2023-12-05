@@ -6,6 +6,9 @@ import EyeIcon from "../../public/icons/eye.svg";
 import EyeOffIcon from "../../public/icons/eye-off.svg";
 import SearchIcon from "../../public/icons/search.svg";
 import ArrowLeft from "../../public/icons/arrowLeft.svg";
+import Alarm from "../../public/icons/alarm.svg";
+import Place from "../../public/icons/place.svg";
+import Heart from "../../public/icons/heart.svg";
 
 export {
   MenuIcon,
@@ -16,4 +19,7 @@ export {
   ArrowLeft,
   EyeIcon,
   EyeOffIcon,
+  Alarm,
+  Place,
+  Heart,
 };
