@@ -21,6 +21,7 @@ const config: Config = {
         "white-40%": "#F8F8F8",
         "black-40%": "#00000066",
         "black-60%": "#000000CC",
+        "black-default" : "#1E1E1E",
         bronze: "#ECA853",
         reddishBrown : '#C26143'
       },

@@ -16,6 +16,9 @@ import DateRange from '../../public/icons/date-range.svg'
 import Time from '../../public/icons/time.svg'
 import Send from '../../public/icons/send.svg'
 import Star from '../../public/icons/star-filled.svg'
+import People from '../../public/icons/people-fill.svg'
+import LeftLine from '../../public/icons/left-line.svg'
+import RightLine from '../../public/icons/right-line.svg'
 
 export {
   MenuIcon,
@@ -35,5 +38,8 @@ export {
   DateRange,
   Time,
   Send,
-  Star
+  Star,
+  People,
+  LeftLine,
+  RightLine
 };
