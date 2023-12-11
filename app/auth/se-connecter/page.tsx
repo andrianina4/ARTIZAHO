@@ -38,8 +38,8 @@ function Login({ }: LoginProps) {
           <div className='mt-24'></div>
           <Button content='Se connecter' />
           <div className='flex gap-x-2 my-6'>
-            <span className='text-black-60%'>Vous n'avez pas de compte?</span>
-            <button onClick={redirectRegister} className='text-sm font-extrabold text-bronze hover:text-opacity-70' type='button'>S'inscrire</button>
+            <span className='text-black-60%'>Vous n&apos;avez pas de compte?</span>
+            <button onClick={redirectRegister} className='text-sm font-extrabold text-bronze hover:text-opacity-70' type='button'>S&apos;inscrire</button>
           </div>
           <TrajetLogin className='absolute left-0 bottom-0' />
         </form>

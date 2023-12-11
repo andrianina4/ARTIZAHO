@@ -60,8 +60,10 @@ function Register() {
                 content={
                   <>
                     <div className='flex gap-x-2'>
-                      <span className='text-black-60%'>I accept</span>
-                      <button onClick={redirectTerms} className='text-sm font-extrabold text-bronze hover:text-opacity-70' type='button'>Terms and Conditions</button>
+                      <span className='text-black-60%'>J&apos;accepte</span>
+                      <button onClick={redirectTerms} className='text-sm font-extrabold text-bronze hover:text-opacity-70' type='button'>
+                        les termes et conditions
+                      </button>
                     </div>
                   </>
                 }

@@ -13,7 +13,7 @@ function NavBar({ }: NavBarProps) {
     <nav className='flex justify-between items-center py-7 px-24 w-full max-w-page mx-auto'>
       <Link href={link.home}><LogoArtizahoWhite /></Link>
       <ul className='flex gap-x-8 text-whiteGray opacity-60'>
-        <li><Link href={link.home}>ACCEUIL</Link></li>
+        <li><Link href={link.home}>ACCUEIL</Link></li>
         <li>QUI SOMMES NOUS</li>
         <li>NOS ATELIERS</li>
       </ul>

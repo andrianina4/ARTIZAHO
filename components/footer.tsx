@@ -15,7 +15,7 @@ function Footer({ }: Props) {
                         <LogoArtizahoWhiteVertical />
                         <p className='text-whiteGray opacity-60'>
                             Nous mettons en valeur les artisans malgaches pour faire revivre<br />
-                            la culture et le savoir-faire en proposant une série d'ateliers<br />
+                            la culture et le savoir-faire en proposant une série d&apos;ateliers<br />
                             ouverts au public.
                         </p>
                         <div className='flex gap-x-8 text-white'>
