@@ -3,6 +3,7 @@ const link = {
   register: "/auth/s-inscrire",
   home: "/",
   whoare: "/whoare",
+  propositionDate : '/proposition-date'
 };
 
 export default link;

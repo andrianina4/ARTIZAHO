@@ -14,6 +14,10 @@ type LoginProps = {};
 function Login({ }: LoginProps) {
   const router = useRouter()
 
+  function handleSubmit() {
+    router.push(link.propositionDate)
+  }
+
   function redirectRegister() {
     router.push(link.register)
   }
@@ -33,10 +37,10 @@ function Login({ }: LoginProps) {
           <h4 className='text-brown text-base font-extrabold mb-6'>Connectez-vous</h4>
           <Input placeholder='Adresse email' />
           <Input type='password' placeholder='Mot de passe' />
-          <button className='text-black-60% text-sm block w-full text-right hover:text-opacity-70'>Mots de passes oublié?</button>
+          <button className='text-black-60% text-sm block w-full text-right hover:text-opacity-70'>Mot de passe oublié?</button>
 
           <div className='mt-24'></div>
-          <Button content='Se connecter' />
+          <Button content='Se connecter' onClick={handleSubmit}/>
           <div className='flex gap-x-2 my-6'>
             <span className='text-black-60%'>Vous n&apos;avez pas de compte?</span>
             <button onClick={redirectRegister} className='text-sm font-extrabold text-bronze hover:text-opacity-70' type='button'>S&apos;inscrire</button>
