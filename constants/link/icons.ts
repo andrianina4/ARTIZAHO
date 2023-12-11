@@ -14,6 +14,8 @@ import ShoppingBagDuoTone from '../../public/icons/shopping-bag-duotone.svg'
 import ArrowLeft from '../../public/icons/arrow-left-light.svg'
 import DateRange from '../../public/icons/date-range.svg'
 import Time from '../../public/icons/time.svg'
+import Send from '../../public/icons/send.svg'
+import Star from '../../public/icons/star-filled.svg'
 
 export {
   MenuIcon,
@@ -31,5 +33,7 @@ export {
   UserDuoTone,
   ShoppingBagDuoTone,
   DateRange,
-  Time
+  Time,
+  Send,
+  Star
 };

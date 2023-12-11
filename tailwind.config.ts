@@ -22,6 +22,7 @@ const config: Config = {
         "black-40%": "#00000066",
         "black-60%": "#000000CC",
         bronze: "#ECA853",
+        reddishBrown : '#C26143'
       },
       backgroundImage: {
         "bg-login":
