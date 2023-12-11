@@ -1,21 +1,20 @@
-import { artizahoLogoWhiteVertical, artizahoWhite } from '@/constants/link/images'
+import { artizahoLogoWhiteVertical, artizahoWhite, artizahoBrown } from '@/constants/link/images'
 import Image from 'next/image'
 import React from 'react'
 
-
-function LogoArtizahoWhite() {
+function LogoArtizaho({ isColor = false }: { isColor?: boolean }) {
   return (
-    <Image src={artizahoWhite} alt='artizaho' width={131} height={51}/>
+    <Image src={isColor ? artizahoBrown : artizahoWhite} alt='artizaho' width={131} height={51} />
   )
 }
 
 function LogoArtizahoWhiteVertical() {
   return (
-    <Image src={artizahoLogoWhiteVertical} alt='artizaho-' width={127} height={127}/>
+    <Image src={artizahoLogoWhiteVertical} alt='artizaho-' width={127} height={127} />
   )
 }
 
-export default LogoArtizahoWhite
+export default LogoArtizaho
 export {
   LogoArtizahoWhiteVertical
 }

@@ -9,6 +9,8 @@ import ArrowLeft from "../../public/icons/arrowLeft.svg";
 import Alarm from "../../public/icons/alarm.svg";
 import Place from "../../public/icons/place.svg";
 import Heart from "../../public/icons/heart.svg";
+import UserDuoTone from '../../public/icons/user-bold-duotone.svg'
+import ShoppingBagDuoTone from '../../public/icons/shopping-bag-duotone.svg'
 
 export {
   MenuIcon,
@@ -22,4 +24,6 @@ export {
   Alarm,
   Place,
   Heart,
+  UserDuoTone,
+  ShoppingBagDuoTone
 };
