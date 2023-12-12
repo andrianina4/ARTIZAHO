@@ -15,7 +15,7 @@ function Login({ }: LoginProps) {
   const router = useRouter()
 
   function handleSubmit() {
-    router.push(link.propositionDate)
+    router.push(link.reservationDate)
   }
 
   function redirectRegister() {
