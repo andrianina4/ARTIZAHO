@@ -23,7 +23,7 @@ function PropositionDate({ }: Props) {
             <main className='py-7 px-24 flex justify-between items-center gap-x-20 w-full max-w-page mx-auto'>
                 <section className='w-1/2'>
                     <div className='text-2xl font-bold text-brown flex items-center gap-x-3'>
-                        <Button isBackButton content={<ArrowLeft />} className='!bg-transparent w-min !text-brown !text-2xl !p-0' />
+                        <Button isBackButton content={<ArrowLeft/>} className='!bg-transparent w-min !text-brown !text-2xl !p-0'/>
                         <span>Proposez des créneaux à l'artisan</span>
                     </div>
                     <p className='ml-9  text-brown text-sm mt-2 mb-10'>Vous recevrez un email automatiquement si l'artisan ajoute un créneau <br /> qui correspond à votre demande.</p>

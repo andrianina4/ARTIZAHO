@@ -1,5 +1,9 @@
+'use client'
+
 import Button from '@/components/button'
 import { People, Time } from '@/constants/link/icons'
+import link from '@/constants/utils/path'
+import { useRouter } from 'next/navigation'
 import React from 'react'
 
 type DateItemProps = {
@@ -11,7 +15,12 @@ type DateItemProps = {
 }
 
 function DateItem(props: DateItemProps) {
+    const router = useRouter()
     const { isSelected, date, remainingSpace, slots } = props
+
+    function redirectValidation() {
+        router.push(link.validationDate)
+    }
 
     return (
         <div className='flex justify-between items-center mb-8'>
@@ -22,7 +31,7 @@ function DateItem(props: DateItemProps) {
                 <p className='bg-reddishBrown text-white font-semibold py-2 px-4 rounded-lg mr-2 w-40 flex items-center justify-center gap-x-2'><span className='text-base'><People /></span> {remainingSpace} personne{remainingSpace > 1 ? 's' : ''}</p>
             </div>
 
-            <Button content='CHOISIR' className={`w-min h-min ${isSelected ? '' : 'opacity-50'}`} />
+            <Button onClick={redirectValidation} content='CHOISIR' className={`w-min h-min ${isSelected ? '' : 'opacity-50'}`} />
         </div>
     )
 }

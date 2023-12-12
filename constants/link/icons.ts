@@ -19,6 +19,9 @@ import Star from '../../public/icons/star-filled.svg'
 import People from '../../public/icons/people-fill.svg'
 import LeftLine from '../../public/icons/left-line.svg'
 import RightLine from '../../public/icons/right-line.svg'
+import Phone from '../../public/icons/phone-fill.svg'
+import Delete from '../../public/icons/delete-28-regular.svg'
+import RoundPlace from '../../public/icons/round-place.svg'
 
 export {
   MenuIcon,
@@ -41,5 +44,8 @@ export {
   Star,
   People,
   LeftLine,
-  RightLine
+  RightLine,
+  Phone,
+  Delete,
+  RoundPlace
 };

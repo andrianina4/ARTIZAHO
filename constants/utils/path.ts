@@ -4,7 +4,8 @@ const link = {
   home: "/",
   whoare: "/whoare",
   reservationDate : '/reservation-date',
-  propositionDate : '/reservation-date/proposition'
+  propositionDate : '/reservation-date/proposition',
+  validationDate : '/reservation-date/validation'
 };
 
 export default link;
