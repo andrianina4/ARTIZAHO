@@ -83,7 +83,7 @@ const Modal = forwardRef<HTMLDialogElement, ModalProps>((props, ref) => {
     )
 })
 
-
+Modal.displayName = 'Modal';
 export {
     Modal,
     ReservationButton

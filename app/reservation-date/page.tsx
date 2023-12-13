@@ -25,7 +25,7 @@ function PropositionDate({ }: Props) {
                     <Button isBackButton content={<ArrowLeft />} className='!bg-transparent w-min !text-brown !text-2xl !p-0' />
                     <span>Quand souhaitez vous faire cette activité ?</span>
                 </div>
-                <p className='ml-14  text-black-default text-sm mt-5'>Choisissez le nombre de personnes qui participent à l'atelier</p>
+                <p className='ml-14  text-black-default text-sm mt-5'>Choisissez le nombre de personnes qui participent à l&apos;atelier</p>
                 <div className='ml-14 mb-10'><ChoiceNumberPersonne /></div>
                 <div className='ml-14 flex justify-between gap-x-10'>
                     <div className='w-3/5'>

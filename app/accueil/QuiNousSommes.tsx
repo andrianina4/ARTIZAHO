@@ -14,7 +14,7 @@ export default function QuiNousSommes() {
         </h4>
         <p className="font-normal text-sm text-brown leading-[19.12px] mt-2">
           Nous mettons en valeur les artisans malgaches pour faire revivre la
-          culture et le <br /> savoir-faire en proposant une série d'ateliers
+          culture et le <br /> savoir-faire en proposant une série d&apos;ateliers
           ouverts au public.
         </p>
 
