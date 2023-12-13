@@ -10,7 +10,7 @@ function Checkbox(props: CheckboxProps) {
     return (
         <div className="form-control">
             <label className="cursor-pointer label justify-start gap-x-3">
-                <input type="checkbox"  className="checkbox checkbox-sm checkbox-info" />
+                <input type="checkbox"  className="checkbox checkbox-sm border-bronze checked:border-bronze [--chkbg:theme(colors.bronze)] [--chkfg:white]" />
                 <span className="label-text">{content}</span>
             </label>
         </div>
