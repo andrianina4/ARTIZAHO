@@ -5,7 +5,8 @@ const link = {
   whoare: "/whoare",
   reservationDate : '/reservation-date',
   propositionDate : '/reservation-date/proposition',
-  validationDate : '/reservation-date/validation'
+  validationDate : '/reservation-date/validation',
+  myBasket : '/mon-panier'
 };
 
 export default link;

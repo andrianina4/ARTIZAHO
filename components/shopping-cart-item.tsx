@@ -8,7 +8,7 @@ type ShoppingCartProps = {
 
 function ShoppingCart({isBottom}: ShoppingCartProps) {
     return (
-        <article className={`flex gap-x-3 ${isBottom ? 'relative mb-12' : ''}`}>
+        <article className={`flex gap-x-3 mb-10 ${isBottom ? 'relative mb-12' : ''}`}>
             <div className="relative w-[130px] h-[110px] object-cover">
                 <Image
                     src={"/temp/vase.png"}

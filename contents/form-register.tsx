@@ -19,8 +19,8 @@ function FormRegister({ }: Props) {
     }
 
     return (
-        <form className='grid grid-cols-2 gap-x-5'>
-            <div>
+        <form className='flex gap-x-5'>
+            <div className='flex-1'>
                 <Select values={choiceTypeOfMember} />
                 <Input placeholder='Nom' />
                 <Input type='email' placeholder='Adresse email' />
@@ -42,7 +42,7 @@ function FormRegister({ }: Props) {
                 <Button content='Créer votre compte' />
             </div>
 
-            <div className='mt-16'>
+            <div className='mt-16 w-1/2'>
                 <Input placeholder='Nif Stat' />
                 <Input placeholder='Localisation' />
                 <Input placeholder='Numéro de compte' />
