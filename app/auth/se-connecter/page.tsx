@@ -6,6 +6,7 @@ import Input from '@/components/input'
 import NavBar from '@/components/nav-bar'
 import { TrajetLogin } from '@/constants/link/svg';
 import link from '@/constants/utils/path';
+import FormAuth from '@/contents/form-auth';
 import { useRouter } from 'next/navigation';
 import React from 'react'
 
@@ -13,10 +14,6 @@ type LoginProps = {};
 
 function Login({ }: LoginProps) {
   const router = useRouter()
-
-  function handleSubmit() {
-    router.push(link.reservationDate)
-  }
 
   function redirectRegister() {
     router.push(link.register)
@@ -33,20 +30,15 @@ function Login({ }: LoginProps) {
           <h1 className='font-moonGet font-extrabold text-4xl leading-relaxed'>SE CONNECTER<br />À VOTRE COMPTE</h1>
           <p className='font-normal mt-5'>Veuillez saisir votre adresse électronique et votre mot de passe.</p>
         </div>
-        <form className='w-1/2 bg-white rounded-3xl pt-12 pb-24 px-11 relative'>
+        <div className='w-1/2 pt-12 bg-white rounded-3xl  pb-24 px-11 relative'>
           <h4 className='text-brown text-base font-extrabold mb-6'>Connectez-vous</h4>
-          <Input placeholder='Adresse email' />
-          <Input type='password' placeholder='Mot de passe' />
-          <button className='text-black-60% text-sm block w-full text-right hover:text-opacity-70'>Mot de passe oublié?</button>
-
-          <div className='mt-24'></div>
-          <Button content='Se connecter' onClick={handleSubmit}/>
+          <FormAuth />
           <div className='flex gap-x-2 my-6'>
             <span className='text-black-60%'>Vous n&apos;avez pas de compte?</span>
             <button onClick={redirectRegister} className='text-sm font-extrabold text-bronze hover:text-opacity-70' type='button'>S&apos;inscrire</button>
           </div>
           <TrajetLogin className='absolute left-0 bottom-0' />
-        </form>
+        </div>
       </main>
       <Footer />
     </div>

@@ -22,6 +22,8 @@ import RightLine from '../../public/icons/right-line.svg'
 import Phone from '../../public/icons/phone-fill.svg'
 import Delete from '../../public/icons/delete-28-regular.svg'
 import RoundPlace from '../../public/icons/round-place.svg'
+import GoogleColor from '../../public/icons/google-color.svg'
+import FacebookColor from '../../public/icons/facebook-color.svg'
 
 export {
   MenuIcon,
@@ -47,5 +49,7 @@ export {
   RightLine,
   Phone,
   Delete,
-  RoundPlace
+  RoundPlace,
+  GoogleColor,
+  FacebookColor
 };

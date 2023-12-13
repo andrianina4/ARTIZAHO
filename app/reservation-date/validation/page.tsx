@@ -7,6 +7,7 @@ import { ArrowLeft, EyeOffIcon, Phone, Place, RoundPlace } from '@/constants/lin
 import { trainers } from '@/data/temp/trainers'
 import Image from 'next/image'
 import React from 'react'
+import { ReservationButton } from '../contents/modal'
 
 type Props = {}
 
@@ -34,7 +35,7 @@ function ValidationDate({ }: Props) {
                         <div className='w-10/12 my-5'>
                             <Input label='Votre numéro de téléphone' id='phone' leftIcon={<Phone />} placeholder='Tél' />
                         </div>
-                        <Button content='RESERVER' className='w-min' />
+                        <ReservationButton/>
                     </div>
 
 

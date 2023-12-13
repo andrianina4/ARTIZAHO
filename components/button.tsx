@@ -21,7 +21,7 @@ function Button(props: ButtonProps) {
     }
 
     return (
-        <button onClick={isBackButton ? back : onClick} type={type} className={`w-full py-3 px-4 text-sm text-whiteGray rounded-2xl flex justify-center items-center gap-x-2 bg-bronze hover:bg-opacity-80 ${className}`}>
+        <button onClick={isBackButton ? back : onClick} type={type} className={`w-full py-3.5 px-4 text-sm text-whiteGray rounded-2xl flex justify-center items-center gap-x-2 bg-bronze hover:bg-opacity-80 ${className}`}>
             {leftIcon ? <div className='text-xl'>{leftIcon}</div> : null}
             {content}
         </button>

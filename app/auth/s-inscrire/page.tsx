@@ -8,23 +8,18 @@ import NavBar from '@/components/nav-bar'
 import Select from '@/components/select'
 import { TrajetRegister } from '@/constants/link/svg'
 import link from '@/constants/utils/path'
+import FormRegister from '@/contents/form-register'
 import { ISelect } from '@/types/IField'
 import { useRouter } from 'next/navigation'
 import React from 'react'
 
-const choiceTypeOfMember: Array<ISelect> = [
-  { label: 'Entreprise', value: 'Enterprise' },
-  { label: 'Particulier', value: 'Particular' }]
+
 
 function Register() {
   const router = useRouter()
 
   function redirectLogin() {
     router.push(link.login)
-  }
-
-  function redirectTerms() {
-    router.push('')
   }
 
   return (
@@ -48,35 +43,7 @@ function Register() {
             </div>
           </div>
 
-          <form className='grid grid-cols-2 gap-x-5'>
-            <div>
-              <Select values={choiceTypeOfMember} />
-              <Input placeholder='Nom' />
-              <Input type='email' placeholder='Adresse email' />
-              <Input placeholder='Numéro de téléphone' />
-              <Input type='password' placeholder='Mot de passe' />
-              <div className='mt-24'></div>
-              <Checkbox
-                content={
-                  <>
-                    <div className='flex gap-x-2'>
-                      <span className='text-black-60%'>J&apos;accepte</span>
-                      <button onClick={redirectTerms} className='text-sm font-extrabold text-bronze hover:text-opacity-70' type='button'>
-                        les termes et conditions
-                      </button>
-                    </div>
-                  </>
-                }
-              />
-              <Button content='Créer votre compte' />
-            </div>
-
-            <div className='mt-16'>
-              <Input placeholder='Nif Stat' />
-              <Input placeholder='Localisation' />
-              <Input placeholder='Numéro de compte' />
-            </div>
-          </form>
+          <FormRegister/>
           <TrajetRegister className='absolute right-0 bottom-0' />
         </div>
       </main>
