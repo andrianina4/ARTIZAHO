@@ -1,12 +1,12 @@
 const link = {
-  login: "/auth/se-connecter",
-  register: "/auth/s-inscrire",
+  login: "/auth/login",
+  register: "/auth/register",
   home: "/",
   whoare: "/whoare",
   reservationDate : '/reservation-date',
   propositionDate : '/reservation-date/proposition',
   validationDate : '/reservation-date/validation',
-  myBasket : '/mon-panier'
+  myBasket : '/my-basket'
 };
 
 export default link;
