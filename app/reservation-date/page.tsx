@@ -23,15 +23,15 @@ function PropositionDate({ }: Props) {
             <main className='py-7 px-24  max-w-page mx-auto'>
                 <div className='text-2xl font-bold text-brown flex items-center gap-x-3'>
                     <Button isBackButton content={<ArrowLeft />} className='!bg-transparent w-min !text-brown !text-2xl !p-0' />
-                    <span>Quand souhaitez vous faire cette activité ?</span>
+                    <span>When would you like to do this activity ?</span>
                 </div>
-                <p className='ml-14  text-black-default text-sm mt-5'>Choisissez le nombre de personnes qui participent à l&apos;atelier</p>
+                <p className='ml-14  text-black-default text-sm mt-5'>Choose the number of people taking part in the workshop</p>
                 <div className='ml-14 mb-10'><ChoiceNumberPersonne /></div>
                 <div className='ml-14 flex justify-between gap-x-10'>
                     <div className='w-3/5'>
-                        <DateItem date='Vendredi 6 nov 2023' slots='16h30 - 17h00' remainingSpace={2} isSelected />
-                        <DateItem date='Vendredi 10 nov 2023' slots='16h30 - 17h00' remainingSpace={3} />
-                        <DateItem date='Vendredi 16 nov 2023' slots='16h30 - 17h00' remainingSpace={1} />
+                        <DateItem date='FRIDAY, NOV 6, 2023' slots='16h30 - 17h00' remainingSpace={2} isSelected />
+                        <DateItem date='FRIDAY, NOV 10, 2023' slots='16h30 - 17h00' remainingSpace={3} />
+                        <DateItem date='FRIDAY, NOV 16, 2023' slots='16h30 - 17h00' remainingSpace={1} />
                     </div>
 
                     <div className='flex-1'>

@@ -6,7 +6,7 @@ const trainers: Array<ITrainer> = [
     photo: "/temp/trainer-1.jpeg",
     name: "Mahefa",
     about:
-      "Mahefa, une fleuriste expérimentée, vous guidera tout au long du processus. Elle vous aidera à choisir les bons végétaux, à les préparer et à les assembler....Voir plus",
+      "Mahefa, an experienced florist, will guide you through the entire process. She'll help you choose the right plants, prepare them and assemble them....See more",
     star: 3,
   },
 ];

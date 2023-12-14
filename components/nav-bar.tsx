@@ -20,15 +20,15 @@ function NavBar({ className, isWhite = false }: NavBarProps) {
       <ul className={`flex gap-x-8  opacity-60  ${isWhite ? 'text-brown' : 'text-whiteGray'}`}>
         <Link href={link.home}>
           <li>
-            ACCEUIL
+            Home
           </li>
         </Link>
         <Link href={link.whoare}>
           <li>
-            QUI SOMMES NOUS
+            WHO WE ARE
           </li>
         </Link>
-        <li>NOS ATELIERS</li>
+        <li>OUR WORKSHOPS</li>
       </ul>
 
       <ul className={`flex gap-x-3  text-2xl ${isWhite ? 'text-brown' : 'text-white'}`}>

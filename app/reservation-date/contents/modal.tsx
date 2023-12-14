@@ -24,7 +24,7 @@ function ReservationButton() {
     }
 
     return <>
-        <Button onClick={toggleModal} content='RESERVER' className='w-min' />
+        <Button onClick={toggleModal} content='RESERVE' className='w-min' />
         <Modal ref={modal} />
     </>
 }
@@ -44,22 +44,22 @@ const Modal = forwardRef<HTMLDialogElement, ModalProps>((props, ref) => {
                 <form method="dialog">
                     <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 text-bronze">✕</button>
                 </form>
-                <h3 className="font-bold text-2xl text-bronze">Connectez-vous</h3>
+                <h3 className="font-bold text-2xl text-bronze">Login</h3>
                 <div role="tablist" className="tabs tabs-bordered mt-5">
                     <input
                         type="radio"
                         name="tabs"
                         role="tab"
                         className={`tab text-base ${tabActive === 0 ? 'text-black-default  !border-bronze' : ''}`}
-                        aria-label="Connexion"
+                        aria-label="Connection"
                         value={0}
                         onChange={handleClickTabItem}
                         checked={tabActive === 0}
                     />
                     <div role="tabpanel" className="tab-content mt-3">
                         <FormAuth/>
-                        <Button leftIcon={<GoogleColor/>} content="Se connecter avec Google" className='bg-transparent !text-black-default my-2'/>
-                        <Button leftIcon={<FacebookColor/>} content="Se connecter avec Facebook" className='bg-transparent !text-black-default my-2'/>
+                        <Button leftIcon={<GoogleColor/>} content="Connect with Google" className='bg-transparent !text-black-default my-2'/>
+                        <Button leftIcon={<FacebookColor/>} content="Connect with Facebook" className='bg-transparent !text-black-default my-2'/>
                     </div>
 
                     <input
@@ -67,7 +67,7 @@ const Modal = forwardRef<HTMLDialogElement, ModalProps>((props, ref) => {
                         name="tabs"
                         role="tab"
                         className={`tab text-base ${tabActive === 1 ? 'text-black-default  !border-bronze' : ''}`}
-                        aria-label="Créer votre compte"
+                        aria-label="Create your account"
                         value={1}
                         onChange={handleClickTabItem}
                         checked={tabActive === 1}

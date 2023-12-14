@@ -21,7 +21,7 @@ function ShoppingCart({isBottom}: ShoppingCartProps) {
             <div className="flex-1 flex flex-col justify-between">
                 <div>
                     <div className="flex justify-between">
-                        <p className="text-black-default font-bold">Bouquet en vase</p>
+                        <p className="text-black-default font-bold">Bouquet in vase</p>
                         <p className="flex items-center gap-x-5 text-brown font-bold">
                             <span>15.00 €</span>{" "}
                             <span className="text-xl">
@@ -34,7 +34,7 @@ function ShoppingCart({isBottom}: ShoppingCartProps) {
                             <span className="text-xl">
                                 <Time />
                             </span>{" "}
-                            Durée 1:30
+                            Duration 1:30
                         </p>
                         <p className="flex items-center gap-x-2">
                             <span className="text-xl">
@@ -50,7 +50,7 @@ function ShoppingCart({isBottom}: ShoppingCartProps) {
                         <span className="text-base">
                             <Time />
                         </span>{" "}
-                        Vendredi 06 Novembre 2023
+                        Friday, November 06, 2023
                     </p>
                     <p className="bg-reddishBrown text-white font-semibold py-2 px-4 rounded-lg mr-2 flex items-center justify-center gap-x-2">
                         <span className="text-base">
@@ -62,7 +62,7 @@ function ShoppingCart({isBottom}: ShoppingCartProps) {
                         <span className="text-base">
                             <Time />
                         </span>{" "}
-                        2 personnes
+                        2 persons
                     </p>
                     </div>
             </div>

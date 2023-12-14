@@ -27,15 +27,15 @@ function Login({ }: LoginProps) {
 
       <main className='flex-1 py-7 px-24 flex justify-between w-full max-w-page mx-auto'>
         <div className='text-white mt-20'>
-          <h1 className='font-moonGet font-extrabold text-4xl leading-relaxed'>SE CONNECTER<br />À VOTRE COMPTE</h1>
-          <p className='font-normal mt-5'>Veuillez saisir votre adresse électronique et votre mot de passe.</p>
+          <h1 className='font-moonGet font-extrabold text-4xl leading-relaxed'>LOG IN<br />TO YOUR ACCOUNT</h1>
+          <p className='font-normal mt-5'>Please enter your e-mail address and password.</p>
         </div>
         <div className='w-1/2 pt-12 bg-white rounded-3xl  pb-24 px-11 relative'>
-          <h4 className='text-brown text-base font-extrabold mb-6'>Connectez-vous</h4>
+          <h4 className='text-brown text-base font-extrabold mb-6'>Sign in</h4>
           <FormAuth />
           <div className='flex gap-x-2 my-6'>
-            <span className='text-black-60%'>Vous n&apos;avez pas de compte?</span>
-            <button onClick={redirectRegister} className='text-sm font-extrabold text-bronze hover:text-opacity-70' type='button'>S&apos;inscrire</button>
+            <span className='text-black-60%'>You don&apos;t have an account?</span>
+            <button onClick={redirectRegister} className='text-sm font-extrabold text-bronze hover:text-opacity-70' type='button'>Sign up</button>
           </div>
           <TrajetLogin className='absolute left-0 bottom-0' />
         </div>
