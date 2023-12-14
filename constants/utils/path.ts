@@ -6,7 +6,8 @@ const link = {
   reservationDate : '/reservation-date',
   propositionDate : '/reservation-date/proposition',
   validationDate : '/reservation-date/validation',
-  myBasket : '/my-basket'
+  myBasket : '/my-basket',
+  feedback : '/feedback'
 };
 
 export default link;

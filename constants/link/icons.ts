@@ -27,6 +27,7 @@ import FacebookColor from '../../public/icons/facebook-color.svg'
 import Visa from '../../public/icons/cc-visa.svg'
 import Paypal from '../../public/icons/paypal.svg'
 import Add from '../../public/icons/add-sharp.svg'
+import SendDuotone from '../../public/icons/send-duotone.svg'
 
 export {
   MenuIcon,
@@ -57,5 +58,6 @@ export {
   FacebookColor,
   Visa,
   Paypal,
-  Add
+  Add,
+  SendDuotone
 };

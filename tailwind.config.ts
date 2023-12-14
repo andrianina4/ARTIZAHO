@@ -31,7 +31,7 @@ const config: Config = {
         "bg-register":
           "linear-gradient(0deg, rgba(58, 33, 11, 0.67) 0%, rgba(58, 33, 11, 0.67) 100%), url('/images/baobab.jpeg')",
         "bg-accueil": "url('/images/bg1.jpg')",
-        "bg-feedback" : "linear-gradient(0deg, rgba(58, 33, 11, 0.60) 0%, rgba(58, 33, 11, 0.60) 100%), url('/images/bg-feedback.jpeg'), lightgray 50% / cover no-repeat"
+        "bg-feedback" : "linear-gradient(0deg, rgba(58, 33, 11, 0.60) 0%, rgba(58, 33, 11, 0.60) 100%), url('/images/bg-feedback.jpeg')"
       },
       maxWidth: {
         page: "1536px",
