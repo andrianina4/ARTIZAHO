@@ -24,6 +24,10 @@ import Delete from '../../public/icons/delete-28-regular.svg'
 import RoundPlace from '../../public/icons/round-place.svg'
 import GoogleColor from '../../public/icons/google-color.svg'
 import FacebookColor from '../../public/icons/facebook-color.svg'
+import Visa from '../../public/icons/cc-visa.svg'
+import Paypal from '../../public/icons/paypal.svg'
+import Add from '../../public/icons/add-sharp.svg'
+import SendDuotone from '../../public/icons/send-duotone.svg'
 
 export {
   MenuIcon,
@@ -51,5 +55,9 @@ export {
   Delete,
   RoundPlace,
   GoogleColor,
-  FacebookColor
+  FacebookColor,
+  Visa,
+  Paypal,
+  Add,
+  SendDuotone
 };

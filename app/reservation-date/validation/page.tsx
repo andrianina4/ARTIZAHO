@@ -26,14 +26,14 @@ function ValidationDate({ }: Props) {
                     <Button isBackButton content={<ArrowLeft />} className='!bg-transparent w-min !text-brown !text-2xl !p-0' />
                     <span>Reservation</span>
                 </div>
-                <p className='ml-9  text-brown text-sm mt-2 mb-10'>Informations pour la réservation</p>
+                <p className='ml-9  text-brown text-sm mt-2 mb-10'>Booking information</p>
                 <div className='ml-9 flex justify-between gap-x-10'>
                     <div className='w-3/5'>
                         <ShoppingCart isBottom />
                         <div className='h-10'></div>
                         <PresentationTrainer trainer={trainer} />
                         <div className='w-10/12 my-5'>
-                            <Input label='Votre numéro de téléphone' id='phone' leftIcon={<Phone />} placeholder='Tél' />
+                            <Input label='Your telephone number' id='phone' leftIcon={<Phone />} placeholder='Tel' />
                         </div>
                         <ReservationButton/>
                     </div>

@@ -6,7 +6,7 @@ import link from "@/constants/utils/path";
 
 type NavBarProps = {
   className?: string;
-  isWhite? : boolean
+  isWhite?: boolean
 };
 
 function NavBar({ className, isWhite = false }: NavBarProps) {
@@ -15,27 +15,33 @@ function NavBar({ className, isWhite = false }: NavBarProps) {
       className={`flex justify-between items-center py-7 px-24 w-full max-w-page mx-auto ${className}`}
     >
       <Link href={link.home}>
-        <LogoArtizaho isColor={isWhite}/>
+        <LogoArtizaho isColor={isWhite} />
       </Link>
       <ul className={`flex gap-x-8  opacity-60  ${isWhite ? 'text-brown' : 'text-whiteGray'}`}>
-        <li>
-          <Link href={link.home}>ACCEUIL</Link>
-        </li>
-        <li>
-          <Link href={link.whoare}>QUI SOMMES NOUS</Link>
-        </li>
-        <li>NOS ATELIERS</li>
+        <Link href={link.home}>
+          <li>
+            Home
+          </li>
+        </Link>
+        <Link href={link.whoare}>
+          <li>
+            WHO WE ARE
+          </li>
+        </Link>
+        <li>OUR WORKSHOPS</li>
       </ul>
 
       <ul className={`flex gap-x-3  text-2xl ${isWhite ? 'text-brown' : 'text-white'}`}>
-        <li>
-          <ShoppingBagDuoTone />
-        </li>
-        <li>
-          <Link href={link.login}>
+        <Link href={link.myBasket}>
+          <li>
+            <ShoppingBagDuoTone />
+          </li>
+        </Link>
+        <Link href={link.login}>
+          <li>
             <UserDuoTone />
-          </Link>
-        </li>
+          </li>
+        </Link>
         <li>
           <MenuIcon />
         </li>

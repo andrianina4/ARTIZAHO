@@ -19,12 +19,12 @@ function FormAuth({ }: Props) {
     
     return (
         <form className=''>
-            <Input placeholder='Adresse email' />
-            <Input type='password' placeholder='Mot de passe' />
-            <button className='text-black-60% text-sm block w-full text-right hover:text-opacity-70'>Mot de passe oublié?</button>
+            <Input placeholder='Email address' />
+            <Input type='password' placeholder='Password' />
+            <button className='text-black-60% text-sm block w-full text-right hover:text-opacity-70 mb-5'>Forgot your password?</button>
 
-            <div className='mt-24'></div>
-            <Button content='Se connecter' onClick={handleSubmit} />
+            <div className='mt-20'></div>
+            <Button content='Sign in' onClick={handleSubmit} />
             
         </form>
     )
