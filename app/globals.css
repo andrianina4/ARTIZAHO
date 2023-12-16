@@ -26,6 +26,12 @@
   -webkit-backdrop-filter: blur(8.3px);
 }
 
+.styleImg1 {
+  fill: url("/images/whoare1.jpeg") lightgray -0.061px 0px / 100.023% 100% no-repeat;
+  width: "527.597px";
+  height: "395.789px";
+}
+
 /* :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;

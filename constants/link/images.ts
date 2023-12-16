@@ -4,6 +4,8 @@ import artizahoLogoWhiteVertical from "../../public/images/artizahoLogoVertical.
 import whoare from "../../public/images/whoare.png";
 import art from "../../public/images/art.jpeg";
 import imgProfile from "../../public/images/imgProfile.png";
+import whoare1 from "../../public/images/whoare1.png";
+import whoare2 from "../../public/images/whoare2.png";
 
 export {
   artizahoWhite,
@@ -12,4 +14,6 @@ export {
   whoare,
   art,
   imgProfile,
+  whoare1,
+  whoare2,
 };
