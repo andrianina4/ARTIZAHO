@@ -5,8 +5,10 @@ import artizahoLogoWhiteVertical from "../../public/images/artizahoLogoVertical.
 import whoare from "../../public/images/whoare.png";
 import art from "../../public/images/art.jpeg";
 import imgProfile from "../../public/images/imgProfile.png";
-import OrangeMoney from '../../public/images/orange-money.png'
-import Mvola from '../../public/images/mvola_728x534 2.svg'
+import OrangeMoney from "../../public/images/orange-money.png";
+import Mvola from "../../public/images/mvola_728x534 2.svg";
+import whoare1 from "../../public/images/whoare1.png";
+import whoare2 from "../../public/images/whoare2.png";
 
 export {
   artizahoWhite,
@@ -17,5 +19,7 @@ export {
   art,
   imgProfile,
   OrangeMoney,
-  Mvola
+  Mvola,
+  whoare1,
+  whoare2,
 };
