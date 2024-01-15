@@ -7,7 +7,7 @@ export default function page() {
   return (
     <div className="bg-[#FFF] w-[1440px] mx-auto">
       <header>
-        <NavBar className="text-red-500" />
+        <NavBar isWhite={true} />
       </header>
 
       <div className="bodyContainer flex items-center gap-10">

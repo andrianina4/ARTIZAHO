@@ -7,6 +7,7 @@ import { SearchIcon } from "@/constants/link/icons";
 import QuiNousSommes from "./accueil/QuiNousSommes";
 import CardComponent from "@/components/CardComponent";
 import Comment from "@/components/Comment";
+import Title from "@/components/Title";
 
 export default function Home() {
   return (
@@ -145,9 +146,10 @@ export default function Home() {
         <QuiNousSommes />
 
         <div className="flex flex-col   items-start gap-[12px]">
-          <h4 className="uppercase text-xl text-brown font-moonGet font-extrabold tracking-[8%]">
-            les nouveautés
-          </h4>
+          <Title title="les nouveautés" />
+          {/* <h4 className="uppercase text-xl text-brown font-moonGet font-extrabold tracking-[8%]">
+            
+          </h4> */}
           <span className="font-manrope text-sm font-normal text-brown">
             Liste des nouveaux ateliers
           </span>
@@ -191,7 +193,12 @@ export default function Home() {
           />
         </div>
 
-        <div className="temoignage flex gap-[30px]">
+        <Title
+          title="témoignage et avis de clients"
+          className="mb-6 mt-6 items-center"
+        />
+
+        <div className="temoignage flex gap-[30px] mb-4">
           <Comment
             author="Guy Hawkins"
             role="President of Sales"
@@ -209,6 +216,17 @@ export default function Home() {
             role="Web Designer"
             comment="Nous mettons en valeur les artisans malgaches pour faire revivre la culture et le savoir-faire en proposant une série d'ateliers ouverts au public."
           />
+        </div>
+
+        <div className="videoPresentation">
+          <Title
+            title="l’artisan à portée de main"
+            className="mb-6 items-center"
+          />
+
+          <div className="">
+            <div className="mx-auto bg-bg-accueil-video w-[837px] h-[464px] bg-cover bg-no-repeat borderVideo bg- "></div>
+          </div>
         </div>
       </div>
 

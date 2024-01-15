@@ -1,9 +1,10 @@
 type PropsTitle = {
   title: string;
+  className?: string;
 };
-export default function Title({ title }: PropsTitle) {
+export default function Title({ title, className }: PropsTitle) {
   return (
-    <div className="flex flex-col gap-[12px]">
+    <div className={`flex flex-col gap-[12px] text-brown ${className}`}>
       <h4 className="uppercase font-moonGet text-xl ">{title}</h4>
       <svg
         width="32"

@@ -1,4 +1,8 @@
-import { MenuIcon, ShoppingBagDuoTone, UserDuoTone } from "@/constants/link/icons";
+import {
+  MenuIcon,
+  ShoppingBagDuoTone,
+  UserDuoTone,
+} from "@/constants/link/icons";
 import Image from "next/image";
 import LogoArtizaho from "./logo";
 import Link from "next/link";
@@ -6,7 +10,7 @@ import link from "@/constants/utils/path";
 
 type NavBarProps = {
   className?: string;
-  isWhite?: boolean
+  isWhite?: boolean;
 };
 
 function NavBar({ className, isWhite = false }: NavBarProps) {
@@ -17,21 +21,27 @@ function NavBar({ className, isWhite = false }: NavBarProps) {
       <Link href={link.home}>
         <LogoArtizaho isColor={isWhite} />
       </Link>
-      <ul className={`flex gap-x-8  opacity-60  ${isWhite ? 'text-brown' : 'text-whiteGray'}`}>
+      <ul
+        className={`flex gap-x-8  opacity-60  ${
+          isWhite ? "text-brown" : "text-whiteGray"
+        }`}
+      >
         <Link href={link.home}>
-          <li>
-            Home
-          </li>
+          <li>Home</li>
         </Link>
         <Link href={link.whoare}>
-          <li>
-            WHO WE ARE
-          </li>
+          <li>WHO WE ARE</li>
         </Link>
-        <li>OUR WORKSHOPS</li>
+        <Link href={link.ourWorkshops}>
+          <li>OUR WORKSHOPS</li>
+        </Link>
       </ul>
 
-      <ul className={`flex gap-x-3  text-2xl ${isWhite ? 'text-brown' : 'text-white'}`}>
+      <ul
+        className={`flex gap-x-3  text-2xl ${
+          isWhite ? "text-brown" : "text-white"
+        }`}
+      >
         <Link href={link.myBasket}>
           <li>
             <ShoppingBagDuoTone />

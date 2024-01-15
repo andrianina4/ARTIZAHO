@@ -21,9 +21,9 @@ const config: Config = {
         "white-40%": "#F8F8F8",
         "black-40%": "#00000066",
         "black-60%": "#000000CC",
-        "black-default" : "#1E1E1E",
+        "black-default": "#1E1E1E",
         bronze: "#ECA853",
-        reddishBrown : '#C26143'
+        reddishBrown: "#C26143",
       },
       backgroundImage: {
         "bg-login":
@@ -31,7 +31,10 @@ const config: Config = {
         "bg-register":
           "linear-gradient(0deg, rgba(58, 33, 11, 0.67) 0%, rgba(58, 33, 11, 0.67) 100%), url('/images/baobab.jpeg')",
         "bg-accueil": "url('/images/bg1.jpg')",
-        "bg-feedback" : "linear-gradient(0deg, rgba(58, 33, 11, 0.60) 0%, rgba(58, 33, 11, 0.60) 100%), url('/images/bg-feedback.jpeg')"
+        "bg-feedback":
+          "linear-gradient(0deg, rgba(58, 33, 11, 0.60) 0%, rgba(58, 33, 11, 0.60) 100%), url('/images/bg-feedback.jpeg')",
+        "bg-accueil-video": "url('/images/imgVideo.jpeg') ",
+        // "url('/images/imgVideo.jpeg'), lightgray 50% / cover no-repeat",
       },
       maxWidth: {
         page: "1536px",
