@@ -17,6 +17,9 @@ const config: Config = {
       },
       colors: {
         brown: "#917155",
+        "brown-40%":"#D7B697" ,
+        "brown-60%":"#D7B697",
+        "brown-80%":"#542E0E",
         whiteGray: "#FFFEFD",
         "white-40%": "#F8F8F8",
         "black-40%": "#00000066",
@@ -24,6 +27,7 @@ const config: Config = {
         "black-default": "#1E1E1E",
         bronze: "#ECA853",
         reddishBrown: "#C26143",
+        
       },
       backgroundImage: {
         "bg-login":

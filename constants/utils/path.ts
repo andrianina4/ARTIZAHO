@@ -9,6 +9,11 @@ const link = {
   myBasket: "/my-basket",
   feedback: "/feedback",
   ourWorkshops: "/our-workshops",
+  admin:"/admin",
+  teams:"/admin/teams",
+  paiements:"/admin/paiement",
+  attendance:"/admin/atteendance",
+  settings:"/admin/teams"
 };
 
 export default link;

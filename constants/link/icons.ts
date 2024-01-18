@@ -1,3 +1,4 @@
+
 import MenuIcon from "./../../public/icons/menu-alt-3.svg";
 import FacebookFIcon from "../../public/icons/facebook-f.svg";
 import LinkedinIcon from "../../public/icons/linkedin.svg";
@@ -28,6 +29,15 @@ import Visa from '../../public/icons/cc-visa.svg'
 import Paypal from '../../public/icons/paypal.svg'
 import Add from '../../public/icons/add-sharp.svg'
 import SendDuotone from '../../public/icons/send-duotone.svg'
+import Dashboard from '../../public/icons/dashboard.svg'
+import ChartSales from '../../public/icons/chart-sales-buisness.svg'
+import Date from '../../public/icons/date.svg'
+import EventCheck from '../../public/icons/event-check.svg'
+import Money from '../../public/icons/money.svg'
+import ChartBar from '../../public/icons/round-bar-chart.svg'
+import Setting from '../../public/icons/settings.svg'
+import Users from '../../public/icons/users.svg'
+import Logout from '../../public/icons/logout.svg'
 
 export {
   MenuIcon,
@@ -59,5 +69,14 @@ export {
   Visa,
   Paypal,
   Add,
-  SendDuotone
+  SendDuotone,
+  Dashboard,
+  ChartSales,
+  Date,
+  EventCheck,
+  Money,
+  ChartBar,
+  Setting,
+  Users,
+  Logout,
 };
