@@ -1078,15 +1078,27 @@
   dependencies:
     preact "~10.12.1"
 
-"@fullcalendar/daygrid@^6.1.10":
+"@fullcalendar/daygrid@^6.1.10", "@fullcalendar/daygrid@~6.1.10":
   version "6.1.10"
   resolved "https://registry.npmjs.org/@fullcalendar/daygrid/-/daygrid-6.1.10.tgz"
   integrity sha512-Z4GRm1IyHKgxXFTWGcEI0nTsvYOIkpE0aMt3/o3ER2SZkF+hfwcDFhtj0c9+WhMjXFIWYeoTnA9rUOY7Zl/nxA==
+
+"@fullcalendar/interaction@^6.1.10":
+  version "6.1.10"
+  resolved "https://registry.npmjs.org/@fullcalendar/interaction/-/interaction-6.1.10.tgz"
+  integrity sha512-aZRlwCpmDasq2RNeWV0ub20Uevare9Cb6iMlxCacx0fhOC14H28G9d1FsduJIecInL84SPGwt5ItqAYMsWv7zw==
 
 "@fullcalendar/react@^6.1.10":
   version "6.1.10"
   resolved "https://registry.npmjs.org/@fullcalendar/react/-/react-6.1.10.tgz"
   integrity sha512-RVYevo5T4RUZzR8omlbnBwRCqVNJWKryzI0ZrFULyqIYggN6uPmMuB9GvbrTjDfKhsm438KQwwhJerg2lGh3xA==
+
+"@fullcalendar/timegrid@^6.1.10":
+  version "6.1.10"
+  resolved "https://registry.npmjs.org/@fullcalendar/timegrid/-/timegrid-6.1.10.tgz"
+  integrity sha512-hFKyQXJaPbNyq1reZmvkCmM64O99krHoIcJAbDS+dntCm3FzZUcDtAcRKIbMiantHrezCG/1MEYk3m9e3aKvIQ==
+  dependencies:
+    "@fullcalendar/daygrid" "~6.1.10"
 
 "@humanwhocodes/config-array@^0.11.13":
   version "0.11.13"
@@ -1151,10 +1163,15 @@
   dependencies:
     glob "7.1.7"
 
-"@next/swc-win32-x64-msvc@14.0.1":
+"@next/swc-linux-x64-gnu@14.0.1":
   version "14.0.1"
-  resolved "https://registry.npmjs.org/@next/swc-win32-x64-msvc/-/swc-win32-x64-msvc-14.0.1.tgz"
-  integrity sha512-FFp3nOJ/5qSpeWT0BZQ+YE1pSMk4IMpkME/1DwKBwhg4mJLB9L+6EXuJi4JEwaJdl5iN+UUlmUD3IsR1kx5fAg==
+  resolved "https://registry.npmjs.org/@next/swc-linux-x64-gnu/-/swc-linux-x64-gnu-14.0.1.tgz"
+  integrity sha512-wMqf90uDWN001NqCM/auRl3+qVVeKfjJdT9XW+RMIOf+rhUzadmYJu++tp2y+hUbb6GTRhT+VjQzcgg/QTD9NQ==
+
+"@next/swc-linux-x64-musl@14.0.1":
+  version "14.0.1"
+  resolved "https://registry.npmjs.org/@next/swc-linux-x64-musl/-/swc-linux-x64-musl-14.0.1.tgz"
+  integrity sha512-ol1X1e24w4j4QwdeNjfX0f+Nza25n+ymY0T2frTyalVczUmzkVD7QGgPTZMHfR1aLrO69hBs0G3QBYaj22J5GQ==
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
