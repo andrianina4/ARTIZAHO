@@ -1,4 +1,7 @@
 import { ChartBar, ChartSales, Date } from "@/constants/link/icons";
+import Bloc from "./component/bloc";
+import Image from "next/image";
+import Minicard from "@/components/minicard";
 
 
 
@@ -6,24 +9,8 @@ export default function Admin() {
   return (
     <div className=" flex flex-col gap-5 h-full">
       <div className=" grid grid-cols-3 gap-10 h-1/5">
-        <div className="flex flex-row bg-white flex-1 h-full gap-7 rounded-3xl px-10 py-7 ">
-          <div className="bg-white-40% w-14 h-14 rounded-full flex justify-center items-center text-4xl text-brown ">
-              <Date/>
-          </div>
-          <div>
-            <p className="text-white-40%">Date</p>
-            <p className="text-brown-80% font-bold"> 10 Nov 2023</p>
-          </div>
-        </div>
-         <div className="flex flex-row bg-white flex-1 h-full gap-7 rounded-3xl px-10 py-7 ">
-          <div className="bg-white-40% w-14 h-14 rounded-full flex justify-center items-center text-4xl text-brown  ">
-            <ChartBar/>
-          </div>
-          <div>
-          <p className="text-white-40% ">Total bookings</p>
-            <p className="text-brown-80% font-bold text-2xl"> 250</p>
-          </div>
-        </div>
+        <Bloc icon={<Date/>} textTop="Date" textBottom="10 Nov 2023"/>
+        <Bloc icon={<ChartBar/> } textTop="Booking total" textBottom="250" />
         <div className="flex flex-row bg-gradient-to-t from-brown to-brown-60% flex-1 h-full gap-7 rounded-3xl px-10 py-7 ">
           <div>
             <p className="text-white-40%" >Sales figures</p>
@@ -45,11 +32,6 @@ export default function Admin() {
                 <p className="text-3xl font-semibold ">Craftmen list</p>
                 <p>Overview of workshops with location and participants</p>
               </div>
-              {/* <div className="grid grid-cols-3">
-                <p className="bg-red-500">Craftmen</p>
-                <p>City</p>
-                <p>Total participants </p>
-              </div> */}
             </div>
             <div className="flex flex-row  items-center  bg-white w-full h-36 rounded-3xl p-10   ">
               <div className="flex flex-row  flex-1  items-center gap-3.5 ">
@@ -77,14 +59,7 @@ export default function Admin() {
          </div>
          <div className=" flex flex-col gap-3 items-center bg-white rounded-3xl py-7">
             <p className="text-brown font-semibold">The most reserved craftmen</p>
-            <div className="flex flex-row gap-3  ">
-              <div className="bg-bronze w-1 rounded-xl"></div>
-              <div className="w-[56px] h-[56px] rounded-full bg-slate-500 "></div>
-              <div>
-                <p>Safidyy</p>
-                <p>safidy@gmail.com</p>
-              </div>
-            </div>
+           <Minicard name="Safidy" email="Safidy@gmail.com" img={"/temp/vase.png"}/>
          </div>
       </div>
     </div>
