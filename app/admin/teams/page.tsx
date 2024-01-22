@@ -4,16 +4,37 @@ import Button from '@/components/button'
 import { UserAdd } from '@/constants/link/icons'
 import React, { useState } from 'react'
 import TeamsItem from './component/TeamsItem'
+import ModalLayout from '@/components/modal'
+import Input from '@/components/input'
 
 function Page() {
+
+  const[open, setOpen] = useState(false)
+  const handleToogle=()=>{
+    setOpen(!open)
+  }
 
   return (
     <div className='h-full'>
        <div className='flex flex-row justify-between'>
           <div className='w-64'>
-          <Button leftIcon={<UserAdd/>} content="New member" />
+          <Button leftIcon={<UserAdd/>} content="New member" onClick={handleToogle} />
           </div>
-          {/* Modal */}
+          <ModalLayout open={open} onClick={handleToogle}>
+            <div className=' flex flex-col  justify-between w-3/5'>
+                <div className='flex items-center text-bronze text-2xl font-semibold gap-4 '> <span><UserAdd/></span> New member</div>
+              
+                <div>
+                  
+                  <Input placeholder='Name'/>
+                  <Input placeholder='Email'/>
+                  <Input placeholder='Phone'/>
+                  <Input placeholder='Location'/>
+                </div>
+                <Button content="Add new member" />
+            </div>
+            <div className='bg-red-300 w-2/5'>b</div>
+          </ModalLayout>
 
           {/* Dropdown  */}
           <div className='flex flex-row items-center gap-7'>
