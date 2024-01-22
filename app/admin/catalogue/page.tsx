@@ -2,14 +2,12 @@
 
 import React from "react";
 import Calendar from "@/app/admin/catalogue/component/Calendar";
-import Button from "@/components/button";
+import Panel from "./component/Panel";
 
 export default function Page() {
 	return (
-		<div className="flex flex-row">
-			<div className="">
-				<Button content="AJOUTER" className="absolute top-1 w-min right-1" />
-			</div>
+		<div className="flex flex-row gap-[18px]">
+			<Panel />
 			<Calendar />
 		</div>
 	);
