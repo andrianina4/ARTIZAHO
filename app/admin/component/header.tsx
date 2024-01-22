@@ -18,7 +18,7 @@ function Header(props: HeaderProps) {
             <p className='text-brown text-2xl font-semibold '>{BigTitle}</p>
         </div>
         <div>
-            <Input type='text' placeholder='Search'/>
+            <Input leftIcon={<SearchIcon/>} type='text' placeholder='Search'/>
         </div>
     </div>
   )

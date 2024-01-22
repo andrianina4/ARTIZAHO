@@ -8,6 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      gridTemplateColumns:{
+        'custom':' 10% 15% 15% 15% 15% 15% 10% 5%'
+      },
       boxShadow: {
         card: "0px 16px 35px 0px rgba(0, 0, 0, 0.08)",
       },
@@ -16,6 +19,10 @@ const config: Config = {
         moonGet: ["MoonGet", "sans-serif"],
       },
       colors: {
+        blueLight:"#E4F0FF",
+        blue:"#70A6E8",
+        green:"#0FA958",
+        greenLight: "#DDF9E4",
         brown: "#917155",
         "brown-40%":"#D7B697" ,
         "brown-60%":"#D7B697",

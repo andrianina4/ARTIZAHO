@@ -16,7 +16,7 @@ function ModalTeam(props:ModalProps) {
        <div className='modal-box'>
         <div className=' flex flex-col  justify-between w-3/5'>
               <div className='flex items-center text-bronze text-2xl font-semibold gap-4 '> <span><UserAdd/></span> New member</div>
-              <button className="btn btn-sm btn-circle btn-ghost text-black absolute right-4 top-4" onClick={onClick} >✕</button>
+            
               <div>
                 <Input placeholder='Name'/>
                 <Input placeholder='Email'/>

@@ -22,16 +22,19 @@ function page() {
             </div>
         </div>
         <Divider/>
-        <div className='grid grid-cols-8'>
+        <div className='grid grid-cols-custom ml-4'>
           {
             headerList.map((item, index)=>{
                return(
-                <span className='text-sm' key={index}>{item}</span>
+                <span className='text-sm colo' key={index}>{item}</span>
                )
             })
           }
         </div>
-        <AttendanceItem/>
+        <div>
+          <AttendanceItem/>
+          <AttendanceItem/>
+        </div>
     </div>
   )
 }
