@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import React from 'react'
 import Button from './button'
-import { Dashboard, Logout, Money, Users } from '@/constants/link/icons'
+import { Dashboard, EventCheck, Logout, Money, Users } from '@/constants/link/icons'
 import { usePathname } from 'next/navigation'
 
 
@@ -11,7 +11,7 @@ const links =[
     {name: 'Tableau de bord', href:'/admin', icon: Dashboard },
     {name: 'Teams',href:'/admin/teams', icon: Users },
     {name: 'Paiements', href:'/admin/paiements', icon: Money },
-    // {name: 'Attendance', href:'admin/', icon: Heart},
+    {name: 'Attendance', href:'/admin/attendance', icon: EventCheck},
     // {name: 'Settings', href:'admin/',icon: Heart},
 
 ]
@@ -36,7 +36,7 @@ function Sidebar() {
                 const LinkIcon= link.icon
                 return(
                 <Link key={link.name}
-                        href={link.href} className={`gap-2 font-semibold  ${pathname ===link.href ? 'active': 'noactive'}`} >
+                        href={link.href} className={`pl-5 gap-5 font-semibold  ${pathname ===link.href ? 'active': 'noactive'}`} >
                     <LinkIcon/> {link.name}
                 </Link>
                 )

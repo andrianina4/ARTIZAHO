@@ -1,8 +1,11 @@
 import React from 'react'
+import ModalTeam from '../teams/component/modal'
 
 function Page() {
   return (
-    <div>VOla</div>
+    <div>
+      <ModalTeam/>
+    </div>
   )
 }
 
