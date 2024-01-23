@@ -28,6 +28,7 @@ const config: Config = {
 				"brown-60%": "#D7B697",
 				"brown-80%": "#542E0E",
 				whiteGray: "#FFFEFD",
+				grayish: "#5E5873",
 				"gray-60%": "#979797",
 				"white-10%": "#F1F1F1",
 				"white-40%": "#F8F8F8",

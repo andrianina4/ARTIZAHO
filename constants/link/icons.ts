@@ -40,6 +40,8 @@ import Logout from "../../public/icons/logout.svg";
 import UserAdd from "../../public/icons/user-add.svg";
 import UserAddFill from "../../public/icons/user-add-fill.svg";
 import FlowerOne from "../../public/icons/flower-pot.svg";
+import Toolbox from "../../public/icons/toolbox-24-filled.svg";
+import AddOutline from "../../public/icons/add-outline.svg";
 
 export {
 	MenuIcon,
@@ -84,4 +86,6 @@ export {
 	UserAdd,
 	UserAddFill,
 	FlowerOne,
+	Toolbox,
+	AddOutline,
 };

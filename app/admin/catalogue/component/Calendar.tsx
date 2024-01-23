@@ -4,11 +4,16 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import CalendarItem from "./CalendarItem";
+import ModalLayout from "@/components/modal";
+import AboutPopup from "./AboutPopup";
 
 import "./style/style.css";
 
 export default function Calendar() {
-	const [popup, setPopup] = useState(false);
+	const [open, setOpen] = useState(false);
+	const handleToogle = () => {
+		setOpen(!open);
+	};
 	const events = [
 		{
 			id: "1",
@@ -26,8 +31,6 @@ export default function Calendar() {
 	];
 	const renderEventContent = <CalendarItem title="Bouqueeeeeeet" />;
 
-	const showEvent = (id: string) => alert(`Event ${id} clicked!`);
-
 	return (
 		<div className="grow overflow-hidden">
 			<FullCalendar
@@ -40,8 +43,9 @@ export default function Calendar() {
 				initialView="dayGridMonth"
 				events={events} // Liste des evenements
 				eventContent={renderEventContent} // rendu des evenements su le tableau ??
-				eventClick={(arg) => showEvent(arg.event.id)}
+				eventClick={(arg) => handleToogle()}
 			/>
+			<AboutPopup open={open} onClick={handleToogle} />
 		</div>
 	);
 }
