@@ -1,19 +1,23 @@
 import React from "react";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
-import timeGridPlugin from "@fullcalendar/timegrid"; // * voa niinstaller-na
-import interactionPlugin from "@fullcalendar/interaction"; // * voa niinstaller-na
+import timeGridPlugin from "@fullcalendar/timegrid";
+import interactionPlugin from "@fullcalendar/interaction";
+
+import "./style/style.css";
 
 export default function Calendar() {
 	return (
-		<div className="grow">
+		<div className="grow overflow-hidden">
 			<FullCalendar
 				plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
 				headerToolbar={{
-					left: "prev,next,title",
+					left: "prev,next title",
 					center: "",
 					right: "dayGridMonth,timeGridWeek,timeGridDay",
 				}}
+				viewClassNames="rounded-tl-[14px]" // tous les cases
+				// dayHeaderClassNames="bg-blue" // les en-tetes
 				initialView="dayGridMonth"
 				editable={true}
 				selectable={true}

@@ -1,0 +1,10 @@
+.fc-header-toolbar {
+	min-height: 54px;
+}
+
+.fc-toolbar-chunk {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	color: "#5e5873";
+}
