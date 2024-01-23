@@ -1,12 +1,33 @@
-import React from "react";
+import React, {useState} from "react";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
+import CalendarItem from "./CalendarItem";
 
 import "./style/style.css";
 
 export default function Calendar() {
+	const [popup, setPopup] = useState(false);
+	const events = [
+		{
+			id: "1",
+			title: "Pink",
+			start: "2024-01-03",
+			end: "2021-01-03",
+		},
+
+		{
+			id: "2",
+			title: "Green",
+			start: "2024-01-04",
+			end: "2021-01-05",
+		},
+	];
+	const renderEventContent = <CalendarItem title="Bouqueeeeeeet" />;
+
+	const showEvent = (id: string) => alert(`Event ${id} clicked!`);
+
 	return (
 		<div className="grow overflow-hidden">
 			<FullCalendar
@@ -16,24 +37,10 @@ export default function Calendar() {
 					center: "",
 					right: "dayGridMonth,timeGridWeek,timeGridDay",
 				}}
-				viewClassNames="rounded-tl-[14px]" // tous les cases
-				// dayHeaderClassNames="bg-blue" // les en-tetes
 				initialView="dayGridMonth"
-				editable={true}
-				selectable={true}
-				selectMirror={true}
-				dayMaxEvents={true}
-				// weekends={this.state.weekendsVisible}
-				// initialEvents={INITIAL_EVENTS} // alternatively, use the `events` setting to fetch from a feed
-				// select={this.handleDateSelect}
-				// eventContent={renderEventContent} // custom render function
-				// eventClick={this.handleEventClick}
-				// eventsSet={this.handleEvents} // called after events are initialized/added/changed/removed
-				/* you can update a remote database when these fire:
-      eventAdd={function(){}}
-      eventChange={function(){}}
-      eventRemove={function(){}}
-      */
+				events={events} // Liste des evenements
+				eventContent={renderEventContent} // rendu des evenements su le tableau ??
+				eventClick={(arg) => showEvent(arg.event.id)}
 			/>
 		</div>
 	);
