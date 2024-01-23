@@ -12,6 +12,7 @@ const links =[
     {name: 'Teams',href:'/admin/teams', icon: Users },
     {name: 'Paiements', href:'/admin/paiements', icon: Money },
     {name: 'Attendance', href:'/admin/attendance', icon: EventCheck},
+    {name: 'Craftmen', href:'/admin/craftmen', icon: Users},
     // {name: 'Settings', href:'admin/',icon: Heart},
 
 ]
