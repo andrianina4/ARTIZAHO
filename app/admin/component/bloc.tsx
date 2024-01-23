@@ -16,7 +16,7 @@ function Bloc(props: BlocProps) {
           </div>
           <div>
             <p className="text-gray-60%">{textTop}</p>
-            <p className="text-brown-80% font-bold"> {textBottom}</p>
+            <p className="text-brown-80% font-bold text-2xl"> {textBottom}</p>
           </div>
     </div>
   )

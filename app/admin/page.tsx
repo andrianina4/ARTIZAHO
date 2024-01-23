@@ -2,6 +2,7 @@ import { ChartBar, ChartSales, Date } from "@/constants/link/icons";
 import Bloc from "./component/bloc";
 import Image from "next/image";
 import Minicard from "@/components/minicard";
+import BlocBrown from "./component/blocBrown";
 
 
 
@@ -11,17 +12,7 @@ export default function Admin() {
       <div className=" grid grid-cols-3 gap-10 h-1/5">
         <Bloc icon={<Date/>} textTop="Date" textBottom="10 Nov 2023"/>
         <Bloc icon={<ChartBar/> } textTop="Booking total" textBottom="250" />
-        <div className="flex flex-row bg-gradient-to-t from-brown to-brown-60% flex-1 h-full gap-7 rounded-3xl px-10 py-7 ">
-          <div>
-            <p className="text-white-40%" >Sales figures</p>
-            <p className=" text-white font-bold text-2xl">500000$</p>
-          </div>
-          <div className=" w-14 h-14 flex justify-center items-center   ">
-            <p className="text-5xl ">
-            <ChartSales/>
-            </p>
-          </div>
-        </div>
+        <BlocBrown icon={<ChartSales/>} textTop="Sales figures" textBottom="250"/> 
         
       </div>
 
