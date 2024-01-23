@@ -8,3 +8,14 @@
 	align-items: center;
 	color: "#5e5873";
 }
+
+.fc .fc-daygrid-day-top {
+	display: flex;
+	flex-direction: row;
+}
+
+.fc .fc-button-primary {
+	background-color: var(--fc-button-bg-color);
+	border-color: var(--fc-button-border-color);
+	color: "#6C757D";
+}
