@@ -1,6 +1,6 @@
 import Button from '@/components/button'
 import Divider from '@/components/divider'
-import { ArrowLeft, EditFill, Heart, Users } from '@/constants/link/icons'
+import { AddImage, ArrowLeft, EditFill, Heart, Users } from '@/constants/link/icons'
 import React from 'react'
 import InputContainer from './component/InputContainer'
 import Input from '@/components/input'
@@ -52,7 +52,7 @@ function Page(props: Props) {
                 </div>
             
                 <div className='relative  rounded-3xl  w-2/5'>
-                    <ProfileCard className='absolute left-1/2 transform -translate-x-1/2'>
+                    <ProfileCard className='absolute left-1/2 transform -translate-x-1/2' icon={<AddImage/>} classNameImage='bg-bronze text-white'>
                             <div className='flex justify-center bg-white  rounded-3xl w-48 h-10 '><StarScore/></div>
                             <div className='flex justify-center items-center gap-2 bg-white  rounded-3xl w-48 h-10  '>
                                 <span><Users/></span>

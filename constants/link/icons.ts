@@ -40,7 +40,7 @@ import Users from '../../public/icons/users.svg'
 import Logout from '../../public/icons/logout.svg'
 import UserAdd from '../../public/icons/user-add.svg'
 import EditFill from '../../public/icons/edit-fill.svg'
-
+import AddImage from '../../public/icons/AddImage.svg'
 
 export {
   MenuIcon,
@@ -83,5 +83,6 @@ export {
   Users,
   Logout,
   UserAdd,
-  EditFill
+  EditFill, 
+  AddImage,
 };

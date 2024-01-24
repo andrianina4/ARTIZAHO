@@ -1,7 +1,7 @@
 'use client'
 
 import Button from '@/components/button'
-import { UserAdd } from '@/constants/link/icons'
+import { AddImage, UserAdd } from '@/constants/link/icons'
 import React, {useState} from 'react'
 import CraftemenItem from './craftemenItem'
 import StarScore from '@/components/star-score'
@@ -9,6 +9,7 @@ import ModalLayout from '@/components/modal'
 import Input from '@/components/input'
 import Textarea from '@/components/textarea'
 import Image from 'next/image'
+import ImageCustom from '@/components/imageCustom'
 
 type Props = {}
 
@@ -38,14 +39,7 @@ function Page({}: Props) {
                     <Button content="Add new craftman" />
               </div>
               <div className=' w-2/5 flex flex-col items-center gap-2 '>
-               <div className=' relative w-[168px] h-[168px] mt-10 '>
-                <Image 
-                  src={"/temp/vase.png"} 
-                  alt={`shopping-1`}
-                  fill
-                    className="rounded-full"
-                    />
-               </div>
+               <ImageCustom icon={<AddImage/>} className='bg-bronze text-white'/>
                <Input placeholder='Atelier'/>
                <button className='text-sm hover:bg-white-40% hover:bg-opacity-60 py-4 px-10 rounded-2xl'>+Ajouter plus d'atelier</button>
               </div>
