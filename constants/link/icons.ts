@@ -39,6 +39,7 @@ import Setting from '../../public/icons/settings.svg'
 import Users from '../../public/icons/users.svg'
 import Logout from '../../public/icons/logout.svg'
 import UserAdd from '../../public/icons/user-add.svg'
+import EditFill from '../../public/icons/edit-fill.svg'
 
 
 export {
@@ -81,5 +82,6 @@ export {
   Setting,
   Users,
   Logout,
-  UserAdd
+  UserAdd,
+  EditFill
 };
