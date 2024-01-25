@@ -75,7 +75,6 @@ export default function FormAtelier() {
 							onClick={() => {
 								handleInputFile();
 							}}>
-							{/* <label htmlFor="">o</label> */}
 							<input type="file" className="input-file-atelier" hidden />
 							<div className="flex flex-col items-center justify-center">
 								<ImageAdd className="w-9 h-9 opacity-50" />

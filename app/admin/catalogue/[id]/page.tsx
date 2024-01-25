@@ -1,7 +1,9 @@
+"use client";
 import React from "react";
-import {EditFill, LeftLine} from "@/constants/link/icons";
+import {EditFill, FlowerOne, Heart, ImageAdd, LeftLine} from "@/constants/link/icons";
 import Button from "@/components/button";
 import Item from "./component/Item";
+import ProgressBar from "@/components/progress-bar";
 
 const atelier = {
 	id: 1,
@@ -12,10 +14,17 @@ const atelier = {
 	heure_debut: "14:30",
 	duree: "1:30",
 	nb_max_participants: 10,
+	image: ["/temp/vase.png", "/temp/vase.png", "/temp/vase.png"],
 	desc: "Welcome to Hanta's atelier-boutique, where you can learn how to create exceptional floral arrangements. During this experience, you'll discover a variety of foliage and flowers, and learn how to use them to create beautiful bouquets.",
 };
 
 export default function page({params}: {params: {id: string}}) {
+	const handleInputFile = () => {
+		const inputELement = document.querySelector(".input-file-atelier") as HTMLFormElement;
+		if (inputELement) {
+			inputELement.click();
+		}
+	};
 	return (
 		<div className="flex flex-col w-full h-full gap-6 bg-white rounded-3xl pt-8 pl-8">
 			<div className="flex items-center gap-4">
@@ -56,6 +65,26 @@ export default function page({params}: {params: {id: string}}) {
 				</div>
 				<div className="w-2/5 pl-7">
 					<div className="text-brown mb-5 font-bold">Workshop performance</div>
+					<ProgressBar color="bronze" leftIcon={<FlowerOne />} text="Bouquet en vase" number={12} />
+					<div className="text-brown mb-5 font-bold">Galerie</div>
+					<div className="flex flex-row flex-wrap w-2/3 gap-4">
+						{atelier.image.map((image, index) => (
+							<div key={index} className="w-36 h-32 bg-white-40% ">
+								<img src={image} className="w-full h-full rounded-3xl object-cover" />
+							</div>
+						))}
+						<div
+							className="w-40 h-32 gap-2 bg-white-40% rounded-2xl flex items-center input input-bordered flex-col justify-center cursor-pointer"
+							onClick={() => {
+								handleInputFile();
+							}}>
+							<input type="file" className="input-file-atelier" hidden />
+							<div className="flex flex-col items-center justify-center">
+								<ImageAdd className="w-9 h-9 opacity-50" />
+								<div className="opacity-50">Add Pictures</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
