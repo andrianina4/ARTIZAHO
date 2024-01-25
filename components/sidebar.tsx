@@ -10,9 +10,10 @@ import { usePathname } from 'next/navigation'
 const links =[
     {name: 'Tableau de bord', href:'/admin', icon: Dashboard },
     {name: 'Teams',href:'/admin/teams', icon: Users },
-    {name: 'Paiements', href:'/admin/paiements', icon: Money },
+    // {name: 'Paiements', href:'/admin/paiements', icon: Money },
     {name: 'Attendance', href:'/admin/attendance', icon: EventCheck},
-    // {name: 'Settings', href:'admin/',icon: Heart},
+    {name: 'Craftmen', href:'/admin/craftmen' , icon: Users},
+    {name: 'Clients', href:'/admin/client' , icon: Users},
 
 ]
 

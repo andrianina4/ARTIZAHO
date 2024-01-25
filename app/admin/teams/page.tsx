@@ -6,6 +6,7 @@ import React, { useState } from 'react'
 import TeamsItem from './component/TeamsItem'
 import ModalLayout from '@/components/modal'
 import Input from '@/components/input'
+import Image from 'next/image'
 
 function Page() {
 
@@ -18,14 +19,15 @@ function Page() {
     <div className='h-full'>
        <div className='flex flex-row justify-between'>
           <div className='w-64'>
-          <Button leftIcon={<UserAdd/>} content="New member" onClick={handleToogle} />
+            <Button leftIcon={<UserAdd/>} content="New member" onClick={handleToogle} />
           </div>
-          <ModalLayout open={open} onClick={handleToogle}>
+          <ModalLayout open={open} onClick={handleToogle} className=' h-[550px] w-[830px]'>
             <div className=' flex flex-col  justify-between w-3/5'>
-                <div className='flex items-center text-bronze text-2xl font-semibold gap-4 '> <span><UserAdd/></span> New member</div>
+                <div className='flex items-center text-bronze text-2xl font-semibold gap-4 '> 
+                  <span><UserAdd/></span> New member
+                </div>
               
                 <div>
-                  
                   <Input placeholder='Name'/>
                   <Input placeholder='Email'/>
                   <Input placeholder='Phone'/>
@@ -33,7 +35,16 @@ function Page() {
                 </div>
                 <Button content="Add new member" />
             </div>
-            <div className='bg-red-300 w-2/5'>b</div>
+            <div className=' w-2/5 flex justify-center '>
+               <div className=' relative w-[168px] h-[168px] mt-10 '>
+               <Image 
+                 src={"/temp/vase.png"} 
+                 alt={`shopping-1`}
+                 fill
+                  className="rounded-full"
+                  />
+               </div>
+            </div>
           </ModalLayout>
 
           {/* Dropdown  */}
