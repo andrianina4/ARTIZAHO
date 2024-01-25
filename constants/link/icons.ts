@@ -42,6 +42,8 @@ import UserAddFill from "../../public/icons/user-add-fill.svg";
 import FlowerOne from "../../public/icons/flower-pot.svg";
 import Toolbox from "../../public/icons/toolbox-24-filled.svg";
 import AddOutline from "../../public/icons/add-outline.svg";
+import ImageAdd from "../../public/icons/image-add-20-regular.svg";
+import EditFill from "../../public/icons/edit-fill.svg";
 
 export {
 	MenuIcon,
@@ -88,4 +90,6 @@ export {
 	FlowerOne,
 	Toolbox,
 	AddOutline,
+	ImageAdd,
+	EditFill,
 };
