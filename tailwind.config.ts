@@ -55,6 +55,12 @@ const config: Config = {
 			maxWidth: {
 				page: "1536px",
 			},
+			screens: {
+				tablet: "481px",
+				laptop: "769px",
+				desktop: "1025px",
+				"large-width": "1441px",
+			},
 		},
 	},
 	plugins: [require("daisyui")],

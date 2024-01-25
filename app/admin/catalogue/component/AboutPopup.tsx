@@ -7,7 +7,7 @@ export default function AboutPopup({open, onClick}: {open: boolean; onClick: Voi
 	return (
 		<div className={modalclass}>
 			<div className="bg-white min-w-[307px] min-h-[412px] p-3 flex flex-col gap-2 ">
-				<div className="flex items-center text-grayish">
+				<div className="flex items-center opacity-50">
 					<div className="grow text-[12px]">24 Janvier 2024</div>
 					<button
 						className="btn btn-sm btn-square btn-ghost text-brown relative -top-1 -right-2"

@@ -6,7 +6,7 @@ import Item from "./component/Item";
 const atelier = {
 	id: 1,
 	name: "Bouquet en vase",
-	Artisan: {id: 1, name: "Mahefa", image: "/aze.png"},
+	Artisan: {id: 1, name: "Mahefa", image: "/temp/vase.png"},
 	localisation: "Antananarivo",
 	tarifs: 15,
 	heure_debut: "14:30",

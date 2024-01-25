@@ -44,9 +44,8 @@ import Toolbox from "../../public/icons/toolbox-24-filled.svg";
 import AddOutline from "../../public/icons/add-outline.svg";
 import ImageAdd from "../../public/icons/image-add-20-regular.svg";
 import EditFill from "../../public/icons/edit-fill.svg";
-import EditFill from '../../public/icons/edit-fill.svg'
-import AddImage from '../../public/icons/AddImage.svg'
-import Email from '../../public/icons/email-fill.svg'
+import AddImage from "../../public/icons/AddImage.svg";
+import Email from "../../public/icons/email-fill.svg";
 
 export {
 	MenuIcon,
@@ -94,8 +93,7 @@ export {
 	Toolbox,
 	AddOutline,
 	ImageAdd,
-	EditFill,,
-  EditFill, 
-  AddImage,
-  Email
+	EditFill,
+	AddImage,
+	Email,
 };
