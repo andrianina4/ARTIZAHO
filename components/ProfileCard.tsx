@@ -5,8 +5,8 @@ import ImageCustom from './imageCustom'
 type ProfileCardProps = {
     children?: ReactNode
     className?:string
-    icon:ReactNode
-    classNameImage: string
+    icon?:ReactNode
+    classNameImage?: string
 }
 
 function ProfileCard(props: ProfileCardProps) {
