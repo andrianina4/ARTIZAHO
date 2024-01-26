@@ -10,7 +10,7 @@ import Reservation from "./component/Reservation";
 export default function AdminDashboard() {
 	return (
 		<div className="flex flex-col gap-5 h-full">
-			<div className="grid grid-cols-3 gap-10 h-1/5">
+			<div className="grid grid-cols-3 gap-10">
 				<Bloc icon={<Group />} textTop="Date" textBottom="10 Nov 2023" brownIcon />
 				<Bloc icon={<EyeFill />} textTop="Booking total" textBottom="250" brownIcon />
 				<BlocBrown icon={<ChartSales />} textTop="Sales figures" textBottom="250" />
