@@ -21,7 +21,6 @@ export default function Calendar() {
 			start: "2024-01-03",
 			end: "2021-01-03",
 		},
-
 		{
 			id: "2",
 			title: "Green",
@@ -29,7 +28,7 @@ export default function Calendar() {
 			end: "2021-01-05",
 		},
 	];
-	const renderEventContent = <CalendarItem title="Bouqueeeeeeet" />;
+	const renderEventContent = <CalendarItem title="Pot" />;
 
 	return (
 		<div className="grow overflow-y-scroll">
