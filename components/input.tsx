@@ -25,9 +25,9 @@ function Input(props: InputProps) {
 
 	return (
 		<>
-			<label htmlFor={id} className="text-black-default text-base">
+			{label && <label htmlFor={id} className="text-black-default text-base">
 				{label}
-			</label>
+			</label>}
 			<div
 				className={`bg-white-40% mt-1 mb-2 py-5 px-6 rounded-2xl flex items-center input input-bordered h-14 ${className}`}>
 				{leftIcon ? <div className="text-brown text-xl mr-1">{leftIcon}</div> : null}
