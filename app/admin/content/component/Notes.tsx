@@ -35,6 +35,7 @@ export default function Notes() {
 			<div>
 				{bestAtelier.map((atelier, index) => (
 					<ProgressBar
+						key={index}
 						color={atelier.color}
 						leftIcon={atelier.leftIcon}
 						text={atelier.title}

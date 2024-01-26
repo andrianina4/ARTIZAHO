@@ -12,12 +12,10 @@ export default function Top() {
 			</div>
 			<div className="flex flex-col gap-4">
 				{searchTop.map((text, index) => (
-					<>
-						<div key={index} className="">
-							{text}
-						</div>
+					<div key={index}>
+						<div className="mb-2">{text}</div>
 						<hr />
-					</>
+					</div>
 				))}
 			</div>
 		</div>

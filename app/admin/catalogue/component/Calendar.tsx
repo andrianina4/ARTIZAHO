@@ -28,7 +28,7 @@ export default function Calendar() {
 			end: "2021-01-05",
 		},
 	];
-	const renderEventContent = <CalendarItem title="Pot" />;
+	const renderEventContent = <CalendarItem title="Bouquet en vase" />;
 
 	return (
 		<div className="grow overflow-y-scroll">
