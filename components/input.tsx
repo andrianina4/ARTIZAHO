@@ -2,6 +2,7 @@
 
 import {EyeIcon, EyeOffIcon} from "@/constants/link/icons";
 import React, {HTMLInputTypeAttribute, ReactNode, useState} from "react";
+import { UseFormRegisterReturn } from "react-hook-form";
 
 type InputProps = {
 	placeholder: string;
@@ -10,10 +11,11 @@ type InputProps = {
 	leftIcon?: ReactNode;
 	type?: HTMLInputTypeAttribute;
 	className?: string;
+	register?: UseFormRegisterReturn
 };
 
 function Input(props: InputProps) {
-	const {label, id, placeholder, leftIcon, className, type = "text"} = props;
+	const {label, id, placeholder, leftIcon, className, type = "text", register} = props;
 	const [definedType, setDefinedType] = useState<HTMLInputTypeAttribute>(type);
 	const [showPassword, setShowPassword] = useState<boolean>(false);
 
@@ -35,6 +37,7 @@ function Input(props: InputProps) {
 					id={id}
 					type={definedType}
 					placeholder={placeholder}
+					{...register}
 					className={`font-manrope text-sm outline-none bg-white-40% flex-1 text-black-60% ${className}`}
 				/>
 				{type === "password" ? (
