@@ -26,7 +26,7 @@ export default function Layout({children}: {children: React.ReactNode}) {
 		case "/admin/craftmen":
 			dynamicHeader = <Header BigTitle="Craftmen" LittleTitle="List of Craftsmen" />;
 			break;
-		case "/admin/clients":
+		case "/admin/client":
 			dynamicHeader = <Header BigTitle="Clients" LittleTitle="List of Clients" />;
 			break;
 		case "/admin/settings":
