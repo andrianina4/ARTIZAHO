@@ -46,6 +46,7 @@ import ImageAdd from "../../public/icons/image-add-20-regular.svg";
 import EditFill from "../../public/icons/edit-fill.svg";
 import AddImage from "../../public/icons/AddImage.svg";
 import Email from "../../public/icons/email-fill.svg";
+import Check from "../../public/icons/check-fill.svg"
 
 export {
 	MenuIcon,
@@ -96,4 +97,5 @@ export {
 	EditFill,
 	AddImage,
 	Email,
+	Check
 };
