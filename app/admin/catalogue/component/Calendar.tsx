@@ -32,7 +32,7 @@ export default function Calendar() {
 	const renderEventContent = <CalendarItem title="Bouqueeeeeeet" />;
 
 	return (
-		<div className="grow overflow-hidden">
+		<div className="grow overflow-y-scroll">
 			<FullCalendar
 				plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
 				headerToolbar={{

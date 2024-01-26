@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import {EditFill, FlowerOne, Heart, ImageAdd, LeftLine} from "@/constants/link/icons";
+import {EditFill, FlowerOne, Heart, ImageAdd, LeftLine, More, Time} from "@/constants/link/icons";
 import Button from "@/components/button";
 import Item from "./component/Item";
 import ProgressBar from "@/components/progress-bar";
@@ -41,22 +41,28 @@ export default function page({params}: {params: {id: string}}) {
 					<div className="text-brown mb-5 font-bold">Workshop information</div>
 					<div className="flex flex-col gap-2">
 						<Item
-							label="Nom"
+							label="Name"
 							value={atelier.name}
 							rightIcon={<EditFill className="w-6 h-6 opacity-50 ml-6" />}
 						/>
-						<Item label="Artisan" value={atelier.Artisan.name} image={atelier.Artisan.image} />
-						<Item label="Localisation" value={atelier.localisation} />
-						<Item label="Tarifs" value={atelier.tarifs} />
+						<Item label="Craftsman" value={atelier.Artisan.name} image={atelier.Artisan.image} />
+						<Item label="Location" value={atelier.localisation} />
+						<Item label="Prices" value={atelier.tarifs} />
 						<div className="flex flex-row">
 							<div className="w-1/5 flex items-center opacity-60 font-bold"></div>
-							<div className="w-1/5 h-16 bg-white-40% flex items-center px-6 rounded-2xl">
-								{atelier.heure_debut}
+							<div className="flex w-4/5 flex-row gap-20">
+								<div className="w-40 h-16  bg-white-40% flex items-center px-6 rounded-2xl gap-2">
+									<Time className="w-6 h-6 opacity-50" />
+									{atelier.heure_debut}
+								</div>
+								<div className="w-auto h-16 flex gap-3">
+									<div className="flex items-center">Duration</div>
+									<div className="bg-white-40% w-36 flex items-center px-6 rounded-2xl">
+										{atelier.heure_debut}
+									</div>
+								</div>
 							</div>
-							<div className="w-1/5 h-16 flex items-center">Duration</div>
-							<div className="w-1/5 h-16 bg-white-40% flex items-center px-6 rounded-2xl">
-								{atelier.heure_debut}
-							</div>
+							<div className="w-14"></div>
 						</div>
 						<Item label="Participants" value={atelier.nb_max_participants} />
 						<Item label="Description" value={atelier.desc} desc />
@@ -66,11 +72,14 @@ export default function page({params}: {params: {id: string}}) {
 				<div className="w-2/5 pl-7">
 					<div className="text-brown mb-5 font-bold">Workshop performance</div>
 					<ProgressBar color="bronze" leftIcon={<FlowerOne />} text="Bouquet en vase" number={12} />
-					<div className="text-brown mb-5 font-bold">Galerie</div>
+					<div className="text-brown mb-5 font-bold">Gallery</div>
 					<div className="flex flex-row flex-wrap w-2/3 gap-4">
 						{atelier.image.map((image, index) => (
-							<div key={index} className="w-36 h-32 bg-white-40% ">
+							<div key={index} className="w-36 h-32 bg-white-40% relative">
 								<img src={image} className="w-full h-full rounded-3xl object-cover" />
+								<div className="bg-bronze shrink-0 w-auto h-auto rounded-full absolute top-3 right-3 cursor-pointer">
+									<More className="w-4 h-4 text-white" />
+								</div>
 							</div>
 						))}
 						<div
