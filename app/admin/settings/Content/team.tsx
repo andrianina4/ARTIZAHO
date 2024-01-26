@@ -35,7 +35,7 @@ function Team({}: Props) {
         {isVisible && <div className='flex items-center gap-2  '>
             <Input placeholder='Name' className='w-1/2' register={register("admin_name")} />
             <Input placeholder='Email' className='w-1/2' register={register("admin_email")} />
-            <Button leftIcon={<Check/>} className='!w-14 h-14 bg-white-40% !text-green'  onClick={hideForm} />
+            <Button leftIcon={<Check/>}  className='!w-14 h-14 bg-white-40% !text-green'  onClick={hideForm} />
         </div>}
         <Button content="Add new member" className='bg-white-40% !text-gray-60%' onClick={showForm}/>
        </form>
