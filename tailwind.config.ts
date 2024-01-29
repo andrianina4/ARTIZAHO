@@ -8,6 +8,12 @@ const config: Config = {
 	],
 	theme: {
 		extend: {
+			gridTemplateColumns: {
+				custom: "10% 15% 15% 15% 15% 15% 10% 5%",
+				"custom-2": "15% 15% 30% 15% 20% 5%",
+				"custom-3": "15% 25% 20% 20% 10% 10%",
+				"custom-4": "20% 40% 25% 15%",
+			},
 			boxShadow: {
 				card: "0px 16px 35px 0px rgba(0, 0, 0, 0.08)",
 			},
@@ -16,6 +22,10 @@ const config: Config = {
 				moonGet: ["MoonGet", "sans-serif"],
 			},
 			colors: {
+				blueLight: "#E4F0FF",
+				blue: "#70A6E8",
+				green: "#0FA958",
+				greenLight: "#DDF9E4",
 				brown: "#917155",
 				"brown-40%": "#D7B697",
 				"brown-60%": "#D7B697",
@@ -29,6 +39,7 @@ const config: Config = {
 				"black-default": "#1E1E1E",
 				bronze: "#ECA853",
 				reddishBrown: "#C26143",
+				saumon: "#FFEADA",
 			},
 			backgroundImage: {
 				"bg-login":
