@@ -47,6 +47,10 @@ import EditFill from "../../public/icons/edit-fill.svg";
 import AddImage from "../../public/icons/AddImage.svg";
 import Email from "../../public/icons/email-fill.svg";
 import Check from "../../public/icons/check-fill.svg"
+import More from "../../public/icons/more-2-fill.svg";
+import Group from "../../public/icons/group.svg";
+import EyeFill from "../../public/icons/eye-fill.svg";
+import Down from "../../public/icons/down.svg";
 
 export {
 	MenuIcon,
@@ -98,4 +102,8 @@ export {
 	AddImage,
 	Email,
 	Check
+	More,
+	Group,
+	EyeFill,
+	Down,
 };
