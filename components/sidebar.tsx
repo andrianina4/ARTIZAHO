@@ -56,15 +56,3 @@ function Sidebar() {
 
 export default Sidebar;
 
-// <Link className='active' href={link.admin}>
-//                 <Heart/> Tableau de bord
-//             </Link>
-//             <Link className='  href={link.teams}>
-//                 <Heart/> Teams
-//             </Link>
-//             <Link className=' text-white flex flex-row items-center h-14' href={link.paiements}>
-//                 <Heart/> Paiements
-//             </Link>
-//             <Link className=' text-white flex flex-row items-center h-14' href={link.admin}>
-//                 <Heart/> Tableau de bord
-//             </Link>
