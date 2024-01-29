@@ -1,24 +1,33 @@
 "use client";
-import React from "react";
+import React, {useState} from "react";
 import {EditFill, FlowerOne, Heart, ImageAdd, LeftLine, More, Time} from "@/constants/link/icons";
 import Button from "@/components/button";
 import Item from "./component/Item";
 import ProgressBar from "@/components/progress-bar";
+import {useForm} from "react-hook-form";
+import {FormAtelierData} from "@/app/schema/atelierSchema";
 
 const atelier = {
 	id: 1,
-	name: "Bouquet en vase",
-	Artisan: {id: 1, name: "Mahefa", image: "/temp/vase.png"},
-	localisation: "Antananarivo",
-	tarifs: 15,
-	heure_debut: "14:30",
-	duree: "1:30",
-	nb_max_participants: 10,
+	atelier_name: "Bouquet en vase",
+	atelier_artisan: {id: 1, name: "Mahefa", image: "/temp/vase.png"},
+	atelier_localisation: "Antananarivo",
+	atelier_tarifs: 15,
+	atelier_heure_debut: "14:30",
+	atelier_heure_duree: "1:30",
+	atelier_nb_participant: 10,
+	atelier_desc:
+		"Welcome to Hanta's atelier-boutique, where you can learn how to create exceptional floral arrangements. During this experience, you'll discover a variety of foliage and flowers, and learn how to use them to create beautiful bouquets.",
 	image: ["/temp/vase.png", "/temp/vase.png", "/temp/vase.png"],
-	desc: "Welcome to Hanta's atelier-boutique, where you can learn how to create exceptional floral arrangements. During this experience, you'll discover a variety of foliage and flowers, and learn how to use them to create beautiful bouquets.",
 };
 
 export default function page({params}: {params: {id: string}}) {
+	const {register, handleSubmit, reset} = useForm<FormAtelierData>({mode: "onChange"});
+	const [readonly, setUpdate] = useState<boolean>(false);
+	const switchUpdateState = () => {
+		setUpdate(readonly ? false : true);
+	};
+
 	const handleInputFile = () => {
 		const inputELement = document.querySelector(".input-file-atelier") as HTMLFormElement;
 		if (inputELement) {
@@ -36,37 +45,43 @@ export default function page({params}: {params: {id: string}}) {
 				/>
 				<span className="text-2xl font-semibold text-brown-80%">Workshops List {params.id}</span>
 			</div>
-			<div className="flex flex-row w-full pl-12">
+			<form action="" className="flex flex-row w-full pl-12">
 				<div className="flex flex-col w-3/5">
 					<div className="text-brown mb-5 font-bold">Workshop information</div>
 					<div className="flex flex-col gap-2">
 						<Item
 							label="Name"
-							value={atelier.name}
-							rightIcon={<EditFill className="w-6 h-6 opacity-50 ml-6" />}
+							value={atelier.atelier_name}
+							readonly={readonly}
+							register={register("atelier_name")}
 						/>
-						<Item label="Craftsman" value={atelier.Artisan.name} image={atelier.Artisan.image} />
-						<Item label="Location" value={atelier.localisation} />
-						<Item label="Prices" value={atelier.tarifs} />
+						<Item
+							label="Craftsman"
+							value={atelier.atelier_artisan.name}
+							image={atelier.atelier_artisan.image}
+						/>
+						<Item label="Location" value={atelier.atelier_localisation} />
+						<Item label="Prices" value={atelier.atelier_tarifs} />
 						<div className="flex flex-row">
 							<div className="w-1/5 flex items-center opacity-60 font-bold"></div>
 							<div className="flex w-4/5 flex-row gap-20">
 								<div className="w-40 h-16  bg-white-40% flex items-center px-6 rounded-2xl gap-2">
 									<Time className="w-6 h-6 opacity-50" />
-									{atelier.heure_debut}
+									{atelier.atelier_heure_debut}
 								</div>
 								<div className="w-auto h-16 flex gap-3">
 									<div className="flex items-center">Duration</div>
 									<div className="bg-white-40% w-36 flex items-center px-6 rounded-2xl">
-										{atelier.heure_debut}
+										{atelier.atelier_heure_duree}
 									</div>
 								</div>
 							</div>
-							<div className="w-14"></div>
+							<div className="flex items-center justify-center w-14 opacity-5 hover:opacity-50 cursor-pointer">
+								<EditFill className="w-6 h-6 ml-6" />
+							</div>
 						</div>
-						<Item label="Participants" value={atelier.nb_max_participants} />
-						<Item label="Description" value={atelier.desc} desc />
-						<div className="flex flex-row"></div>
+						<Item label="Participants" value={atelier.atelier_nb_participant} />
+						<Item label="Description" value={atelier.atelier_desc} desc />
 					</div>
 				</div>
 				<div className="w-2/5 pl-7">
@@ -93,9 +108,10 @@ export default function page({params}: {params: {id: string}}) {
 								<div className="opacity-50">Add Pictures</div>
 							</div>
 						</div>
+						{readonly && <Button className="mt-9" content="Save" />}
 					</div>
 				</div>
-			</div>
+			</form>
 		</div>
 	);
 }

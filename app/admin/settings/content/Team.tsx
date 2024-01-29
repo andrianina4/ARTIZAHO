@@ -11,7 +11,7 @@ import ModalLayout from "@/components/modal";
 import TeamForm from "./component/TeamForm";
 
 function Team() {
-	const {register, handleSubmit, reset} = useForm<FormSettingsData>();
+	const {register, handleSubmit, reset} = useForm<FormSettingsData>({mode: "onChange"});
 	const [isVisible, setIsVisible] = useState<boolean>(false);
 	const [popup, setPopup] = useState<boolean>(false);
 
