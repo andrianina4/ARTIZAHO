@@ -10,9 +10,7 @@ export default function Layout({children}: {children: React.ReactNode}) {
 	let dynamicHeader: ReactNode;
 	switch (pathname) {
 		case "/admin":
-			dynamicHeader = (
-				<Header BigTitle="Bienvenue sur notre dashboard" LittleTitle="Hi Safe Travels" />
-			);
+			dynamicHeader = <Header BigTitle="Welcome on our dashboard" LittleTitle="Hi Safe Travels" />;
 			break;
 		case "/admin/teams":
 			dynamicHeader = <Header BigTitle="Teams" LittleTitle="List of all company members" />;

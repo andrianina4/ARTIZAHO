@@ -46,11 +46,12 @@ import ImageAdd from "../../public/icons/image-add-20-regular.svg";
 import EditFill from "../../public/icons/edit-fill.svg";
 import AddImage from "../../public/icons/AddImage.svg";
 import Email from "../../public/icons/email-fill.svg";
-import Check from "../../public/icons/check-fill.svg"
+import Check from "../../public/icons/check-fill.svg";
 import More from "../../public/icons/more-2-fill.svg";
 import Group from "../../public/icons/group.svg";
 import EyeFill from "../../public/icons/eye-fill.svg";
 import Down from "../../public/icons/down.svg";
+import PermissionIcon from "../../public/icons/fluent-mdl2--permissions-solid.svg";
 
 export {
 	MenuIcon,
@@ -101,9 +102,10 @@ export {
 	EditFill,
 	AddImage,
 	Email,
-	Check
+	Check,
 	More,
 	Group,
 	EyeFill,
 	Down,
+	PermissionIcon,
 };

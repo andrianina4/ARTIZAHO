@@ -21,14 +21,14 @@ export default function Calendar() {
 			start: "2024-01-03",
 			end: "2021-01-03",
 		},
-		{
-			id: "2",
-			title: "Green",
-			start: "2024-01-04",
-			end: "2021-01-05",
-		},
+		// {
+		// 	id: "2",
+		// 	title: "Green",
+		// 	start: "2024-01-04",
+		// 	end: "2021-01-05",
+		// },
 	];
-	const renderEventContent = <CalendarItem title="Bouquet en vase" />;
+	const renderEventContent = [<CalendarItem title="Bouquet en vase" />];
 
 	return (
 		<div className="grow overflow-y-scroll">
