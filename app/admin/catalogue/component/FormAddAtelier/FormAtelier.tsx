@@ -97,42 +97,38 @@ export default function FormAtelier() {
 					</div>
 					<div className="ml-14 mr-40 flex flex-col gap-4">
 						<div className="text-base text-bronze font-bold">Galery</div>
-						<div>
+						<div className="flex gap-2">
 							{imagePreview.map((item) => (
 								<div>
-									<p>Aperçu de l'image :</p>
-									<img
-										src={item}
-										alt="Aperçu de l'image"
-										style={{maxWidth: "100%", maxHeight: "200px"}}
-									/>
+									<img className="w-40 h-32 rounded-2xl" src={item} alt="Aperçu de l'image" />
 								</div>
 							))}
-						</div>
-						<div
-							className="w-40 h-32 gap-2 bg-white-40% rounded-2xl flex items-center input input-bordered flex-col justify-center cursor-pointer"
-							onClick={() => {
-								handleInputFile();
-							}}>
-							<Controller
-								name="atelier_file"
-								control={control}
-								defaultValue={[]}
-								render={({field}) => (
-									<input
-										type="file"
-										multiple
-										className="input-file-atelier"
-										onChange={(e) => {
-											field.onChange(e);
-											handleFileChange(e);
-										}}
-									/>
-								)}
-							/>
-							<div className="flex flex-col items-center justify-center">
-								<ImageAdd className="w-9 h-9 opacity-50" />
-								<div className="opacity-50">Add Pictures</div>
+							<div
+								className="w-40 h-32 gap-2 bg-white-40% rounded-2xl flex items-center input input-bordered flex-col justify-center cursor-pointer"
+								onClick={() => {
+									handleInputFile();
+								}}>
+								<Controller
+									name="atelier_file"
+									control={control}
+									defaultValue={[]}
+									render={({field}) => (
+										<input
+											type="file"
+											multiple
+											hidden
+											className="input-file-atelier"
+											onChange={(e) => {
+												field.onChange(e);
+												handleFileChange(e);
+											}}
+										/>
+									)}
+								/>
+								<div className="flex flex-col items-center justify-center">
+									<ImageAdd className="w-9 h-9 opacity-50" />
+									<div className="opacity-50">Add Pictures</div>
+								</div>
 							</div>
 						</div>
 					</div>
