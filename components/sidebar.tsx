@@ -3,7 +3,7 @@
 import Link from "next/link";
 import React from "react";
 import Button from "./button";
-import {Dashboard, EventCheck, Logout, Money, Users} from "@/constants/link/icons";
+import {Dashboard, EventCheck, Logout, Money, Setting, Users} from "@/constants/link/icons";
 import {usePathname} from "next/navigation";
 
 const links = [
@@ -14,6 +14,7 @@ const links = [
 	{name: "Catalogue", href: "/admin/catalogue", icon: EventCheck},
 	{name: "Craftmen", href: "/admin/craftmen", icon: Users},
 	{name: "Clients", href: "/admin/client", icon: Users},
+	{name: "Settings", href: "/admin/settings", icon: Setting},
 ];
 
 function Sidebar() {

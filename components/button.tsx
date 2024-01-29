@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation'
 import React, { ReactNode } from 'react'
 
 type ButtonProps = {
-    content: string | ReactNode
+    content?: string | ReactNode
     leftIcon?: ReactNode
     type?: 'submit' | 'button'
     className?: string

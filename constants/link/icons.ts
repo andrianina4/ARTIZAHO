@@ -46,6 +46,7 @@ import ImageAdd from "../../public/icons/image-add-20-regular.svg";
 import EditFill from "../../public/icons/edit-fill.svg";
 import AddImage from "../../public/icons/AddImage.svg";
 import Email from "../../public/icons/email-fill.svg";
+import Check from "../../public/icons/check-fill.svg"
 import More from "../../public/icons/more-2-fill.svg";
 import Group from "../../public/icons/group.svg";
 import EyeFill from "../../public/icons/eye-fill.svg";
@@ -100,6 +101,7 @@ export {
 	EditFill,
 	AddImage,
 	Email,
+	Check
 	More,
 	Group,
 	EyeFill,
