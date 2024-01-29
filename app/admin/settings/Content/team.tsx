@@ -6,7 +6,7 @@ import Input from '@/components/input'
 import Button from '@/components/button'
 import { Check } from '@/constants/link/icons'
 import {useForm} from "react-hook-form"
-import {FormSettingsData} from "../../../seetings/settingsSchema"
+import {FormSettingsData} from "../../../schema/settingsSchema"
 
 type Props = {}
 
