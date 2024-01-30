@@ -73,7 +73,26 @@ td {
 	border: 1px solid black !important;
 } */
 
-.fc-h-event {
+/* .fc-h-event {
 	background-color: transparent;
 	border: none;
+} */
+
+/* customiser le scroll */
+
+::-webkit-scrollbar-track {
+	border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+	background: #979797;
+	border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	border-radius: 10px;
+}
+
+::-webkit-scrollbar {
+	width: 10px; /* Largeur de la barre de défilement */
+	margin-left: 4px;
 }

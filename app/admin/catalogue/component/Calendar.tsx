@@ -31,7 +31,7 @@ export default function Calendar() {
 	const renderEventContent = [<CalendarItem title="Bouquet en vase" />];
 
 	return (
-		<div className="grow overflow-y-scroll">
+		<div className="grow overflow-y-scroll pr-4">
 			<FullCalendar
 				plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
 				headerToolbar={{
