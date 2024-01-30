@@ -1,7 +1,7 @@
 'use client'
 
 import Button from '@/components/button'
-import { AddImage, UserAdd } from '@/constants/link/icons'
+import { AddImage, CalendarIcon, UserAdd } from '@/constants/link/icons'
 import React, {useState} from 'react'
 import CraftemenItem from './craftemenItem'
 import StarScore from '@/components/star-score'
@@ -10,20 +10,29 @@ import Input from '@/components/input'
 import Textarea from '@/components/textarea'
 import Image from 'next/image'
 import ImageCustom from '@/components/imageCustom'
+import CraftmanCalendar from './component/calendar'
+import CalendarSection from './calendar/calendarSection'
+import ListSection from './calendar/listSection'
 
 type Props = {}
 
 function Page({}: Props) {
 
   const[open, setOpen] = useState(false)
+  const[content, setContent]= useState(true)
+
   const handleToogle=()=>{
     setOpen(!open)
   }
+  const switchContent=()=>{
+    setContent(!content)
+  }
 
   return (
-    <div className=' h-full  flex flex-col gap-10 '>
-      <div className='flex flex-row'>
+    <div className=' h-full  flex flex-col  '>
+      <div className='flex flex-row justify-between'>
          <div className='w-64'> <Button leftIcon={<UserAdd/> } content="New craftman" className='w-64' onClick={handleToogle}/></div>
+         <Button content="Calendar" leftIcon={<CalendarIcon/>} className={`!w-40 ${content ?'!bg-white !text-gray-60% ':''}`} onClick={switchContent}/>
          {/* Modal crafmen */}
           <ModalLayout open={open} onClick={handleToogle} className='w-[h-[550px] w-[830px]'>
               <div className=' flex flex-col  justify-between w-3/5'>
@@ -45,17 +54,10 @@ function Page({}: Props) {
               </div>
           </ModalLayout>
       </div>
-      <div className='flex flex-col'>
-          <div className='grid grid-cols-custom-2 ml-4'>
-             <span className='text-gray-60% font-bold text-sm'>Name</span>
-             <span className='text-gray-60% font-bold text-sm' >Savoir-faire</span>
-             <span className='text-gray-60% font-bold text-sm'>Atelier</span>
-             <span className='text-gray-60% font-bold text-sm'>Total client</span>
-             <span className='text-gray-60% font-bold text-sm'>Note moyenne</span>
-          </div>
-          <CraftemenItem img={"/temp/vase.png"}/>
-      </div>
      
+      <div className='h-[90%]'>
+        { content ? <ListSection/>: <CalendarSection/> }
+      </div>
     </div>
   )
 }
