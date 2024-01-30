@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import InputContainer from "../../craftmen/list/component/InputContainer";
+import InputContainer from "../../craftmen/information/component/InputContainer";
 import Input from "@/components/input";
 import Button from "@/components/button";
 import ProfileCard from "@/components/ProfileCard";
