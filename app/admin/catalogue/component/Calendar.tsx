@@ -16,15 +16,25 @@ export default function Calendar() {
 		{
 			id: "1",
 			title: "Bouquet en vase",
-			start: "2024-01-03",
-			end: "2021-01-03",
+			start: "2024-01-04",
+			description: "exemple de description",
+		},
+		{
+			id: "1",
+			title: "Bouquet en mousse",
+			start: "2024-01-15",
+			description: "exemple de description",
+		},
+		{
+			id: "1",
+			title: "Bouquet en vase",
+			start: "2024-01-31",
 			description: "exemple de description",
 		},
 		{
 			id: "2",
 			title: "Bouquet en mousse",
-			start: "2024-01-04",
-			end: "2021-01-05",
+			start: "2024-02-01",
 			description: "exemple de description",
 		},
 	]);
