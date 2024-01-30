@@ -50,9 +50,9 @@ function Page() {
           {/* Dropdown  */}
           <div className='flex flex-row items-center gap-7'>
             <p className='font-bold'>Filter by</p>
-            <details className="dropdown">
+            <details className="dropdown dropdown-end">
               <summary className="m-1  ">Nom</summary>
-                <ul className="p-2 shadow menu dropdown-content z-[1] bg-white rounded-box w-52">
+                <ul className="p-2 shadow menu dropdown-content  z-[1] bg-white rounded-box w-52 ">
                   <li><a>Item 1</a></li>
                   <li><a>Item 2</a></li>
                 </ul>

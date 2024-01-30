@@ -51,6 +51,7 @@ import More from "../../public/icons/more-2-fill.svg";
 import Group from "../../public/icons/group.svg";
 import EyeFill from "../../public/icons/eye-fill.svg";
 import Down from "../../public/icons/down.svg";
+import CalendarIcon from "../../public/icons/calendar.svg"
 
 export {
 	MenuIcon,
@@ -101,9 +102,10 @@ export {
 	EditFill,
 	AddImage,
 	Email,
-	Check
+	Check,
 	More,
 	Group,
 	EyeFill,
 	Down,
+	CalendarIcon
 };
