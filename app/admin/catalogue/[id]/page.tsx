@@ -70,7 +70,7 @@ export default function page({params}: {params: {id: string}}) {
 									{atelier.atelier_heure_debut}
 								</div>
 								<div className="w-auto h-16 flex gap-3">
-									<div className="flex items-center">Duration</div>
+									<div className="items-center">Duration</div>
 									<div className="bg-white-40% w-36 flex items-center px-6 rounded-2xl">
 										{atelier.atelier_heure_duree}
 									</div>

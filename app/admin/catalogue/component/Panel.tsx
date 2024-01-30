@@ -32,7 +32,7 @@ export default function Panel() {
 	return (
 		<div className="">
 			<Button content="Nouvel Atelier" leftIcon={<UserAddFill />} onClick={handleToogle} />
-			<div className="font-bold mt-[28px] mb-[10px]">Liste de tout les ateliers</div>
+			<div className="font-bold mt-[28px] mb-[10px]">List of all workshops</div>
 			<div className="flex flex-col gap-[4px]">
 				{ateliers.map((atelier) => (
 					<Link href={`/admin/catalogue/${atelier.id}`} key={atelier.id}>
@@ -40,7 +40,7 @@ export default function Panel() {
 					</Link>
 				))}
 			</div>
-			<ModalLayout open={open} onClick={handleToogle} className="w-auto h-auto">
+			<ModalLayout open={open} onClick={handleToogle} className="w-1/2 h-2/3">
 				<FormAtelier />
 			</ModalLayout>
 		</div>
