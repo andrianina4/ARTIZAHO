@@ -2,7 +2,7 @@
 
 import {EyeIcon, EyeOffIcon} from "@/constants/link/icons";
 import React, {HTMLInputTypeAttribute, ReactNode, useState} from "react";
-import { UseFormRegisterReturn } from "react-hook-form";
+import {UseFormRegisterReturn} from "react-hook-form";
 
 type InputProps = {
 	placeholder: string;
@@ -11,11 +11,23 @@ type InputProps = {
 	leftIcon?: ReactNode;
 	type?: HTMLInputTypeAttribute;
 	className?: string;
-	register?: UseFormRegisterReturn
+	register?: UseFormRegisterReturn;
+	value?: string | number;
+	readonly?: boolean;
 };
 
 function Input(props: InputProps) {
-	const {label, id, placeholder, leftIcon, className, type = "text", register} = props;
+	const {
+		label,
+		id,
+		placeholder,
+		leftIcon,
+		className,
+		type = "text",
+		register,
+		value,
+		readonly = false,
+	} = props;
 	const [definedType, setDefinedType] = useState<HTMLInputTypeAttribute>(type);
 	const [showPassword, setShowPassword] = useState<boolean>(false);
 
@@ -27,9 +39,11 @@ function Input(props: InputProps) {
 
 	return (
 		<>
-			{label && <label htmlFor={id} className="text-black-default text-base">
-				{label}
-			</label>}
+			{label && (
+				<label htmlFor={id} className="text-black-default text-base">
+					{label}
+				</label>
+			)}
 			<div
 				className={`bg-white-40% mt-1 mb-2 py-5 px-6 rounded-2xl flex items-center input input-bordered h-14 ${className}`}>
 				{leftIcon ? <div className="text-brown text-xl mr-1">{leftIcon}</div> : null}
@@ -37,6 +51,8 @@ function Input(props: InputProps) {
 					id={id}
 					type={definedType}
 					placeholder={placeholder}
+					// value={value}
+					readOnly={readonly}
 					{...register}
 					className={`font-manrope text-sm outline-none bg-white-40% flex-1 text-black-60% ${className}`}
 				/>
