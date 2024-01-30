@@ -1,6 +1,5 @@
 import Input from "@/components/input";
 import {EditFill} from "@/constants/link/icons";
-import {register} from "module";
 import React, {ReactNode} from "react";
 import {UseFormRegisterReturn} from "react-hook-form";
 

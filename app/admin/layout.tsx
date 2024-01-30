@@ -8,32 +8,21 @@ import {ReactNode} from "react";
 export default function Layout({children}: {children: React.ReactNode}) {
 	const pathname = usePathname();
 	let dynamicHeader: ReactNode;
-	switch (pathname) {
-		case "/admin":
-			dynamicHeader = <Header BigTitle="Welcome on our dashboard" LittleTitle="Hi Safe Travels" />;
-			break;
-		case "/admin/teams":
-			dynamicHeader = <Header BigTitle="Teams" LittleTitle="List of all company members" />;
-			break;
-		case "/admin/attendance":
-			dynamicHeader = <Header BigTitle="Attendance" LittleTitle="List of Reservations" />;
-			break;
-		case "/admin/catalogue":
-			dynamicHeader = <Header BigTitle="Catalogue" LittleTitle="" />;
-			break;
-		case "/admin/craftmen":
-			dynamicHeader = <Header BigTitle="Craftmen" LittleTitle="List of Craftsmen" />;
-			break;
-		case "/admin/client":
-			dynamicHeader = <Header BigTitle="Clients" LittleTitle="List of Clients" />;
-			break;
-		case "/admin/settings":
-			dynamicHeader = <Header BigTitle="Settings" LittleTitle="All dashboard settings" />;
-			break;
-		default:
-			dynamicHeader = <Header BigTitle="" LittleTitle="" />;
-			break;
-	}
+	if (pathname === "/admin")
+		dynamicHeader = <Header BigTitle="Welcome on our dashboard" LittleTitle="Hello Artizaho" />;
+	else if (pathname.startsWith("/admin/teams"))
+		dynamicHeader = <Header BigTitle="Teams" LittleTitle="List of all company members" />;
+	else if (pathname.startsWith("/admin/attendance"))
+		dynamicHeader = <Header BigTitle="Attendance" LittleTitle="List of Reservations" />;
+	else if (pathname.startsWith("/admin/catalogue"))
+		dynamicHeader = <Header BigTitle="Catalogue" LittleTitle="" />;
+	else if (pathname.startsWith("/admin/craftmen"))
+		dynamicHeader = <Header BigTitle="Craftmen" LittleTitle="List of Craftsmen" />;
+	else if (pathname.startsWith("/admin/client"))
+		dynamicHeader = <Header BigTitle="Clients" LittleTitle="List of Clients" />;
+	else if (pathname.startsWith("/admin/settings"))
+		dynamicHeader = <Header BigTitle="Settings" LittleTitle="All dashboard settings" />;
+	else dynamicHeader = <Header BigTitle="" LittleTitle="" />;
 
 	return (
 		<div className=" flex flex-row h-screen bg-white-40% p-5 gap-7  ">

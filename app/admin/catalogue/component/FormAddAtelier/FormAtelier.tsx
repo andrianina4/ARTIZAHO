@@ -91,7 +91,6 @@ export default function FormAtelier() {
 							placeholder="Maximum number of participants"
 							register={register("atelier_nb_participant")}
 						/>
-
 						<Textarea placeholder="Workshop description" register={register("atelier_desc")} />
 						<Button content="Add" type="submit" />
 					</div>

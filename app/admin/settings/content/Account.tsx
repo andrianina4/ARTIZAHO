@@ -13,7 +13,7 @@ function Account({}: Props) {
 		<div className=" flex h-full bg-white rounded-3xl px-20 py-10 ">
 			<div className=" flex flex-col w-3/5">
 				<div className="text-brown text-lg font-bold ml-12">
-					<span>About the craftman</span>
+					<span>About your account</span>
 				</div>
 				<div className="flex flex-col mt-10 grow gap-5">
 					<InputContainer title="Fullname">
