@@ -108,6 +108,6 @@ export {
 	Group,
 	EyeFill,
 	Down,
-	CalendarIcon
+	CalendarIcon,
 	PermissionIcon,
 };

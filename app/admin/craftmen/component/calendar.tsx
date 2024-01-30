@@ -42,7 +42,7 @@ export default function CraftmanCalendar(props: Props) {
 				headerToolbar={{
 					left: "prev,next title",
 					center: "",
-					right: "dayGridMonth",
+					right: "dayGridMonth, timeGridWeek, timeGridDay",
 				}}
 				initialView="dayGridMonth"
 				events={events} // Liste des evenements

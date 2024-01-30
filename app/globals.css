@@ -20,14 +20,18 @@
 @layer components{
 
   /* For sidebar */
+
+  .active, .noactive{
+    @apply flex flex-row items-center h-14 
+  }
   .active {
-    @apply  text-brown-80% relative flex flex-row bg-white-40% h-14 items-center ml-5 pl-5 rounded-l-full before:absolute before:content-['']
-     before:w-4 before:h-4 before:bg-transparent  before:right-0 before:-top-4 before:rounded-[0_0_20px_0] before:shadow-[10px_10px_0_10px_rgba(248,248,248,1)] after:absolute after:content-['']
-     after:w-4 after:h-4 after:bg-transparent  after:right-0 after:-bottom-4 after:rounded-[0_20px_0_0] after:shadow-[10px_-10px_0_10px_rgba(248,248,248,1)]
+    @apply  text-brown-80% relative bg-white-40% ml-5 pl-5 rounded-l-full  before:absolute before:content-['']
+     before:w-4 before:h-4 before:bg-transparent  before:right-0 before:-top-4 before:rounded-[0_0_20px_0] before:shadow-[10px_10px_0_10px_rgba(248,248,248,1)] 
+     after:absolute after:content-[''] after:w-4 after:h-4 after:bg-transparent  after:right-0 after:-bottom-4 after:rounded-[0_20px_0_0] after:shadow-[10px_-10px_0_10px_rgba(248,248,248,1)] 
     
   } 
   .noactive{
-    @apply text-white flex flex-row items-center h-14 ml-3
+    @apply text-white  ml-3
   }
 
   /* For admin header list */
