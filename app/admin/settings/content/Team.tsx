@@ -7,24 +7,16 @@ import Button from "@/components/button";
 import {Check} from "@/constants/link/icons";
 import {useForm} from "react-hook-form";
 import {FormSettingsData} from "../../../schema/settingsSchema";
-import ModalLayout from "@/components/modal";
-import TeamForm from "./component/TeamForm";
 
 function Team() {
 	const {register, handleSubmit, reset} = useForm<FormSettingsData>({mode: "onChange"});
 	const [isVisible, setIsVisible] = useState<boolean>(false);
-	const [popup, setPopup] = useState<boolean>(false);
-
 	const showForm = () => {
 		setIsVisible(true);
 	};
 
 	const hideForm = () => {
 		setIsVisible(false);
-	};
-
-	const switchPopup = () => {
-		setPopup(popup ? false : true);
 	};
 
 	return (
@@ -48,11 +40,6 @@ function Team() {
 					className="bg-white-40% !text-gray-60%"
 					onClick={showForm}
 				/>
-				{popup && (
-					<ModalLayout open={popup} onClick={switchPopup} className="w-auto h-auto">
-						<TeamForm />
-					</ModalLayout>
-				)}
 			</form>
 		</div>
 	);

@@ -111,10 +111,11 @@ export default function FormAtelier() {
 								<Controller
 									name="atelier_file"
 									control={control}
-									defaultValue={[]}
+									// defaultValue={[]}
 									render={({field}) => (
 										<input
 											type="file"
+											{...register("atelier_file")}
 											multiple
 											hidden
 											className="input-file-atelier"
