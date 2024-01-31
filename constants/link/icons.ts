@@ -51,8 +51,9 @@ import More from "../../public/icons/more-2-fill.svg";
 import Group from "../../public/icons/group.svg";
 import EyeFill from "../../public/icons/eye-fill.svg";
 import Down from "../../public/icons/down.svg";
-import CalendarIcon from "../../public/icons/calendar.svg"
+import CalendarIcon from "../../public/icons/calendar.svg";
 import PermissionIcon from "../../public/icons/fluent-mdl2--permissions-solid.svg";
+import PeopleToolbox from "../../public/icons/fluent--people-toolbox-20-regular.svg";
 
 export {
 	MenuIcon,
@@ -110,4 +111,5 @@ export {
 	Down,
 	CalendarIcon,
 	PermissionIcon,
+	PeopleToolbox,
 };
