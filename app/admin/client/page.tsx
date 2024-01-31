@@ -10,7 +10,10 @@ import {IClient} from "@/types/IClient";
 const headerList = ["Nom", "Email", "Phone", "Location", "Created at"];
 
 const selectItem: Array<ISelect> = [
-	{value: "name", label: "Name"},
+	{
+		value: "name", 
+		label: "Name"
+	},
 	{
 		value: "participants",
 		label: "Partipants",

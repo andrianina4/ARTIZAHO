@@ -9,7 +9,7 @@ import { ISelect } from '@/types/IField'
 
 const headerList = [
 	"ID",
-	"Craftmen",
+	"Client name",
 	"Workshop",
 	"Participants",
 	"Client Type",
@@ -41,7 +41,7 @@ function page() {
 			<div className="grid grid-cols-custom ml-4">
 				{headerList.map((item, index) => {
 					return (
-						<span className="text-sm colo" key={index}>
+						<span className="text-gray-60% font-bold text-sm" key={index}>
 							{item}
 						</span>
 					);
