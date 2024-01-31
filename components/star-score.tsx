@@ -15,19 +15,18 @@ function StarScore({}: Props) {
   return (
     <div className='flex items-center gap-6'>
         <div className="rating rating-half rating-sm   ">
-            <input type="radio" name="rating-10" className="rating-hidden" />
-            <input type="radio" name="rating-10" className="bg-yellow-500 mask mask-star-2 mask-half-1" />
-            <input type="radio" name="rating-10" className="bg-yellow-500 mask mask-star-2 mask-half-2" />
-            <input type="radio" name="rating-10" className="bg-yellow-500 mask mask-star-2 mask-half-1"  />
-            <input type="radio" name="rating-10" className="bg-yellow-500 mask mask-star-2 mask-half-2" />
-            <input type="radio" name="rating-10" className="bg-yellow-500 mask mask-star-2 mask-half-1" />
-            <input type="radio" name="rating-10" className="bg-yellow-500 mask mask-star-2 mask-half-2" />
-            <input type="radio" name="rating-10" className="bg-yellow-500 mask mask-star-2 mask-half-1" />
-            <input type="radio" name="rating-10" className="bg-yellow-500 mask mask-star-2 mask-half-2" checked/>
-            <input type="radio" name="rating-10" className="bg-yellow-500 mask mask-star-2 mask-half-1" />
-            <input type="radio" name="rating-10" className="bg-yellow-500 mask mask-star-2 mask-half-2" />
+        {[...Array(10)].map((_, index) => (
+        <input
+          key={index}
+          type="radio"
+          name="rating-10"
+          className={`bg-yellow-500 mask mask-star-2 mask-half-${(index % 2) + 1}`}
+          checked={index + 1 === rating*2}
+         
+        />
+      ))}
         </div>
-        <div className='text-gray-60%'>4/5</div>
+        <div className='text-gray-60%'>{rating}/5</div>
     </div>
   )
 }
