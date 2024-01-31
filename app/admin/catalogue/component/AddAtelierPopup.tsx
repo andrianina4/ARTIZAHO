@@ -35,7 +35,7 @@ export default function AddAtelierPopup({item}: {item: any}) {
 				</div>
 			</div>
 			<div className="flex gap-10 mt-8">
-				<Button className="w-[536px]" content="Add" type="submit" />
+				<Button className="!w-[536px]" content="Add" type="submit" />
 			</div>
 		</form>
 	);
