@@ -35,7 +35,6 @@ export default function FormAtelier() {
 			for (let i = 0; i < arrayFile.length; i++) {
 				const file = arrayFile[i];
 				const imageUrl = URL.createObjectURL(file);
-				console.log(imageUrl);
 				tempTab = [...tempTab, imageUrl];
 			}
 			setImagePreview(tempTab);
