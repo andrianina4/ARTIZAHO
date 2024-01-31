@@ -5,10 +5,12 @@ import React from "react";
 import Button from "./button";
 import {Dashboard, EventCheck, Logout, Money, Setting, Users} from "@/constants/link/icons";
 import {usePathname} from "next/navigation";
+import ImageCustom from "./imageCustom";
+import { artizahoLogoWhiteVertical } from "@/constants/link/images";
 
 const links = [
 	{name: "Tableau de bord", href: "/admin", icon: Dashboard},
-	{name: "Teams", href: "/admin/teams", icon: Users},
+	//{name: "Teams", href: "/admin/teams", icon: Users},
 	// {name: "Paiements", href: "/admin/paiements", icon: Money},
 	{name: "Attendance", href: "/admin/attendance", icon: EventCheck},
 	{name: "Catalogue", href: "/admin/catalogue", icon: EventCheck},
@@ -19,16 +21,18 @@ const links = [
 
 function Sidebar() {
 	const pathname = usePathname();
+
+	console.log(artizahoLogoWhiteVertical)
 	return (
 		<div className="z-100  flex flex-col justify-around w-full h-full rounded-3xl bg-gradient-to-t from-brown to-brown-60%">
 			
 			<div>
 				<div className="flex flex-col items-center gap-2 mb-6">
-					<div className=" flex justify-center items-center w-[128px] h-[128px] rounded-full bg-white">
-						com
+					<div className=" relative flex justify-center items-center w-[168px] h-[168px] rounded-full bg-brown ">
+						<ImageCustom img={artizahoLogoWhiteVertical}/>
 					</div>
-					<div className="text-white text-center">Safe Travels</div>
-					<div className="text-white text-sm">safetravels@gmail.com</div>
+					<div className="text-white text-center">Artizaho</div>
+					<div className="text-white text-sm">artizaho@gmail.com</div>
 				</div>
 				<div className="flex flex-col gap-2">
 					{links.map((link) => {

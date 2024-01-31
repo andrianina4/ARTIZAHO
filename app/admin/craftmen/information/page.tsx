@@ -1,6 +1,6 @@
 import Button from '@/components/button'
 import Divider from '@/components/divider'
-import { AddImage, ArrowLeft, EditFill, Heart, Users } from '@/constants/link/icons'
+import { AddImage, ArrowLeft, EditFill, FlowerOne, Heart, Users } from '@/constants/link/icons'
 import React from 'react'
 import InputContainer from './component/InputContainer'
 import Input from '@/components/input'
@@ -44,15 +44,15 @@ function Page(props: Props) {
                             <span>Workshop performance</span>
                         </div>
                         <div>
-                            <ProgressBar color='blue' leftIcon={<Heart/>} text='Bouquet en vase' number={12}/>
-                            <ProgressBar color='green' leftIcon={<Heart/>} text='Bouquet en vase' number={12}/>
-                            <ProgressBar color='bronze' leftIcon={<Heart/>} text='Bouquet en vase' number={12}/>
+                            <ProgressBar color='blue' leftIcon={<FlowerOne/>} text='Bouquet en vase' number={12}/>
+                            <ProgressBar color='bronze' leftIcon={<FlowerOne/>} text='Bouquet en vase' number={12}/>
+                            <ProgressBar color='blue' leftIcon={<FlowerOne/>} text='Bouquet en vase' number={12}/>
                         </div>
                     </div> 
                 </div>
             
                 <div className='relative  rounded-3xl  w-2/5'>
-                    <ProfileCard className='absolute left-1/2 transform -translate-x-1/2' icon={<AddImage/>} classNameImage='bg-bronze text-white'>
+                    <ProfileCard img={"/temp/vase.png"} className='absolute left-1/2 transform -translate-x-1/2' icon={<AddImage/>} classNameImage='bg-bronze text-white'>
                             <div className='flex justify-center bg-white  rounded-3xl w-48 h-10 '><StarScore/></div>
                             <div className='flex justify-center items-center gap-2 bg-white  rounded-3xl w-48 h-10  '>
                                 <span><Users/></span>
