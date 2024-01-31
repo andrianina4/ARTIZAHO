@@ -7,6 +7,7 @@ import React from "react";
 import Button from "./button";
 import {
 	Dashboard,
+	EllipseBrown,
 	EventCheck,
 	Logout,
 	Money,
@@ -37,10 +38,15 @@ function Sidebar() {
 		<div className="z-100 flex flex-col justify-around w-full h-full rounded-3xl bg-gradient-to-t from-brown to-brown-60%">
 			<div>
 				<div className="flex flex-col items-center gap-2 mb-6">
-					<div className=" relative flex justify-center items-center w-[168px] h-[168px] rounded-full bg-brown ">
-						<ImageCustom img={artizahoLogoWhiteVertical}/>
+					<div className="relative">
+						<div className=" relative flex justify-center items-center w-28 h-28 rounded-full bg-brown ">
+							<ImageCustom img={artizahoLogoWhiteVertical} className="w-4/5 h-4/5"/>
+						</div>
+						<div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  ">
+							<EllipseBrown />
+						</div>
 					</div>
-					<div className="text-white text-center">Artizaho</div>
+					<div className="text-white text-center font-bold">Artizaho Admin</div>
 					<div className="text-white text-sm">artizaho@gmail.com</div>
 				</div>
 				<div className="flex flex-col gap-2">
@@ -53,7 +59,7 @@ function Sidebar() {
 							<Link
 								key={link.name}
 								href={link.href}
-								className={`pl-5 gap-5 font-semibold ${active}`}>
+								className={`pl-5 text-sm gap-5 font-semibold ${active}`}>
 								<LinkIcon /> {link.name}
 							</Link>
 						);
@@ -63,7 +69,7 @@ function Sidebar() {
 			<div className=" flex justify-center">
 				<button className=" flex flex-row justify-center items-center font-semibold  bg-white px-4 py-3.5 w-3/4 rounded-2xl gap-x-2 text-brown  ">
 					<Logout />
-					<p> Logout</p>
+					<span> Logout</span>
 				</button>
 			</div>
 		</div>

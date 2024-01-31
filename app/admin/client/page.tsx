@@ -10,7 +10,10 @@ type Props = {};
 const headerList = ["Nom", "Email", "Phone", "Location", "Participants"];
 
 const selectItem: Array<ISelect> = [
-	{value: "name", label: "Name"},
+	{
+		value: "name", 
+		label: "Name"
+	},
 	{
 		value: "participants",
 		label: "Partipants",
