@@ -64,20 +64,11 @@ table {
 	border-top-right-radius: 14px;
 	border-top-left-radius: 14px;
 }
-/* 
-th {
-	border: none !important;
-}
-
-td {
-	border: 1px solid black !important;
-} */
 
 .fc-h-event {
 	background-color: transparent;
 	border: none;
 }
-
 
 /* customiser le scroll */
 
