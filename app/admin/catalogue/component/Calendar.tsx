@@ -17,24 +17,28 @@ export default function Calendar() {
 			id: "1",
 			title: "Bouquet en vase",
 			start: "2024-01-04",
+			textColor: "blue",
 			description: "exemple de description",
 		},
 		{
 			id: "1",
 			title: "Bouquet en mousse",
 			start: "2024-01-15",
+			textColor: "bronze",
 			description: "exemple de description",
 		},
 		{
 			id: "1",
 			title: "Bouquet en vase",
 			start: "2024-01-31",
+			textColor: "green",
 			description: "exemple de description",
 		},
 		{
 			id: "2",
 			title: "Bouquet en mousse",
 			start: "2024-02-01",
+			textColor: "blue",
 			description: "exemple de description",
 		},
 	]);
@@ -63,17 +67,10 @@ export default function Calendar() {
 		setPopupItem(dateClickInfo);
 	};
 
-	const customEventContent = (eventInfo: {
-		event: any;
-		isMirror: boolean;
-		isStart: boolean;
-		isEnd: boolean;
-		el: HTMLElement;
-		view: any;
-	}): React.ReactNode => {
+	const customEventContent = (eventInfo: any): React.ReactNode => {
 		return (
 			<>
-				<CalendarItem title={eventInfo.event.title} />
+				<CalendarItem item={eventInfo.event} />
 			</>
 		);
 	};

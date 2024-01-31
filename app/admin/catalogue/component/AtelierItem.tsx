@@ -8,11 +8,9 @@ type Atelier = {
 };
 
 export default function AtelierItem({atelier}: {atelier: Atelier}) {
-	const iconBackground = atelier.color == "green" ? "bg-greenLight" : "bg-saumon";
-	const iconColor = atelier.color == "green" ? "text-green" : "text-bronze";
-	const cssClasse = `min-w-[26px] min-h-[26px] flex items-center justify-center ${iconBackground} ${iconColor} rounded-[8px]`;
+	const cssClasse = `w-7 h-7 flex items-center justify-center bg-${atelier.color} bg-opacity-30 text-${atelier.color} rounded-lg`;
 	return (
-		<div className="flex flex-row items-center gap-[8px] p-[10px] bg-white rounded-[8px]">
+		<div className="flex flex-row items-center gap-2 p-2 bg-white rounded-lg">
 			<div className={cssClasse}>
 				<FlowerOne />
 			</div>

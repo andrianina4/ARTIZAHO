@@ -10,7 +10,7 @@ const ateliers = [
 	{
 		id: 1,
 		title: "Bouquet en vase",
-		color: "pink",
+		color: "bronze",
 	},
 	{
 		id: 2,
@@ -20,7 +20,7 @@ const ateliers = [
 	{
 		id: 3,
 		title: "Bouquet en vase",
-		color: "pink",
+		color: "blue",
 	},
 ];
 
@@ -31,9 +31,9 @@ export default function Panel() {
 	};
 	return (
 		<div className="">
-			<Button content="Nouvel Atelier" leftIcon={<UserAddFill />} onClick={handleToogle} />
-			<div className="font-bold mt-[28px] mb-[10px]">List of all workshops</div>
-			<div className="flex flex-col gap-[4px]">
+			<Button content="New Workshop" leftIcon={<UserAddFill />} onClick={handleToogle} />
+			<div className="font-bold mt-7 mb-3">List of all workshops</div>
+			<div className="flex flex-col gap-1">
 				{ateliers.map((atelier) => (
 					<Link href={`/admin/catalogue/${atelier.id}`} key={atelier.id}>
 						<AtelierItem atelier={atelier} />

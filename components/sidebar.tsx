@@ -17,7 +17,7 @@ import {
 } from "@/constants/link/icons";
 import {usePathname} from "next/navigation";
 import ImageCustom from "./imageCustom";
-import { artizahoLogoWhiteVertical } from "@/constants/link/images";
+import {artizahoLogoWhiteVertical} from "@/constants/link/images";
 
 const links = [
 	{name: "Tableau de bord", href: "/admin", icon: Dashboard},
@@ -32,8 +32,6 @@ const links = [
 
 function Sidebar() {
 	const pathname = usePathname();
-
-	console.log(artizahoLogoWhiteVertical)
 	return (
 		<div className="z-100 flex flex-col justify-around w-full h-full rounded-3xl bg-gradient-to-t from-brown to-brown-60%">
 			<div>
