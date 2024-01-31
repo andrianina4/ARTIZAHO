@@ -31,7 +31,7 @@ export default function Panel() {
 	};
 	return (
 		<div className="">
-			<Button content="Nouvel Atelier" leftIcon={<UserAddFill />} onClick={handleToogle} />
+			<Button content="New Workshop" leftIcon={<UserAddFill />} onClick={handleToogle} />
 			<div className="font-bold mt-[28px] mb-[10px]">List of all workshops</div>
 			<div className="flex flex-col gap-[4px]">
 				{ateliers.map((atelier) => (
