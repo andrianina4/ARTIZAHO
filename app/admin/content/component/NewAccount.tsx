@@ -6,12 +6,12 @@ const newAcc = [
 	{
 		name: "Safidy",
 		mail: "safidy@gmail.com",
-		image: "temp/ac.png",
+		image: "temp/vase.png",
 	},
 	{
 		name: "Antonio",
 		mail: "antonio@gmail.com",
-		image: "temp/ac.png",
+		image: "temp/vase.png",
 	},
 ];
 
@@ -22,7 +22,7 @@ export default function NewAccount() {
 				<div className="text-brown font-bold flex flex-row gap-2">
 					<div>New Accounts</div>
 					<div className="bg-white-10% rounded-full w-7 h-7 flex items-center justify-center">
-						5
+						{newAcc.length}
 					</div>
 				</div>
 				<div className="flex flex-row items-center gap-2 opacity-50">

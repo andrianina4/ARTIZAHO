@@ -54,7 +54,7 @@ function Input(props: InputProps) {
 					// value={value}
 					readOnly={readonly}
 					{...register}
-					className={`font-manrope text-sm outline-none bg-white-40% flex-1 text-black-60% ${className}`}
+					className={`font-manrope text-sm outline-none bg-white-40% flex-1 text-black-60% w-full`}
 				/>
 				{type === "password" ? (
 					<button className="text-xl" onClick={toggleShowPassword} type="button">
