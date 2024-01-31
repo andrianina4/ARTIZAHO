@@ -58,7 +58,8 @@ export default function AboutPopup({
 						✕
 					</button>
 				</div>
-				<div className="min-w-[278px] min-h-[36px] pl-[15px] py-[13px] bg-saumon text-bronze font-bold text-[12px] rounded-[4px]">
+				<div
+					className={`min-w-[278px] min-h-[36px] pl-[15px] py-[13px] bg-${item.textColor} bg-opacity-30 text-${item.textColor} font-bold text-[12px] rounded-[4px]`}>
 					{item.title}
 				</div>
 				<div className="text-[#030229] text-opacity-50">Craftsman</div>
