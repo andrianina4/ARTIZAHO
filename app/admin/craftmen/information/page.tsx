@@ -1,14 +1,14 @@
-import Button from "@/components/button";
-import Divider from "@/components/divider";
-import {AddImage, ArrowLeft, EditFill, Heart, Users} from "@/constants/link/icons";
-import React from "react";
-import InputContainer from "./component/InputContainer";
-import Input from "@/components/input";
-import Textarea from "@/components/textarea";
-import ProgressBar from "@/components/progress-bar";
-import Image from "next/image";
-import ProfileCard from "@/components/ProfileCard";
-import StarScore from "@/components/star-score";
+import Button from '@/components/button'
+import Divider from '@/components/divider'
+import { AddImage, ArrowLeft, EditFill, FlowerOne, Heart, Users } from '@/constants/link/icons'
+import React from 'react'
+import InputContainer from './component/InputContainer'
+import Input from '@/components/input'
+import Textarea from '@/components/textarea'
+import ProgressBar from '@/components/progress-bar'
+import Image from 'next/image'
+import ProfileCard from '@/components/ProfileCard'
+import StarScore from '@/components/star-score'
 
 type Props = {};
 
@@ -57,7 +57,7 @@ function Page(props: Props) {
 				</div>
 
 				<div className="relative  rounded-3xl  w-2/5">
-					<ProfileCard
+					<ProfileCard img={"/temp/vase.png"}
 						className="absolute left-1/2 transform -translate-x-1/2"
 						icon={<AddImage />}
 						classNameImage="bg-bronze text-white">
