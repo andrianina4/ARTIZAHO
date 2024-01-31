@@ -5,7 +5,15 @@
 import Link from "next/link";
 import React from "react";
 import Button from "./button";
-import {Dashboard, EventCheck, Logout, Money, Setting, Users} from "@/constants/link/icons";
+import {
+	Dashboard,
+	EventCheck,
+	Logout,
+	Money,
+	PeopleToolbox,
+	Setting,
+	Users,
+} from "@/constants/link/icons";
 import {usePathname} from "next/navigation";
 
 const links = [
@@ -14,7 +22,7 @@ const links = [
 	// {name: "Paiements", href: "/admin/paiements", icon: Money},
 	{name: "Attendance", href: "/admin/attendance", icon: EventCheck},
 	{name: "Catalogue", href: "/admin/catalogue", icon: EventCheck},
-	{name: "Craftmen", href: "/admin/craftmen", icon: Users},
+	{name: "Craftmen", href: "/admin/craftmen", icon: PeopleToolbox},
 	{name: "Clients", href: "/admin/client", icon: Users},
 	{name: "Settings", href: "/admin/settings", icon: Setting},
 ];
@@ -41,7 +49,7 @@ function Sidebar() {
 							<Link
 								key={link.name}
 								href={link.href}
-								className={`pl-5 gap-5 font-semibold  ${active}`}>
+								className={`pl-5 gap-5 font-semibold ${active}`}>
 								<LinkIcon /> {link.name}
 							</Link>
 						);
