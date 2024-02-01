@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Artizaho",
   description:
-    "Nous mettons en valeur les artisans malgaches pour faire revivre la culture et le savoir-faire en proposant une série d'ateliers ouverts au public.",
+    "We're showcasing Malagasy craftsmen and reviving their culture and know-how through a series of workshops open to the public.",
 };
 
 export default function RootLayout({
@@ -13,8 +13,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="fr">
-      <body className="font-manrope relative text-black-default bg-white text-base">{children}</body>
+    <html lang="en">
+      <body className="font-manrope relative text-black-default bg-white text-base">
+        {children}
+      </body>
     </html>
   );
 }
