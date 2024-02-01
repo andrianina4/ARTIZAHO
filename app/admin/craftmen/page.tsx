@@ -15,6 +15,7 @@ import CalendarSection from './content/calendarSection'
 import ListSection from './content/listSection'
 import Select from '@/components/select'
 import { ISelect } from '@/types/IField'
+import { Vase } from '@/constants/link/images'
 
 type Props = {}
 
@@ -65,7 +66,7 @@ function Page({}: Props) {
                     <Button content="Add new craftman" />
               </div>
               <div className=' w-2/5 flex flex-col items-center gap-2 '>
-               <ImageCustom icon={<AddImage/>} className='bg-bronze text-white'/>
+               <ImageCustom icon={<AddImage/>} img={Vase} styleIcon='bg-bronze text-white'/>
                <Input placeholder='Atelier'/>
                <button className='text-sm hover:bg-white-40% hover:bg-opacity-60 py-4 px-10 rounded-2xl'>+Ajouter plus d'atelier</button>
               </div>

@@ -23,9 +23,11 @@ const config: Config = {
 				moonGet: ["MoonGet", "sans-serif"],
 			},
 			colors: {
+				green:{
+					500: "#1FA958"
+				},
 				blueLight: "#E4F0FF",
 				blue: "#70A6E8",
-				green: "#0FA958",
 				greenLight: "#DDF9E4",
 				brown: "#917155",
 				"brown-40%": "#D7B697",

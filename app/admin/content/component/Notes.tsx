@@ -10,7 +10,7 @@ const bestAtelier = [
 		number: 12,
 	},
 	{
-		color: "green",
+		color: "green-500",
 		leftIcon: <FlowerOne />,
 		title: "Bouquet en mousse",
 		number: 4,

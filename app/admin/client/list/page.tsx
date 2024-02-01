@@ -32,7 +32,7 @@ function page({}: Props) {
             </div>
             <div className='w-1/3 flex justify-center '>
             < ProfileCard img={"/temp/vase.png"} >
-                <div className='flex items-center gap-2 pl-4 bg-white  rounded-3xl w-56 h-10  '>
+                <div className='flex items-center gap-2 pl-4 bg-white   rounded-3xl w-56 h-10  '>
                     <span className='text-gray-60%'><Users/></span>
                     <span className='text-sm'> Total Client</span>
                 </div>
