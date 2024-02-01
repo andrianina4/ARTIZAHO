@@ -21,7 +21,7 @@ import {artizahoLogoWhiteVertical} from "@/constants/link/images";
 
 const links = [
 	{name: "Tableau de bord", href: "/admin", icon: Dashboard},
-	//// {name: "Teams", href: "/admin/teams", icon: Users},
+	// {name: "Teams", href: "/admin/teams", icon: Users},
 	// {name: "Paiements", href: "/admin/paiements", icon: Money},
 	{name: "Attendance", href: "/admin/attendance", icon: EventCheck},
 	{name: "Catalogue", href: "/admin/catalogue", icon: EventCheck},
@@ -37,8 +37,8 @@ function Sidebar() {
 			<div>
 				<div className="flex flex-col items-center gap-2 mb-6">
 					<div className="relative">
-						<div className=" relative flex justify-center items-center w-28 h-28 rounded-full bg-brown ">
-							<ImageCustom img={artizahoLogoWhiteVertical} className="w-4/5 h-4/5"/>
+						<div className=" relative flex justify-center items-center w-24 h-24 rounded-full bg-brown ">
+							<ImageCustom img={artizahoLogoWhiteVertical} className="w-4/5 h-4/5" />
 						</div>
 						<div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  ">
 							<EllipseBrown />
