@@ -6,10 +6,14 @@ import Notes from "./component/Notes";
 import NewAccount from "./component/NewAccount";
 import Top from "./component/Top";
 import Reservation from "./component/Reservation";
+import Graph from "./component/Graph";
 
 export default function AdminDashboard() {
 	return (
 		<div className="flex flex-col gap-5 h-full">
+			<div className="w-[800px] bg-white p-2 rounded-3xl">
+				<Graph />
+			</div>
 			<div className="grid grid-cols-3 gap-10">
 				<Bloc icon={<Group />} textTop="Date" textBottom="10 Nov 2023" brownIcon />
 				<Bloc icon={<EyeFill />} textTop="Booking total" textBottom="250" brownIcon />
@@ -20,9 +24,9 @@ export default function AdminDashboard() {
 				<NewAccount />
 				<Top />
 			</div>
-			<div id="Section 3" className="flex flex-col gap-5 w-full">
+			{/* <div id="Section 3" className="flex flex-col gap-5 w-full">
 				<Reservation />
-			</div>
+			</div> */}
 		</div>
 	);
 }
