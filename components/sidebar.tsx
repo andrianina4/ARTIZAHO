@@ -1,10 +1,7 @@
 "use client";
 
-/*pathname === link.href ? "active" : "noactive"*/
-
 import Link from "next/link";
 import React from "react";
-import Button from "./button";
 import {
 	Dashboard,
 	EllipseBrown,
@@ -21,12 +18,11 @@ import {artizahoLogoWhiteVertical} from "@/constants/link/images";
 
 const links = [
 	{name: "Tableau de bord", href: "/admin", icon: Dashboard},
-	// {name: "Teams", href: "/admin/teams", icon: Users},
-	// {name: "Paiements", href: "/admin/paiements", icon: Money},
 	{name: "Attendance", href: "/admin/attendance", icon: EventCheck},
 	{name: "Catalogue", href: "/admin/catalogue", icon: EventCheck},
 	{name: "Craftmen", href: "/admin/craftmen", icon: PeopleToolbox},
 	{name: "Clients", href: "/admin/client", icon: Users},
+	{name: "Company", href: "/admin/company", icon: Users},
 	{name: "Settings", href: "/admin/settings", icon: Setting},
 ];
 
