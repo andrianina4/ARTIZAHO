@@ -29,7 +29,7 @@ const selectItem: Array<ISelect> = [
 
 const listAttendance: Array<IAttendance> = [
 	{
-		att_id: "001",
+		att_id: 1,
 		att_image: "/temp/vase.png",
 		att_name: "Mahefa",
 		att_workshop: {
@@ -40,7 +40,21 @@ const listAttendance: Array<IAttendance> = [
 		att_nb_part: 3,
 		att_type: "company",
 		att_date_reservation: new Date(),
-		att_status: "inprogress",
+		att_status: "paid",
+	},
+	{
+		att_id: 2,
+		att_image: "/temp/vase.png",
+		att_name: "Mahefa",
+		att_workshop: {
+			workshop_icon: <FlowerOne />,
+			workshop_name: "Bouquet de vase",
+			workshop_color: "bronze",
+		},
+		att_nb_part: 3,
+		att_type: "company",
+		att_date_reservation: new Date(),
+		att_status: "paid",
 	},
 ];
 

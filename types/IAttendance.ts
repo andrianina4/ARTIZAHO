@@ -1,7 +1,7 @@
 import {ReactNode} from "react";
 
 export type IAttendance = {
-	att_id: string;
+	att_id: number;
 	att_image: string;
 	att_name: string;
 	att_workshop: {

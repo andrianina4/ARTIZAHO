@@ -55,6 +55,7 @@ import CalendarIcon from "../../public/icons/calendar.svg";
 import PermissionIcon from "../../public/icons/fluent-mdl2--permissions-solid.svg";
 import PeopleToolbox from "../../public/icons/fluent--people-toolbox-20-regular.svg";
 import EllipseBrown from "../../public/icons/ellipseBrown.svg";
+import PeopleFill from "../../public/icons/fluent--people-48-filled.svg";
 
 export {
 	MenuIcon,
@@ -114,4 +115,5 @@ export {
 	PermissionIcon,
 	PeopleToolbox,
 	EllipseBrown,
+	PeopleFill,
 };
