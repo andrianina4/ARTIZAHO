@@ -9,6 +9,8 @@ import OrangeMoney from "../../public/images/orange-money.png";
 import Mvola from "../../public/images/mvola_728x534 2.svg";
 import whoare1 from "../../public/images/whoare1.png";
 import whoare2 from "../../public/images/whoare2.png";
+import baobabBg from "../../public/images/baobabBg.png";
+import baobabWhoAre from "../../public/images/baobabWhoAre.png";
 
 export {
   artizahoWhite,
@@ -22,4 +24,6 @@ export {
   Mvola,
   whoare1,
   whoare2,
+  baobabBg,
+  baobabWhoAre,
 };
