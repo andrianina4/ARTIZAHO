@@ -24,11 +24,6 @@ const bestAtelier = [
 ];
 
 export default function Notes() {
-	// gerer popup dropdown
-	// const [isOpen, setIsOpen] = useState(false);
-	// const toggleDropdown = () => {
-	// 	setIsOpen(!isOpen);
-	// };
 	return (
 		<div id="Note atelier" className="p-6 bg-white rounded-3xl">
 			<div className="flex flex-row">

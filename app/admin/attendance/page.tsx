@@ -31,7 +31,7 @@ const listAttendance: Array<IAttendance> = [
 	{
 		att_id: 1,
 		att_image: "/temp/vase.png",
-		att_name: "Mahefa",
+		att_name: "Mahefasoa",
 		att_workshop: {
 			workshop_icon: <FlowerOne />,
 			workshop_name: "Bouquet de vase",
@@ -45,11 +45,25 @@ const listAttendance: Array<IAttendance> = [
 	{
 		att_id: 2,
 		att_image: "/temp/vase.png",
-		att_name: "Mahefa",
+		att_name: "Ma Hefa",
 		att_workshop: {
 			workshop_icon: <FlowerOne />,
 			workshop_name: "Bouquet de vase",
-			workshop_color: "bronze",
+			workshop_color: "blue",
+		},
+		att_nb_part: 3,
+		att_type: "company",
+		att_date_reservation: new Date(),
+		att_status: "paid",
+	},
+	{
+		att_id: 3,
+		att_image: "/temp/vase.png",
+		att_name: "Mahe Fa",
+		att_workshop: {
+			workshop_icon: <FlowerOne />,
+			workshop_name: "Bouquet de vase",
+			workshop_color: "green",
 		},
 		att_nb_part: 3,
 		att_type: "company",

@@ -4,6 +4,7 @@ import React, {useState} from "react";
 import AboutItem from "./AboutItem";
 import {EditFill, Place, Time} from "@/constants/link/icons";
 import Link from "next/link";
+import {colorBackground, colorText} from "@/types/IColor";
 
 export default function AboutPopup({
 	open,
@@ -14,6 +15,9 @@ export default function AboutPopup({
 	onClick: VoidFunction;
 	item: any;
 }) {
+	const bg: string = colorBackground[item.textColor];
+	const txt: string = colorText[item.textColor];
+
 	const modalclass = `modal ${open ? "modal-open" : ""}`;
 
 	const [artisan, setArtisan] = useState({
@@ -66,7 +70,7 @@ export default function AboutPopup({
 					</button>
 				</div>
 				<div
-					className={`min-w-[278px] min-h-[36px] px-4 py-4 flex bg-${item.textColor} bg-opacity-30 text-${item.textColor} font-bold rounded-md`}>
+					className={`min-w-[278px] min-h-[36px] px-4 py-4 flex ${txt} font-bold ${bg} bg-opacity-30 rounded-md`}>
 					<div className="grow">{item.title}</div>
 					<div>15 €</div>
 				</div>

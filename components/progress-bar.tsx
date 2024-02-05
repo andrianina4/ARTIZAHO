@@ -1,3 +1,5 @@
+import {colorBackground, colorText} from "@/types/IColor";
+import { customWidth } from "@/types/IWidth";
 import React, {ReactNode} from "react";
 
 type ProgressBarProps = {
@@ -5,40 +7,6 @@ type ProgressBarProps = {
 	color: string;
 	text: string;
 	number: number;
-};
-
-type TColor = {
-	[key: string]: string;
-};
-
-const colorBackground: TColor = {
-	bronze: "bg-bronze",
-	blue: "bg-blue",
-	green: "bg-green",
-};
-
-const colorText: TColor = {
-	bronze: "text-bronze",
-	blue: "text-blue",
-	green: "text-green",
-};
-
-type TWidth = {
-	[key: number]: string;
-};
-
-const customWidth: TColor = {
-	0: "w-[0%]",
-	0.5: "w-[10%]",
-	1: "w-[20%]",
-	1.5: "w-[20%]",
-	2: "w-[40%]",
-	2.5: "w-[50%]",
-	3: "w-[60%]",
-	3.5: "w-[70%]",
-	4: "w-[80%]",
-	4.5: "w-[90%]",
-	5: "w-[100%]",
 };
 
 function ProgressBar(props: ProgressBarProps) {

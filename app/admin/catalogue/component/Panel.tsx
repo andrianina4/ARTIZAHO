@@ -41,7 +41,6 @@ export default function Panel() {
 			<div className="flex flex-col gap-1">
 				{ateliers.map((atelier, index) => (
 					<div className="flex flex-row items-center gap-2">
-						{/* <Link href={`/admin/catalogue/${atelier.id}`} key={atelier.id}> */}
 						<input
 							key={index}
 							className="checkbox border-[#917155] checked:border-bronze [--chkbg:theme(colors.bronze)] [--chkfg:white]"
@@ -50,7 +49,6 @@ export default function Panel() {
 							onChange={handleChecked}
 						/>
 						<AtelierItem atelier={atelier} />
-						{/* </Link> */}
 					</div>
 				))}
 			</div>

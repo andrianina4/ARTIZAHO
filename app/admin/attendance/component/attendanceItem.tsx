@@ -3,6 +3,7 @@
 import Select from "@/components/select";
 import {PeopleFill} from "@/constants/link/icons";
 import {IAttendance} from "@/types/IAttendance";
+import { colorBackground, colorText } from "@/types/IColor";
 import {ISelect} from "@/types/IField";
 import Image from "next/image";
 import React, {ChangeEvent, useState} from "react";
@@ -23,6 +24,8 @@ const selectItem: Array<ISelect> = [
 ];
 
 function AttendanceItem({attendance}: {attendance: IAttendance}) {
+	const bg: string = colorBackground[attendance.att_workshop.workshop_color];
+	const txt: string = colorText[attendance.att_workshop.workshop_color];
 	// Formattages
 	const formatNumber = (number: number): string => {
 		return number.toString().padStart(3, "0");
@@ -61,7 +64,7 @@ function AttendanceItem({attendance}: {attendance: IAttendance}) {
 			</div>
 			<div className="flex items-center gap-2">
 				<div
-					className={`w-7 h-7 flex items-center justify-center text-${attendance.att_workshop.workshop_color} bg-${attendance.att_workshop.workshop_color} bg-opacity-30 rounded-lg`}>
+					className={`w-7 h-7 flex items-center justify-center ${txt} ${bg} bg-opacity-30 rounded-lg`}>
 					{attendance.att_workshop.workshop_icon}
 				</div>
 				<p className="opacity-50">{attendance.att_workshop.workshop_name}</p>
