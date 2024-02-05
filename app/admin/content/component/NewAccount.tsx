@@ -34,20 +34,15 @@ const ListNewAcc: Array<INewAccount> = [
 		acc_image: "temp/vase.png",
 		acc_type: "company",
 	},
-	{
-		acc_name: "Nick",
-		acc_mail: "nick@gmail.com",
-		acc_image: "temp/vase.png",
-		acc_type: "individual",
-	},
 ];
 
 export default function NewAccount() {
-	// gerer popup si open
+	// gerer popup dropdown
 	const [isOpen, setIsOpen] = useState(false);
 	const toggleDropdown = () => {
 		setIsOpen(!isOpen);
 	};
+
 	// Pour gérer le dropdown part/entreprise
 	const [Content, setContent] = useState<string>("individual");
 	const handleChange = (str: string) => {
@@ -70,7 +65,7 @@ export default function NewAccount() {
 						{ListNewAcc.filter((obj: INewAccount) => obj.acc_type === Content).length}
 					</div>
 				</div>
-				<div className="flex flex-row items-center gap-2 opacity-50 relative">
+				<div className="flex flex-row items-center gap-2 opacity-50">
 					<div className="relative">
 						<div
 							className="m-1 btn bg-transparent hover:bg-transparent border-none opacity-70 text-black"

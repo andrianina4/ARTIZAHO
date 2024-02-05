@@ -7,18 +7,58 @@ type ProgressBarProps = {
 	number: number;
 };
 
+type TColor = {
+	[key: string]: string;
+};
+
+const colorBackground: TColor = {
+	bronze: "bg-bronze",
+	blue: "bg-blue",
+	green: "bg-green",
+};
+
+const colorText: TColor = {
+	bronze: "text-bronze",
+	blue: "text-blue",
+	green: "text-green",
+};
+
+type TWidth = {
+	[key: number]: string;
+};
+
+const customWidth: TColor = {
+	0: "w-[0%]",
+	0.5: "w-[10%]",
+	1: "w-[20%]",
+	1.5: "w-[20%]",
+	2: "w-[40%]",
+	2.5: "w-[50%]",
+	3: "w-[60%]",
+	3.5: "w-[70%]",
+	4: "w-[80%]",
+	4.5: "w-[90%]",
+	5: "w-[100%]",
+};
+
 function ProgressBar(props: ProgressBarProps) {
 	const {leftIcon, color, text, number} = props;
+
+	const bg: string = colorBackground[color];
+	const txt: string = colorText[color];
+	const width: string = customWidth[number];
+
+	const progressBarStyle = `absolute h-full ${width} ${bg} rounded-lg`;
 
 	return (
 		<div className="flex w-[400px] gap-2 relative my-6  ">
 			<div
-				className={`w-[40px] h-[40px] bg-${color} bg-opacity-30  flex justify-center items-center rounded-lg text-${color}`}>
+				className={`w-[40px] h-[40px] ${txt} ${bg} bg-opacity-30 flex justify-center items-center rounded-lg`}>
 				{leftIcon}
 			</div>
-			<div className=" flex flex-col justify-between w-4/5">
-				<div className="relative bg-white-10%  h-[10px] w-full rounded-lg">
-					<div className={`absolute h-full w-3/5 bg-${color} rounded-lg`}></div>
+			<div className="flex flex-col justify-between w-4/5">
+				<div className="relative bg-white-10% h-[10px] w-full rounded-lg">
+					<div className={progressBarStyle}></div>
 				</div>
 				<p className="text-sm font-semibold text-gray-60% ">{text} </p>
 			</div>
