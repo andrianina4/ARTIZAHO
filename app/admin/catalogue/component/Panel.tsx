@@ -35,7 +35,7 @@ export default function Panel() {
 	};
 
 	return (
-		<div key="">
+		<div>
 			<Button content="New Workshop" leftIcon={<UserAddFill />} onClick={handleToogle} />
 			<div className="font-bold mt-7 mb-3">List of all workshops</div>
 			<div className="flex flex-col gap-1">

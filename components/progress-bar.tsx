@@ -9,6 +9,31 @@ type ProgressBarProps = {
 	number: number;
 };
 
+// NE PAS ENLEVER CE CODE SINON IL Y A BUG COLOR TAILWIND SUR TOUT LE SITE
+//  const colorBackground: TColor = {
+// 	bronze: "bg-bronze",
+// 	blue: "bg-blue",
+// 	green: "bg-green",
+// };
+//  const colorText: TColor = {
+// 	bronze: "text-bronze",
+// 	blue: "text-blue",
+// 	green: "text-green",
+// };
+//  const customWidth: TWidth = {
+// 	0: "w-[0%]",
+// 	0.5: "w-[10%]",
+// 	1: "w-[20%]",
+// 	1.5: "w-[20%]",
+// 	2: "w-[40%]",
+// 	2.5: "w-[50%]",
+// 	3: "w-[60%]",
+// 	3.5: "w-[70%]",
+// 	4: "w-[80%]",
+// 	4.5: "w-[90%]",
+// 	5: "w-[100%]",
+// };
+
 function ProgressBar(props: ProgressBarProps) {
 	const {leftIcon, color, text, number} = props;
 
@@ -19,7 +44,7 @@ function ProgressBar(props: ProgressBarProps) {
 	const progressBarStyle = `absolute h-full ${width} ${bg} rounded-lg`;
 
 	return (
-		<div className="flex w-[400px] gap-2 relative my-6  ">
+		<div className="flex w-[400px] gap-2 relative my-6">
 			<div
 				className={`w-[40px] h-[40px] ${txt} ${bg} bg-opacity-30 flex justify-center items-center rounded-lg`}>
 				{leftIcon}

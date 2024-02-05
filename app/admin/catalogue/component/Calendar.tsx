@@ -89,7 +89,7 @@ export default function Calendar() {
 				eventClick={handleEventClick}
 				dateClick={handleDateClick}
 				// eventBackgroundColor="#030229"
-				eventBorderColor="none"
+				// eventBorderColor="none"
 			/>
 			<AboutPopup open={openAbout} onClick={handleToogleAbout} item={popupItem} />
 			<ModalLayout open={openAdd} onClick={handleToogleAdd} className="w-1/2">

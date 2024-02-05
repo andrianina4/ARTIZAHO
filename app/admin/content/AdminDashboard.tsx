@@ -1,5 +1,5 @@
 import React from "react";
-import {ChartSales, EyeFill, Group, PeopleFill} from "@/constants/link/icons";
+import {ChartSales, PeopleFill} from "@/constants/link/icons";
 import Bloc from "../component/bloc";
 import BlocBrown from "../component/blocBrown";
 import Notes from "./component/Notes";
@@ -17,7 +17,7 @@ export default function AdminDashboard() {
 				</div>
 				<div className="flex gap-5">
 					<Notes />
-					<div className="flex flex-col w-full gap-5">
+					<div className="flex flex-col w-2/5 gap-5">
 						<BlocBrown icon={<ChartSales />} textTop="Sales figures" textBottom="250" />
 						<Bloc icon={<PeopleFill />} textTop="Booking total" textBottom="250" brownIcon />
 					</div>
