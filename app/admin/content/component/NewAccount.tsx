@@ -1,5 +1,5 @@
 import {Down} from "@/constants/link/icons";
-import React, {ChangeEvent, useState} from "react";
+import React, {ChangeEvent, MouseEventHandler, useState} from "react";
 import People from "./component/People";
 import {INewAccount} from "@/types/INewAccount";
 
@@ -20,7 +20,7 @@ const ListNewAcc: Array<INewAccount> = [
 		acc_name: "Nick",
 		acc_mail: "nick@gmail.com",
 		acc_image: "temp/vase.png",
-		acc_type: "individual",
+		acc_type: "company",
 	},
 	{
 		acc_name: "Nick",
@@ -32,13 +32,7 @@ const ListNewAcc: Array<INewAccount> = [
 		acc_name: "Nick",
 		acc_mail: "nick@gmail.com",
 		acc_image: "temp/vase.png",
-		acc_type: "individual",
-	},
-	{
-		acc_name: "Nick",
-		acc_mail: "nick@gmail.com",
-		acc_image: "temp/vase.png",
-		acc_type: "individual",
+		acc_type: "company",
 	},
 	{
 		acc_name: "Nick",
@@ -49,10 +43,22 @@ const ListNewAcc: Array<INewAccount> = [
 ];
 
 export default function NewAccount() {
-	// Pour gérer le SELECT part et entreprise
-	const [Content, setContent] = useState<string>("company");
-	const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
-		setContent(e.target.value);
+	// gerer popup si open
+	const [isOpen, setIsOpen] = useState(false);
+	const toggleDropdown = () => {
+		setIsOpen(!isOpen);
+	};
+	// Pour gérer le dropdown part/entreprise
+	const [Content, setContent] = useState<string>("individual");
+	const handleChange = (str: string) => {
+		setContent(str);
+		toggleDropdown();
+	};
+	const capitalizeFirstLetter = (str: string) => {
+		if (str.length === 0) {
+			return str;
+		}
+		return str.charAt(0).toUpperCase() + str.slice(1);
 	};
 
 	return (
@@ -64,18 +70,34 @@ export default function NewAccount() {
 						{ListNewAcc.filter((obj: INewAccount) => obj.acc_type === Content).length}
 					</div>
 				</div>
-				<div className="flex flex-row items-center gap-2 opacity-50">
-					<select
-						className="select bg-transparent w-full max-w-xs focus:bg-transparent focus:border-none focus:outline-none"
-						value={Content}
-						onChange={handleChange}>
-						<option className="p-3" value="company">
-							Company
-						</option>
-						<option className="p-3" value="individual">
-							Individual
-						</option>
-					</select>
+				<div className="flex flex-row items-center gap-2 opacity-50 relative">
+					<div className="relative">
+						<div
+							className="m-1 btn bg-transparent hover:bg-transparent border-none opacity-70 text-black"
+							onClick={toggleDropdown}>
+							{capitalizeFirstLetter(Content)} <Down className="text-brown !opacity-100 w-6 h-6" />
+						</div>
+						{isOpen && (
+							<ul className="p-2 menu bg-whiteGray absolute top-9 z-[1] rounded-box w-32">
+								<li className="">
+									<a
+										onClick={() => {
+											handleChange("company");
+										}}>
+										Company
+									</a>
+								</li>
+								<li>
+									<a
+										onClick={() => {
+											handleChange("individual");
+										}}>
+										Individual
+									</a>
+								</li>
+							</ul>
+						)}
+					</div>
 				</div>
 			</div>
 			<div className="flex flex-col gap-2">
