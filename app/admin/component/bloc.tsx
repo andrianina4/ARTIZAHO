@@ -14,7 +14,7 @@ function Bloc(props: BlocProps) {
 		? "bg-gradient-to-t from-brown to-brown-60% text-white"
 		: "bg-white-40% text-brown";
 	return (
-		<div className="flex flex-row bg-white items-center h-full gap-5 rounded-3xl px-5 py-4">
+		<div className="flex flex-row bg-white w-full h-auto gap-5 rounded-3xl p-6">
 			<div
 				className={`w-14 h-14 rounded-full flex justify-center items-center text-4xl ${background}`}>
 				{icon}

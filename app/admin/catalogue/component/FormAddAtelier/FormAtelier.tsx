@@ -28,7 +28,6 @@ export default function FormAtelier() {
 	};
 
 	const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		// console.log(e.target.files);
 		const arrayFile = e.target.files;
 		let tempTab: string[] = [];
 		if (arrayFile) {

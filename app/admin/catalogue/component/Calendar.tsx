@@ -16,32 +16,31 @@ export default function Calendar() {
 		{
 			id: "1",
 			title: "Bouquet en vase",
-			start: "2024-01-04",
+			start: "2024-02-04",
 			textColor: "blue",
 			description: "exemple de description",
+			display: "block",
 		},
-		{
-			id: "1",
-			title: "Bouquet en mousse",
-			start: "2024-01-15",
-			textColor: "bronze",
-			description: "exemple de description",
-		},
-		{
-			id: "1",
-			title: "Bouquet en vase",
-			start: "2024-01-31",
-			textColor: "green",
-			description: "exemple de description",
-		},
+		// {
+		// 	id: "2",
+		// 	title: "Bouquet 2.0",
+		// 	start: "2024-02-04",
+		// 	textColor: "blue",
+		// 	description: "exemple de description",
+		// 	display: "list-item",
+		// },
+	]);
+	const [events2, setEvents2] = useState([
 		{
 			id: "2",
-			title: "Bouquet en mousse",
-			start: "2024-02-01",
-			textColor: "blue",
+			title: "Bouquet sur mousse",
+			start: "2024-02-06",
+			textColor: "green",
 			description: "exemple de description",
+			// display: "background",
 		},
 	]);
+
 	const [openAbout, setOpenAbout] = useState(false);
 	const [openAdd, setOpenAdd] = useState(false);
 
@@ -56,13 +55,13 @@ export default function Calendar() {
 	};
 
 	const handleEventClick = (eventClickInfo: EventClickArg) => {
-		// Logique à exécuter lorsqu'on clique sur un événement
+		// event lorsqu'on clique sur un événement
 		setOpenAbout(!openAbout);
 		setPopupItem(eventClickInfo.event);
 	};
 
 	const handleDateClick = (dateClickInfo: DateClickArg) => {
-		// Logique à exécuter lorsqu'on clique sur une date sans evenement
+		// event lorsqu'on clique sur une date sans evenement
 		setOpenAdd(!openAdd);
 		setPopupItem(dateClickInfo);
 	};
@@ -85,10 +84,12 @@ export default function Calendar() {
 					right: "dayGridMonth,timeGridWeek,timeGridDay",
 				}}
 				initialView="dayGridMonth"
-				events={events} // Liste des evenements
+				events={[...events, ...events2]} // Liste des evenements
 				eventContent={customEventContent} // rendu des evenements sur le tableau
 				eventClick={handleEventClick}
 				dateClick={handleDateClick}
+				// eventBackgroundColor="#030229"
+				// eventBorderColor="none"
 			/>
 			<AboutPopup open={openAbout} onClick={handleToogleAbout} item={popupItem} />
 			<ModalLayout open={openAdd} onClick={handleToogleAdd} className="w-1/2">

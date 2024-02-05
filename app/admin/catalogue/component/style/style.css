@@ -61,8 +61,6 @@ table {
 	/* border: 1px solid black !important; */
 	border-collapse: collapse !important;
 	border-spacing: 0px;
-	border-top-right-radius: 14px;
-	border-top-left-radius: 14px;
 }
 /* 
 th {
@@ -78,7 +76,7 @@ td {
 	border: none;
 }
 
-/* customiser le scroll */
+/* custom scroll */
 
 ::-webkit-scrollbar-track {
 	border-radius: 10px;
