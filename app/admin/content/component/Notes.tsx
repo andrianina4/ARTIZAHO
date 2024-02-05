@@ -7,19 +7,19 @@ const bestAtelier = [
 		color: "bronze",
 		leftIcon: <FlowerOne />,
 		title: "Bouquet en vase",
-		number: 12,
+		number: 4,
 	},
 	{
-		color: "green-500",
+		color: "green-80%",
 		leftIcon: <FlowerOne />,
 		title: "Bouquet en mousse",
-		number: 4,
+		number: 3,
 	},
 	{
 		color: "blue",
 		leftIcon: <FlowerOne />,
 		title: "Couronne de fleurs",
-		number: 12,
+		number: 5,
 	},
 ];
 
@@ -27,7 +27,7 @@ export default function Notes() {
 	return (
 		<div id="Note atelier" className="p-6 bg-white rounded-3xl">
 			<div className="flex flex-row justify-between">
-				<div className="text-brown font-bold">Best Workshops</div>
+				<div className="text-brown  font-bold">Best Workshops</div>
 				<div className="flex flex-row items-center gap-2 opacity-50">
 					Mois <Down className="w-4 h-4 text-brown" />
 				</div>

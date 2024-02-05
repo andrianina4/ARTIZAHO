@@ -15,7 +15,7 @@ export default function AdminDashboard() {
 				<Bloc icon={<EyeFill />} textTop="Booking total" textBottom="250" brownIcon />
 				<BlocBrown icon={<ChartSales />} textTop="Sales figures" textBottom="250" />
 			</div>
-			<div id="Section 2" className="flex flex-row gap-5 w-full">
+			<div id="Section 2" className="flex flex-row gap-5  w-full">
 				<Notes />
 				<NewAccount />
 				<Top />
