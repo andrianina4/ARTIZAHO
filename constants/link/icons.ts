@@ -54,7 +54,10 @@ import Down from "../../public/icons/down.svg";
 import CalendarIcon from "../../public/icons/calendar.svg";
 import PermissionIcon from "../../public/icons/fluent-mdl2--permissions-solid.svg";
 import PeopleToolbox from "../../public/icons/fluent--people-toolbox-20-regular.svg";
-import EllipseBrown from "../../public/icons/EllipseBrown.svg"
+import EllipseBrown from "../../public/icons/ellipseBrown.svg";
+import PeopleFill from "../../public/icons/fluent--people-48-filled.svg";
+import Company from "../../public/icons/mdi--company.svg";
+import HomeAdd from "../../public/icons/fluent--home-add-24-filled.svg";
 
 export {
 	MenuIcon,
@@ -113,5 +116,8 @@ export {
 	CalendarIcon,
 	PermissionIcon,
 	PeopleToolbox,
-	EllipseBrown
+	EllipseBrown,
+	PeopleFill,
+	Company,
+	HomeAdd,
 };

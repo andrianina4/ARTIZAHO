@@ -7,7 +7,7 @@ const bestAtelier = [
 		color: "bronze",
 		leftIcon: <FlowerOne />,
 		title: "Bouquet en vase",
-		number: 4,
+		number: 5,
 	},
 	{
 		color: "green-80%",
@@ -19,29 +19,28 @@ const bestAtelier = [
 		color: "blue",
 		leftIcon: <FlowerOne />,
 		title: "Couronne de fleurs",
-		number: 5,
+		number: 3.5,
 	},
 ];
 
 export default function Notes() {
 	return (
-		<div id="Note atelier" className="p-6 bg-white rounded-3xl">
-			<div className="flex flex-row justify-between">
-				<div className="text-brown  font-bold">Best Workshops</div>
-				<div className="flex flex-row items-center gap-2 opacity-50">
-					Mois <Down className="w-4 h-4 text-brown" />
+		<div>
+			<div id="Note atelier" className="p-6 h-auto bg-white rounded-3xl">
+				<div className="flex flex-row">
+					<div className="text-brown font-bold">Best Workshops</div>
 				</div>
-			</div>
-			<div>
-				{bestAtelier.map((atelier, index) => (
-					<ProgressBar
-						key={index}
-						color={atelier.color}
-						leftIcon={atelier.leftIcon}
-						text={atelier.title}
-						number={atelier.number}
-					/>
-				))}
+				<div>
+					{bestAtelier.map((atelier, index) => (
+						<ProgressBar
+							key={index}
+							color={atelier.color}
+							leftIcon={atelier.leftIcon}
+							text={atelier.title}
+							number={atelier.number}
+						/>
+					))}
+				</div>
 			</div>
 		</div>
 	);

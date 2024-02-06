@@ -10,6 +10,7 @@ import {FormAtelierData} from "@/app/schema/atelierSchema";
 const atelier = {
 	id: 1,
 	atelier_name: "Bouquet en vase",
+	atelier_color: "bronze",
 	atelier_artisan: {id: 1, name: "Mahefa", image: "/temp/vase.png"},
 	atelier_localisation: "Antananarivo",
 	atelier_tarifs: 15,
@@ -69,9 +70,9 @@ export default function page({params}: {params: {id: string}}) {
 									<Time className="w-6 h-6 opacity-50" />
 									{atelier.atelier_heure_debut}
 								</div>
-								<div className="w-auto h-16 flex gap-3">
+								<div className="w-auto h-16 flex items-center gap-3">
 									<div className="items-center">Duration</div>
-									<div className="bg-white-40% w-36 flex items-center px-6 rounded-2xl">
+									<div className="bg-white-40% w-36 h-full flex items-center px-6 rounded-2xl">
 										{atelier.atelier_heure_duree}
 									</div>
 								</div>
@@ -86,7 +87,12 @@ export default function page({params}: {params: {id: string}}) {
 				</div>
 				<div className="w-2/5 pl-7">
 					<div className="text-brown mb-5 font-bold">Workshop performance</div>
-					<ProgressBar color="bronze" leftIcon={<FlowerOne />} text="Bouquet en vase" number={12} />
+					<ProgressBar
+						color={atelier.atelier_color}
+						leftIcon={<FlowerOne />}
+						text="Bouquet en vase"
+						number={4.5}
+					/>
 					<div className="text-brown mb-5 font-bold">Gallery</div>
 					<div className="flex flex-row flex-wrap w-2/3 gap-4">
 						{atelier.image.map((image, index) => (
