@@ -6,7 +6,6 @@ import {
   CalendarIcon,
 	Company,
 	Dashboard,
-	EditFill,
 	EllipseBrown,
 	EventCheck,
 	Logout,
@@ -31,11 +30,11 @@ const links = [
 function Sidebar() {
 	const pathname = usePathname();
 	return (
-		<div className="z-100 flex flex-col justify-around min-w-[235px] w-full h-full rounded-3xl bg-gradient-to-t from-brown to-brown-60%">
+		<div className="z-100 flex flex-col justify-around w-full h-full rounded-3xl bg-gradient-to-t from-brown to-brown-60%">
 			<div>
 				<div className="flex flex-col items-center gap-2 mb-6">
 					<div className="relative">
-						<div className=" relative flex justify-center items-center w-28 h-28 rounded-full bg-brown ">
+						<div className=" relative flex justify-center items-center w-24 h-24 rounded-full bg-brown ">
 							<ImageCustom img={artizahoLogoWhiteVertical} className="w-4/5 h-4/5" />
 						</div>
 						<div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  ">
@@ -43,7 +42,7 @@ function Sidebar() {
 						</div>
 					</div>
 					<div className="text-white text-center font-bold">Artizaho Admin</div>
-					<div className="text-white text-sm">artizaho@il.com</div>
+					<div className="text-white text-sm">artizaho@gmail.com</div>
 				</div>
 				<div className="flex flex-col gap-2">
 					{links.map((link) => {
