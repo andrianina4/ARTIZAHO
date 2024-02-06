@@ -25,20 +25,22 @@ const bestAtelier = [
 
 export default function Notes() {
 	return (
-		<div id="Note atelier" className="p-6 bg-white rounded-3xl">
-			<div className="flex flex-row">
-				<div className="text-brown font-bold">Best Workshops</div>
-			</div>
-			<div>
-				{bestAtelier.map((atelier, index) => (
-					<ProgressBar
-						key={index}
-						color={atelier.color}
-						leftIcon={atelier.leftIcon}
-						text={atelier.title}
-						number={atelier.number}
-					/>
-				))}
+		<div>
+			<div id="Note atelier" className="p-6 h-auto bg-white rounded-3xl">
+				<div className="flex flex-row">
+					<div className="text-brown font-bold">Best Workshops</div>
+				</div>
+				<div>
+					{bestAtelier.map((atelier, index) => (
+						<ProgressBar
+							key={index}
+							color={atelier.color}
+							leftIcon={atelier.leftIcon}
+							text={atelier.title}
+							number={atelier.number}
+						/>
+					))}
+				</div>
 			</div>
 		</div>
 	);

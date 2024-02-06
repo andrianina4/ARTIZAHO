@@ -1,13 +1,15 @@
 "use client";
 
-import React, {useState} from "react";
+import Button from "@/components/button";
 import Divider from "@/components/divider";
-import ClientItem from "./component/clientItem";
 import Select from "@/components/select";
-import {ISelect} from "@/types/IField";
 import {IClient} from "@/types/IClient";
-
-const headerList = ["Name", "Email", "Phone", "Location", "Created at"];
+import {ISelect} from "@/types/IField";
+import React, {useState} from "react";
+import ClientItem from "../client/component/clientItem";
+import {HomeAdd} from "@/constants/link/icons";
+import ModalLayout from "@/components/modal";
+import FormEntreprise from "./component/FormEntreprise";
 
 const selectItem: Array<ISelect> = [
 	{
@@ -19,6 +21,8 @@ const selectItem: Array<ISelect> = [
 		label: "Partipants",
 	},
 ];
+
+const headerList = ["Name", "Email", "Phone", "Location", "Created at"];
 
 const data: Array<IClient> = [
 	{
@@ -49,14 +53,20 @@ const data: Array<IClient> = [
 		client_type: "company",
 	},
 ];
-function Page() {
+
+export default function page() {
+	const [Data, setData] = useState<IClient[]>(data);
+
+	const [open, setOpen] = useState(false);
+	const handleToogle = () => {
+		setOpen(!open);
+	};
+
 	return (
 		<div className="flex flex-col">
 			<div className="flex justify-between items-center">
 				<div className="flex gap-2 items-center">
-					<span className="text-brown bg-white py-2 px-3 rounded-md cursor-default">
-						Individuals
-					</span>
+					<Button content="Add Company" leftIcon={<HomeAdd />} onClick={handleToogle} />
 				</div>
 				<div className="flex flex-row items-center w-60 gap-7">
 					<div className="font-bold w-2/3">Filter by</div>
@@ -65,21 +75,20 @@ function Page() {
 			</div>
 			<Divider />
 			<div className="grid grid-cols-custom-3 ml-4">
-				{headerList.map((item, index) => {
-					return (
-						<span className="text-gray-60% font-bold text-sm" key={index}>
-							{item}
-						</span>
-					);
-				})}
+				{headerList.map((item, index) => (
+					<span className="text-gray-60% font-bold text-sm" key={index}>
+						{item}
+					</span>
+				))}
 			</div>
 			<div>
-				{data.map((client, index) => (
+				{Data.map((client, index) => (
 					<ClientItem key={index} client={client} />
 				))}
 			</div>
+      <ModalLayout open={open} onClick={handleToogle} className="w-1/2 h-2/3">
+				<FormEntreprise />
+			</ModalLayout>
 		</div>
 	);
 }
-
-export default Page;

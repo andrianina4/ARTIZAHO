@@ -12,13 +12,14 @@ export default function AdminDashboard() {
 	return (
 		<div className="flex flex-row gap-5 h-full">
 			<div className="flex flex-col gap-3">
-				<div className="w-[900px] bg-white p-6 rounded-3xl">
+				<div className="w-[825px] bg-white p-6 rounded-3xl">
 					<Graph />
 				</div>
 				<div className="flex gap-5">
 					<Notes />
-					<div className="flex flex-col w-2/5 gap-5">
-						<BlocBrown icon={<ChartSales />} textTop="Sales figures" textBottom="250" />
+					<div className="flex flex-col w-full gap-3">
+						<BlocBrown icon={<ChartSales />} textTop="Workshop number" textBottom="120" />
+						<Bloc textTop="Sales figures" textBottom="50 000 €" brownIcon />
 						<Bloc icon={<PeopleFill />} textTop="Booking total" textBottom="250" brownIcon />
 					</div>
 				</div>
