@@ -10,7 +10,7 @@ function BlocBrown(props: BlocBrownProps) {
 	const {icon, textTop, textBottom} = props;
 
 	return (
-		<div className="flex flex-row bg-gradient-to-t from-brown to-brown-60% w-full h-auto gap-7 rounded-3xl p-6 ">
+		<div className="flex flex-row bg-gradient-to-t from-brown to-brown-60% w-full h-auto gap-7 rounded-3xl p-5 ">
 			<div>
 				<p className="text-white-40%">{textTop}</p>
 				<p className=" text-white font-bold text-2xl">{textBottom}</p>
