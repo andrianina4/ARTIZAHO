@@ -1,6 +1,5 @@
 import React from "react";
-import {Heart, Users} from "@/constants/link/icons";
-import StarScore from "@/components/star-score";
+import {RoundPlace} from "@/constants/link/icons";
 import Image from "next/image";
 import {IClient} from "@/types/IClient";
 
@@ -19,14 +18,14 @@ function ClientItem({client}: {client: IClient}) {
 				<div className="w-[30px] h-[30px] rounded-full bg-slate-500 relative">
 					<Image src={client.client_image} alt={`shopping-1`} fill className="rounded-full" />
 				</div>
-				<p className="text-black-default font-bold">{client.client_name}</p>
+				<p className="text-black-default font-bold opacity-90">{client.client_name}</p>
 			</div>
-			<div>{client.client_mail}</div>
-			<div>{client.client_tel}</div>
+			<div className="opacity-90">{client.client_mail}</div>
+			<div className="opacity-90">{client.client_tel}</div>
 			<div className="font-normal text-gray-60% flex items-center gap-2">
-				<Users /> {client.client_location}
+				<RoundPlace /> {client.client_location}
 			</div>
-			<div className="flex gap-2 items-center">{formattedDate}</div>
+			<div className="flex gap-2 items-center opacity-80">{formattedDate}</div>
 			<button>...</button>
 		</div>
 	);

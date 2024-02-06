@@ -3,11 +3,12 @@
 import Link from "next/link";
 import React from "react";
 import {
+  CalendarIcon,
+	Company,
 	Dashboard,
 	EllipseBrown,
 	EventCheck,
 	Logout,
-	Money,
 	PeopleToolbox,
 	Setting,
 	Users,
@@ -19,10 +20,10 @@ import {artizahoLogoWhiteVertical} from "@/constants/link/images";
 const links = [
 	{name: "Tableau de bord", href: "/admin", icon: Dashboard},
 	{name: "Attendance", href: "/admin/attendance", icon: EventCheck},
-	{name: "Catalogue", href: "/admin/catalogue", icon: EventCheck},
+	{name: "Catalogue", href: "/admin/catalogue", icon: CalendarIcon},
 	{name: "Craftmen", href: "/admin/craftmen", icon: PeopleToolbox},
 	{name: "Clients", href: "/admin/client", icon: Users},
-	{name: "Company", href: "/admin/company", icon: Users},
+	{name: "Company", href: "/admin/company", icon: Company},
 	{name: "Settings", href: "/admin/settings", icon: Setting},
 ];
 
@@ -54,7 +55,7 @@ function Sidebar() {
 								key={link.name}
 								href={link.href}
 								className={`pl-5 text-sm gap-5 font-semibold ${active}`}>
-								<LinkIcon /> {link.name}
+								<LinkIcon className="w-5 h-5" /> {link.name}
 							</Link>
 						);
 					})}
