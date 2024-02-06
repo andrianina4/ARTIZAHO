@@ -1,5 +1,5 @@
-import React, {Children, ReactNode} from "react";
-import Image, {StaticImageData} from "next/image";
+import React, {ReactNode} from "react";
+import {StaticImageData} from "next/image";
 import ImageCustom from "@/components/imageCustom";
 
 type CCProps = {
