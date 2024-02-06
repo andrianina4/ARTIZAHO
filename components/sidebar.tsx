@@ -34,7 +34,7 @@ const links = [
 function Sidebar() {
 	const pathname = usePathname();
 	return (
-		<div className="z-100 flex flex-col justify-around w-full h-full rounded-3xl bg-gradient-to-t from-brown to-brown-60%">
+		<div className="z-100 flex flex-col justify-around min-w-[235px] w-full h-full rounded-3xl bg-gradient-to-t from-brown to-brown-60%">
 			<div>
 				<div className="flex flex-col items-center gap-2 mb-6">
 					<div className="relative">

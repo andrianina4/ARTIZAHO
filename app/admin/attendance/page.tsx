@@ -38,18 +38,20 @@ function page() {
           	</div>
 			</div>
 			<Divider />
-			<div className="grid grid-cols-custom ml-4">
-				{headerList.map((item, index) => {
-					return (
-						<span className="text-gray-60% font-bold text-sm" key={index}>
-							{item}
-						</span>
-					);
-				})}
-			</div>
-			<div>
-				<AttendanceItem />
-				<AttendanceItem />
+			<div className=" ">
+				<div className="grid grid-cols-custom ml-4">
+					{headerList.map((item, index) => {
+						return (
+							<span className="text-gray-60% font-bold text-sm" key={index}>
+								{item}
+							</span>
+						);
+					})}
+				</div>
+				<div>
+					<AttendanceItem />
+					<AttendanceItem />
+				</div>
 			</div>
 		</div>
 	);
