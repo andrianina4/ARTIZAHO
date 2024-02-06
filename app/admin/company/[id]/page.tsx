@@ -1,11 +1,11 @@
 "use client";
 
-import ProfileCard from "@/components/ProfileCard";
 import Button from "@/components/button";
 import Divider from "@/components/divider";
 import {Email, FlowerOne, LeftLine, PeopleFill, Phone, RoundPlace} from "@/constants/link/icons";
 import React, {useState} from "react";
 import CompanyItem from "./component/CompanyItem";
+import CompanyCard from "./component/CompanyCard";
 
 const listWorkshop = [
 	{
@@ -84,7 +84,7 @@ export default function page({params}: {params: {id: string}}) {
 			<form action="" className="flex flex-row w-full pl-12">
 				<div className="flex flex-row w-full ">
 					<div className="flex justify-center">
-						<ProfileCard img={"/temp/vase.png"}>
+						<CompanyCard img={"/temp/vase.png"} name="Codeo Travel" id={99}>
 							{profilInformations.map((item, index) => (
 								<div
 									className="flex items-center gap-2 pl-4 bg-white rounded-3xl w-56 h-10"
@@ -93,7 +93,7 @@ export default function page({params}: {params: {id: string}}) {
 									<span className="text-sm">{item.value}</span>
 								</div>
 							))}
-						</ProfileCard>
+						</CompanyCard>
 					</div>
 					<div className="flex flex-col w-full">
 						<div className="grid grid-cols-custom-6 ml-12 my-3">
