@@ -18,7 +18,7 @@ import ImageCustom from "./imageCustom";
 import {artizahoLogoWhiteVertical} from "@/constants/link/images";
 
 const links = [
-	{name: "Tableau de bord", href: "/admin", icon: Dashboard},
+	{name: "Dashboard", href: "/admin", icon: Dashboard},
 	{name: "Attendance", href: "/admin/attendance", icon: EventCheck},
 	{name: "Catalogue", href: "/admin/catalogue", icon: CalendarIcon},
 	{name: "Craftmen", href: "/admin/craftmen", icon: PeopleToolbox},
