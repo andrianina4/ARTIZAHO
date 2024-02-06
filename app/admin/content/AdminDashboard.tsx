@@ -17,7 +17,7 @@ export default function AdminDashboard() {
 				</div>
 				<div className="flex gap-5">
 					<Notes />
-					<div className="flex flex-col w-full gap-5">
+					<div className="flex flex-col w-full gap-3">
 						<BlocBrown icon={<ChartSales />} textTop="Workshop number" textBottom="120" />
 						<Bloc textTop="Sales figures" textBottom="50 000 €" brownIcon />
 						<Bloc icon={<PeopleFill />} textTop="Booking total" textBottom="250" brownIcon />

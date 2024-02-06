@@ -4,6 +4,7 @@ import Image from "next/image";
 import {IClient} from "@/types/IClient";
 
 function ClientItem({client}: {client: IClient}) {
+
 	const formattedDate: string = new Intl.DateTimeFormat("en-US", {
 		day: "numeric",
 		month: "long",

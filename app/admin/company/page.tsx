@@ -5,8 +5,11 @@ import Divider from "@/components/divider";
 import Select from "@/components/select";
 import {IClient} from "@/types/IClient";
 import {ISelect} from "@/types/IField";
-import React from "react";
+import React, {useState} from "react";
 import ClientItem from "../client/component/clientItem";
+import {HomeAdd} from "@/constants/link/icons";
+import ModalLayout from "@/components/modal";
+import FormEntreprise from "./component/FormEntreprise";
 
 const selectItem: Array<ISelect> = [
 	{
@@ -19,7 +22,7 @@ const selectItem: Array<ISelect> = [
 	},
 ];
 
-const headerList = ["Nom", "Email", "Phone", "Location", "Created at"];
+const headerList = ["Name", "Email", "Phone", "Location", "Created at"];
 
 const data: Array<IClient> = [
 	{
@@ -52,11 +55,18 @@ const data: Array<IClient> = [
 ];
 
 export default function page() {
+	const [Data, setData] = useState<IClient[]>(data);
+
+	const [open, setOpen] = useState(false);
+	const handleToogle = () => {
+		setOpen(!open);
+	};
+
 	return (
 		<div className="flex flex-col">
 			<div className="flex justify-between items-center">
 				<div className="flex gap-2 items-center">
-					<Button content="Add Company" />
+					<Button content="Add Company" leftIcon={<HomeAdd />} onClick={handleToogle} />
 				</div>
 				<div className="flex flex-row items-center w-60 gap-7">
 					<div className="font-bold w-2/3">Filter by</div>
@@ -72,10 +82,13 @@ export default function page() {
 				))}
 			</div>
 			<div>
-				{data.map((client, index) => (
+				{Data.map((client, index) => (
 					<ClientItem key={index} client={client} />
 				))}
 			</div>
+      <ModalLayout open={open} onClick={handleToogle} className="w-1/2 h-2/3">
+				<FormEntreprise />
+			</ModalLayout>
 		</div>
 	);
 }

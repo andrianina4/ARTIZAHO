@@ -1,7 +1,7 @@
 "use client";
 
 import Button from "@/components/button";
-import {AddImage, CalendarIcon, UserAdd} from "@/constants/link/icons";
+import {AddImage, CalendarIcon, UserAdd, UserAddFill} from "@/constants/link/icons";
 import React, {useState} from "react";
 import ModalLayout from "@/components/modal";
 import Input from "@/components/input";
@@ -36,12 +36,11 @@ function Page({}: Props) {
 	return (
 		<div className=" h-full  flex flex-col  ">
 			<div className="flex flex-row justify-between items-center">
-				<div className="w-64">
-					{" "}
+				<div className="">
 					<Button
-						leftIcon={<UserAdd />}
+						leftIcon={<UserAddFill />}
 						content="New craftman"
-						className="w-64"
+						className=""
 						onClick={handleToogle}
 					/>
 				</div>
@@ -62,7 +61,7 @@ function Page({}: Props) {
 						<div className="flex items-center text-bronze text-2xl font-semibold gap-4 ">
 							<span>
 								<UserAdd />
-							</span>{" "}
+							</span>
 							New craftman
 						</div>
 
@@ -81,7 +80,7 @@ function Page({}: Props) {
 						/>
 						<Input placeholder="Atelier" />
 						<button className="text-sm hover:bg-white-40% hover:bg-opacity-60 py-4 px-10 rounded-2xl">
-							+Ajouter plus d'atelier
+							+ Ajouter plus d'atelier
 						</button>
 					</div>
 				</ModalLayout>
