@@ -6,7 +6,7 @@ type ProgressBarProps = {
 	leftIcon?: ReactNode;
 	color: string;
 	text: string;
-	number: number;
+	number?: number;
 };
 
 // NE PAS ENLEVER CE CODE SINON IL Y A BUG COLOR TAILWIND SUR TOUT LE SITE
@@ -55,7 +55,7 @@ function ProgressBar(props: ProgressBarProps) {
 				</div>
 				<p className="text-sm font-semibold text-gray-60% ">{text} </p>
 			</div>
-			<div className=" absolute -top-2 right-0 font-bold">{number}</div>
+			<div className=" absolute -top-2 right-0  font-bold">5</div>
 		</div>
 	);
 }

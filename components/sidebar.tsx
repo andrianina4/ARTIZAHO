@@ -30,9 +30,9 @@ const links = [
 function Sidebar() {
 	const pathname = usePathname();
 	return (
-		<div className="z-100 flex flex-col justify-around w-full h-full rounded-3xl bg-gradient-to-t from-brown to-brown-60%">
+		<div className=" flex flex-col min-w-[235px] justify-around w-full h-full rounded-3xl bg-gradient-to-t from-brown to-brown-60%">
 			<div>
-				<div className="flex flex-col items-center gap-2 mb-6">
+				<div className="flex flex-col justify-between items-center gap-2 mb-6">
 					<div className="relative">
 						<div className=" relative flex justify-center items-center w-24 h-24 rounded-full bg-brown ">
 							<ImageCustom img={artizahoLogoWhiteVertical} className="w-4/5 h-4/5" />
@@ -41,8 +41,10 @@ function Sidebar() {
 							<EllipseBrown />
 						</div>
 					</div>
-					<div className="text-white text-center font-bold">Artizaho Admin</div>
-					<div className="text-white text-sm">artizaho@gmail.com</div>
+					<div className="flex flex-col mt-4">
+						<span className="text-white text-center font-bold">Artizaho Admin</span>
+						<span className="text-white text-sm">artizaho@gmail.com</span>
+					</div>
 				</div>
 				<div className="flex flex-col gap-2">
 					{links.map((link) => {

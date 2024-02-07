@@ -29,7 +29,7 @@ export default function Layout({children}: {children: React.ReactNode}) {
 	else dynamicHeader = <Header BigTitle="" LittleTitle="" />;
 
 	return (
-		<div className=" flex flex-row h-screen bg-white-40% p-5 gap-7  ">
+		<div className=" flex flex-row h-screen w-screen bg-white-40% p-5 gap-7  ">
 			<div className=" w-[280px]">
 				<Sidebar />
 			</div>
