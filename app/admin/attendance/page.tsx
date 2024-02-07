@@ -74,7 +74,7 @@ const listAttendance: Array<IAttendance> = [
 
 function page() {
 	return (
-		<div className="flex flex-col ">
+		<div className="flex flex-col max-screen overflow-x-auto ">
 			<div className="flex justify-between items-center">
 				<div className="bg-white text-brown px-2.5 py-2 rounded-lg h-10">Reservations</div>
 				<div className="flex flex-row items-center w-60 gap-7">
@@ -83,19 +83,21 @@ function page() {
 				</div>
 			</div>
 			<Divider />
-			<div className="grid grid-cols-custom ml-4">
-				{headerList.map((item, index) => {
-					return (
-						<span className="text-gray-60% font-bold text-sm" key={index}>
-							{item}
-						</span>
-					);
-				})}
-			</div>
-			<div>
-				{listAttendance.map((item, index) => (
-					<AttendanceItem key={index} attendance={item} />
-				))}
+			<div className=" w-[980px] xl:w-full ">
+				<div className="grid grid-cols-custom ml-4">
+					{headerList.map((item, index) => {
+						return (
+							<span className="text-gray-60% font-bold text-sm" key={index}>
+								{item}
+							</span>
+						);
+					})}
+				</div>
+				<div>
+					{listAttendance.map((item, index) => (
+						<AttendanceItem key={index} attendance={item} />
+					))}
+				</div>
 			</div>
 		</div>
 	);
