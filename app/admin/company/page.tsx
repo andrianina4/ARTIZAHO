@@ -26,27 +26,27 @@ const headerList = ["Name", "Email", "Phone", "Location", "Created at"];
 
 const data: Array<IClient> = [
 	{
-		client_name: "Antonio Hery",
+		client_name: "Codeo Travel",
 		client_image: "/temp/vase.png",
-		client_mail: "antonio@gmail.com",
+		client_mail: "codeo@gmail.com",
 		client_tel: "0343403434",
 		client_location: "Antananarivo",
 		client_created_at: new Date(),
 		client_type: "company",
 	},
 	{
-		client_name: "Nick Steven",
+		client_name: "Baobab Travel",
 		client_image: "/temp/vase.png",
-		client_mail: "nick@gmail.com",
+		client_mail: "baobab@gmail.com",
 		client_tel: "0343403434",
 		client_location: "Antananarivo",
 		client_created_at: new Date(),
 		client_type: "individuals",
 	},
 	{
-		client_name: "Onja Nirina",
+		client_name: "Travel Life",
 		client_image: "/temp/vase.png",
-		client_mail: "onja@gmail.com",
+		client_mail: "life@gmail.com",
 		client_tel: "0343403434",
 		client_location: "Antananarivo",
 		client_created_at: new Date(),
@@ -86,7 +86,7 @@ export default function page() {
 					<ClientItem key={index} client={client} />
 				))}
 			</div>
-      <ModalLayout open={open} onClick={handleToogle} className="w-1/2 h-2/3">
+			<ModalLayout open={open} onClick={handleToogle} className="w-1/2 h-2/3">
 				<FormEntreprise />
 			</ModalLayout>
 		</div>

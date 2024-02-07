@@ -3,7 +3,7 @@
 import Button from "@/components/button";
 import Input from "@/components/input";
 import Textarea from "@/components/textarea";
-import {AddOutline, ImageAdd, Toolbox} from "@/constants/link/icons";
+import {AddOutline, CalendarIcon, ImageAdd, Place, Toolbox} from "@/constants/link/icons";
 import {useForm, SubmitHandler, Controller} from "react-hook-form";
 import React, {useState} from "react";
 import {FormAtelierData} from "@/app/schema/atelierSchema";
@@ -57,8 +57,8 @@ export default function FormAtelier() {
 				<div className="text-2xl">New Workshop</div>
 			</div>
 			<div className="flex flex-row w-full gap-2 h-full">
-				<div className="flex flex-col w-96">
-					<div className="grow">
+				<div className="flex flex-col justify-between w-96 ">
+					<div>
 						<Input placeholder="Name" register={register("atelier_name")} />
 						<Input
 							placeholder="Assigning a craftsman"
@@ -85,6 +85,16 @@ export default function FormAtelier() {
 							type="number"
 							placeholder="Maximum number of participants"
 							register={register("atelier_nb_participant")}
+						/>
+						<Input
+							placeholder="Date"
+							leftIcon={<CalendarIcon className="w-5 h-5 opacity-50" />}
+							register={register("atelier_artisan")}
+						/>
+						<Input
+							placeholder="Location"
+							leftIcon={<Place className="w-5 h-5 opacity-50" />}
+							register={register("atelier_artisan")}
 						/>
 					</div>
 					<Button content="Add" type="submit" className="" />

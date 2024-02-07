@@ -35,9 +35,6 @@ export default function Item({
 					<Input placeholder={label} value={value} readonly={readonly} register={register} />
 				)}
 			</div>
-			<div className="flex items-center justify-center w-14 opacity-5 hover:opacity-50 cursor-pointer">
-				<EditFill className="w-6 h-6 ml-6" />
-			</div>
 		</div>
 	);
 }
