@@ -3,7 +3,7 @@
 import Select from "@/components/select";
 import {PeopleFill} from "@/constants/link/icons";
 import {IAttendance} from "@/types/IAttendance";
-import { colorBackground, colorText } from "@/types/IColor";
+import {colorBackground, colorText} from "@/types/IColor";
 import {ISelect} from "@/types/IField";
 import Image from "next/image";
 import React, {ChangeEvent, useState} from "react";
@@ -53,7 +53,9 @@ function AttendanceItem({attendance}: {attendance: IAttendance}) {
 
 	return (
 		<div className="grid grid-cols-custom text-sm font-bold bg-white items-center rounded-lg h-14 pl-4 my-1 ">
+			{/* ID */}
 			<span className="opacity-70">{formatNumber(attendance.att_id)}</span>
+			{/* NOM et IMAGE */}
 			<div className="flex items-center gap-2">
 				<div className="w-[30px] h-[30px] relative rounded-full bg-slate-500">
 					<Image src={attendance.att_image} alt="" fill className="rounded-full" />
@@ -62,6 +64,7 @@ function AttendanceItem({attendance}: {attendance: IAttendance}) {
 					<p className="text-black-default font-bold">{attendance.att_name}</p>
 				</div>
 			</div>
+			{/* WORKSHOP */}
 			<div className="flex items-center gap-2">
 				<div
 					className={`w-7 h-7 flex items-center justify-center ${txt} ${bg} bg-opacity-30 rounded-lg`}>
@@ -69,14 +72,18 @@ function AttendanceItem({attendance}: {attendance: IAttendance}) {
 				</div>
 				<p className="opacity-50">{attendance.att_workshop.workshop_name}</p>
 			</div>
+			{/* NB PARTICIPANT */}
 			<div className="flex gap-2 items-center">
 				<PeopleFill className="opacity-70" />
 				<div className="opacity-70">{attendance.att_nb_part}</div>
 			</div>
+			{/* TYPE CLIENT */}
 			<div className="opacity-70">
 				{attendance.att_type == "company" ? "Company" : "Individuals"}
 			</div>
+			{/* DATE RESERVATION */}
 			<div className="opacity-70">{formattedDate}</div>
+			{/* STATUS */}
 			<Select
 				values={selectItem}
 				className="!select-xs"

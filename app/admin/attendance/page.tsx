@@ -8,7 +8,7 @@ import {IAttendance} from "@/types/IAttendance";
 
 const headerList = [
 	"ID",
-	"Client name",
+	"Client Name",
 	"Workshop",
 	"Participants",
 	"Client Type",
