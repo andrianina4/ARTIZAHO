@@ -59,6 +59,11 @@ import PeopleFill from "../../public/icons/fluent--people-48-filled.svg";
 import Company from "../../public/icons/mdi--company.svg";
 import HomeAdd from "../../public/icons/fluent--home-add-24-filled.svg";
 import Business from "../../public/icons/bx--bxs-business.svg";
+import NotifIcon from "../../public/icons/solar--bell-bold.svg";
+import DateToday from "../../public/icons/lets-icons--date-today-duotone.svg";
+import TimeDuotone from "../../public/icons/lets-icons--time-duotone.svg";
+import Close from "../../public/icons/material-symbols--close.svg";
+import CheckMaterial from "../../public/icons/material-symbols--check.svg";
 
 export {
 	MenuIcon,
@@ -122,4 +127,9 @@ export {
 	Company,
 	HomeAdd,
 	Business,
+	NotifIcon,
+	DateToday,
+	TimeDuotone,
+	Close,
+	CheckMaterial,
 };
