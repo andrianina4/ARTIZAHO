@@ -11,6 +11,9 @@ import CalendarSection from "./content/calendarSection";
 import ListSection from "./content/listSection";
 import Select from "@/components/select";
 import {ISelect} from "@/types/IField";
+import { Vase } from "@/constants/link/images";
+import Content_one from "./modalContent/content_one";
+import Content_two from "./modalContent/content_two";
 
 type Props = {};
 
@@ -56,33 +59,9 @@ function Page({}: Props) {
 				</div>
 
 				{/* Modal crafmen */}
-				<ModalLayout open={open} onClick={handleToogle} className="w-[h-[550px] w-[830px]">
-					<div className=" flex flex-col  justify-between w-3/5">
-						<div className="flex items-center text-bronze text-2xl font-semibold gap-4 ">
-							<span>
-								<UserAdd />
-							</span>
-							New craftman
-						</div>
-
-						<div>
-							<Input placeholder="Name" />
-							<Input placeholder="Email" />
-							<Textarea placeholder="About the craftman " className="h-48" />
-						</div>
-						<Button content="Add new craftman" />
-					</div>
-					<div className=" w-2/5 flex flex-col items-center gap-2 ">
-						<ImageCustom
-							img="/temp/vase.png"
-							icon={<AddImage />}
-							className="bg-bronze text-white"
-						/>
-						<Input placeholder="Atelier" />
-						<button className="text-sm hover:bg-white-40% hover:bg-opacity-60 py-4 px-10 rounded-2xl">
-							+ Ajouter plus d'atelier
-						</button>
-					</div>
+				<ModalLayout open={open} onClick={handleToogle} className="h-[550px] w-[830px]">
+					{/* <Content_one/> */}
+					<Content_two/>
 				</ModalLayout>
 			</div>
 
