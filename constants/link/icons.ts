@@ -58,6 +58,7 @@ import EllipseBrown from "../../public/icons/ellipseBrown.svg";
 import PeopleFill from "../../public/icons/fluent--people-48-filled.svg";
 import Company from "../../public/icons/mdi--company.svg";
 import HomeAdd from "../../public/icons/fluent--home-add-24-filled.svg";
+import Business from "../../public/icons/bx--bxs-business.svg";
 
 export {
 	MenuIcon,
@@ -120,4 +121,5 @@ export {
 	PeopleFill,
 	Company,
 	HomeAdd,
+	Business,
 };

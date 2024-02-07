@@ -1,7 +1,8 @@
-import {HomeAdd} from "@/constants/link/icons";
+import {Business, HomeAdd} from "@/constants/link/icons";
 import Input from "@/components/input";
 import React from "react";
 import Button from "@/components/button";
+import AddImageRound from "@/components/AddImageRound";
 
 export default function FormEntreprise() {
 	return (
@@ -18,17 +19,12 @@ export default function FormEntreprise() {
 						<Input placeholder="Name" />
 						<Input placeholder="Email" />
 						<Input placeholder="Phone number" />
-						<Input placeholder="Password" type="password" />
+						<Input placeholder="Nif Stat" />
+						<Input placeholder="Location" />
 					</div>
 					<Button content="Add" />
 				</div>
-				<div className="flex flex-col w-96">
-					<div>
-						<Input placeholder="Nif Stat" />
-						<Input placeholder="Location" />
-						<Input placeholder="Account number" />
-					</div>
-				</div>
+				<AddImageRound bgIcon={<Business className="w-full h-full text-gray-400" />} />
 			</div>
 		</form>
 	);

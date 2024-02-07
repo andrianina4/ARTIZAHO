@@ -40,7 +40,7 @@ export default function Panel() {
 			<div className="font-bold mt-7 mb-3">List of all workshops</div>
 			<div className="flex flex-col gap-1">
 				{ateliers.map((atelier, index) => (
-					<div className="flex flex-row items-center gap-2">
+					<div key={index} className="flex flex-row items-center gap-2">
 						<input
 							key={index}
 							className="checkbox border-[#917155] checked:border-bronze [--chkbg:theme(colors.bronze)] [--chkfg:white]"
