@@ -10,7 +10,7 @@ const headerList = ["Name", "Date Proposed", "Time", "Workshop", "Participants"]
 const companies: IProposalCompany[] = [
 	{
 		company_id: 1,
-		company_name: "Company 1",
+		company_name: "Codeo Travel",
 		company_image: "/temp/vase.png",
 		company_date_proposed: new Date(),
 		company_time_proposed: "10:00 AM",
@@ -19,7 +19,7 @@ const companies: IProposalCompany[] = [
 	},
 	{
 		company_id: 2,
-		company_name: "Company 2",
+		company_name: "Google",
 		company_image: "/temp/vase.png",
 		company_date_proposed: new Date(),
 		company_time_proposed: "11:00 AM",
@@ -28,7 +28,7 @@ const companies: IProposalCompany[] = [
 	},
 	{
 		company_id: 3,
-		company_name: "Company 3",
+		company_name: "Meta",
 		company_image: "/temp/vase.png",
 		company_date_proposed: new Date(),
 		company_time_proposed: "12:00 PM",
@@ -37,7 +37,7 @@ const companies: IProposalCompany[] = [
 	},
 	{
 		company_id: 4,
-		company_name: "Company 4",
+		company_name: "Neflix",
 		company_image: "/temp/vase.png",
 		company_date_proposed: new Date(),
 		company_time_proposed: "01:00 PM",
@@ -46,7 +46,7 @@ const companies: IProposalCompany[] = [
 	},
 	{
 		company_id: 5,
-		company_name: "Company 5",
+		company_name: "Nexta",
 		company_image: "/temp/vase.png",
 		company_date_proposed: new Date(),
 		company_time_proposed: "02:00 PM",
