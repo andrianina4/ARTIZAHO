@@ -64,7 +64,7 @@ function Page() {
 				</div>
 			</div>
 			<Divider />
-			<div className="grid grid-cols-custom-3 ml-4">
+			<div className="grid grid-cols-custom-3 ml-4 mb-4">
 				{headerList.map((item, index) => {
 					return (
 						<span className="text-gray-60% font-bold text-sm" key={index}>
