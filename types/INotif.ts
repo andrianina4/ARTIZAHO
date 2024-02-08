@@ -5,6 +5,6 @@ export type INotif = {
 		image: string;
 	};
 	notif_date_proposed: Date;
-	notif_heure_proposed: string;
+	notif_time_proposed: string;
 	notif_workshop: string;
 };

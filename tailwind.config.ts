@@ -16,6 +16,7 @@ const config: Config = {
 				"custom-5": "25% 50% 25%",
 				"custom-6": "30% 20% 30% 20%",
 				"custom-7": "10% 20% 20% 15% 15% 20%",
+				"custom-8": "20% 15% 15% 20% 15% 15%",
 			},
 			boxShadow: {
 				card: "0px 16px 35px 0px rgba(0, 0, 0, 0.08)",
@@ -26,8 +27,8 @@ const config: Config = {
 			},
 			colors: {
 				blueLight: "#E4F0FF",
-				green:"#0FA958",
-				"green-80%":"#1FA958",
+				green: "#0FA958",
+				"green-80%": "#1FA958",
 				blue: "#70A6E8",
 				greenLight: "#DDF9E4",
 				brown: "#917155",

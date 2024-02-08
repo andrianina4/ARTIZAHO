@@ -5,6 +5,7 @@ import {PeopleFill} from "@/constants/link/icons";
 import {IAttendance} from "@/types/IAttendance";
 import {colorBackground, colorText} from "@/types/IColor";
 import {ISelect} from "@/types/IField";
+import {formatNumber, formatToDMY} from "@/utils/Format";
 import Image from "next/image";
 import React, {ChangeEvent, useState} from "react";
 
@@ -26,18 +27,6 @@ const selectItem: Array<ISelect> = [
 function AttendanceItem({attendance}: {attendance: IAttendance}) {
 	const bg: string = colorBackground[attendance.att_workshop.workshop_color];
 	const txt: string = colorText[attendance.att_workshop.workshop_color];
-	// Formattages
-	const formatNumber = (number: number): string => {
-		return number.toString().padStart(3, "0");
-	};
-	const formattedDate: string = new Intl.DateTimeFormat("en-US", {
-		day: "numeric",
-		month: "long",
-		year: "numeric",
-		// hour: "numeric",
-		// minute: "numeric",
-		// second: "numeric",
-	}).format(attendance.att_date_reservation);
 
 	// State pour gérer le SELECT
 	const [Status, setStatus] = useState<string>(attendance.att_status);
@@ -82,7 +71,7 @@ function AttendanceItem({attendance}: {attendance: IAttendance}) {
 				{attendance.att_type == "company" ? "Company" : "Individuals"}
 			</div>
 			{/* DATE RESERVATION */}
-			<div className="opacity-70">{formattedDate}</div>
+			<div className="opacity-70">{formatToDMY(attendance.att_date_reservation)}</div>
 			{/* STATUS */}
 			<Select
 				values={selectItem}

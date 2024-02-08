@@ -3,27 +3,28 @@ import {INotif} from "@/types/INotif";
 import Image from "next/image";
 import React from "react";
 import NotifSmallVal from "./NotifSmallVal";
+import ActionsButtons from "@/components/ActionsButtons";
 
 const ListNotif: INotif[] = [
 	{
 		notif_id: 1,
 		notif_company: {name: "Company A", image: "/temp/vase.png"},
 		notif_date_proposed: new Date("2024-02-07"),
-		notif_heure_proposed: "10:00",
+		notif_time_proposed: "10:00",
 		notif_workshop: "Workshop 1",
 	},
 	{
 		notif_id: 2,
 		notif_company: {name: "Company B", image: "/temp/vase.png"},
 		notif_date_proposed: new Date("2024-02-08"),
-		notif_heure_proposed: "14:00",
+		notif_time_proposed: "14:00",
 		notif_workshop: "Workshop 2",
 	},
 	{
 		notif_id: 3,
 		notif_company: {name: "Company C", image: "/temp/vase.png"},
 		notif_date_proposed: new Date("2024-02-09"),
-		notif_heure_proposed: "16:00",
+		notif_time_proposed: "16:00",
 		notif_workshop: "Workshop 3",
 	},
 ];
@@ -52,7 +53,7 @@ export default function NotifPanel() {
 								<NotifSmallVal
 									icon={<TimeDuotone className="w-4 h-4" />}
 									label="Time"
-									value={item.notif_heure_proposed}
+									value={item.notif_time_proposed}
 								/>
 								<NotifSmallVal
 									icon={<Toolbox className="w-4 h-4" />}
@@ -60,15 +61,8 @@ export default function NotifPanel() {
 									value={item.notif_workshop}
 								/>
 							</div>
-							<div className="pt-4">
-								<div className="flex p-1 bg-[#E33629] bg-opacity-50 text-white rounded-xl cursor-pointer">
-									<Close className="w-7 h-7" />
-								</div>
-							</div>
-							<div className="pt-4">
-								<div className="flex p-1 bg-[#19D67B] bg-opacity-50 text-white rounded-xl cursor-pointer">
-									<CheckMaterial className="w-7 h-7" />
-								</div>
+							<div className="flex flex-row pt-4 gap-2">
+								<ActionsButtons />
 							</div>
 						</div>
 					))}

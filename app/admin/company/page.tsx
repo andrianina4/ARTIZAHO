@@ -1,15 +1,14 @@
 "use client";
 
 import Button from "@/components/button";
-import Divider from "@/components/divider";
 import Select from "@/components/select";
-import {IClient} from "@/types/IClient";
 import {ISelect} from "@/types/IField";
 import React, {useState} from "react";
-import ClientItem from "../client/component/clientItem";
 import {HomeAdd} from "@/constants/link/icons";
 import ModalLayout from "@/components/modal";
 import FormEntreprise from "./component/FormEntreprise";
+import ListCompany from "./component/ListCompany";
+import Proposal from "./component/Proposal";
 
 const selectItem: Array<ISelect> = [
 	{
@@ -22,48 +21,21 @@ const selectItem: Array<ISelect> = [
 	},
 ];
 
-const headerList = ["Name", "Email", "Phone", "Location", "Created at"];
-
-const data: Array<IClient> = [
-	{
-		client_name: "Codeo Travel",
-		client_image: "/temp/vase.png",
-		client_mail: "codeo@gmail.com",
-		client_tel: "0343403434",
-		client_location: "Antananarivo",
-		client_created_at: new Date(),
-		client_type: "company",
-	},
-	{
-		client_name: "Baobab Travel",
-		client_image: "/temp/vase.png",
-		client_mail: "baobab@gmail.com",
-		client_tel: "0343403434",
-		client_location: "Antananarivo",
-		client_created_at: new Date(),
-		client_type: "individuals",
-	},
-	{
-		client_name: "Travel Life",
-		client_image: "/temp/vase.png",
-		client_mail: "life@gmail.com",
-		client_tel: "0343403434",
-		client_location: "Antananarivo",
-		client_created_at: new Date(),
-		client_type: "company",
-	},
-];
-
 export default function page() {
-	const [Data, setData] = useState<IClient[]>(data);
-
+	// State Popup Add Entreprise
 	const [open, setOpen] = useState(false);
 	const handleToogle = () => {
 		setOpen(!open);
 	};
 
+	// State Changer Contenu
+	const [Content, setContent] = useState<string>("list");
+	const switchContent = () => {
+		setContent(Content === "list" ? "proposal" : "list");
+	};
+
 	return (
-		<div className="flex flex-col">
+		<div className="flex flex-col gap-4">
 			<div className="flex justify-between items-center">
 				<div className="flex gap-2 items-center">
 					<Button content="Add Company" leftIcon={<HomeAdd />} onClick={handleToogle} />
@@ -73,19 +45,31 @@ export default function page() {
 					<Select values={selectItem} className="!bg-white !h-10 !rounded-xl" />
 				</div>
 			</div>
-			<Divider />
-			<div className="grid grid-cols-custom-3 ml-4">
-				{headerList.map((item, index) => (
-					<span className="text-gray-60% font-bold text-sm" key={index}>
-						{item}
-					</span>
-				))}
+			{/* CHOIX CONTENU */}
+			<div className="border-b-2 border-bronze flex gap-3 w-full font-semibold opacity-80">
+				{Content === "list" && (
+					<>
+						<div className="px-3 py-3 border-b-4 border-bronze text-brown">Company List</div>
+						<div className="px-3 py-3 cursor-pointer" onClick={switchContent}>
+							Proposal Date
+						</div>
+					</>
+				)}
+				{Content === "proposal" && (
+					<>
+						<div className="px-3 py-3 cursor-pointer" onClick={switchContent}>
+							Company List
+						</div>
+						<div className="px-3 py-3 border-b-4 border-bronze text-brown font-semibold">
+							Proposal Date
+						</div>
+					</>
+				)}
 			</div>
-			<div>
-				{Data.map((client, index) => (
-					<ClientItem key={index} client={client} />
-				))}
-			</div>
+			{/* CONTENU ADAPTATIF */}
+			{Content === "list" && <ListCompany />}
+			{Content === "proposal" && <Proposal />}
+			{/* POPUP ADD ENTREPRISE */}
 			<ModalLayout open={open} onClick={handleToogle} className="w-1/2 h-2/3">
 				<FormEntreprise />
 			</ModalLayout>
