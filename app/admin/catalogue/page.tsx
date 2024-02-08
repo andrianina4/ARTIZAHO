@@ -6,7 +6,7 @@ import Panel from "./component/Panel";
 
 export default function Page() {
 	return (
-		<div className="flex flex-row gap-4 h-full">
+		<div className="flex flex-row gap-2 h-full">
 			<Panel />
 			<Calendar />
 		</div>

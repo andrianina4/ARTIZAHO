@@ -20,7 +20,7 @@ function CraftemenItem({craftman}: {craftman: ICraftmanItem}) {
 				<div className="w-[30px] h-[30px] rounded-full bg-slate-500 relative">
 					<Image src={craftman.craftman_image} alt={`shopping-1`} fill className="rounded-full" />
 				</div>
-				<div className="flex flex-col items-center">
+				<div className="flex flex-col">
 					<p className="font-bold">{craftman.craftman_name}</p>
 					<p className="font-normal opacity-50">{craftman.craftman_domaine}</p>
 				</div>

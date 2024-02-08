@@ -42,28 +42,16 @@ export default function Calendar() {
 	]);
 
 	const [openAbout, setOpenAbout] = useState(false);
-	const [openAdd, setOpenAdd] = useState(false);
-
 	const [popupItem, setPopupItem] = useState({});
 
 	const handleToogleAbout = () => {
 		setOpenAbout(!openAbout);
 	};
 
-	const handleToogleAdd = () => {
-		setOpenAdd(!openAdd);
-	};
-
 	const handleEventClick = (eventClickInfo: EventClickArg) => {
 		// event lorsqu'on clique sur un événement
 		setOpenAbout(!openAbout);
 		setPopupItem(eventClickInfo.event);
-	};
-
-	const handleDateClick = (dateClickInfo: DateClickArg) => {
-		// event lorsqu'on clique sur une date sans evenement
-		setOpenAdd(!openAdd);
-		setPopupItem(dateClickInfo);
 	};
 
 	const customEventContent = (eventInfo: any): React.ReactNode => {
@@ -75,26 +63,22 @@ export default function Calendar() {
 	};
 
 	return (
-		<div className="grow overflow-y-scroll pr-4">
+		<div className="grow overflow-y-scroll pr-2">
 			<FullCalendar
 				plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
 				headerToolbar={{
 					left: "prev,next title",
 					center: "",
-					right: "dayGridMonth,timeGridWeek,timeGridDay",
+					right: "dayGridMonth,timeGridWeek",
 				}}
 				initialView="dayGridMonth"
 				events={[...events, ...events2]} // Liste des evenements
 				eventContent={customEventContent} // rendu des evenements sur le tableau
 				eventClick={handleEventClick}
-				dateClick={handleDateClick}
 				// eventBackgroundColor="#030229"
 				// eventBorderColor="none"
 			/>
 			<AboutPopup open={openAbout} onClick={handleToogleAbout} item={popupItem} />
-			<ModalLayout open={openAdd} onClick={handleToogleAdd} className="w-1/2">
-				<AddWorkshop item={popupItem} />
-			</ModalLayout>
 		</div>
 	);
 }
