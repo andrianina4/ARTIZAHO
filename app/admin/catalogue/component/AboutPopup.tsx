@@ -5,6 +5,7 @@ import AboutItem from "./AboutItem";
 import {EditFill, Place, Time} from "@/constants/link/icons";
 import Link from "next/link";
 import {colorBackground, colorText} from "@/types/IColor";
+import {formatToDMY} from "@/utils/Format";
 
 export default function AboutPopup({
 	open,
@@ -44,20 +45,11 @@ export default function AboutPopup({
 		},
 	]);
 
-	const formattedDate: string = new Intl.DateTimeFormat("en-US", {
-		day: "numeric",
-		month: "long",
-		year: "numeric",
-		// hour: "numeric",
-		// minute: "numeric",
-		// second: "numeric",
-	}).format(item.start);
-
 	return (
 		<div className={modalclass}>
-			<div className="bg-white min-w-[307px] min-h-[412px] p-3 flex flex-col gap-2 ">
+			<div className="bg-white w-[307px] p-3 flex flex-col gap-2 ">
 				<div className="flex items-center opacity-50">
-					<div className="grow">{formattedDate}</div>
+					<div className="grow">{formatToDMY(item.start)}</div>
 					<Link href={`/admin/catalogue/${item.id}`}>
 						<div className="flex items-center justify-center w-14 opacity-60 cursor-pointer">
 							<EditFill className="w-6 h-6 ml-6" />
@@ -81,15 +73,6 @@ export default function AboutPopup({
 						desc={artisan.description}
 						pic={artisan.artisan_image}
 					/>
-					<div className="text-[#030229] text-opacity-50">Participants</div>
-					{participants.map((participant, index) => (
-						<AboutItem
-							key={index}
-							name={participant.name}
-							desc={participant.nb_member}
-							pic={participant.participant_image}
-						/>
-					))}
 				</div>
 				<div className="text-brown text-xs flex gap-3 mt-12">
 					<div className="flex flex-row gap-1 items-center">

@@ -26,11 +26,20 @@
 	border-color: transparent !important;
 	color: #6c757d !important;
 }
+.fc .fc-button-primary:focus {
+	box-shadow: none !important;
+}
 
 .fc-dayGridMonth-button {
 	min-width: 98px;
 	min-height: 38px;
 }
+/* .fc-dayGridMonth-button:focus,
+.fc-timeGridWeek-button:focus {
+	background-color: #fff !important;
+	border: 1px solid #eca853 !important;
+	color: #eca853 !important;
+} */
 
 .fc-timeGridWeek-button {
 	min-width: 102px;

@@ -14,8 +14,10 @@ type HeaderProps = {
 export default function Header(props: HeaderProps) {
 	const {BigTitle, LittleTitle, searchBar = true, notif = true} = props;
 
+	// state pour savoir si i y a des notifs
 	const [activeNotif, setNotif] = useState<boolean>(true);
-	const [PopupNotif, setPopupNotif] = useState<boolean>(true);
+	// state pour savoir si le panel est actif sur la page
+	const [PopupNotif, setPopupNotif] = useState<boolean>(false);
 	const switchPopup = () => {
 		setPopupNotif(!PopupNotif);
 	};

@@ -39,7 +39,7 @@ function Page({}: Props) {
 				<div className="">
 					<Button
 						leftIcon={<UserAddFill />}
-						content="New craftman"
+						content="Add craftman"
 						className=""
 						onClick={handleToogle}
 					/>
