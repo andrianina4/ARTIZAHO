@@ -26,8 +26,9 @@ const config: Config = {
 			},
 			colors: {
 				blueLight: "#E4F0FF",
+				green:"#0FA958",
+				"green-80%":"#1FA958",
 				blue: "#70A6E8",
-				green: "#0FA958",
 				greenLight: "#DDF9E4",
 				brown: "#917155",
 				"brown-40%": "#D7B697",

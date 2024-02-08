@@ -5,7 +5,7 @@ import React, {useState} from "react";
 type Props = {};
 
 function StarScore({}: Props) {
-	const [rating, setRating] = useState<number>(5);
+	const [rating, setRating] = useState<number>(3.5);
 
 	const handleChangeRating = (newRating: number) => {
 		setRating(newRating);
@@ -14,15 +14,21 @@ function StarScore({}: Props) {
 	return (
 		<div className="flex items-center gap-6">
 			<div className="rating rating-half rating-sm   ">
-				{[...Array(10)].map((_, index) => (
+				{[...Array(10)].map((_, index) => { 
+
+					const halfclass=(index % 2 ) +1
+					return(
 					<input
 						key={index}
 						type="radio"
-						name="rating-10"
-						className={`bg-yellow-500 mask mask-star-2 mask-half-${(index % 2) + 1}`}
-						checked={index + 1 === rating * 2}
+						name="rating"
+						className={`bg-yellow-500 mask mask-star-2 ${index % 2 === 0 ? 'mask-half-1' : 'mask-half-2'}`}
+						checked={index + 1 === rating*2}
+						onChange={() => handleChangeRating(4)}
 					/>
-				))}
+					)
+				}	
+			)}
 			</div>
 			<div className="text-gray-60%">{rating}/5</div>
 		</div>

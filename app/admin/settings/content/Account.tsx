@@ -5,6 +5,8 @@ import InputContainer from "../../craftmen/information/component/InputContainer"
 import Input from "@/components/input";
 import Button from "@/components/button";
 import ProfileCard from "@/components/ProfileCard";
+import { Vase } from "@/constants/link/images";
+import { AddImage } from "@/constants/link/icons";
 
 type Props = {};
 
@@ -35,7 +37,7 @@ function Account({}: Props) {
 				</div>
 			</div>
 			<div className="w-2/5 flex justify-end">
-				<ProfileCard className="!w-64 h-80 mt-10 mr-10"></ProfileCard>
+				<ProfileCard img={Vase} icon={<AddImage/>} styleIcon="bg-bronze text-white" className="!w-64 h-80 mt-10 mr-10"></ProfileCard>
 			</div>
 		</div>
 	);
