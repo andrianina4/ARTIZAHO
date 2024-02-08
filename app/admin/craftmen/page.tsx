@@ -59,7 +59,7 @@ function Page({}: Props) {
 				</div>
 
 				{/* Modal crafmen */}
-				<ModalLayout open={open} onClick={handleToogle} className="h-[550px] w-[830px]">
+				<ModalLayout open={open} onClick={handleToogle} className="h-[650px] w-[830px]">
 					{/* <Content_one/> */}
 					<Content_two/>
 				</ModalLayout>

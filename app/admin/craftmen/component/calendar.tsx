@@ -40,9 +40,8 @@ export default function CraftmanCalendar(props: Props) {
 			<FullCalendar
 				plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
 				headerToolbar={{
-					left: "prev,next title",
-					center: "",
-					right: "dayGridMonth, timeGridWeek, timeGridDay",
+					
+					
 				}}
 				initialView="dayGridMonth"
 				events={events} // Liste des evenements
