@@ -19,7 +19,7 @@ export default function Calendar() {
 			start: "2024-02-04",
 			textColor: "blue",
 			description: "exemple de description",
-			display: "block",
+			// display: "block",
 		},
 		// {
 		// 	id: "2",
@@ -42,6 +42,7 @@ export default function Calendar() {
 	]);
 
 	const [openAbout, setOpenAbout] = useState(false);
+
 	const [popupItem, setPopupItem] = useState({});
 
 	const handleToogleAbout = () => {
@@ -49,8 +50,9 @@ export default function Calendar() {
 	};
 
 	const handleEventClick = (eventClickInfo: EventClickArg) => {
+		console.log("🚀 ~ handleEventClick ~ eventClickInfo:", eventClickInfo);
 		// event lorsqu'on clique sur un événement
-		setOpenAbout(!openAbout);
+		handleToogleAbout();
 		setPopupItem(eventClickInfo.event);
 	};
 

@@ -23,7 +23,7 @@ export default function Panel() {
 	return (
 		<div>
 			<Button content="Add Workshop" leftIcon={<UserAddFill />} onClick={handleToogle} />
-			<ModalLayout open={open} onClick={handleToogle} className="w-1/2 h-2/3">
+			<ModalLayout open={open} onClick={handleToogle} className="w-3/5">
 				<FormWorkshop />
 			</ModalLayout>
 			<FiltreWorkshop />
