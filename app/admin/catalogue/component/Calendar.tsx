@@ -17,6 +17,7 @@ export default function Calendar() {
 			id: "1",
 			title: "Bouquet en vase",
 			start: "2024-02-04",
+			end: "2024-02-08",
 			textColor: "blue",
 			description: "exemple de description",
 			// display: "block",
@@ -37,6 +38,7 @@ export default function Calendar() {
 			start: "2024-02-06",
 			textColor: "green",
 			description: "exemple de description",
+			type_event: "exemple de description",
 			// display: "background",
 		},
 	]);
@@ -57,6 +59,7 @@ export default function Calendar() {
 	};
 
 	const customEventContent = (eventInfo: any): React.ReactNode => {
+		console.log(eventInfo.event);
 		return (
 			<>
 				<CalendarItem item={eventInfo.event} />
