@@ -4,7 +4,7 @@ import {Date} from "@/constants/link/icons";
 import {formatToDMY} from "@/utils/Format";
 import React from "react";
 
-export default function AddAtelierPopup({item}: {item: any}) {
+export default function AddWorkshop({item}: {item: any}) {
 	// const {register, handleSubmit, reset} = useForm<FormAtelierData>();
 
 	// const onSubmit: SubmitHandler<FormAtelierData> = (data) => {

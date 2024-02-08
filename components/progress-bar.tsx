@@ -1,5 +1,5 @@
 import {colorBackground, colorText} from "@/types/IColor";
-import { customWidth } from "@/types/IWidth";
+import {customWidth} from "@/types/IWidth";
 import React, {ReactNode} from "react";
 
 type ProgressBarProps = {
@@ -9,7 +9,7 @@ type ProgressBarProps = {
 	number?: number;
 };
 
-// NE PAS ENLEVER CE CODE SINON IL Y A BUG COLOR TAILWIND SUR TOUT LE SITE
+// ! NE PAS ENLEVER CE CODE SINON IL Y A BUG COLOR TAILWIND SUR TOUT LE SITE
 //  const colorBackground: TColor = {
 // 	bronze: "bg-bronze",
 // 	blue: "bg-blue",

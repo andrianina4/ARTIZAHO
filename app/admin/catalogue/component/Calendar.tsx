@@ -9,7 +9,7 @@ import AboutPopup from "./AboutPopup";
 
 import "./style/style.css";
 import {EventClickArg} from "@fullcalendar/core/index.js";
-import AddAtelierPopup from "./AddAtelierPopup";
+import AddWorkshop from "./AddWorkshop";
 
 export default function Calendar() {
 	const [events, setEvents] = useState([
@@ -93,7 +93,7 @@ export default function Calendar() {
 			/>
 			<AboutPopup open={openAbout} onClick={handleToogleAbout} item={popupItem} />
 			<ModalLayout open={openAdd} onClick={handleToogleAdd} className="w-1/2">
-				<AddAtelierPopup item={popupItem} />
+				<AddWorkshop item={popupItem} />
 			</ModalLayout>
 		</div>
 	);

@@ -1,13 +1,13 @@
 import {PeopleFill} from "@/constants/link/icons";
-import {IParticipantAtelier} from "@/types/IAtelier";
+import {IParticipantWorkshop} from "@/types/IWorkshop";
 import {colorBackground, colorText} from "@/types/IColor";
 import {formatNumber, formatToDMY} from "@/utils/Format";
 import Image from "next/image";
 import React from "react";
 
-export default function ParticipantItem({item}: {item: IParticipantAtelier}) {
-	const bg: string = colorBackground[item.part_workshop.workshop_color];
-	const txt: string = colorText[item.part_workshop.workshop_color];
+export default function ParticipantItem({item}: {item: IParticipantWorkshop}) {
+	const bg: string = colorBackground[item.part_workshop.color];
+	const txt: string = colorText[item.part_workshop.color];
 
 	return (
 		<div className="grid grid-cols-custom-7 font-bold bg-white-40% items-center rounded-lg h-14 pl-4 my-1 ml-8">
@@ -26,9 +26,9 @@ export default function ParticipantItem({item}: {item: IParticipantAtelier}) {
 			<div className="flex items-center gap-2">
 				<div
 					className={`w-7 h-7 flex items-center justify-center ${txt} ${bg} bg-opacity-30 rounded-lg`}>
-					{item.part_workshop.workshop_icon}
+					{item.part_workshop.icon}
 				</div>
-				<p className="opacity-50">{item.part_workshop.workshop_name}</p>
+				<p className="opacity-50">{item.part_workshop.name}</p>
 			</div>
 			{/* NB PARTICIPANT */}
 			<div className="flex gap-2 items-center">

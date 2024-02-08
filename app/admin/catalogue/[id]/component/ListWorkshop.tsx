@@ -1,5 +1,5 @@
 import {FlowerOne} from "@/constants/link/icons";
-import {IParticipantAtelier} from "@/types/IAtelier";
+import {IParticipantWorkshop} from "@/types/IWorkshop";
 import React from "react";
 import ParticipantItem from "./ParticipantItem";
 
@@ -12,15 +12,15 @@ const header = [
 	{label: "Reservation Date"},
 ];
 
-const Data: IParticipantAtelier[] = [
+const Data: IParticipantWorkshop[] = [
 	{
 		part_id: 1,
 		part_name: "John Doe",
 		part_image: "/temp/vase.png",
 		part_workshop: {
-			workshop_icon: <FlowerOne />,
-			workshop_color: "bronze",
-			workshop_name: "Workshop 1",
+			icon: <FlowerOne />,
+			color: "bronze",
+			name: "Workshop 1",
 		},
 		part_nb_part: 5,
 		part_type: "individual",
@@ -31,9 +31,9 @@ const Data: IParticipantAtelier[] = [
 		part_name: "Jane Smith",
 		part_image: "/temp/vase.png",
 		part_workshop: {
-			workshop_icon: <FlowerOne />,
-			workshop_color: "blue",
-			workshop_name: "Workshop 2",
+			icon: <FlowerOne />,
+			color: "blue",
+			name: "Workshop 2",
 		},
 		part_nb_part: 3,
 		part_type: "company",
@@ -44,9 +44,9 @@ const Data: IParticipantAtelier[] = [
 		part_name: "Alice Johnson",
 		part_image: "/temp/vase.png",
 		part_workshop: {
-			workshop_icon: <FlowerOne />,
-			workshop_color: "green",
-			workshop_name: "Workshop 3",
+			icon: <FlowerOne />,
+			color: "green",
+			name: "Workshop 3",
 		},
 		part_nb_part: 1,
 		part_type: "individual",

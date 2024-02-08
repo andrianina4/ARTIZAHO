@@ -9,7 +9,7 @@ import React, {useState} from "react";
 import {FormAtelierData} from "@/app/schema/atelierSchema";
 import {FileData} from "@/app/schema/fileschema";
 
-export default function FormAtelier() {
+export default function FormWorkshop() {
 	const [imagePreview, setImagePreview] = useState<string[]>([]);
 	const {register, handleSubmit, reset} = useForm<FormAtelierData>();
 	// const {
