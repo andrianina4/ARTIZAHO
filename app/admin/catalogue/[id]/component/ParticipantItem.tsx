@@ -1,24 +1,13 @@
 import {PeopleFill} from "@/constants/link/icons";
 import {IParticipantAtelier} from "@/types/IAtelier";
 import {colorBackground, colorText} from "@/types/IColor";
+import {formatNumber, formatToDMY} from "@/utils/Format";
 import Image from "next/image";
 import React from "react";
 
 export default function ParticipantItem({item}: {item: IParticipantAtelier}) {
 	const bg: string = colorBackground[item.part_workshop.workshop_color];
 	const txt: string = colorText[item.part_workshop.workshop_color];
-	// Formattages
-	const formatNumber = (number: number): string => {
-		return number.toString().padStart(3, "0");
-	};
-	const formattedDate: string = new Intl.DateTimeFormat("en-US", {
-		day: "numeric",
-		month: "long",
-		year: "numeric",
-		// hour: "numeric",
-		// minute: "numeric",
-		// second: "numeric",
-	}).format(item.part_date);
 
 	return (
 		<div className="grid grid-cols-custom-7 font-bold bg-white-40% items-center rounded-lg h-14 pl-4 my-1 ml-8">
@@ -49,7 +38,7 @@ export default function ParticipantItem({item}: {item: IParticipantAtelier}) {
 			{/* TYPE CLIENT */}
 			<div className="opacity-70">{item.part_type == "company" ? "Company" : "Individuals"}</div>
 			{/* DATE RESERVATION */}
-			<div className="opacity-70">{formattedDate}</div>
+			<div className="opacity-70">{formatToDMY(item.part_date)}</div>
 		</div>
 	);
 }

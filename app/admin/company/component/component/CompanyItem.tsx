@@ -2,16 +2,9 @@ import React from "react";
 import Image from "next/image";
 import {RoundPlace} from "@/constants/link/icons";
 import {ICompany} from "@/types/ICompany";
+import {formatToDMY} from "@/utils/Format";
 
 export default function CompanyItem({company}: {company: ICompany}) {
-	const formattedDate: string = new Intl.DateTimeFormat("en-US", {
-		day: "numeric",
-		month: "long",
-		year: "numeric",
-		// hour: "numeric",
-		// minute: "numeric",
-		// second: "numeric",
-	}).format(company.company_created_at);
 	return (
 		<div className="grid grid-cols-custom-3 text-sm font-bold bg-white items-center rounded-lg h-14 pl-4 my-1 hover:mt-1 ">
 			<div className="flex items-center gap-2">
@@ -25,7 +18,9 @@ export default function CompanyItem({company}: {company: ICompany}) {
 			<div className="font-normal text-gray-60% flex items-center gap-2">
 				<RoundPlace /> {company.company_location}
 			</div>
-			<div className="flex gap-2 items-center opacity-80">{formattedDate}</div>
+			<div className="flex gap-2 items-center opacity-80">
+				{formatToDMY(company.company_created_at)}
+			</div>
 			<button>...</button>
 		</div>
 	);

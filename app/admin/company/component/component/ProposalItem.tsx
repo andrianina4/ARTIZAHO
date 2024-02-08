@@ -39,7 +39,7 @@ export default function ProposalItem({company}: {company: IProposalCompany}) {
 				<div className="opacity-60">{company.company_participants}</div>
 			</div>
 			{/* ACTION BUTTON */}
-			<div className="flex gap-2">
+			<div className="flex gap-4">
 				<ActionsButtons />
 			</div>
 		</div>
