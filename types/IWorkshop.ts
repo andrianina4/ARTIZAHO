@@ -26,3 +26,9 @@ export type IParticipantWorkshop = {
 	part_type: string | "individual" | "company";
 	part_date: Date;
 };
+
+export type CraftsmenWhenAdd = {
+	craft_id: number;
+	craft_name: string;
+	craft_img: string;
+};
