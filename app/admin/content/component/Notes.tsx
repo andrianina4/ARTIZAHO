@@ -1,5 +1,5 @@
 import React from "react";
-import {Down, FlowerOne} from "@/constants/link/icons";
+import {FlowerOne} from "@/constants/link/icons";
 import ProgressBar from "@/components/progress-bar";
 
 const bestAtelier = [
@@ -10,7 +10,7 @@ const bestAtelier = [
 		number: 5,
 	},
 	{
-		color: "green-80%",
+		color: "green",
 		leftIcon: <FlowerOne />,
 		title: "Bouquet en mousse",
 		number: 3,
