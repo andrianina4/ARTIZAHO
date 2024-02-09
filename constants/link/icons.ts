@@ -65,6 +65,7 @@ import TimeDuotone from "../../public/icons/lets-icons--time-duotone.svg";
 import Close from "../../public/icons/material-symbols--close.svg";
 import CheckMaterial from "../../public/icons/material-symbols--check.svg";
 import Line from "../../public/icons/ci--line-l.svg";
+import Plus from "../../public/icons/ci--add-plus.svg";
 
 export {
 	MenuIcon,
@@ -134,4 +135,5 @@ export {
 	Close,
 	CheckMaterial,
 	Line,
+	Plus,
 };

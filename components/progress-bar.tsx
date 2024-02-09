@@ -9,7 +9,7 @@ type ProgressBarProps = {
 	number?: number;
 };
 
-// NE PAS ENLEVER CE CODE SINON IL Y A BUG COLOR TAILWIND SUR TOUT LE SITE
+// ! NE PAS ENLEVER CE CODE SINON IL Y A BUG COLOR TAILWIND
 //  const colorBackground: TColor = {
 // 	bronze: "bg-bronze",
 // 	blue: "bg-blue",

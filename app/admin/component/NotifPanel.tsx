@@ -31,7 +31,7 @@ const ListNotif: INotif[] = [
 
 export default function NotifPanel() {
 	return (
-		<div className="absolute flex flex-col gap-10 bg-white top-16 right-0 z-50 rounded-2xl p-4">
+		<div className="absolute flex flex-col gap-10 bg-white top-16 right-0 z-50 rounded-2xl p-4 shadow-md">
 			<div className="flex flex-col gap-2">
 				<div className="font-bold text-brown">Notifications</div>
 				<div className="bg-gray-60% bg-opacity-50 h-[1px] -mx-1"></div>

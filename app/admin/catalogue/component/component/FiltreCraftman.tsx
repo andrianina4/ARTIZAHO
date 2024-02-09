@@ -1,6 +1,6 @@
 "use client";
 
-import {Line} from "@/constants/link/icons";
+import {Line, Plus} from "@/constants/link/icons";
 import {IPanelCraftmen} from "@/types/IWorkshop";
 import React, {useState} from "react";
 import CraftmanItem from "./CraftmanItem";
@@ -47,7 +47,7 @@ export default function FiltreCraftman({list}: {list?: []}) {
 			<div className="flex items-center justify-between font-bold mt-7 mb-3">
 				<div>List of all craftmen</div>
 				<div className="w-4 h-4 bg-white rounded-full cursor-pointer" onClick={switchShow}>
-					<Line style={{transform: "rotate(90deg)"}} />
+					{Show ? <Line style={{transform: "rotate(90deg)"}} /> : <Plus />}
 				</div>
 			</div>
 			{Show && (

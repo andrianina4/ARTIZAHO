@@ -23,7 +23,7 @@ export default function Header(props: HeaderProps) {
 	};
 
 	return (
-		<div className="flex flex-row justify-between items-center">
+		<div className="flex flex-row justify-between items-center pr-10">
 			<div>
 				<p className="text-brown text-2xl font-bold ">{BigTitle}</p>
 				<p className="text-sm opacity-60">{LittleTitle}</p>

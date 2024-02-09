@@ -49,14 +49,14 @@ export default function FormWorkshop() {
 	};
 
 	return (
-		<form onSubmit={handleSubmit(onSubmit)} className="flex flex-col w-full">
+		<div className="flex flex-col">
 			<div className="flex flex-row items-center text-bronze gap-6 pb-8">
 				<div className="">
 					<Toolbox className="w-6 h-6" />
 				</div>
 				<div className="text-2xl">New Workshop</div>
 			</div>
-			<div className="flex flex-row w-full gap-2 h-full">
+			<form className="flex flex-row w-full gap-2 h-full" onSubmit={handleSubmit(onSubmit)}>
 				<div className="flex flex-col justify-between w-96 ">
 					<div>
 						<Input placeholder="Name" register={register("atelier_name")} />
@@ -65,15 +65,15 @@ export default function FormWorkshop() {
 							leftIcon={<AddOutline className="w-5 h-5 opacity-50" />}
 							register={register("atelier_artisan")}
 						/>
-						<div className="h-[63px] flex items-center gap-4 mb-1">
+						<div className="mt-1 mb-2 flex items-center justify-between">
 							<Input
-								className="w-40"
+								className="w-40 !mt-0 !mb-0"
 								type="number"
 								placeholder="Prices"
 								register={register("atelier_tarifs")}
 							/>
 							<div className="flex items-center opacity-50 h-full">Duration</div>
-							<div className="w-[121px] bg-white-40% mt-1 mb-2 py-5 px-6 rounded-2xl flex input input-bordered h-14">
+							<div className="w-[121px] bg-white-40% py-5 px-6 rounded-2xl flex input input-bordered h-14">
 								<input
 									type="time"
 									{...register("atelier_heure_duree")}
@@ -87,6 +87,7 @@ export default function FormWorkshop() {
 							register={register("atelier_nb_participant")}
 						/>
 						<Input
+							type="Date"
 							placeholder="Date"
 							leftIcon={<CalendarIcon className="w-5 h-5 opacity-50" />}
 							register={register("atelier_artisan")}
@@ -128,12 +129,12 @@ export default function FormWorkshop() {
 						</div>
 					</div>
 					<Textarea
-						className="h-1/3"
+						className="h-1/3 max-w-xs"
 						placeholder="Workshop description"
 						register={register("atelier_desc")}
 					/>
 				</div>
-			</div>
-		</form>
+			</form>
+		</div>
 	);
 }

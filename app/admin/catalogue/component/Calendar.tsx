@@ -22,14 +22,14 @@ export default function Calendar() {
 			description: "exemple de description",
 			// display: "block",
 		},
-		// {
-		// 	id: "2",
-		// 	title: "Bouquet 2.0",
-		// 	start: "2024-02-04",
-		// 	textColor: "blue",
-		// 	description: "exemple de description",
-		// 	display: "list-item",
-		// },
+		{
+			id: "3",
+			title: "Bouquet 2.0",
+			start: "2024-02-05",
+			end: "2024-02-07",
+			textColor: "bronze",
+			description: "exemple de description",
+		},
 	]);
 	const [events2, setEvents2] = useState([
 		{
@@ -39,7 +39,6 @@ export default function Calendar() {
 			textColor: "green",
 			description: "exemple de description",
 			type_event: "exemple de description",
-			// display: "background",
 		},
 	]);
 
@@ -52,7 +51,6 @@ export default function Calendar() {
 	};
 
 	const handleEventClick = (eventClickInfo: EventClickArg) => {
-		console.log("🚀 ~ handleEventClick ~ eventClickInfo:", eventClickInfo);
 		// event lorsqu'on clique sur un événement
 		handleToogleAbout();
 		setPopupItem(eventClickInfo.event);
@@ -80,6 +78,7 @@ export default function Calendar() {
 				events={[...events, ...events2]} // Liste des evenements
 				eventContent={customEventContent} // rendu des evenements sur le tableau
 				eventClick={handleEventClick}
+				// dayMaxEvents={2}
 				// eventBackgroundColor="#030229"
 				// eventBorderColor="none"
 			/>
