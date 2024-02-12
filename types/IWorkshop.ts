@@ -40,4 +40,5 @@ export type CalendarEvents = {
 	start: string;
 	end: string;
 	workshop_type?: string | "individual" | "company";
+	display?: string;
 };

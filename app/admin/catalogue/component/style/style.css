@@ -10,6 +10,10 @@
 .fc-day-grid tbody tr {
 	height: 10px; /* Adjust this value as needed */
 }
+.fc-event {
+	background-color: transparent !important;
+	border-color: transparent !important;
+}
 .fc-toolbar-chunk {
 	display: flex;
 	flex-direction: row;
