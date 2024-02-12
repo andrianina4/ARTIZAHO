@@ -2,8 +2,9 @@
 
 import {Line, Plus} from "@/constants/link/icons";
 import {IPanelCraftmen} from "@/types/IWorkshop";
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import CraftmanItem from "./CraftmanItem";
+import {CalendarEventsContext} from "../provider/CalendarEventsProvider";
 
 const listCraftmen: IPanelCraftmen[] = [
 	{
@@ -26,7 +27,8 @@ const listCraftmen: IPanelCraftmen[] = [
 	},
 ];
 
-export default function FiltreCraftman({list}: {list?: []}) {
+export default function FiltreCraftman() {
+	const EventsFromContext = useContext(CalendarEventsContext);
 	// *  Control the checkboxes
 	const [checked, setChecked] = useState<{[key: number]: boolean}>({});
 	const handleChecked = (key: number) => {
@@ -34,6 +36,11 @@ export default function FiltreCraftman({list}: {list?: []}) {
 			...checked,
 			[key]: !checked[key],
 		});
+		if (checked[key]) {
+			EventsFromContext.removeFilterByCraftsman(key);
+		} else {
+			EventsFromContext.filterByCraftsman(key);
+		}
 	};
 
 	// TODO : asiana effet mba tsaratsara

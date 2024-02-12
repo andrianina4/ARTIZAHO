@@ -32,3 +32,12 @@ export type CraftsmenWhenAdd = {
 	craft_name: string;
 	craft_img: string;
 };
+
+export type CalendarEvents = {
+	id: number;
+	title: string;
+	textColor: string;
+	start: string;
+	end: string;
+	workshop_type?: string | "individual" | "company";
+};

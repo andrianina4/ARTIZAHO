@@ -2,8 +2,9 @@
 
 import {FlowerOne, Line, Plus} from "@/constants/link/icons";
 import {IPanelWorkshop} from "@/types/IWorkshop";
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import WorkshopItem from "./WorkshopItem";
+import {CalendarEventsContext} from "../provider/CalendarEventsProvider";
 
 const listWorkshop: IPanelWorkshop[] = [
 	{
@@ -26,7 +27,8 @@ const listWorkshop: IPanelWorkshop[] = [
 	},
 ];
 
-export default function FiltreWorkshop({list}: {list?: []}) {
+export default function FiltreWorkshop() {
+	const EventsFromContext = useContext(CalendarEventsContext);
 	// *  Control the checkboxes
 	const [checked, setChecked] = useState<{[key: number]: boolean}>({});
 	const handleChecked = (key: number) => {
@@ -34,6 +36,11 @@ export default function FiltreWorkshop({list}: {list?: []}) {
 			...checked,
 			[key]: !checked[key],
 		});
+		if (checked[key]) {
+			EventsFromContext.removeFilterByWorkshop(key);
+		} else {
+			EventsFromContext.filterByWorkshop(key);
+		}
 	};
 
 	// TODO : asiana effet mba tsaratsara
