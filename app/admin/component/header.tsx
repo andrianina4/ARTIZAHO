@@ -45,7 +45,7 @@ export default function Header(props: HeaderProps) {
 							)}
 							<NotifIcon className="w-6 h-6" />
 						</div>
-						{PopupNotif && <NotifPanel />}
+						{PopupNotif && <NotifPanel switchPopup={switchPopup} />}
 					</div>
 				)}
 			</div>

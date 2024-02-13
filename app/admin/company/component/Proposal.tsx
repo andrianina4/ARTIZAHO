@@ -39,6 +39,7 @@ const companies: INotif[] = [
 		},
 		notif_date_proposed: new Date("2024-02-15"),
 		notif_time_proposed: "2:00 PM",
+		notif_duration: "2 hours",
 		notif_location: "Meeting Room 2",
 		notif_nb_participant: 10,
 		notif_request: "Please RSVP by tomorrow.",
