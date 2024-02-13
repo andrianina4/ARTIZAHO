@@ -4,6 +4,7 @@ import Image from "next/image";
 import React from "react";
 import NotifSmallVal from "./NotifSmallVal";
 import ActionsButtons from "@/components/ActionsButtons";
+import Link from "next/link";
 
 const ListNotif: INotif[] = [
 	{
@@ -61,14 +62,16 @@ export default function NotifPanel() {
 									value={item.notif_workshop}
 								/>
 							</div>
-							<div className="flex flex-row pt-4 gap-2">
+							{/* <div className="flex flex-row pt-4 gap-2">
 								<ActionsButtons />
-							</div>
+							</div> */}
 						</div>
 					))}
 				</div>
 			</div>
-			<div className="flex justify-center opacity-60 cursor-pointer">Voir tout</div>
+			<Link href="/admin/company">
+				<div className="flex justify-center opacity-60 cursor-pointer">Voir tout</div>
+			</Link>
 		</div>
 	);
 }

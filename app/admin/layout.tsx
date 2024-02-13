@@ -47,7 +47,7 @@ export default function Layout({children}: {children: React.ReactNode}) {
 	else dynamicHeader = <Header BigTitle="" LittleTitle="" />;
 
 	// State Popup Notifs
-	const [open, setOpen] = useState(false);
+	const [open, setOpen] = useState(true);
 	const [NotifInPopup, setNotifInPopup] = useState(notif);
 	const handleToogle = () => {
 		setOpen(!open);

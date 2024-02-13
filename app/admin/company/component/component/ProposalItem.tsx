@@ -11,7 +11,7 @@ export default function ProposalItem({company}: {company: IProposalCompany}) {
 	const txt: string = colorText[company.company_workshop.color];
 
 	return (
-		<div className="grid grid-cols-custom-8 text-sm font-bold hover:bg-white items-center rounded-lg h-14 pl-4 my-1 ">
+		<div className="grid grid-cols-custom-8 text-sm font-bold hover:bg-white transition-all ease-linear duration-75 items-center rounded-lg h-14 pl-4 my-1 ">
 			{/* NOM et IMAGE */}
 			<div className="flex items-center gap-2">
 				<div className="w-[30px] h-[30px] relative rounded-full bg-slate-500">
@@ -41,9 +41,9 @@ export default function ProposalItem({company}: {company: IProposalCompany}) {
 				<div className="opacity-60">{company.company_participants}</div>
 			</div>
 			{/* ACTION BUTTON */}
-			<div className="flex gap-4">
+			{/* <div className="flex gap-4">
 				<ActionsButtons />
-			</div>
+			</div> */}
 		</div>
 	);
 }
