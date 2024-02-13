@@ -10,7 +10,7 @@ export default function NotifSmallVal({
 	label: string;
 	value: string | Date;
 }) {
-	const stringDate: string = typeof value !== "string" ? formatToDMY(value) : value;
+	const stringDate: string = typeof value != "string" ? formatToDMY(value) : value;
 
 	return (
 		<div className="w-72 flex items-center gap-2">

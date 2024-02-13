@@ -33,7 +33,7 @@ export default function PopupNotif({notif}: {notif: INotif}) {
 			<div className="flex flex-col gap-4">
 				<NotifItem
 					label="Workshop"
-					value={notif.notif_workshop}
+					value={notif.notif_workshop.name}
 					icon={<MiniToolbox className="w-5 h-4" />}
 				/>
 				<NotifItem
@@ -48,7 +48,7 @@ export default function PopupNotif({notif}: {notif: INotif}) {
 				/>
 				<NotifItem
 					label="Number of attendees"
-					value={notif.notif_nb_particiant}
+					value={notif.notif_nb_participant}
 					icon={<PeopleFill className="w-5 h-4" />}
 				/>
 				<NotifItemDuration duration={notif.notif_duration} time={notif.notif_time_proposed} />

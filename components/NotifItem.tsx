@@ -10,7 +10,7 @@ type Tprops = {
 export default function NotifItem({label, value = "Valeur", icon}: Tprops) {
 	if (typeof value === "number") {
 		value = value.toString();
-	} else if (typeof value !== "string") {
+	} else if (typeof value != "string") {
 		value = formatToDMY(value);
 	}
 	return (
