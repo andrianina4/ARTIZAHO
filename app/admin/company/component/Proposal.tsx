@@ -1,57 +1,48 @@
 "use client";
 
 import {FlowerOne} from "@/constants/link/icons";
-import {IProposalCompany} from "@/types/ICompany";
 import React, {useState} from "react";
 import ProposalItem from "./component/ProposalItem";
+import {INotif} from "@/types/INotif";
 
 const headerList = ["Name", "Date Proposed", "Time", "Workshop", "Participants"];
 
-const companies: IProposalCompany[] = [
+const companies: INotif[] = [
 	{
-		company_id: 1,
-		company_name: "Codeo Travel",
-		company_image: "/temp/vase.png",
-		company_date_proposed: new Date(),
-		company_time_proposed: "10:00 AM",
-		company_workshop: {name: "Workshop 1", icon: <FlowerOne />, color: "bronze"},
-		company_participants: 11,
+		notif_id: 1,
+		notif_company: {
+			name: "Codeo Travel",
+			image: "/temp/vase.png",
+		},
+		notif_workshop: {
+			name: "Workshop A",
+			icon: <FlowerOne />,
+			color: "blue",
+		},
+		notif_date_proposed: new Date("2024-02-13"),
+		notif_time_proposed: "10:00 AM",
+		notif_duration: "2 hours",
+		notif_location: "Conference Room 1",
+		notif_nb_participant: 15,
+		notif_request: "Please confirm your attendance.",
 	},
 	{
-		company_id: 2,
-		company_name: "Google",
-		company_image: "/temp/vase.png",
-		company_date_proposed: new Date(),
-		company_time_proposed: "11:00 AM",
-		company_workshop: {name: "Workshop 2", icon: <FlowerOne />, color: "blue"},
-		company_participants: 7,
-	},
-	{
-		company_id: 3,
-		company_name: "Meta",
-		company_image: "/temp/vase.png",
-		company_date_proposed: new Date(),
-		company_time_proposed: "12:00 PM",
-		company_workshop: {name: "Workshop 3", icon: <FlowerOne />, color: "green"},
-		company_participants: 5,
-	},
-	{
-		company_id: 4,
-		company_name: "Neflix",
-		company_image: "/temp/vase.png",
-		company_date_proposed: new Date(),
-		company_time_proposed: "01:00 PM",
-		company_workshop: {name: "Workshop 4", icon: <FlowerOne />, color: "blue"},
-		company_participants: 14,
-	},
-	{
-		company_id: 5,
-		company_name: "Nexta",
-		company_image: "/temp/vase.png",
-		company_date_proposed: new Date(),
-		company_time_proposed: "02:00 PM",
-		company_workshop: {name: "Workshop 5", icon: <FlowerOne />, color: "bronze"},
-		company_participants: 6,
+		notif_id: 2,
+		notif_company: {
+			name: "Travelllll",
+			image: "/temp/vase.png",
+		},
+		notif_workshop: {
+			name: "Workshop B",
+			icon: <FlowerOne />,
+			color: "green",
+		},
+		notif_date_proposed: new Date("2024-02-15"),
+		notif_time_proposed: "2:00 PM",
+		notif_duration: "2 hours",
+		notif_location: "Meeting Room 2",
+		notif_nb_participant: 10,
+		notif_request: "Please RSVP by tomorrow.",
 	},
 ];
 
@@ -67,8 +58,8 @@ export default function Proposal() {
 				))}
 			</div>
 			<div>
-				{Data.map((company, index) => (
-					<ProposalItem key={index} company={company} />
+				{Data.map((item, index) => (
+					<ProposalItem key={index} company={item} />
 				))}
 			</div>
 		</>

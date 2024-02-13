@@ -9,31 +9,18 @@ type ItemProps = {
 	value: string | number;
 	rightIcon?: ReactNode;
 	image?: string;
-	desc?: boolean;
 	readonly?: boolean;
 	register?: UseFormRegisterReturn;
 };
 
-export default function Item({
-	label,
-	value,
-	rightIcon,
-	image,
-	desc = false,
-	readonly,
-	register,
-}: ItemProps) {
+export default function Item({label, value, rightIcon, image, readonly, register}: ItemProps) {
 	let styleBox = "w-4/5 gap-2";
 	image ? (styleBox = styleBox + " font-bold") : null;
 	return (
 		<div className="flex flex-row">
 			<div className="w-1/5 flex items-center opacity-60 font-bold">{label}</div>
 			<div className={styleBox}>
-				{desc ? (
-					<Textarea placeholder={label} />
-				) : (
-					<Input placeholder={label} value={value} readonly={readonly} register={register} />
-				)}
+				<Input placeholder={label} value={value} readonly={readonly} register={register} />
 			</div>
 		</div>
 	);

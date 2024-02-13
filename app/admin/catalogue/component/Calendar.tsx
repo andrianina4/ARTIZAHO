@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
@@ -10,38 +10,12 @@ import AboutPopup from "./AboutPopup";
 import "./style/style.css";
 import {EventClickArg} from "@fullcalendar/core/index.js";
 import AddWorkshop from "./AddWorkshop";
+import {CalendarEventsContext} from "./provider/CalendarEventsProvider";
 
 export default function Calendar() {
-	const [events, setEvents] = useState([
-		{
-			id: "1",
-			title: "Bouquet en vase",
-			start: "2024-02-04",
-			end: "2024-02-08",
-			textColor: "blue",
-			description: "exemple de description",
-			// display: "block",
-		},
-		// {
-		// 	id: "2",
-		// 	title: "Bouquet 2.0",
-		// 	start: "2024-02-04",
-		// 	textColor: "blue",
-		// 	description: "exemple de description",
-		// 	display: "list-item",
-		// },
-	]);
-	const [events2, setEvents2] = useState([
-		{
-			id: "2",
-			title: "Bouquet sur mousse",
-			start: "2024-02-06",
-			textColor: "green",
-			description: "exemple de description",
-			type_event: "exemple de description",
-			// display: "background",
-		},
-	]);
+	const EventsFromContext = useContext(CalendarEventsContext);
+
+	// const [EventsToShow, setEventsToShow] = useState([]);
 
 	const [openAbout, setOpenAbout] = useState(false);
 
@@ -52,14 +26,12 @@ export default function Calendar() {
 	};
 
 	const handleEventClick = (eventClickInfo: EventClickArg) => {
-		console.log("🚀 ~ handleEventClick ~ eventClickInfo:", eventClickInfo);
 		// event lorsqu'on clique sur un événement
 		handleToogleAbout();
 		setPopupItem(eventClickInfo.event);
 	};
 
 	const customEventContent = (eventInfo: any): React.ReactNode => {
-		console.log(eventInfo.event);
 		return (
 			<>
 				<CalendarItem item={eventInfo.event} />
@@ -77,9 +49,14 @@ export default function Calendar() {
 					right: "dayGridMonth,timeGridWeek",
 				}}
 				initialView="dayGridMonth"
-				events={[...events, ...events2]} // Liste des evenements
+				events={
+					EventsFromContext.FilteredEvents.length === 0
+						? EventsFromContext.InitialEvents
+						: EventsFromContext.FilteredEvents
+				} // Liste des evenements
 				eventContent={customEventContent} // rendu des evenements sur le tableau
 				eventClick={handleEventClick}
+				// dayMaxEvents={2}
 				// eventBackgroundColor="#030229"
 				// eventBorderColor="none"
 			/>

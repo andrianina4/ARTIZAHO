@@ -3,14 +3,15 @@
 import Link from "next/link";
 import React from "react";
 import {
-  CalendarIcon,
-	Company,
+	CalendarIcon,
 	Dashboard,
 	EllipseBrown,
+	Enterprise,
 	EventCheck,
 	Logout,
 	PeopleToolbox,
 	Setting,
+	Tools,
 	Users,
 } from "@/constants/link/icons";
 import {usePathname} from "next/navigation";
@@ -21,9 +22,10 @@ const links = [
 	{name: "Dashboard", href: "/admin", icon: Dashboard},
 	{name: "Attendance", href: "/admin/attendance", icon: EventCheck},
 	{name: "Catalogue", href: "/admin/catalogue", icon: CalendarIcon},
+	{name: "Workshop", href: "/admin/workshop", icon: Tools},
 	{name: "Craftmen", href: "/admin/craftmen", icon: PeopleToolbox},
 	{name: "Clients", href: "/admin/client", icon: Users},
-	{name: "Company", href: "/admin/company", icon: Company},
+	{name: "Company", href: "/admin/company", icon: Enterprise},
 	{name: "Settings", href: "/admin/settings", icon: Setting},
 ];
 

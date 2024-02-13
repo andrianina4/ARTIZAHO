@@ -1,8 +1,8 @@
-type TWidth = {
+export type TKeyNumber = {
 	[key: number]: string;
 };
 
-export const customWidth: TWidth = {
+export const customWidth: TKeyNumber = {
 	0: "w-[0%]",
 	0.5: "w-[10%]",
 	1: "w-[20%]",

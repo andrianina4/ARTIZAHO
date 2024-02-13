@@ -1,9 +1,10 @@
 "use client";
 
-import {FlowerOne, Line} from "@/constants/link/icons";
+import {FlowerOne, Line, Plus} from "@/constants/link/icons";
 import {IPanelWorkshop} from "@/types/IWorkshop";
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import WorkshopItem from "./WorkshopItem";
+import {CalendarEventsContext} from "../provider/CalendarEventsProvider";
 
 const listWorkshop: IPanelWorkshop[] = [
 	{
@@ -26,7 +27,8 @@ const listWorkshop: IPanelWorkshop[] = [
 	},
 ];
 
-export default function FiltreWorkshop({list}: {list?: []}) {
+export default function FiltreWorkshop() {
+	const EventsFromContext = useContext(CalendarEventsContext);
 	// *  Control the checkboxes
 	const [checked, setChecked] = useState<{[key: number]: boolean}>({});
 	const handleChecked = (key: number) => {
@@ -34,6 +36,11 @@ export default function FiltreWorkshop({list}: {list?: []}) {
 			...checked,
 			[key]: !checked[key],
 		});
+		if (checked[key]) {
+			EventsFromContext.removeFilterByWorkshop(key);
+		} else {
+			EventsFromContext.filterByWorkshop(key);
+		}
 	};
 
 	// TODO : asiana effet mba tsaratsara
@@ -47,7 +54,7 @@ export default function FiltreWorkshop({list}: {list?: []}) {
 			<div className="flex items-center justify-between font-bold mt-7 mb-3">
 				<div>List of all workshops</div>
 				<div className="w-4 h-4 bg-white rounded-full cursor-pointer" onClick={switchShow}>
-					<Line style={{transform: "rotate(90deg)"}} />
+					{Show ? <Line style={{transform: "rotate(90deg)"}} /> : <Plus />}
 				</div>
 			</div>
 			{Show && (

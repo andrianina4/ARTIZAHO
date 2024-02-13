@@ -2,7 +2,18 @@
 	min-height: 54px;
 	font-size: 14px !important;
 }
-
+/* Height general de la table */
+/* .fc {
+	height: 100%; /* Adjust this value as needed */
+/* } */
+/* Reduce the height of the rows in the calendar */
+.fc-day-grid tbody tr {
+	height: 10px; /* Adjust this value as needed */
+}
+.fc-event {
+	background-color: transparent !important;
+	border-color: transparent !important;
+}
 .fc-toolbar-chunk {
 	display: flex;
 	flex-direction: row;
