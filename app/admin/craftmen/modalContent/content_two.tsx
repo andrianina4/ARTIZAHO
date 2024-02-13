@@ -7,7 +7,11 @@ import CraftmanCalendar from "../component/calendar"
 import Input from "@/components/input"
 import Button from "@/components/button"
 
-function Content_two() {
+type props={
+    onPrevious: VoidFunction
+}
+
+function Content_two({onPrevious}:props) {
     return (
         <div className="flex flex-col gap-2 w-full">
             <div className="flex items-center text-bronze text-2xl font-semibold gap-4 ">
@@ -41,7 +45,7 @@ function Content_two() {
             </div>
             <div className="flex gap-4">
                 <Button content="Annuler"/>
-                <Button content="Retour"/>
+                <Button content="Retour " onClick={onPrevious}/>
                 <Button content="Enregistrer"/>
             </div>
         </div>

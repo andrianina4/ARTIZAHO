@@ -20,14 +20,24 @@ type Props = {};
 const selectItem: Array<ISelect> = [
 	{value: "name", label: "Name"},
 	{
-		value: "participants",
-		label: "Partipants",
+		value: "note",
+		label: "Note]",
 	},
 ];
 
 function Page({}: Props) {
 	const [open, setOpen] = useState(false);
 	const [content, setContent] = useState(true);
+	const [step, setStep] = useState(1)
+
+
+	const handleNext = () => {
+		setStep(step + 1);
+	  };
+	
+	  const handlePrevious = () => {
+		setStep(step - 1);
+	  };
 
 	const handleToogle = () => {
 		setOpen(!open);
@@ -60,8 +70,8 @@ function Page({}: Props) {
 
 				{/* Modal crafmen */}
 				<ModalLayout open={open} onClick={handleToogle} className="h-[650px] w-[830px]">
-					{/* <Content_one/> */}
-					<Content_two/>
+					{step===1 && <Content_one onNext={handleNext}/>}
+					{step===2 && <Content_two onPrevious={handlePrevious}/>}
 				</ModalLayout>
 			</div>
 
