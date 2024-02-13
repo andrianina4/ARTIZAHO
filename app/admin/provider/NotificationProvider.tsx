@@ -35,7 +35,7 @@ export const NotifContext: Context<any> = createContext<NotificationContextType>
 
 export default function NotificationProvider({children}: {children: React.ReactNode}) {
 	// State OPEN Popup Notifs
-	const [open, setOpen] = useState(true);
+	const [open, setOpen] = useState(false);
 	const togglePopup = () => {
 		setOpen(!open);
 	};
