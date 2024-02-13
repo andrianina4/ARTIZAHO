@@ -58,6 +58,7 @@ export default function Calendar() {
 		// event lorsqu'on clique sur un événement
 		setOpenAbout(!openAbout);
 		setPopupItem(eventClickInfo.event);
+		console.log(eventClickInfo.event)
 	};
 
 	const handleDateClick = (dateClickInfo: DateClickArg) => {
