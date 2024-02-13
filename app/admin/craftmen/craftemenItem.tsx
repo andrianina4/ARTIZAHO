@@ -5,10 +5,6 @@ import Image from "next/image";
 import {ICraftmanItem} from "@/types/ICraftman";
 import {colorBackground, colorText} from "@/types/IColor";
 
-type Props = {
-	img: string;
-};
-
 function CraftemenItem({craftman}: {craftman: ICraftmanItem}) {
 	const bg: string = colorBackground[craftman.craftman_workshop.color];
 	const txt: string = colorText[craftman.craftman_workshop.color];

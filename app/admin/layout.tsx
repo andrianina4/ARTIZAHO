@@ -3,7 +3,23 @@
 import Sidebar from "@/components/sidebar";
 import Header from "./component/header";
 import {usePathname} from "next/navigation";
-import {ReactNode} from "react";
+import {ReactNode, useState} from "react";
+import ModalLayout from "@/components/modal";
+import PopupNotif from "./component/PopupNotif";
+import {INotif} from "@/types/INotif";
+
+const notif: INotif = {
+	notif_id: 1,
+	notif_company: {name: "Company A", image: "/temp/vase.png"},
+	notif_date_proposed: new Date("2024-02-07"),
+	notif_time_proposed: "10h00",
+	notif_workshop: "Workshop 1",
+	notif_location: "Antananrivo",
+	notif_nb_particiant: 15,
+	notif_duration: "1h30",
+	notif_request:
+		"Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi ex pariatur nulla similique quidem sed ipsum veniam nostrum cupiditate. ",
+};
 
 export default function Layout({children}: {children: React.ReactNode}) {
 	const pathname = usePathname();
@@ -30,8 +46,15 @@ export default function Layout({children}: {children: React.ReactNode}) {
 		);
 	else dynamicHeader = <Header BigTitle="" LittleTitle="" />;
 
+	// State Popup Notifs
+	const [open, setOpen] = useState(false);
+	const [NotifInPopup, setNotifInPopup] = useState(notif);
+	const handleToogle = () => {
+		setOpen(!open);
+	};
+
 	return (
-		<div className=" flex flex-row h-screen w-screen bg-white-40% p-5 gap-7  ">
+		<div className=" flex flex-row h-screen w-screen bg-white-40% p-5 gap-7">
 			<div className=" w-[280px]">
 				<Sidebar />
 			</div>
@@ -39,6 +62,10 @@ export default function Layout({children}: {children: React.ReactNode}) {
 				<div className="h-[10%]">{dynamicHeader}</div>
 				<div className=" h-[90%]">{children}</div>
 			</div>
+			{/* POPUP NOTIF */}
+			<ModalLayout open={open} onClick={handleToogle} className="w-1/3 h-4/5">
+				<PopupNotif notif={NotifInPopup} />
+			</ModalLayout>
 		</div>
 	);
 }

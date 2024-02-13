@@ -66,6 +66,9 @@ import Close from "../../public/icons/material-symbols--close.svg";
 import CheckMaterial from "../../public/icons/material-symbols--check.svg";
 import Line from "../../public/icons/ci--line-l.svg";
 import Plus from "../../public/icons/ci--add-plus.svg";
+import MiniToolbox from "../../public/icons/fluent--toolbox-12-filled.svg";
+import MiniCalendar from "../../public/icons/material-symbols--date-range.svg";
+import Duration from "../../public/icons/game-icons--duration.svg";
 
 export {
 	MenuIcon,
@@ -136,4 +139,7 @@ export {
 	CheckMaterial,
 	Line,
 	Plus,
+	MiniToolbox,
+	MiniCalendar,
+	Duration,
 };

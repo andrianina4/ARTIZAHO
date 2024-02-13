@@ -81,6 +81,8 @@ export const CalendarEventsContext: Context<any> = createContext<CalendarEventsC
 });
 
 export default function CalendarEventsProvider({children}: {children: React.ReactNode}) {
+	const [WorkEvents, setWorkEvents] = useState<CalendarEvents[]>(initialWorkshopEvents);
+	const [CraftEvents, setCraftEvents] = useState<CalendarEvents[]>(initialCraftsmenEvents);
 	const [InitialEvents, setInitialEvents] = useState<CalendarEvents[]>([
 		...initialWorkshopEvents,
 		...initialCraftsmenEvents,
@@ -92,7 +94,7 @@ export default function CalendarEventsProvider({children}: {children: React.Reac
 	// * Filtre Atelier
 	const filterByWorkshop = (id: number) => {
 		setBeforeEvents(FilteredEvents);
-		const temp: CalendarEvents[] = InitialEvents.filter((event) => event.id === id);
+		const temp: CalendarEvents[] = WorkEvents.filter((event) => event.id === id);
 		setFilteredEvents([...FilteredEvents, ...temp]);
 	};
 	const removeFilterByWorkshop = (id: number) => {
