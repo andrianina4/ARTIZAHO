@@ -4,7 +4,6 @@ import React, {useState} from "react";
 import {EditFill, FlowerOne, ImageAdd, More, Time} from "@/constants/link/icons";
 import Button from "@/components/button";
 import Item from "./Item";
-import ProgressBar from "@/components/progress-bar";
 import {useForm} from "react-hook-form";
 import {FormAtelierData} from "@/app/schema/atelierSchema";
 import Textarea from "@/components/textarea";

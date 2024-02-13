@@ -42,3 +42,14 @@ export type CalendarEvents = {
 	workshop_type?: string | "individual" | "company";
 	display?: string;
 };
+
+export type IWrokshopItem = {
+	shop_id: number;
+	shop_name: string;
+	shop_color: string;
+	shop_icon: ReactNode;
+	shop_know_how: string;
+	shop_craftsman: {name: string; image: string};
+	shop_nb_participants: number;
+	shop_duration: string;
+};

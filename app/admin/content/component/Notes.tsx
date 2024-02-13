@@ -13,13 +13,13 @@ const bestAtelier = [
 		color: "green",
 		leftIcon: <FlowerOne />,
 		title: "Bouquet en mousse",
-		number: 3,
+		number: 4.5,
 	},
 	{
 		color: "blue",
 		leftIcon: <FlowerOne />,
 		title: "Couronne de fleurs",
-		number: 3.5,
+		number: 4,
 	},
 ];
 

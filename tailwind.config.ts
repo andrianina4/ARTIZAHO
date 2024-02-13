@@ -17,6 +17,7 @@ const config: Config = {
 				"custom-6": "30% 20% 30% 20%",
 				"custom-7": "10% 20% 20% 10% 15% 20%",
 				"custom-8": "20% 20% 15% 25% 15%",
+				"custom-9": "20% 20% 20% 15% 20% 5%",
 			},
 			boxShadow: {
 				card: "0px 16px 35px 0px rgba(0, 0, 0, 0.08)",

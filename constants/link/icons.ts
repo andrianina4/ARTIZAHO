@@ -69,9 +69,12 @@ import Plus from "../../public/icons/ci--add-plus.svg";
 import MiniToolbox from "../../public/icons/fluent--toolbox-12-filled.svg";
 import MiniCalendar from "../../public/icons/material-symbols--date-range.svg";
 import Duration from "../../public/icons/game-icons--duration.svg";
+import Enterprise from "../../public/icons/carbon--enterprise.svg";
+import Tools from "../../public/icons/clarity--tools-line.svg";
 
 export {
 	MenuIcon,
+	Tools,
 	FacebookFIcon,
 	InstagramIcon,
 	LinkedinIcon,
@@ -142,4 +145,5 @@ export {
 	MiniToolbox,
 	MiniCalendar,
 	Duration,
+	Enterprise,
 };

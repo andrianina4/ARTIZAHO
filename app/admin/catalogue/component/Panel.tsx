@@ -16,7 +16,7 @@ export default function Panel() {
 
 	return (
 		<div>
-			<Button content="Add Workshop" leftIcon={<UserAddFill />} onClick={handleToogle} />
+			{/* <Button content="Add Workshop" leftIcon={<UserAddFill />} onClick={handleToogle} /> */}
 			<ModalLayout open={open} onClick={handleToogle} className="w-auto">
 				<FormWorkshop />
 			</ModalLayout>

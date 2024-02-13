@@ -33,7 +33,9 @@ export default function Layout({children}: {children: React.ReactNode}) {
 	else if (pathname.startsWith("/admin/attendance"))
 		dynamicHeader = <Header BigTitle="Attendance" LittleTitle="List of Reservations" />;
 	else if (pathname.startsWith("/admin/catalogue"))
-		dynamicHeader = <Header BigTitle="Catalogue" LittleTitle="Planning" searchBar={false} />;
+		dynamicHeader = <Header BigTitle="Catalogue" LittleTitle="" searchBar={false} />;
+	else if (pathname.startsWith("/admin/workshop"))
+		dynamicHeader = <Header BigTitle="Workshop" LittleTitle="List of Workshops" />;
 	else if (pathname.startsWith("/admin/craftmen"))
 		dynamicHeader = <Header BigTitle="Craftmen" LittleTitle="List of Craftsmen" />;
 	else if (pathname.startsWith("/admin/client"))
