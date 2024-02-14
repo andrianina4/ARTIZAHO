@@ -44,9 +44,9 @@ function Content_two({onPrevious}:props) {
                 </div>
             </div>
             <div className="flex gap-4">
-                <Button content="Annuler"/>
-                <Button content="Retour " onClick={onPrevious}/>
-                <Button content="Enregistrer"/>
+                <Button content="Cancel"/>
+                <Button content="Previous " onClick={onPrevious}/>
+                <Button content="Save"/>
             </div>
         </div>
     )

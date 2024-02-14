@@ -9,7 +9,7 @@ import Button from '@/components/button'
 
 type Props = {}
 
-function PropositionDate({ }: Props) {
+function PropositionDate({}: Props) {
     // Temp trainer
     const trainer = trainers[0]
 

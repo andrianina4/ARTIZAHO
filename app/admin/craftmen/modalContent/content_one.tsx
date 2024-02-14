@@ -24,7 +24,7 @@ function Content_one({onNext}: props) {
 						<form className="flex w-full gap-4" >
 							<div className="w-1/2">
 								<Input placeholder="Name" />
-								<Input placeholder="Savoir-faire" />
+								<Input placeholder="Kmow-how" />
 								<Textarea placeholder="About the craftman " className="h-48" />
 							</div>
 							<div className=" flex flex-col w-1/2 items-center ">
@@ -33,15 +33,12 @@ function Content_one({onNext}: props) {
 									icon={<AddImage />}
 									styleIcon="bg-bronze text-white"
 								/>
-								<Input placeholder="Atelier" />
-								<button className="text-sm hover:bg-white-40% hover:bg-opacity-60 py-4 px-10 rounded-2xl">
-									+ Ajouter plus d'atelier
-								</button>
+								
 							</div>
 						</form>
 						<div className="flex gap-8">
-							<Button content="Annuler"/>
-							<Button content="Suivant" onClick={onNext}/>
+							<Button content="Cancel"/>
+							<Button content="Next" onClick={onNext}/>
 						</div>
 					</div>
   )
