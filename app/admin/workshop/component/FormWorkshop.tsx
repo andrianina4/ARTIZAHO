@@ -149,7 +149,7 @@ export default function FormWorkshop() {
 				</div>
 				<div className="ml-14 flex flex-col w-96 gap-4">
 					<div className="text-base text-bronze font-bold">Galery</div>
-					<div className="flex flex-row flex-wrap gap-2">
+					<div className={`max-h-64 overflow-y-scroll flex flex-row flex-wrap gap-2`}>
 						{imagePreview.map((item) => (
 							<div>
 								<img className="w-40 h-32 rounded-2xl" src={item} alt="Aperçu de l'image" />
