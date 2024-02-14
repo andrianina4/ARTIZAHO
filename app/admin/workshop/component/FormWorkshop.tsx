@@ -10,37 +10,75 @@ import {FormAtelierData} from "@/app/schema/atelierSchema";
 import {FileData} from "@/app/schema/fileschema";
 import {CraftsmenWhenAdd} from "@/types/IWorkshop";
 import Image from "next/image";
+import {ISuggestCraftman} from "@/types/ICraftman";
 
-const Craftsmen: Array<CraftsmenWhenAdd> = [
-	{craft_id: 1, craft_name: "Mahefa", craft_img: "/temp/trainer-1.jpeg"},
-	{craft_id: 0, craft_name: "Ma Hefa", craft_img: "/temp/trainer-1.jpeg"},
-	{craft_id: 0, craft_name: "Ma Hefa", craft_img: "/temp/trainer-1.jpeg"},
-	{craft_id: 0, craft_name: "Ma Hefa", craft_img: "/temp/trainer-1.jpeg"},
-	{craft_id: 0, craft_name: "Ma Hefa", craft_img: "/temp/trainer-1.jpeg"},
+// FAKE
+const ListCraftsmen: ISuggestCraftman[] = [
+	{
+		craftsman_id: 1,
+		craftsman_name: "John Doe",
+		craftsman_image: "/temp/trainer-1.jpeg",
+		craftsman_know_how: "Woodworking",
+	},
+	{
+		craftsman_id: 2,
+		craftsman_name: "Jane Smith",
+		craftsman_image: "/temp/trainer-1.jpeg",
+		craftsman_know_how: "Metalworking",
+	},
+	{
+		craftsman_id: 3,
+		craftsman_name: "Alice Johnson",
+		craftsman_image: "/temp/trainer-1.jpeg",
+		craftsman_know_how: "Pottery",
+	},
+	{
+		craftsman_id: 4,
+		craftsman_name: "Bob Brown",
+		craftsman_image: "/temp/trainer-1.jpeg",
+		craftsman_know_how: "Glassblowing",
+	},
+	{
+		craftsman_id: 5,
+		craftsman_name: "Emily Davis",
+		craftsman_image: "/temp/trainer-1.jpeg",
+		craftsman_know_how: "Jewelry Making",
+	},
 ];
 
 export default function FormWorkshop() {
-	// controler pour le select artisans
-	const [SelectCraftsman, setSelectCraftsman] = useState<boolean>(false);
-	const switchSelectCraftsman = () => {
-		setSelectCraftsman(!SelectCraftsman);
+	// * Traitement de l'artisan
+	// liste des artisans de base
+	const [BaseCraftsmen, setBaseCraftsman] = useState<ISuggestCraftman[]>(ListCraftsmen);
+	// liste des artisans suggerer
+	const [SuggestedCraftsmen, setSuggestedCraftsmen] = useState<ISuggestCraftman[] | undefined>();
+	// control input artisan et gerer suggestions
+	const [InputCraftsman, setInputCraftsman] = useState<string | undefined>("");
+	const handleChangeCraftsman = (e: React.ChangeEvent<HTMLInputElement>) => {
+		setInputCraftsman(e.target.value);
+		if (e.target.value != "") {
+			const filteredCraftman = BaseCraftsmen.filter((craftsman) =>
+				craftsman.craftsman_name.toLowerCase().includes(e.target.value)
+			);
+			setSuggestedCraftsmen(filteredCraftman);
+		} else {
+			setSuggestedCraftsmen(undefined);
+		}
 	};
-	const [Craftsman, setCraftsman] = useState<CraftsmenWhenAdd | undefined>();
-	const assignCraftman = (craftman: CraftsmenWhenAdd) => {
-		setCraftsman(craftman);
-		switchSelectCraftsman();
-		console.log(Craftsman);
+	// lorsqu'un artisqn est selected
+	const [SelectedCraftsman, setSelectedCraftsman] = useState<ISuggestCraftman | undefined>();
+	const handleSelectCraftsman = (craftsman: ISuggestCraftman) => {
+		setSelectedCraftsman(craftsman);
+		setSuggestedCraftsmen(undefined);
+		setInputCraftsman("");
+	};
+	const handleChangeResetCraftsman = () => {
+		setSelectedCraftsman(undefined);
+		setInputCraftsman("");
 	};
 
+	// * Traitement des images
 	const [imagePreview, setImagePreview] = useState<string[]>([]);
-	const {register, handleSubmit, reset} = useForm<FormAtelierData>();
-	// const {
-	// 	register: fileRegister,
-	// 	handleSubmit: fileSubmit,
-	// 	control,
-	// 	reset: fileReset,
-	// } = useForm<FileData>();
-
 	const handleInputFile = () => {
 		setImagePreview([]);
 		const inputELement = document.querySelector("#input-file-atelier") as HTMLFormElement;
@@ -62,6 +100,16 @@ export default function FormWorkshop() {
 		}
 	};
 
+	// * react hook form
+	const {register, handleSubmit, reset} = useForm<FormAtelierData>();
+	// const {
+	// 	register: fileRegister,
+	// 	handleSubmit: fileSubmit,
+	// 	control,
+	// 	reset: fileReset,
+	// } = useForm<FileData>();
+
+	// * SUBMIT
 	const onSubmit: SubmitHandler<FormAtelierData> = (data) => {
 		console.log(data);
 	};
@@ -81,30 +129,57 @@ export default function FormWorkshop() {
 			<form className="flex flex-row w-full gap-2 h-full" onSubmit={handleSubmit(onSubmit)}>
 				<div className="flex flex-col justify-between w-96 ">
 					<div>
+						{/* INPUT NAME */}
 						<Input placeholder="Name" register={register("atelier_name")} />
 						{/* INPUT CRAFTSMAN */}
-						<div
-							className="bg-white-40% mt-1 mb-2 py-5 px-6 rounded-2xl gap-2 flex items-center input input-bordered h-14 font-manrope text-sm outline-none flex-1 w-full relative cursor-pointer"
-							onClick={switchSelectCraftsman}>
-							<div className="text-brown text-xl mr-2">
-								<AddOutline className="w-5 h-5 opacity-50" />
-							</div>
-							<div className="opacity-50">Assigning a craftsman</div>
+						<div className="bg-white-40% mt-1 mb-2 py-5 px-6 rounded-2xl gap-2 flex items-center input input-bordered h-14 font-manrope text-sm flex-1 w-full relative">
+							{SelectedCraftsman ? (
+								<div className="flex gap-2 items-center w-full">
+									<div
+										className="text-brown text-xl mr-2 cursor-pointer"
+										onClick={handleChangeResetCraftsman}>
+										<AddOutline className="w-5 h-5 opacity-50 rotate-45" />
+									</div>
+									<div className="w-8 h-8 relative rounded-full bg-slate-500 ">
+										<Image
+											src={SelectedCraftsman.craftsman_image}
+											alt=""
+											fill
+											className="rounded-full"
+										/>
+									</div>
+									<div className="flex flex-col font-bold grow">
+										{SelectedCraftsman.craftsman_name}
+									</div>
+								</div>
+							) : (
+								<>
+									<div className="text-brown text-xl mr-2">
+										<AddOutline className="w-5 h-5 opacity-50" />
+									</div>
+									<input
+										className="w-full bg-white-40% outline-none"
+										placeholder="Assigning a craftsman"
+										value={InputCraftsman}
+										onChange={handleChangeCraftsman}
+									/>
+								</>
+							)}
 							{/* MODAL ARTISAN */}
-							{SelectCraftsman && (
+							{SuggestedCraftsmen && (
 								<div className="absolute top-14 bg-white-40% border-2 border-white w-4/5 z-50 rounded-xl gap-1 flex flex-col shadow-sm transition-all duration-100">
-									{Craftsmen.map((item, index) => (
+									{SuggestedCraftsmen.map((item, index) => (
 										<div
-											key={item.craft_id}
+											key={item.craftsman_id}
 											className="flex flex-raw items-center gap-2 px-5 py-3 hover:bg-white rounded-xl cursor-pointer"
 											onClick={() => {
-												assignCraftman(item);
+												handleSelectCraftsman(item);
 											}}>
 											<div className="w-8 h-8 relative rounded-full bg-slate-500">
-												<Image src={item.craft_img} alt="" fill className="rounded-full" />
+												<Image src={item.craftsman_image} alt="" fill className="rounded-full" />
 											</div>
 											<div className="flex flex-col items-center ">
-												<p className="text-black-default font-bold">{item.craft_name}</p>
+												<p className="text-black-default font-bold">{item.craftsman_name}</p>
 											</div>
 										</div>
 									))}
@@ -149,10 +224,10 @@ export default function FormWorkshop() {
 				</div>
 				<div className="ml-14 flex flex-col w-96 gap-4">
 					<div className="text-base text-bronze font-bold">Galery</div>
-					<div className={`max-h-64 overflow-y-scroll flex flex-row flex-wrap gap-2`}>
-						{imagePreview.map((item) => (
-							<div>
-								<img className="w-40 h-32 rounded-2xl" src={item} alt="Aperçu de l'image" />
+					<div className={`max-h-72 overflow-y-scroll flex flex-row flex-wrap gap-2`}>
+						{imagePreview.map((item, index) => (
+							<div key={index} className="w-40 h-32 relative rounded-2xl">
+								<Image src={item} alt="Image" fill className="rounded-2xl" />
 							</div>
 						))}
 						<div

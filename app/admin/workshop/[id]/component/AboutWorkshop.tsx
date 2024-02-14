@@ -7,9 +7,10 @@ import Item from "./Item";
 import {useForm} from "react-hook-form";
 import {FormAtelierData} from "@/app/schema/atelierSchema";
 import Textarea from "@/components/textarea";
+import Image from "next/image";
 
 const atelier = {
-	id: 1,
+	workshop_id: 1,
 	workshop_name: "Bouquet en vase",
 	workshop_color: "bronze",
 	workshop_icon: "bronze",
@@ -82,12 +83,12 @@ export default function AboutWorkshop() {
 			<div className="flex justify-center w-14 pt-5 pl-5 ">
 				<EditFill className="w-6 h-6 opacity-5 hover:opacity-50 cursor-pointer" />
 			</div>
-			<div className="w-2/5 pl-7">
-				<div className="text-brown mb-5 font-bold">Gallery</div>
-				<div className="flex flex-row flex-wrap gap-4">
+			<div className="w-1/3 pl-7 flex flex-col gap-4">
+				<div className="text-brown font-bold">Gallery</div>
+				<div className="max-h-72 flex flex-row flex-wrap gap-4 overflow-y-scroll">
 					{atelier.image.map((image, index) => (
-						<div key={index} className="w-36 h-32 bg-white-40% relative">
-							<img src={image} className="w-full h-full rounded-3xl object-cover" />
+						<div key={index} className="w-40 h-32 relative rounded-2xl">
+							<Image src={image} alt="image" fill className="rounded-2xl" />
 							<div className="bg-bronze shrink-0 w-auto h-auto rounded-full absolute top-3 right-3 cursor-pointer">
 								<More className="w-4 h-4 text-white" />
 							</div>
@@ -105,8 +106,8 @@ export default function AboutWorkshop() {
 						</div>
 					</div>
 				</div>
-				<div>
-					<div>Description</div>
+				<div className="flex flex-col gap-2">
+					<div className="flex items-center opacity-60 font-bold">Description</div>
 					<Textarea placeholder="Description" />
 				</div>
 			</div>
