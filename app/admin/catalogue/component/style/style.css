@@ -2,7 +2,18 @@
 	min-height: 54px;
 	font-size: 14px !important;
 }
-
+/* Height general de la table */
+/* .fc {
+	height: 100%; /* Adjust this value as needed */
+/* } */
+/* Reduce the height of the rows in the calendar */
+.fc-day-grid tbody tr {
+	height: 10px; /* Adjust this value as needed */
+}
+.fc-event {
+	background-color: transparent !important;
+	border-color: transparent !important;
+}
 .fc-toolbar-chunk {
 	display: flex;
 	flex-direction: row;
@@ -26,11 +37,20 @@
 	border-color: transparent !important;
 	color: #6c757d !important;
 }
+.fc .fc-button-primary:focus {
+	box-shadow: none !important;
+}
 
 .fc-dayGridMonth-button {
 	min-width: 98px;
 	min-height: 38px;
 }
+/* .fc-dayGridMonth-button:focus,
+.fc-timeGridWeek-button:focus {
+	background-color: #fff !important;
+	border: 1px solid #eca853 !important;
+	color: #eca853 !important;
+} */
 
 .fc-timeGridWeek-button {
 	min-width: 102px;

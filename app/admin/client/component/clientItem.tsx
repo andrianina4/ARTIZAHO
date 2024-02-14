@@ -2,17 +2,9 @@ import React from "react";
 import {RoundPlace} from "@/constants/link/icons";
 import Image from "next/image";
 import {IClient} from "@/types/IClient";
+import {formatToDMY} from "@/utils/Format";
 
 function ClientItem({client}: {client: IClient}) {
-
-	const formattedDate: string = new Intl.DateTimeFormat("en-US", {
-		day: "numeric",
-		month: "long",
-		year: "numeric",
-		// hour: "numeric",
-		// minute: "numeric",
-		// second: "numeric",
-	}).format(client.client_created_at);
 	return (
 		<div className="grid grid-cols-custom-3 text-sm font-bold bg-white items-center rounded-lg h-14 pl-4 my-1 hover:mt-1 ">
 			<div className="flex items-center gap-2">
@@ -26,7 +18,9 @@ function ClientItem({client}: {client: IClient}) {
 			<div className="font-normal text-gray-60% flex items-center gap-2">
 				<RoundPlace /> {client.client_location}
 			</div>
-			<div className="flex gap-2 items-center opacity-80">{formattedDate}</div>
+			<div className="flex gap-2 items-center opacity-80">
+				{formatToDMY(client.client_created_at)}
+			</div>
 			<button>...</button>
 		</div>
 	);

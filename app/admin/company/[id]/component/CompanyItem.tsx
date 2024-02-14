@@ -1,5 +1,6 @@
 import {Heart, PeopleFill, Time} from "@/constants/link/icons";
 import {colorBackground, colorText} from "@/types/IColor";
+import {formatToDMY} from "@/utils/Format";
 import React, {ReactNode} from "react";
 
 type ASD = {
@@ -34,15 +35,6 @@ const Status: ASD = {
 };
 
 export default function CompanyItem({item}: {item: CIProps}) {
-	const formattedDate: string = new Intl.DateTimeFormat("en-US", {
-		day: "numeric",
-		month: "long",
-		year: "numeric",
-		// hour: "numeric",
-		// minute: "numeric",
-		// second: "numeric",
-	}).format(item.atelier_date);
-
 	const bg: string = colorBackground[item.atelier_color];
 	const txt: string = colorText[item.atelier_color];
 
@@ -59,7 +51,7 @@ export default function CompanyItem({item}: {item: CIProps}) {
 				<PeopleFill className="w-4 h-4 opacity-70" /> {item.atelier_nb_member}
 			</div>
 			<div className="opacity-70">
-				{formattedDate}
+				{formatToDMY(item.atelier_date)}
 				<div className="flex items-center gap-1 opacity-50">
 					<Time /> {item.atelier_heure_debut}
 				</div>

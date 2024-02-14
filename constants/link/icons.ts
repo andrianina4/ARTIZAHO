@@ -64,9 +64,17 @@ import DateToday from "../../public/icons/lets-icons--date-today-duotone.svg";
 import TimeDuotone from "../../public/icons/lets-icons--time-duotone.svg";
 import Close from "../../public/icons/material-symbols--close.svg";
 import CheckMaterial from "../../public/icons/material-symbols--check.svg";
+import Line from "../../public/icons/ci--line-l.svg";
+import Plus from "../../public/icons/ci--add-plus.svg";
+import MiniToolbox from "../../public/icons/fluent--toolbox-12-filled.svg";
+import MiniCalendar from "../../public/icons/material-symbols--date-range.svg";
+import Duration from "../../public/icons/game-icons--duration.svg";
+import Enterprise from "../../public/icons/carbon--enterprise.svg";
+import Tools from "../../public/icons/clarity--tools-line.svg";
 
 export {
 	MenuIcon,
+	Tools,
 	FacebookFIcon,
 	InstagramIcon,
 	LinkedinIcon,
@@ -132,4 +140,10 @@ export {
 	TimeDuotone,
 	Close,
 	CheckMaterial,
+	Line,
+	Plus,
+	MiniToolbox,
+	MiniCalendar,
+	Duration,
+	Enterprise,
 };

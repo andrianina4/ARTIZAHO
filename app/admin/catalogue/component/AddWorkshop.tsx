@@ -1,18 +1,10 @@
 import Button from "@/components/button";
 import Input from "@/components/input";
 import {Date} from "@/constants/link/icons";
+import {formatToDMY} from "@/utils/Format";
 import React from "react";
 
-export default function AddAtelierPopup({item}: {item: any}) {
-	const formattedDate: string = new Intl.DateTimeFormat("en-US", {
-		day: "numeric",
-		month: "long",
-		year: "numeric",
-		// hour: "numeric",
-		// minute: "numeric",
-		// second: "numeric",
-	}).format(item.date);
-
+export default function AddWorkshop({item}: {item: any}) {
 	// const {register, handleSubmit, reset} = useForm<FormAtelierData>();
 
 	// const onSubmit: SubmitHandler<FormAtelierData> = (data) => {
@@ -23,7 +15,7 @@ export default function AddAtelierPopup({item}: {item: any}) {
 		<form /*onSubmit={handleSubmit(onSubmit)}*/ className="flex flex-col w-full">
 			<div className="flex flex-row items-center opacity-60 gap-6 pb-8">
 				<Date className="w-6 h-6" />
-				<div className="text-2xl">{formattedDate}</div>
+				<div className="text-2xl">{formatToDMY(item.date)}</div>
 			</div>
 			<div className="flex gap-10">
 				<Input placeholder="Workshop name" className="grow" />

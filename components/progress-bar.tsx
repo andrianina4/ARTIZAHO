@@ -1,5 +1,5 @@
 import {colorBackground, colorText} from "@/types/IColor";
-import { customWidth } from "@/types/IWidth";
+import {customWidth} from "@/types/IWidth";
 import React, {ReactNode} from "react";
 
 type ProgressBarProps = {
@@ -9,16 +9,11 @@ type ProgressBarProps = {
 	number?: number;
 };
 
-// NE PAS ENLEVER CE CODE SINON IL Y A BUG COLOR TAILWIND SUR TOUT LE SITE
+// ! NE PAS ENLEVER CE CODE SINON IL Y A BUG COLOR TAILWIND
 //  const colorBackground: TColor = {
 // 	bronze: "bg-bronze",
 // 	blue: "bg-blue",
 // 	green: "bg-green",
-// };
-//  const colorText: TColor = {
-// 	bronze: "text-bronze",
-// 	blue: "text-blue",
-// 	green: "text-green",
 // };
 //  const customWidth: TWidth = {
 // 	0: "w-[0%]",
@@ -35,7 +30,7 @@ type ProgressBarProps = {
 // };
 
 function ProgressBar(props: ProgressBarProps) {
-	const {leftIcon, color, text, number} = props;
+	const {leftIcon, color, text, number = 0} = props;
 
 	const bg: string = colorBackground[color];
 	const txt: string = colorText[color];
@@ -55,7 +50,7 @@ function ProgressBar(props: ProgressBarProps) {
 				</div>
 				<p className="text-sm font-semibold text-gray-60% ">{text} </p>
 			</div>
-			<div className=" absolute -top-2 right-0  font-bold">5</div>
+			<div className=" absolute -top-2 right-0 font-bold">{number}</div>
 		</div>
 	);
 }
