@@ -6,7 +6,7 @@ import Select from "@/components/select";
 import {FlowerOne, UserAddFill} from "@/constants/link/icons";
 import {ISelect} from "@/types/IField";
 import React, {useState} from "react";
-import FormWorkshop from "../catalogue/component/component/FormWorkshop";
+import FormWorkshop from "./component/FormWorkshop";
 import {IWrokshopItem} from "@/types/IWorkshop";
 import WorkshopItem from "./component/WorkshopItem";
 
@@ -90,7 +90,7 @@ export default function Page() {
 				))}
 			</div>
 			{/* POPUP ADD WORKSHOP */}
-			<ModalLayout open={open} onClick={handleToogle} className="w-auto">
+			<ModalLayout open={open} onClick={handleToogle} className="w-auto h-4/5">
 				<FormWorkshop />
 			</ModalLayout>
 		</div>

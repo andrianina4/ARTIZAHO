@@ -70,8 +70,8 @@ export default function page() {
 			{Content === "list" && <ListCompany />}
 			{Content === "proposal" && <Proposal />}
 			{/* POPUP ADD ENTREPRISE */}
-			<ModalLayout open={open} onClick={handleToogle} className="w-1/2 h-2/3">
-				<FormEntreprise />
+			<ModalLayout open={open} onClick={handleToogle} className="w-1/2 h-3/4">
+				<FormEntreprise closePopup={handleToogle} />
 			</ModalLayout>
 		</div>
 	);

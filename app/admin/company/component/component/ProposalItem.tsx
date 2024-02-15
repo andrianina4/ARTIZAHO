@@ -1,12 +1,10 @@
 "use client";
 
-import {IProposalCompany} from "@/types/ICompany";
 import React, {useContext} from "react";
 import {formatToDMY} from "@/utils/Format";
 import Image from "next/image";
 import {colorBackground, colorText} from "@/types/IColor";
 import {PeopleFill} from "@/constants/link/icons";
-import ActionsButtons from "@/components/ActionsButtons";
 import {NotifContext} from "@/app/admin/provider/NotificationProvider";
 import {INotif} from "@/types/INotif";
 

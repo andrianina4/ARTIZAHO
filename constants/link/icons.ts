@@ -71,10 +71,13 @@ import MiniCalendar from "../../public/icons/material-symbols--date-range.svg";
 import Duration from "../../public/icons/game-icons--duration.svg";
 import Enterprise from "../../public/icons/carbon--enterprise.svg";
 import Tools from "../../public/icons/clarity--tools-line.svg";
+import Danger from "../../public/icons/jam--triangle-danger-f.svg";
+import Person from "../../public/icons/fluent--person-24-filled.svg";
 
 export {
 	MenuIcon,
 	Tools,
+	Person,
 	FacebookFIcon,
 	InstagramIcon,
 	LinkedinIcon,
@@ -146,4 +149,5 @@ export {
 	MiniCalendar,
 	Duration,
 	Enterprise,
+	Danger,
 };

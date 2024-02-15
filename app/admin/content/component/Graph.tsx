@@ -41,7 +41,7 @@ const data = {
 };
 const options = {
 	responsive: true,
-	aspectRatio: 2.5,
+	aspectRatio: 3,
 	plugins: {
 		legend: {
 			display: false,
@@ -83,7 +83,7 @@ const legend = [
 
 export default function Graph() {
 	return (
-		<div className="w-full flex flex-col h-[400px] ">
+		<div className="w-full flex flex-col ">
 			<div className="flex justify-between items-center px-3">
 				<div className="font-bold">Annual change in bookings</div>
 				<div className="flex gap-8">
