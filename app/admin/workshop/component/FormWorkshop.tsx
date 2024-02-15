@@ -13,6 +13,7 @@ import {ISuggestCraftman} from "@/types/ICraftman";
 import {ISuggestWorkshop} from "@/types/IWorkshop";
 import {useAutocompletionForCraftsman} from "@/hook/useAutocompletionForCraftsman";
 import {useAutocompletionNameWorkshop} from "@/hook/useAutocompletionNameWorkshop";
+import PopupHeader from "@/components/PopupHeader";
 
 // FAKE
 const ListCraftsmen: ISuggestCraftman[] = [
@@ -131,12 +132,7 @@ export default function FormWorkshop() {
 
 	return (
 		<div className="flex flex-col">
-			<div className="flex flex-row items-center text-bronze gap-6 pb-8">
-				<div className="">
-					<Toolbox className="w-6 h-6" />
-				</div>
-				<div className="text-2xl">New Workshop</div>
-			</div>
+			<PopupHeader icon={<Toolbox className="w-6 h-6" />} title="New Workshop" />
 			<form className="flex flex-row w-full gap-2 h-full" onSubmit={handleSubmit(onSubmit)}>
 				<div className="flex flex-col justify-between w-96 ">
 					<div>
