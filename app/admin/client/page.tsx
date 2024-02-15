@@ -64,7 +64,7 @@ function Page() {
 				</div>
 			</div>
 			<Divider />
-			<div className="bg-red-500 max-w-[1280px] overflow-x-auto">
+			<div className=" max-w-[1280px] overflow-x-auto">
 				<div className="grid grid-cols-custom-3 ml-4 max-w-[1280px]">
 					{headerList.map((item, index) => {
 						return (

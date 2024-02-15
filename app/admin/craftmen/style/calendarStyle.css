@@ -89,3 +89,7 @@ table {
 	width: 10px; /* Largeur de la barre de défilement */
 	margin-left: 4px;
   }
+
+  .selected-date{
+	background-color: goldenrod;
+  }

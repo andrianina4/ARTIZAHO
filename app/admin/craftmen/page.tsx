@@ -68,7 +68,7 @@ function Page({}: Props) {
 					/>
 				</div>
 
-				{/* Modal crafmen */}
+				{/* Modal craftmen */}
 				<ModalLayout open={open} onClick={handleToogle} className="h-[650px] w-[830px]">
 					{step===1 && <Content_one onNext={handleNext}/>}
 					{step===2 && <Content_two onPrevious={handlePrevious}/>}

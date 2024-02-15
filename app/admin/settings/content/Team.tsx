@@ -9,7 +9,8 @@ import {useForm} from "react-hook-form";
 import {FormSettingsData} from "../../../schema/settingsSchema";
 
 function Team() {
-	const {register, handleSubmit, reset} = useForm<FormSettingsData>({mode: "onChange"});
+	const {register, handleSubmit, reset} = useForm<FormSettingsData>({mode: "onChange"
+});
 	const [isVisible, setIsVisible] = useState<boolean>(false);
 	const showForm = () => {
 		setIsVisible(true);

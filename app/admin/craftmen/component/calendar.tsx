@@ -1,4 +1,4 @@
-import React, {ReactNode, useState} from "react";
+import React, {ReactNode, useRef, useState} from "react";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
@@ -12,29 +12,14 @@ import "../style/calendarStyle.css";
 
 type Props ={
     className: ReactNode
+	handleclickDate: any
 }
 
 export default function CraftmanCalendar(props: Props) {
-	const [open, setOpen] = useState(false);
-	const handleToogle = () => {
-		setOpen(!open);
-	};
-	const events = [
-		{
-			id: "1",
-			title: "Pink",
-			start: "2024-01-03",
-			end: "2021-01-03",
-		},
-		{
-			id: "2",
-			title: "Green",
-			start: "2024-01-04",
-			end: "2021-01-05",
-		},
-	];
+
+
 	// const renderEventContent = <CalendarItem title="Bouquet en vase" />;
-    const {className}=props
+    const {className ,handleclickDate}=props
 	return (
 		<div className={`grow overflow-y-scroll pr-4 ${className}`}>
 			<FullCalendar
@@ -44,9 +29,7 @@ export default function CraftmanCalendar(props: Props) {
 					
 				}}
 				initialView="dayGridMonth"
-				events={events} // Liste des evenements
-				//eventContent={renderEventContent} // rendu des evenements su le tableau ??
-				eventClick={(arg) => handleToogle()}
+				dateClick={handleclickDate}
 			/>
 			{/* <AboutPopup open={open} onClick={handleToogle} /> */}
 		</div>
