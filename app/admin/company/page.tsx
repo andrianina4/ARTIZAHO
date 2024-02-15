@@ -71,7 +71,7 @@ export default function page() {
 			{Content === "proposal" && <Proposal />}
 			{/* POPUP ADD ENTREPRISE */}
 			<ModalLayout open={open} onClick={handleToogle} className="w-1/2 h-3/4">
-				<FormEntreprise />
+				<FormEntreprise closePopup={handleToogle} />
 			</ModalLayout>
 		</div>
 	);

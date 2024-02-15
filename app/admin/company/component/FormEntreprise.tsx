@@ -6,9 +6,9 @@ import AddImageRound from "@/components/AddImageRound";
 import {AddCompany} from "@/hook/AddCompany";
 import PopupHeader from "@/components/PopupHeader";
 
-export default function FormEntreprise() {
+export default function FormEntreprise({closePopup}: {closePopup: () => void}) {
 	const {register, handleSubmit, onSubmit, errors, ImagetoShow, handleInputFile, handleFileChange} =
-		AddCompany();
+		AddCompany(closePopup);
 
 	return (
 		<form className="flex flex-col w-full" onSubmit={handleSubmit(onSubmit)}>

@@ -5,7 +5,7 @@ import {yupResolver} from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import {useState} from "react";
 
-export function AddCompany() {
+export function AddCompany(closePopup: () => void) {
 	// * VALIDATION YUP
 	const addCompanySchema = yup.object().shape({
 		name: yup.string().required("The company name is required"),
@@ -59,11 +59,13 @@ export function AddCompany() {
 			// * Image
 			formData.append("company_image", ImageToSend);
 			// * les infos du formulaire sont dans data
+		} catch (error: any) {
+			console.error(error);
+		} finally {
+			closePopup();
 			reset();
 			setImagetoShow(undefined);
 			setImageToSend(undefined);
-		} catch (error: any) {
-			console.error(error);
 		}
 	};
 
