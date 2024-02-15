@@ -1,8 +1,9 @@
 "use client";
 
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import {ICompany} from "@/types/ICompany";
 import CompanyItem from "./component/CompanyItem";
+import {SearchContext} from "../../provider/SearchProvider";
 
 const headerList = ["Name", "Email", "Phone", "Location", "Created at"];
 
@@ -38,6 +39,11 @@ const data: Array<ICompany> = [
 
 export default function ListCompany() {
 	const [Data, setData] = useState<ICompany[]>(data);
+
+	// ! TEST POUR SEARCHBAR
+	// TODO : AVADIKA CUSTOM HOOK
+	const searchContext = useContext(SearchContext);
+	console.log(searchContext.Value);
 
 	return (
 		<>
