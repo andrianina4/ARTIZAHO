@@ -1,8 +1,12 @@
+"use client";
+
 import {useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import {useState} from "react";
 
 export function AddCompany() {
+	// * VALIDATION YUP
 	const addCompanySchema = yup.object().shape({
 		name: yup.string().required("The company name is required"),
 		email: yup
@@ -18,6 +22,7 @@ export function AddCompany() {
 		location: yup.string().required("The company location is required"),
 	});
 
+	// * REACT HOOK FORM
 	const {
 		register,
 		handleSubmit,
@@ -25,9 +30,34 @@ export function AddCompany() {
 		formState: {errors},
 	} = useForm({resolver: yupResolver(addCompanySchema)});
 
-	const onSubmit = (data: any) => {
-		console.log(data);
+	// * IMAGE
+	const [ImagetoShow, setImagetoShow] = useState<string>();
+	const [ImageToSend, setImageToSend] = useState<any>();
+	// * Lorsqu'on clique sur le bouton d'ajout d'image
+	const handleInputFile = () => {
+		const inputELement = document.querySelector("#input-file-company") as HTMLFormElement;
+		if (inputELement) {
+			inputELement.click();
+		}
+		setImagetoShow(undefined);
+		setImageToSend(undefined);
+	};
+	// * Lorsqu'on change l'image
+	const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		if (e.target.files) {
+			// * Traitement image a afficher
+			setImagetoShow(URL.createObjectURL(e.target.files[0]));
+			// * Traitement image a envoyer
+			setImageToSend(e.target.files[0]);
+		}
 	};
 
-	return {register, handleSubmit, onSubmit, errors};
+	// * WHEN SUBMIT
+	const onSubmit = (data: any) => {
+		const formData = new FormData();
+		formData.append("company_image", ImageToSend);
+		// * les infos du formulaire sont dans data
+	};
+
+	return {register, handleSubmit, onSubmit, errors, ImagetoShow, handleInputFile, handleFileChange};
 }

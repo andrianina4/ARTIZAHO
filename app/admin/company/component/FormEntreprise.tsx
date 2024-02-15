@@ -7,7 +7,8 @@ import {AddCompany} from "@/hook/AddCompany";
 import PopupHeader from "@/components/PopupHeader";
 
 export default function FormEntreprise() {
-	const {register, handleSubmit, onSubmit, errors} = AddCompany();
+	const {register, handleSubmit, onSubmit, errors, ImagetoShow, handleInputFile, handleFileChange} =
+		AddCompany();
 
 	return (
 		<form className="flex flex-col w-full" onSubmit={handleSubmit(onSubmit)}>
@@ -54,7 +55,12 @@ export default function FormEntreprise() {
 					</div>
 					<Button content="Add" type="submit" />
 				</div>
-				<AddImageRound bgIcon={<Business className="w-full h-full text-gray-400" />} />
+				<AddImageRound
+					bgIcon={<Business className="w-full h-full text-gray-400" />}
+					ImagetoShow={ImagetoShow}
+					handleInputFile={handleInputFile}
+					handleFileChange={handleFileChange}
+				/>
 			</div>
 		</form>
 	);
