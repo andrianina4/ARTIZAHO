@@ -4,8 +4,27 @@ import React, {useState} from "react";
 import SettingItem from "../component/settingItem";
 import Input from "@/components/input";
 import Button from "@/components/button";
-import {Check} from "@/constants/link/icons";
+import {Add, Check} from "@/constants/link/icons";
 import {AddAdmin} from "@/hook/AddAdmin";
+
+export type IAdmin = {
+	admin_name: string;
+	admin_img: string;
+	admin_mail: string;
+};
+
+const listAdmin: IAdmin[] = [
+	{
+		admin_name: "Admin 1",
+		admin_img: "/temp/trainer-1.jpeg",
+		admin_mail: "admin1@example.com",
+	},
+	{
+		admin_name: "Admin 2",
+		admin_img: "/temp/trainer-1.jpeg",
+		admin_mail: "admin2@example.com",
+	},
+];
 
 function Team() {
 	const [isVisible, setIsVisible] = useState<boolean>(false);
@@ -18,8 +37,14 @@ function Team() {
 	return (
 		<div className="flex flex-col h-full bg-white rounded-3xl px-20 py-10">
 			<div>
-				<SettingItem img={"/temp/vase.png"} />
-				<SettingItem img={"/temp/vase.png"} />
+				{listAdmin.map((item, index) => (
+					<SettingItem
+						key={index}
+						admin_name={item.admin_name}
+						admin_img={item.admin_img}
+						admin_mail={item.admin_mail}
+					/>
+				))}
 				{isVisible && (
 					<form className="flex items-center gap-2" onSubmit={handleSubmit(onSubmit)}>
 						<Input
@@ -44,6 +69,7 @@ function Team() {
 					</form>
 				)}
 				<Button
+					leftIcon={<Add />}
 					content="Add new member"
 					className="bg-white-40% !text-gray-60%"
 					onClick={toggleForm}
