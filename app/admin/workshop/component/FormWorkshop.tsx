@@ -5,12 +5,14 @@ import Input from "@/components/input";
 import Textarea from "@/components/textarea";
 import {AddOutline, CalendarIcon, ImageAdd, Place, Toolbox} from "@/constants/link/icons";
 import {useForm, SubmitHandler, Controller} from "react-hook-form";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {FormAtelierData} from "@/app/schema/atelierSchema";
 import {FileData} from "@/app/schema/fileschema";
 import Image from "next/image";
 import {ISuggestCraftman} from "@/types/ICraftman";
-import useAutocompletionWorkshop from "@/hook/useAutocompletionWorkshop";
+import {ISuggestWorkshop} from "@/types/IWorkshop";
+import {useAutocompletionForCraftsman} from "@/hook/useAutocompletionForCraftsman";
+import {useAutocompletionNameWorkshop} from "@/hook/useAutocompletionNameWorkshop";
 
 // FAKE
 const ListCraftsmen: ISuggestCraftman[] = [
@@ -46,7 +48,36 @@ const ListCraftsmen: ISuggestCraftman[] = [
 	},
 ];
 
+const ListWorkshops: ISuggestWorkshop[] = [
+	{
+		workshop_id: 1,
+		workshop_name: "Bouquet en vase",
+		workshop_know_how: "Unleash the power of the dark side in your code",
+	},
+	{
+		workshop_id: 2,
+		workshop_name: "Bouquet tsy vase",
+		workshop_know_how: "Master the art of hacking and cyber mischief",
+	},
+	{
+		workshop_id: 3,
+		workshop_name: "Papier tsy tadidiko",
+		workshop_know_how: "Bend the rules of programming to your wicked will",
+	},
+	// Add more wicked workshops here
+];
+
 export default function FormWorkshop() {
+	// * Traitement du nom d'atelier
+	const {
+		setBaseValues,
+		SelectedValue,
+		InputValue,
+		handleChange,
+		SuggestedValues,
+		handleSelectValue,
+	} = useAutocompletionNameWorkshop(ListWorkshops);
+
 	// * Traitement de l'artisan
 	const {
 		SelectedCraftsman,
@@ -55,7 +86,7 @@ export default function FormWorkshop() {
 		handleChangeCraftsman,
 		SuggestedCraftsmen,
 		handleSelectCraftsman,
-	} = useAutocompletionWorkshop(ListCraftsmen);
+	} = useAutocompletionForCraftsman(ListCraftsmen);
 
 	// * Traitement des images
 	const [imagePreview, setImagePreview] = useState<string[]>([]);
@@ -110,7 +141,30 @@ export default function FormWorkshop() {
 				<div className="flex flex-col justify-between w-96 ">
 					<div>
 						{/* INPUT NAME */}
-						<Input placeholder="Name" register={register("atelier_name")} />
+						<div className="bg-white-40% mt-1 mb-2 py-5 px-6 rounded-2xl gap-2 flex items-center input input-bordered h-14 font-manrope text-sm flex-1 w-full relative">
+							<input
+								className="w-full bg-white-40% outline-none"
+								placeholder="Assigning a craftsman"
+								value={InputValue}
+								onChange={handleChange}
+							/>
+							{/* MODAL NAME */}
+							{SuggestedValues && (
+								<div className="absolute top-14 bg-white-40% border-2 border-white w-4/5 z-50 rounded-xl gap-1 flex flex-col shadow-sm">
+									{SuggestedValues.map((item) => (
+										<div
+											key={item.workshop_id}
+											className="flex flex-raw items-center px-5 py-3 rounded-xl hover:bg-white transition-all duration-100 cursor-pointer"
+											onClick={() => {
+												handleSelectValue(item);
+											}}>
+											{item.workshop_name}
+										</div>
+									))}
+								</div>
+							)}
+							{/* <Input placeholder="Name" register={register("atelier_name")} /> */}
+						</div>
 						{/* INPUT CRAFTSMAN */}
 						<div className="bg-white-40% mt-1 mb-2 py-5 px-6 rounded-2xl gap-2 flex items-center input input-bordered h-14 font-manrope text-sm flex-1 w-full relative">
 							{SelectedCraftsman ? (
@@ -145,7 +199,7 @@ export default function FormWorkshop() {
 									/>
 								</>
 							)}
-							{/* MODAL ARTISAN */}
+							{/* MODAL CRAFTSMAN */}
 							{SuggestedCraftsmen && (
 								<div className="absolute top-14 bg-white-40% border-2 border-white w-4/5 z-50 rounded-xl gap-1 flex flex-col shadow-sm transition-all duration-100">
 									{SuggestedCraftsmen.map((item, index) => (
@@ -174,7 +228,7 @@ export default function FormWorkshop() {
 								register={register("atelier_tarifs")}
 							/>
 							<div className="flex items-center opacity-50 h-full">Duration</div>
-							<div className="w-[121px] bg-white-40% py-5 px-6 rounded-2xl flex input input-bordered h-14">
+							<div className="w-[121px] bg-white-40% py-5 rounded-2xl flex input input-bordered h-14">
 								<input
 									type="time"
 									{...register("atelier_heure_duree")}

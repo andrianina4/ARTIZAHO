@@ -53,3 +53,9 @@ export type IWrokshopItem = {
 	shop_nb_participants: number;
 	shop_duration: string;
 };
+
+export type ISuggestWorkshop = {
+	workshop_id: number;
+	workshop_name: string;
+	workshop_know_how: string;
+};

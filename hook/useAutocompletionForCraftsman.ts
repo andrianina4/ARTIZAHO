@@ -1,8 +1,7 @@
 import {ISuggestCraftman} from "@/types/ICraftman";
 import React, {useState} from "react";
 
-export default function useAutocompletionWorkshop(ListCraftsmen: ISuggestCraftman[]) {
-	// * Traitement de l'artisan
+export function useAutocompletionForCraftsman(ListCraftsmen: ISuggestCraftman[]) {
 	// liste des artisans de base
 	const [BaseCraftsmen, setBaseCraftsman] = useState<ISuggestCraftman[]>(ListCraftsmen);
 	// liste des artisans suggerer
@@ -13,7 +12,7 @@ export default function useAutocompletionWorkshop(ListCraftsmen: ISuggestCraftma
 		setInputCraftsman(e.target.value);
 		if (e.target.value != "") {
 			const filteredCraftman = BaseCraftsmen.filter((craftsman) =>
-				craftsman.craftsman_name.toLowerCase().includes(e.target.value)
+				craftsman.craftsman_name.toLowerCase().includes(e.target.value.toLocaleLowerCase())
 			);
 			setSuggestedCraftsmen(filteredCraftman);
 		} else {
