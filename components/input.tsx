@@ -48,30 +48,32 @@ function Input(props: InputProps) {
 					{label}
 				</label>
 			)}
-			<div
-				className={`bg-white-40% mt-2 py-5 px-6 rounded-2xl flex items-center input input-bordered h-14 ${className}`}>
-				{leftIcon ? <div className="text-brown text-xl mr-2">{leftIcon}</div> : null}
-				<input
-					id={id}
-					name={name}
-					type={definedType}
-					placeholder={placeholder}
-					// value={value}
-					readOnly={readonly}
-					{...register}
-					className={`font-manrope text-sm outline-none bg-white-40% flex-1 text-black-60% w-full`}
-				/>
-				{type === "password" ? (
-					<button className="text-xl" onClick={toggleShowPassword} type="button">
-						{showPassword ? <EyeOffIcon /> : <EyeIcon />}
-					</button>
-				) : null}
-			</div>
-			{errorMessage?.message && (
-				<div className="pl-2 flex items-center gap-1 text-xs text-red-600 opacity-80 font-bold">
-					<Danger className="w-3 h-3" /> <div>{errorMessage?.message}</div>
+			<div className="w-full flex flex-col">
+				<div
+					className={`bg-white-40% mt-2 py-5 px-6 rounded-2xl flex items-center input input-bordered h-14 ${className}`}>
+					{leftIcon ? <div className="text-brown text-xl mr-2">{leftIcon}</div> : null}
+					<input
+						id={id}
+						name={name}
+						type={definedType}
+						placeholder={placeholder}
+						// value={value}
+						readOnly={readonly}
+						{...register}
+						className={`font-manrope text-sm outline-none bg-white-40% flex-1 text-black-60% w-full`}
+					/>
+					{type === "password" ? (
+						<button className="text-xl" onClick={toggleShowPassword} type="button">
+							{showPassword ? <EyeOffIcon /> : <EyeIcon />}
+						</button>
+					) : null}
 				</div>
-			)}
+				{errorMessage?.message && (
+					<div className="pl-2 flex items-center gap-1 text-xs text-red-600 opacity-80 font-bold">
+						<Danger className="w-3 h-3" /> <div>{errorMessage?.message}</div>
+					</div>
+				)}
+			</div>
 		</>
 	);
 }
