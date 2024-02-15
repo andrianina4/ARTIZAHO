@@ -54,9 +54,17 @@ export function AddCompany() {
 
 	// * WHEN SUBMIT
 	const onSubmit = (data: any) => {
-		const formData = new FormData();
-		formData.append("company_image", ImageToSend);
-		// * les infos du formulaire sont dans data
+		try {
+			const formData = new FormData();
+			// * Image
+			formData.append("company_image", ImageToSend);
+			// * les infos du formulaire sont dans data
+			reset();
+			setImagetoShow(undefined);
+			setImageToSend(undefined);
+		} catch (error: any) {
+			console.error(error);
+		}
 	};
 
 	return {register, handleSubmit, onSubmit, errors, ImagetoShow, handleInputFile, handleFileChange};
