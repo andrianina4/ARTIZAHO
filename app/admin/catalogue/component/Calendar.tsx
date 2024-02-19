@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
@@ -9,37 +9,15 @@ import AboutPopup from "./AboutPopup";
 
 import "./style/style.css";
 import {EventClickArg} from "@fullcalendar/core/index.js";
-import AddAtelierPopup from "./AddAtelierPopup";
+import AddWorkshop from "./AddWorkshop";
+import {CalendarEventsContext} from "./provider/CalendarEventsProvider";
 
 export default function Calendar() {
-	const [events, setEvents] = useState([
-		{
-			id: "1",
-			title: "Bouquet en vase",
-			start: "2024-01-04",
-			description: "exemple de description",
-		},
-		{
-			id: "1",
-			title: "Bouquet en mousse",
-			start: "2024-01-15",
-			description: "exemple de description",
-		},
-		{
-			id: "1",
-			title: "Bouquet en vase",
-			start: "2024-01-31",
-			description: "exemple de description",
-		},
-		{
-			id: "2",
-			title: "Bouquet en mousse",
-			start: "2024-02-01",
-			description: "exemple de description",
-		},
-	]);
+	const EventsFromContext = useContext(CalendarEventsContext);
+
+	// const [EventsToShow, setEventsToShow] = useState([]);
+
 	const [openAbout, setOpenAbout] = useState(false);
-	const [openAdd, setOpenAdd] = useState(false);
 
 	const [popupItem, setPopupItem] = useState({});
 
@@ -47,56 +25,42 @@ export default function Calendar() {
 		setOpenAbout(!openAbout);
 	};
 
-	const handleToogleAdd = () => {
-		setOpenAdd(!openAdd);
-	};
-
 	const handleEventClick = (eventClickInfo: EventClickArg) => {
-		// Logique à exécuter lorsqu'on clique sur un événement
-		setOpenAbout(!openAbout);
+		// event lorsqu'on clique sur un événement
+		handleToogleAbout();
 		setPopupItem(eventClickInfo.event);
 	};
 
-	const handleDateClick = (dateClickInfo: DateClickArg) => {
-		// Logique à exécuter lorsqu'on clique sur une date sans evenement
-		setOpenAdd(!openAdd);
-		setPopupItem(dateClickInfo);
-	};
-
-	const customEventContent = (eventInfo: {
-		event: any;
-		isMirror: boolean;
-		isStart: boolean;
-		isEnd: boolean;
-		el: HTMLElement;
-		view: any;
-	}): React.ReactNode => {
+	const customEventContent = (eventInfo: any): React.ReactNode => {
 		return (
 			<>
-				<CalendarItem title={eventInfo.event.title} />
+				<CalendarItem item={eventInfo.event} />
 			</>
 		);
 	};
 
 	return (
-		<div className="grow overflow-y-scroll pr-4">
+		<div className="grow overflow-y-scroll pr-2">
 			<FullCalendar
 				plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
 				headerToolbar={{
 					left: "prev,next title",
 					center: "",
-					right: "dayGridMonth,timeGridWeek,timeGridDay",
+					right: "dayGridMonth,timeGridWeek",
 				}}
 				initialView="dayGridMonth"
-				events={events} // Liste des evenements
+				events={
+					EventsFromContext.FilteredEvents.length === 0
+						? EventsFromContext.InitialEvents
+						: EventsFromContext.FilteredEvents
+				} // Liste des evenements
 				eventContent={customEventContent} // rendu des evenements sur le tableau
 				eventClick={handleEventClick}
-				dateClick={handleDateClick}
+				// dayMaxEvents={2}
+				// eventBackgroundColor="#030229"
+				// eventBorderColor="none"
 			/>
 			<AboutPopup open={openAbout} onClick={handleToogleAbout} item={popupItem} />
-			<ModalLayout open={openAdd} onClick={handleToogleAdd} className="w-1/2">
-				<AddAtelierPopup item={popupItem} />
-			</ModalLayout>
 		</div>
 	);
 }

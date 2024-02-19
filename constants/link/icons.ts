@@ -56,10 +56,31 @@ import PermissionIcon from "../../public/icons/fluent-mdl2--permissions-solid.sv
 import Shop from "../../public/icons/shop.svg";
 import People1 from "../../public/icons/people1.svg";
 import PeopleCheck from "../../public/icons/people-check.svg";
-
+import PeopleToolbox from "../../public/icons/fluent--people-toolbox-20-regular.svg";
+import EllipseBrown from "../../public/icons/ellipseBrown.svg";
+import PeopleFill from "../../public/icons/fluent--people-48-filled.svg";
+import Company from "../../public/icons/mdi--company.svg";
+import HomeAdd from "../../public/icons/fluent--home-add-24-filled.svg";
+import Business from "../../public/icons/bx--bxs-business.svg";
+import NotifIcon from "../../public/icons/solar--bell-bold.svg";
+import DateToday from "../../public/icons/lets-icons--date-today-duotone.svg";
+import TimeDuotone from "../../public/icons/lets-icons--time-duotone.svg";
+import Close from "../../public/icons/material-symbols--close.svg";
+import CheckMaterial from "../../public/icons/material-symbols--check.svg";
+import Line from "../../public/icons/ci--line-l.svg";
+import Plus from "../../public/icons/ci--add-plus.svg";
+import MiniToolbox from "../../public/icons/fluent--toolbox-12-filled.svg";
+import MiniCalendar from "../../public/icons/material-symbols--date-range.svg";
+import Duration from "../../public/icons/game-icons--duration.svg";
+import Enterprise from "../../public/icons/carbon--enterprise.svg";
+import Tools from "../../public/icons/clarity--tools-line.svg";
+import Danger from "../../public/icons/jam--triangle-danger-f.svg";
+import Person from "../../public/icons/fluent--person-24-filled.svg";
 export {
   MenuIcon,
   FacebookFIcon,
+  Tools,
+	Person,
   InstagramIcon,
   LinkedinIcon,
   SearchIcon,
@@ -116,4 +137,22 @@ export {
   Shop,
   People1,
   PeopleCheck,
+  PeopleToolbox,
+	EllipseBrown,
+	PeopleFill,
+	Company,
+	HomeAdd,
+	Business,
+	NotifIcon,
+	DateToday,
+	TimeDuotone,
+	Close,
+	CheckMaterial,
+	Line,
+	Plus,
+	MiniToolbox,
+	MiniCalendar,
+	Duration,
+	Enterprise,
+	Danger,
 };

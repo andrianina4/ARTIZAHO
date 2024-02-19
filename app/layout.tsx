@@ -1,5 +1,5 @@
 import "./globals.css";
-import type { Metadata } from "next";
+import type {Metadata} from "next";
 
 export const metadata: Metadata = {
   title: "Artizaho",
@@ -13,7 +13,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" data-theme="light">
       <body className="font-manrope relative text-black-default bg-white text-base ">
         {children}
       </body>

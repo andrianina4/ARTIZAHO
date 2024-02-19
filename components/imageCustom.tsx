@@ -1,26 +1,28 @@
 
-import Image from 'next/image'
+import Image, { StaticImageData } from 'next/image'
 import React, { ReactNode } from 'react'
 
 type Props = {
+    styleIcon?: string
     className?: string
     icon?: ReactNode
+    img:StaticImageData | string 
 }
 
 function ImageCustom(props: Props) {
 
-    const{ className= 'bg-white', icon} =props
+    const{ styleIcon= 'bg-white', className='w-[168px] h-[168px]' ,icon, img} =props
 
   return (
-    <div className=' relative w-[168px] h-[168px]  '>
+    <div className={`relative  ${className}`}>
     <Image 
-        src={"/temp/vase.png"} 
-        alt={`shopping-1`}
+        src={img} 
+        alt={`shopping-1`} 
         fill
         className="rounded-full"
     />
    {icon ? 
-   <div className={`absolute flex items-center justify-center bottom-5 right-1 w-8 h-8 rounded-full ${className}`}>
+   <div className={`absolute flex items-center justify-center bottom-5 right-1 w-8 h-8 rounded-full ${styleIcon}`}>
         {icon}
     </div> : null}
 </div>
