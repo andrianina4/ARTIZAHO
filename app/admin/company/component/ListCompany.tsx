@@ -4,6 +4,7 @@ import React, {useContext, useEffect, useState} from "react";
 import {ICompany} from "@/types/ICompany";
 import CompanyItem from "./component/CompanyItem";
 import {SearchContext} from "../../provider/SearchProvider";
+import {getAllCompany} from "./Call/Company";
 
 const headerList = ["Name", "Email", "Phone", "Location", "Created at"];
 
@@ -42,28 +43,16 @@ export default function ListCompany() {
 	const [Data, setData] = useState<ICompany[]>(data);
 	const [error, setError] = useState<Error | null>(null);
 
-	// useEffect(() => {
-	// 	const fetchData = async () => {
-	// 		try {
-	// 			const response = await axios.get("https://api.example.com/data");
-	// 			setData(response.data);
-	// 		} catch (error: any) {
-	// 			setError(error);
-	// 		} finally {
-	// 			setLoading(false);
-	// 		}
-	// 	};
-
-	// 	fetchData();
-	// }, []);
+	useEffect(() => {
+		const fetchAllCompany = async () => {
+			return await getAllCompany(setError);
+		};
+		const data = fetchAllCompany();
+		console.log(error);
+	}, []);
 
 	// if (loading) {
 	// 	return <div>Loading...</div>;
-	// }
-
-	// if (error) {
-	// 	console.log(error);
-	// 	return <div>Error: {error.message}</div>;
 	// }
 
 	// * FILTRE PAR SEARCH BAR
@@ -76,6 +65,10 @@ export default function ListCompany() {
 		setFilteredData(filteredValues);
 	}, [searchContext.Value]);
 
+	// if (error) {
+	// 	// console.log(error);
+	// 	return <div>Error: {error.message}</div>;
+	// }
 	return (
 		<>
 			<div className="grid grid-cols-custom-3 ml-4">
@@ -85,11 +78,17 @@ export default function ListCompany() {
 					</span>
 				))}
 			</div>
-			<div>
-				{FilteredData.map((company, index) => (
-					<CompanyItem key={index} company={company} />
-				))}
-			</div>
+			{error ? (
+				<div className="w-full h-full grow flex justify-center items-center">
+					<div className="opacity-50">An error has occurred</div>
+				</div>
+			) : (
+				<div>
+					{FilteredData.map((company, index) => (
+						<CompanyItem key={index} company={company} />
+					))}
+				</div>
+			)}
 		</>
 	);
 }
