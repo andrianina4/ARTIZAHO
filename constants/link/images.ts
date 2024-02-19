@@ -11,6 +11,9 @@ import whoare1 from "../../public/images/whoare1.png";
 import whoare2 from "../../public/images/whoare2.png";
 import baobabBg from "../../public/images/baobabBg.png";
 import baobabWhoAre from "../../public/images/baobabWhoAre.png";
+import ourWorkShop from "../../public/images/ourWorkShop.png";
+import our1 from "../../public/images/our1.png";
+import our2 from "../../public/images/our2.png";
 
 export {
   artizahoWhite,
@@ -26,4 +29,7 @@ export {
   whoare2,
   baobabBg,
   baobabWhoAre,
+  ourWorkShop,
+  our1,
+  our2,
 };
