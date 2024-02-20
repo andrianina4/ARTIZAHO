@@ -13,6 +13,7 @@ import "../style/calendarStyle.css";
 type Props ={
     className: ReactNode
 	handleclickDate: any
+	
 }
 
 export default function CraftmanCalendar(props: Props) {
@@ -29,7 +30,10 @@ export default function CraftmanCalendar(props: Props) {
 					
 				}}
 				initialView="dayGridMonth"
-				dateClick={handleclickDate}
+				select={handleclickDate}
+				selectMirror={true}
+				selectable={true}
+				
 			/>
 			{/* <AboutPopup open={open} onClick={handleToogle} /> */}
 		</div>

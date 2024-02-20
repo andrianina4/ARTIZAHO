@@ -24,7 +24,7 @@ function Content_one({onNext}: props) {
 						<form className="flex w-full gap-4" >
 							<div className="w-1/2">
 								<Input placeholder="Name" />
-								<Input placeholder="Kmow-how" />
+								<Input placeholder="Know-how" />
 								<Textarea placeholder="About the craftman " className="h-48" />
 							</div>
 							<div className=" flex flex-col w-1/2 items-center ">
