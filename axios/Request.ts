@@ -5,8 +5,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL_JSON_SERVER;
 
 export const getAll = (endpoint: string): Promise<AxiosResponse<any>> => {
 	// let params = 0;
-	console.log(`${BASE_URL}${endpoint}`);
-	return axios.get(`${BASE_URL}${endpoint}`);
+	return axios.get(`${BASE_URL}error${endpoint}`);
 };
 
 // ? OHATRA

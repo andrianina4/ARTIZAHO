@@ -19,10 +19,8 @@ export default function CompanyItem({company}: {company: any}) {
 			<div className="font-normal text-gray-60% flex items-center gap-2">
 				<RoundPlace /> {company.company_location}
 			</div>
-			<div className="flex gap-2 items-center opacity-80">{company.company_created_at}</div>
-			{/* <div className="flex gap-2 items-center opacity-80">
-				{formatToDMY(company.company_created_at)}
-			</div> */}
+			{/* <div className="flex gap-2 items-center opacity-80">{company.company_created_at}</div> */}
+			<div className="flex gap-2 items-center opacity-80">{formatToDMY(company.company_created_at)}</div>
 			<button>...</button>
 		</div>
 	);

@@ -6,6 +6,7 @@ import CompanyItem from "./component/CompanyItem";
 import {SearchContext} from "../../provider/SearchProvider";
 import {getAllCompany} from "./Call/Company";
 import {useQuery} from "react-query";
+import ErrorPage from "./status/ErrorPage";
 
 const headerList = ["Name", "Email", "Phone", "Location", "Created at"];
 
@@ -45,15 +46,18 @@ export default function ListCompany() {
 	// const [error, setError] = useState<Error | null>(null);
 
 	// useEffect(() => {
-	// 	const fetchAllCompany = async () => {
-	// 		return await getAllCompany(setError);
-	// 	};
-	// 	const data = fetchAllCompany();
-	// 	console.log(error);
+	//   const fetchAllCompany = async () => {
+	//     return await getAllCompany(setError);
+	//   };
+	//   const data = fetchAllCompany();
+	//   console.log(error);
 	// }, []);
 
 	// * React Query
-	const {isLoading, data} = useQuery("getCompany", getAllCompany);
+	const {isLoading, data, isError, error, isFetching, refetch} = useQuery("getCompany", getAllCompany);
+	const refresh = () => {
+		refetch();
+	};
 
 	// * FILTRE PAR SEARCH BAR
 	const [FilteredData, setFilteredData] = useState<ICompany[]>(data?.data);
@@ -72,6 +76,13 @@ export default function ListCompany() {
 		}
 	}, [searchContext.Value, data]);
 
+	if (isLoading || isFetching) {
+		return <div>Loading...</div>;
+	}
+	if (isError) {
+		return <ErrorPage refresh={refresh} />;
+	}
+
 	return (
 		<>
 			<div className="grid grid-cols-custom-3 ml-4">
@@ -86,16 +97,15 @@ export default function ListCompany() {
           <div className="opacity-50">An error has occurred</div>
         </div>
       ) : ( */}
-			{FilteredData ? (
-				<div>
-					{FilteredData?.map((company, index) => (
-						<CompanyItem key={index} company={company} />
-					))}
-				</div>
-			) : (
+			{/* {!isLoading ? ( */}
+			<div>
+				{FilteredData?.map((company, index) => (
+					<CompanyItem key={index} company={company} />
+				))}
+			</div>
+			{/* ) : (
 				<div>Loading...</div>
-			)}
-
+			)} */}
 			{/* )} */}
 		</>
 	);
