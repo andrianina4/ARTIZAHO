@@ -1,4 +1,4 @@
-import type {Config} from "tailwindcss";
+import type { Config } from "tailwindcss";
 
 const config: Config = {
 	content: [
@@ -13,7 +13,7 @@ const config: Config = {
 				"custom-2": "15% 10% 30% 15% 20% 5%",
 				"custom-3": "20% 20% 15% 20% 15% 5%",
 				"custom-4": "20% 40% 25% 15%",
-				"custom-5": "25% 50% 25%",
+				"custom-5": "30% 45% 25%",
 				"custom-6": "30% 20% 30% 20%",
 				"custom-7": "10% 20% 20% 10% 15% 20%",
 				"custom-8": "20% 20% 15% 25% 15%",
@@ -56,6 +56,7 @@ const config: Config = {
 				"bg-feedback":
 					"linear-gradient(0deg, rgba(58, 33, 11, 0.60) 0%, rgba(58, 33, 11, 0.60) 100%), url('/images/bg-feedback.jpeg')",
 				"bg-accueil-video": "url('/images/imgVideo.jpeg') ",
+				"bg-baobabWhoAre": "url('/images/baobabWhoAre.png') ",
 				// "url('/images/imgVideo.jpeg'), lightgray 50% / cover no-repeat",
 			},
 			maxWidth: {

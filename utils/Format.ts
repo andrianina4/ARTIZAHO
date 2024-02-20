@@ -1,4 +1,5 @@
-export const formatToDMY = (date: Date) => {
+export const formatToDMY = (date: Date | string) => {
+	if (typeof date === "string") date = new Date(date);
 	return new Intl.DateTimeFormat("en-US", {
 		day: "numeric",
 		month: "long",

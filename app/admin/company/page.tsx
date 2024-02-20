@@ -16,8 +16,16 @@ const selectItem: Array<ISelect> = [
 		label: "Name",
 	},
 	{
-		value: "participants",
-		label: "Partipants",
+		value: "email",
+		label: "Email",
+	},
+	{
+		value: "location",
+		label: "Location",
+	},
+	{
+		value: "created_at",
+		label: "Created at",
 	},
 ];
 
@@ -35,7 +43,7 @@ export default function page() {
 	};
 
 	return (
-		<div className="flex flex-col gap-4">
+		<div className="h-full flex flex-col gap-4">
 			<div className="flex justify-between items-center">
 				<div className="flex gap-2 items-center">
 					<Button content="Add Company" leftIcon={<HomeAdd />} onClick={handleToogle} />
@@ -70,8 +78,8 @@ export default function page() {
 			{Content === "list" && <ListCompany />}
 			{Content === "proposal" && <Proposal />}
 			{/* POPUP ADD ENTREPRISE */}
-			<ModalLayout open={open} onClick={handleToogle} className="w-1/2 h-2/3">
-				<FormEntreprise />
+			<ModalLayout open={open} onClick={handleToogle} className="w-1/2 h-3/4">
+				<FormEntreprise closePopup={handleToogle} />
 			</ModalLayout>
 		</div>
 	);

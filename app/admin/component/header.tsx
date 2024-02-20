@@ -1,8 +1,9 @@
 "use client";
 
 import {NotifIcon, SearchIcon} from "@/constants/link/icons";
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import NotifPanel from "./NotifPanel";
+import {SearchContext} from "../provider/SearchProvider";
 
 type HeaderProps = {
 	BigTitle: string;
@@ -14,9 +15,11 @@ type HeaderProps = {
 export default function Header(props: HeaderProps) {
 	const {BigTitle, LittleTitle, searchBar = true, notif = true} = props;
 
-	// state pour savoir si i y a des notifs
+	// * controle du serachbar
+	const searchContext = useContext(SearchContext);
+	// * state pour savoir si i y a des notifs
 	const [activeNotif, setNotif] = useState<boolean>(true);
-	// state pour savoir si le panel est actif sur la page
+	// * state pour savoir si le panel est actif sur la page
 	const [PopupNotif, setPopupNotif] = useState<boolean>(false);
 	const switchPopup = () => {
 		setPopupNotif(!PopupNotif);
@@ -32,7 +35,13 @@ export default function Header(props: HeaderProps) {
 				{searchBar && (
 					<div className="w-96 bg-white px-6 rounded-2xl flex items-center gap-2 h-14">
 						<SearchIcon className="w-6 h-6 text-brown" />
-						<input type="text" placeholder="Search" className="w-full outline-none" />
+						<input
+							type="text"
+							placeholder="Search"
+							className="w-full outline-none"
+							value={searchContext.Value}
+							onChange={searchContext.handleChange}
+						/>
 					</div>
 				)}
 				{notif && (

@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-export default function Workshopworkshop({workshop}: {workshop: IWrokshopItem}) {
+export default function WorkshopItem({workshop}: {workshop: IWrokshopItem}) {
 	const bg: string = colorBackground[workshop.shop_color];
 	const txt: string = colorText[workshop.shop_color];
 

@@ -53,6 +53,9 @@ import EyeFill from "../../public/icons/eye-fill.svg";
 import Down from "../../public/icons/down.svg";
 import CalendarIcon from "../../public/icons/calendar.svg";
 import PermissionIcon from "../../public/icons/fluent-mdl2--permissions-solid.svg";
+import Shop from "../../public/icons/shop.svg";
+import People1 from "../../public/icons/people1.svg";
+import PeopleCheck from "../../public/icons/people-check.svg";
 import PeopleToolbox from "../../public/icons/fluent--people-toolbox-20-regular.svg";
 import EllipseBrown from "../../public/icons/ellipseBrown.svg";
 import PeopleFill from "../../public/icons/fluent--people-48-filled.svg";
@@ -71,11 +74,15 @@ import MiniCalendar from "../../public/icons/material-symbols--date-range.svg";
 import Duration from "../../public/icons/game-icons--duration.svg";
 import Enterprise from "../../public/icons/carbon--enterprise.svg";
 import Tools from "../../public/icons/clarity--tools-line.svg";
-
+import Danger from "../../public/icons/jam--triangle-danger-f.svg";
+import Person from "../../public/icons/fluent--person-24-filled.svg";
+import Refresh from "../../public/icons/material-symbols--refresh.svg";
 export {
 	MenuIcon,
-	Tools,
+	Refresh,
 	FacebookFIcon,
+	Tools,
+	Person,
 	InstagramIcon,
 	LinkedinIcon,
 	SearchIcon,
@@ -129,6 +136,9 @@ export {
 	Down,
 	CalendarIcon,
 	PermissionIcon,
+	Shop,
+	People1,
+	PeopleCheck,
 	PeopleToolbox,
 	EllipseBrown,
 	PeopleFill,
@@ -146,4 +156,5 @@ export {
 	MiniCalendar,
 	Duration,
 	Enterprise,
+	Danger,
 };
