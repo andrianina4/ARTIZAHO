@@ -1,19 +1,15 @@
-import axios, {AxiosError, AxiosResponse} from "axios";
+import axios, {AxiosResponse} from "axios";
 
-const BASE_URL = process.env.BASE_URL;
+// ! Change if needed
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL_JSON_SERVER;
 
-export const getAll = async (endpoint: string): Promise<AxiosResponse<any>> => {
-	let params = 0;
-	console.log(`${BASE_URL}/${endpoint}`);
-	return await axios.get(`${BASE_URL}/${endpoint}`, {
-		params,
-		headers: {
-			// Authorization: Bearer ${localStorage.getItem("token")},
-		},
-	});
+export const getAll = (endpoint: string): Promise<AxiosResponse<any>> => {
+	// let params = 0;
+	console.log(`${BASE_URL}${endpoint}`);
+	return axios.get(`${BASE_URL}${endpoint}`);
 };
 
-// ! TSY IZY TY
+// ? OHATRA
 // async function getAllbyNick<T>({url}: {url: string}) {
 // 	const urlBase = `${BASE_URL}/api/${url}`;
 // 	const resultat = new Promise<

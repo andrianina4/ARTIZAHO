@@ -3,9 +3,12 @@
 import Sidebar from "@/components/sidebar";
 import Header from "./component/header";
 import {usePathname} from "next/navigation";
-import {ReactNode, useState} from "react";
+import {ReactNode} from "react";
 import NotificationProvider from "./provider/NotificationProvider";
 import SearchProvider from "./provider/SearchProvider";
+import {QueryClientProvider, QueryClient} from "react-query";
+
+const queryClient = new QueryClient();
 
 export default function Layout({children}: {children: React.ReactNode}) {
 	const pathname = usePathname();
@@ -42,8 +45,10 @@ export default function Layout({children}: {children: React.ReactNode}) {
 			<div className="w-full h-full flex flex-col gap-7">
 				<NotificationProvider>
 					<SearchProvider>
-						<div className="h-[10%]">{dynamicHeader}</div>
-						<div className=" h-[90%]">{children}</div>
+						<QueryClientProvider client={queryClient}>
+							<div className="h-[10%]">{dynamicHeader}</div>
+							<div className=" h-[90%]">{children}</div>
+						</QueryClientProvider>
 					</SearchProvider>
 				</NotificationProvider>
 			</div>

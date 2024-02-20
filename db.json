@@ -1,6 +1,7 @@
 {
-	"company": [
+	"companies": [
 		{
+			"company_id": 1,
 			"company_name": "Codeo Travel",
 			"company_image": "/temp/vase.png",
 			"company_mail": "codeo@gmail.com",
@@ -10,6 +11,7 @@
 			"company_type": "company"
 		},
 		{
+			"company_id": 2,
 			"company_name": "Baobab Travel",
 			"company_image": "/temp/vase.png",
 			"company_mail": "baobab@gmail.com",
@@ -19,6 +21,7 @@
 			"company_type": "individuals"
 		},
 		{
+			"company_id": 3,
 			"company_name": "Travel Life",
 			"company_image": "/temp/vase.png",
 			"company_mail": "life@gmail.com",
