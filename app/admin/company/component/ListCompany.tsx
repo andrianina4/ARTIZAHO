@@ -7,6 +7,7 @@ import {SearchContext} from "../../provider/SearchProvider";
 import {getAllCompany} from "./Call/Company";
 import {useQuery} from "react-query";
 import ErrorPage from "./status/ErrorPage";
+import Waiter from "./status/Waiter";
 
 const headerList = ["Name", "Email", "Phone", "Location", "Created at"];
 
@@ -41,18 +42,6 @@ const data: Array<ICompany> = [
 ];
 
 export default function ListCompany() {
-	// * VALEURS PAR DEFAUT
-	// const [Data, setData] = useState<ICompany[]>(data);
-	// const [error, setError] = useState<Error | null>(null);
-
-	// useEffect(() => {
-	//   const fetchAllCompany = async () => {
-	//     return await getAllCompany(setError);
-	//   };
-	//   const data = fetchAllCompany();
-	//   console.log(error);
-	// }, []);
-
 	// * React Query
 	const {isLoading, data, isError, error, isFetching, refetch} = useQuery("getCompany", getAllCompany);
 	const refresh = () => {
@@ -76,10 +65,8 @@ export default function ListCompany() {
 		}
 	}, [searchContext.Value, data]);
 
-	if (isLoading || isFetching) {
-		return <div>Loading...</div>;
-	}
 	if (isError) {
+		console.error((error as Error).message);
 		return <ErrorPage refresh={refresh} />;
 	}
 
@@ -92,21 +79,15 @@ export default function ListCompany() {
 					</span>
 				))}
 			</div>
-			{/* {error ? (
-        <div className="w-full h-full grow flex justify-center items-center">
-          <div className="opacity-50">An error has occurred</div>
-        </div>
-      ) : ( */}
-			{/* {!isLoading ? ( */}
-			<div>
-				{FilteredData?.map((company, index) => (
-					<CompanyItem key={index} company={company} />
-				))}
-			</div>
-			{/* ) : (
-				<div>Loading...</div>
-			)} */}
-			{/* )} */}
+			{!isLoading || !isFetching ? (
+				<div>
+					{FilteredData?.map((company, index) => (
+						<CompanyItem key={index} company={company} />
+					))}
+				</div>
+			) : (
+				<Waiter />
+			)}
 		</>
 	);
 }
