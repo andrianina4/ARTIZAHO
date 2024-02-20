@@ -1,10 +1,13 @@
+"use client";
+
 import Divider from "@/components/divider";
-import React from "react";
+import React, {useContext, useEffect, useState} from "react";
 import AttendanceItem from "./component/attendanceItem";
 import Select from "@/components/select";
 import {ISelect} from "@/types/IField";
 import {FlowerOne} from "@/constants/link/icons";
 import {IAttendance} from "@/types/IAttendance";
+import {SearchContext} from "../provider/SearchProvider";
 
 const headerList = [
 	"ID",
@@ -73,6 +76,20 @@ const listAttendance: Array<IAttendance> = [
 ];
 
 function page() {
+	// * VALEURS PAR DEFAUT
+	const [Data, setData] = useState<IAttendance[]>(listAttendance);
+	const [error, setError] = useState<Error | null>(null);
+
+	// * FILTRE PAR SEARCH BAR
+	const [FilteredData, setFilteredData] = useState<IAttendance[]>([]);
+	const searchContext = useContext(SearchContext);
+	useEffect(() => {
+		const filteredValues = Data.filter((value) =>
+			value.att_name?.toLocaleLowerCase().includes(searchContext.Value.toLocaleLowerCase())
+		);
+		setFilteredData(filteredValues);
+	}, [searchContext.Value]);
+
 	return (
 		<div className="flex flex-col max-screen overflow-x-auto ">
 			<div className="flex justify-between items-center">
@@ -94,7 +111,7 @@ function page() {
 					})}
 				</div>
 				<div>
-					{listAttendance.map((item, index) => (
+					{FilteredData.map((item, index) => (
 						<AttendanceItem key={index} attendance={item} />
 					))}
 				</div>

@@ -1,13 +1,9 @@
-"use client";
-
-import React, {useState} from "react";
+import React from "react";
 import Divider from "@/components/divider";
-import ClientItem from "./component/clientItem";
 import Select from "@/components/select";
 import {ISelect} from "@/types/IField";
-import {IClient} from "@/types/IClient";
-
-const headerList = ["Name", "Email", "Phone", "Location", "Created at"];
+import ListClient from "./content/ListClient";
+import ListHeader from "@/components/ListHeader";
 
 const selectItem: Array<ISelect> = [
 	{
@@ -20,36 +16,15 @@ const selectItem: Array<ISelect> = [
 	},
 ];
 
-const data: Array<IClient> = [
-	{
-		client_name: "Antonio Hery",
-		client_image: "/temp/vase.png",
-		client_mail: "antonio@gmail.com",
-		client_tel: "0343403434",
-		client_location: "Antananarivo",
-		client_created_at: new Date(),
-		client_type: "company",
-	},
-	{
-		client_name: "Nick Steven",
-		client_image: "/temp/vase.png",
-		client_mail: "nick@gmail.com",
-		client_tel: "0343403434",
-		client_location: "Antananarivo",
-		client_created_at: new Date(),
-		client_type: "individuals",
-	},
-	{
-		client_name: "Onja Nirina",
-		client_image: "/temp/vase.png",
-		client_mail: "onja@gmail.com",
-		client_tel: "0343403434",
-		client_location: "Antananarivo",
-		client_created_at: new Date(),
-		client_type: "company",
-	},
+const headerList = [
+	{id: 1, name: "name", label: "Name"},
+	{id: 2, name: "email", label: "Email"},
+	{id: 3, name: "phone", label: "Phone"},
+	{id: 4, name: "location", label: "Location"},
+	{id: 5, name: "created_at", label: "Created at"},
 ];
-function Page() {
+
+export default function Page() {
 	return (
 		<div className="flex flex-col">
 			<div className="flex justify-between items-center">
@@ -64,22 +39,8 @@ function Page() {
 				</div>
 			</div>
 			<Divider />
-			<div className="grid grid-cols-custom-3 ml-4 mb-4">
-				{headerList.map((item, index) => {
-					return (
-						<span className="text-gray-60% font-bold text-sm" key={index}>
-							{item}
-						</span>
-					);
-				})}
-			</div>
-			<div>
-				{data.map((client, index) => (
-					<ClientItem key={index} client={client} />
-				))}
-			</div>
+			<ListHeader headerList={headerList} gridStyle="grid-cols-custom-3 ml-4 mb-4" />
+			<ListClient />
 		</div>
 	);
 }
-
-export default Page;

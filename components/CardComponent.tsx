@@ -14,7 +14,7 @@ type PropsCard = {
 export default function CardComponent(props: PropsCard) {
   const { description, label, place, price, time, title } = props;
   return (
-    <div className=" w-[304px] h-[449px] p-5 hover:shadow-xl rounded-[24px]">
+    <div className=" w-[304px] h-[449px] p-5 hover:shadow-xl rounded-[24px] cursor-pointer">
       <div className="imageContainer relative">
         <Image
           src={art}

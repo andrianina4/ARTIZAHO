@@ -1,4 +1,4 @@
-import type {Config} from "tailwindcss";
+import type { Config } from "tailwindcss";
 
 const config: Config = {
 	content: [
@@ -56,6 +56,7 @@ const config: Config = {
 				"bg-feedback":
 					"linear-gradient(0deg, rgba(58, 33, 11, 0.60) 0%, rgba(58, 33, 11, 0.60) 100%), url('/images/bg-feedback.jpeg')",
 				"bg-accueil-video": "url('/images/imgVideo.jpeg') ",
+				"bg-baobabWhoAre": "url('/images/baobabWhoAre.png') ",
 				// "url('/images/imgVideo.jpeg'), lightgray 50% / cover no-repeat",
 			},
 			maxWidth: {

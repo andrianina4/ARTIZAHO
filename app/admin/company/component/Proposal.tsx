@@ -1,9 +1,10 @@
 "use client";
 
 import {FlowerOne} from "@/constants/link/icons";
-import React, {useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import ProposalItem from "./component/ProposalItem";
 import {INotif} from "@/types/INotif";
+import {SearchContext} from "../../provider/SearchProvider";
 
 const headerList = ["Name", "Date Proposed", "Time", "Workshop", "Participants"];
 
@@ -48,6 +49,19 @@ const companies: INotif[] = [
 
 export default function Proposal() {
 	const [Data, setData] = useState(companies);
+
+	// * FILTRE PAR SEARCH BAR
+	const [FilteredData, setFilteredData] = useState<INotif[]>([]);
+	const searchContext = useContext(SearchContext);
+	useEffect(() => {
+		const filteredValues = Data.filter((value) =>
+			value.notif_company.name
+				?.toLocaleLowerCase()
+				.includes(searchContext.Value.toLocaleLowerCase())
+		);
+		setFilteredData(filteredValues);
+	}, [searchContext.Value]);
+
 	return (
 		<>
 			<div className="grid grid-cols-custom-8 ml-4">
@@ -58,7 +72,7 @@ export default function Proposal() {
 				))}
 			</div>
 			<div>
-				{Data.map((item, index) => (
+				{FilteredData.map((item, index) => (
 					<ProposalItem key={index} company={item} />
 				))}
 			</div>
