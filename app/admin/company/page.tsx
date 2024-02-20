@@ -16,8 +16,16 @@ const selectItem: Array<ISelect> = [
 		label: "Name",
 	},
 	{
-		value: "participants",
-		label: "Partipants",
+		value: "email",
+		label: "Email",
+	},
+	{
+		value: "location",
+		label: "Location",
+	},
+	{
+		value: "created_at",
+		label: "Created at",
 	},
 ];
 

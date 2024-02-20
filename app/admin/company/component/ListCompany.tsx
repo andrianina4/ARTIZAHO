@@ -59,14 +59,19 @@ export default function ListCompany() {
 	const [FilteredData, setFilteredData] = useState<ICompany[]>([]);
 	const searchContext = useContext(SearchContext);
 	useEffect(() => {
-		const filteredValues = Data.filter((value) =>
-			value.company_name?.toLocaleLowerCase().includes(searchContext.Value.toLocaleLowerCase())
-		);
+		const filteredValues = Data.filter((value) => {
+			if (
+				value.company_name?.toLocaleLowerCase().includes(searchContext.Value.toLocaleLowerCase()) ||
+				value.company_mail?.toLocaleLowerCase().includes(searchContext.Value.toLocaleLowerCase())
+			) {
+				return value;
+			}
+		});
 		setFilteredData(filteredValues);
 	}, [searchContext.Value]);
 
 	// if (error) {
-	// 	// console.log(error);
+	//  console.log(error);
 	// 	return <div>Error: {error.message}</div>;
 	// }
 	return (
@@ -78,17 +83,17 @@ export default function ListCompany() {
 					</span>
 				))}
 			</div>
-			{error ? (
+			{/* {error ? (
 				<div className="w-full h-full grow flex justify-center items-center">
 					<div className="opacity-50">An error has occurred</div>
 				</div>
-			) : (
-				<div>
-					{FilteredData.map((company, index) => (
-						<CompanyItem key={index} company={company} />
-					))}
-				</div>
-			)}
+			) : ( */}
+			<div>
+				{FilteredData.map((company, index) => (
+					<CompanyItem key={index} company={company} />
+				))}
+			</div>
+			{/* )} */}
 		</>
 	);
 }
