@@ -9,6 +9,11 @@ import OrangeMoney from "../../public/images/orange-money.png";
 import Mvola from "../../public/images/mvola_728x534 2.svg";
 import whoare1 from "../../public/images/whoare1.png";
 import whoare2 from "../../public/images/whoare2.png";
+import baobabBg from "../../public/images/baobabBg.png";
+import baobabWhoAre from "../../public/images/baobabWhoAre.png";
+import ourWorkShop from "../../public/images/ourWorkShop.png";
+import our1 from "../../public/images/our1.png";
+import our2 from "../../public/images/our2.png";
 import Vase from "../../public/temp/vase.png"
 
 export {
@@ -23,6 +28,11 @@ export {
   Mvola,
   whoare1,
   whoare2,
+  baobabBg,
+  baobabWhoAre,
+  ourWorkShop,
+  our1,
+  our2,
   Vase
 };
 

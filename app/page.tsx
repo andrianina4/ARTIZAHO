@@ -8,26 +8,27 @@ import QuiNousSommes from "./accueil/QuiNousSommes";
 import CardComponent from "@/components/CardComponent";
 import Comment from "@/components/Comment";
 import Title from "@/components/Title";
+import Sidebard from "./components/Sidebard";
 
 export default function Home() {
+  // return <Sidebard />;
   return (
-    <div>
+    <div className="w-[1440px]- mx-auto-">
       <header className="flex flex-col bg-bg-accueil relative h-[756px]">
         <div className="h-full flex flex-col">
           <NavBar />
-          <div className="flex justify-center  text-center flex-col h-full items-center">
-            <h4 className="font-moonGet uppercase font-extrabold text-[#F6F6F6]   text-[32px] w-[714px] tracking-[6%] leading-relaxed">
-              Découvrez le savoir-faire <br /> de nos artisans passionnés !
+          <div className="flex justify-center text-center flex-col h-full items-center">
+            <h4 className="font-moonGet uppercase font-extrabold text-[#F6F6F6] text-[32px] w-[714px] tracking-[6%] leading-relaxed">
+              DISCOVER THE EXPERTISE <br /> OF OUR PASSIONATE CRAFTSMEN!
             </h4>
 
             <p className="font-manrope text-[#F6F6F6] text-sm w-[714px]">
-              Des professionnels talentueux vous accueillent dans leurs ateliers
-              uniques pour vous transmettre leur art et <br />
-              savoir-faire artisanal. Repartez avec votre création réalisée à la
-              main !
+              Talented professionals welcome you to their unique workshops
+              workshops to share their art and <br />
+              craftsmanship. Leave with your own handmade creation!
             </p>
 
-            <div className=" p-5  w-1/2 mt-4 test ">
+            <div className=" p-5   mt-4 test ">
               <div className="bg-white px-4 py-1 w-full rounded-lg flex items-center justify-between">
                 <div className="flex items-center ">
                   <svg
@@ -44,9 +45,9 @@ export default function Home() {
                   </svg>
                   <input
                     type="text"
-                    id="lieu"
+                    id="lieu1"
                     className="bg-gray-50 border-none text-gray-900 text-sm rounded-lg outline-none block w-full p-2.5 font-manrope font-normal text-black-40%"
-                    placeholder="Lieu"
+                    placeholder="Place"
                     required
                   />
                 </div>
@@ -88,9 +89,9 @@ export default function Home() {
                   </svg>
                   <input
                     type="text"
-                    id="lieu"
+                    id="lieu2"
                     className="bg-gray-50 border-none text-gray-900 text-sm rounded-lg outline-none block w-full p-2.5 font-manrope font-normal text-black-40%"
-                    placeholder="Lieu"
+                    placeholder="Price"
                     required
                   />
                 </div>
@@ -119,9 +120,9 @@ export default function Home() {
                   </svg>
                   <input
                     type="text"
-                    id="lieu"
+                    id="lieu3"
                     className="bg-gray-50 border-none text-gray-900 text-sm rounded-lg outline-none block w-full p-2.5 font-manrope font-normal text-black-40%"
-                    placeholder="Lieu"
+                    placeholder="Skills"
                     required
                   />
                 </div>
@@ -129,7 +130,7 @@ export default function Home() {
                 <div>
                   <button className="btn text-white bg-bronze border-none hover:bg-bronze">
                     <SearchIcon />
-                    Découvrir
+                    Discover
                   </button>
                 </div>
               </div>
@@ -137,7 +138,8 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="mt-[60px]">
+        {/* <div className="absolute w-full bottom-[-34%]"> */}
+        <div className="absolute w-full bottom-[-45%]">
           <Nuage className="w-full" />
         </div>
       </header>
@@ -145,21 +147,21 @@ export default function Home() {
       <div className="mx-auto w-[1440px]">
         <QuiNousSommes />
 
-        <div className="flex flex-col   items-start gap-[12px]">
-          <Title title="les nouveautés" />
+        <div className="flex flex-col items-start gap-[12px]">
+          <Title title="New products" />
           {/* <h4 className="uppercase text-xl text-brown font-moonGet font-extrabold tracking-[8%]">
             
           </h4> */}
           <span className="font-manrope text-sm font-normal text-brown">
-            Liste des nouveaux ateliers
+            List of new workshops
           </span>
         </div>
 
-        <div className="flex gap-[16px] ">
+        <div className="flex gap-[16px] justify-between ">
           <CardComponent
-            title="Papier antemoro"
-            description="Dans cet atelier de 2 heures, apprenez à fabriquer du papier à partir de matériaux entièrement végétaux typiquement malgache."
-            label="Papier antemoro : Enveloppe + carte"
+            title="Antemoro paper"
+            description="In this 2-hour workshop, learn how to make paper from typical Malagasy plant-based materials."
+            label="Antemoro paper : Envelope + card"
             place="Antananarivo"
             price={20.0}
             time="1:30"
@@ -167,26 +169,26 @@ export default function Home() {
 
           <CardComponent
             title="Floral"
-            description="Bienvenue dans l'atelier-boutique de Hanta, où vous pouvez apprendre à créer des compositions florales exceptionnelles."
-            label="Floral : Bouquet en vase"
+            description="Welcome to Hanta's atelier-boutique, where you can learn how to create exceptional floral arrangements."
+            label="Floral : Bouquet in vase"
             place="Antananarivo"
             price={35.0}
             time="1:30"
           />
 
           <CardComponent
-            title="Cuir"
-            description="Lain, un maroquinier passionné qui vous propose de vous initier à l'art de la maroquinerie en créant votre propre bracelet."
-            label="Cuir : Bracelet"
+            title="Leather"
+            description="Lain, a passionate leatherworker, introduces you to the art of leatherwork by creating your own bracelet."
+            label="Leather : Bracelet"
             place="Antananarivo"
             price={15.0}
             time="1:30"
           />
 
           <CardComponent
-            title="Apiculture"
-            description="Découvrir la vie des abeilles, c'est possible ! L'atelier apiculture d'Artizaho vous propose une immersion totale dans l'univers des abeilles."
-            label="Initiation a l'apiculture"
+            title="Beekeeping"
+            description="Discover the life of bees! Artizaho's beekeeping workshop offers you total immersion in the world of bees."
+            label="Introduction to beekeeping"
             place="Antananarivo"
             price={9.0}
             time="1:30"
@@ -194,7 +196,7 @@ export default function Home() {
         </div>
 
         <Title
-          title="témoignage et avis de clients"
+          title="Customer testimonials and reviews"
           className="mb-6 mt-6 items-center"
         />
 
@@ -202,25 +204,25 @@ export default function Home() {
           <Comment
             author="Guy Hawkins"
             role="President of Sales"
-            comment="Nous mettons en valeur les artisans malgaches pour faire revivre la culture et le savoir-faire en proposant une série d'ateliers ouverts au public."
+            comment="We're showcasing Malagasy craftsmen and reviving their culture and know-how through a series of workshops open to the public."
           />
 
           <Comment
             author="Kristin Watson"
             role="Marketing Coordinator"
-            comment="Nous mettons en valeur les artisans malgaches pour faire revivre la culture et le savoir-faire en proposant une série d'ateliers ouverts au public."
+            comment="We're showcasing Malagasy craftsmen and reviving their culture and know-how through a series of workshops open to the public."
           />
 
           <Comment
             author="Jerome Bell"
             role="Web Designer"
-            comment="Nous mettons en valeur les artisans malgaches pour faire revivre la culture et le savoir-faire en proposant une série d'ateliers ouverts au public."
+            comment="We're showcasing Malagasy craftsmen and reviving their culture and know-how through a series of workshops open to the public."
           />
         </div>
 
         <div className="videoPresentation">
           <Title
-            title="l’artisan à portée de main"
+            title="The craftsman close at hand"
             className="mb-6 items-center"
           />
 
