@@ -1,6 +1,4 @@
 import Input from "@/components/input";
-import Textarea from "@/components/textarea";
-import {EditFill} from "@/constants/link/icons";
 import React, {ReactNode} from "react";
 import {UseFormRegisterReturn} from "react-hook-form";
 

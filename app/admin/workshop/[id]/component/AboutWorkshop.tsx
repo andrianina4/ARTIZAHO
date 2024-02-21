@@ -47,7 +47,7 @@ export default function AboutWorkshop() {
 						<Item label="Name" value={atelier.workshop_name} readonly={readonly} />
 						<Item label="Know-how" value={atelier.workshop_artisan.name} image={atelier.workshop_artisan.image} />
 						<div className="flex flex-row">
-							<div className="w-1/5 flex items-center opacity-60 font-bold">Description</div>
+							<div className="w-1/5 flex pt-4 opacity-60 font-bold">Description</div>
 							<div className="w-4/5 gap-2">
 								<Textarea placeholder="Description" />
 							</div>
