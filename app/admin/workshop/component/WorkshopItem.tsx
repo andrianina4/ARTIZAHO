@@ -14,15 +14,14 @@ export default function WorkshopItem({workshop}: {workshop: IWrokshopItem}) {
 			href={`/admin/workshop/${workshop.shop_id}`}
 			className="grid grid-cols-custom-9 text-sm font-bold bg-white items-center rounded-lg h-14 pl-4 my-1">
 			{/* WORKSHOP */}
+			<div className="font-bold opacity-50">{workshop.shop_name}</div>
+			{/* KNOW-HOW */}
 			<div className="flex items-center gap-2">
-				<div
-					className={`w-7 h-7 flex items-center justify-center ${txt} ${bg} bg-opacity-30 rounded-lg`}>
+				<div className={`w-7 h-7 flex items-center justify-center ${txt} ${bg} bg-opacity-30 rounded-lg`}>
 					{workshop.shop_icon}
 				</div>
-				<p className="opacity-50">{workshop.shop_name}</p>
+				<p className="opacity-50">{workshop.shop_know_how}</p>
 			</div>
-			{/* KNOW-HOW */}
-			<div className="font-bold">{workshop.shop_know_how}</div>
 			{/* NOM et IMAGE */}
 			<div className="flex items-center gap-2">
 				<div className="w-[30px] h-[30px] relative rounded-full bg-slate-500">

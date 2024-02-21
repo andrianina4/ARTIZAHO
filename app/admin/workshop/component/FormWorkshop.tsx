@@ -3,11 +3,10 @@
 import Button from "@/components/button";
 import Input from "@/components/input";
 import Textarea from "@/components/textarea";
-import {AddOutline, CalendarIcon, ImageAdd, Place, Toolbox} from "@/constants/link/icons";
-import {useForm, SubmitHandler, Controller} from "react-hook-form";
-import React, {useEffect, useState} from "react";
+import {ImageAdd, Toolbox} from "@/constants/link/icons";
+import {useForm, SubmitHandler} from "react-hook-form";
+import React, {useState} from "react";
 import {FormAtelierData} from "@/app/schema/atelierSchema";
-import {FileData} from "@/app/schema/fileschema";
 import Image from "next/image";
 import {ISuggestCraftman} from "@/types/ICraftman";
 import {ISuggestWorkshop} from "@/types/IWorkshop";
@@ -70,14 +69,8 @@ const ListWorkshops: ISuggestWorkshop[] = [
 
 export default function FormWorkshop() {
 	// * Traitement du nom d'atelier
-	const {
-		setBaseValues,
-		SelectedValue,
-		InputValue,
-		handleChange,
-		SuggestedValues,
-		handleSelectValue,
-	} = useAutocompletionNameWorkshop(ListWorkshops);
+	const {setBaseValues, SelectedValue, InputValue, handleChange, SuggestedValues, handleSelectValue} =
+		useAutocompletionNameWorkshop(ListWorkshops);
 
 	// * Traitement de l'artisan
 	const {
@@ -137,10 +130,10 @@ export default function FormWorkshop() {
 				<div className="flex flex-col justify-between w-96 ">
 					<div>
 						{/* INPUT NAME */}
-						<div className="bg-white-40% mt-1 mb-2 py-5 px-6 rounded-2xl gap-2 flex items-center input input-bordered h-14 font-manrope text-sm flex-1 w-full relative">
+						<div className="bg-white-40% mt-2 py-5 px-6 rounded-2xl gap-2 flex items-center input input-bordered h-14 font-manrope text-sm flex-1 w-full relative">
 							<input
 								className="w-full bg-white-40% outline-none"
-								placeholder="Assigning a craftsman"
+								placeholder="Title"
 								value={InputValue}
 								onChange={handleChange}
 							/>
@@ -159,95 +152,17 @@ export default function FormWorkshop() {
 									))}
 								</div>
 							)}
-							{/* <Input placeholder="Name" register={register("atelier_name")} /> */}
-						</div>
-						{/* INPUT CRAFTSMAN */}
-						<div className="bg-white-40% mt-1 mb-2 py-5 px-6 rounded-2xl gap-2 flex items-center input input-bordered h-14 font-manrope text-sm flex-1 w-full relative">
-							{SelectedCraftsman ? (
-								<div className="flex gap-2 items-center w-full">
-									<div
-										className="text-brown text-xl mr-2 cursor-pointer"
-										onClick={handleChangeResetCraftsman}>
-										<AddOutline className="w-5 h-5 opacity-50 rotate-45" />
-									</div>
-									<div className="w-8 h-8 relative rounded-full bg-slate-500 ">
-										<Image
-											src={SelectedCraftsman.craftsman_image}
-											alt=""
-											fill
-											className="rounded-full"
-										/>
-									</div>
-									<div className="flex flex-col font-bold grow">
-										{SelectedCraftsman.craftsman_name}
-									</div>
-								</div>
-							) : (
-								<>
-									<div className="text-brown text-xl mr-2">
-										<AddOutline className="w-5 h-5 opacity-50" />
-									</div>
-									<input
-										className="w-full bg-white-40% outline-none"
-										placeholder="Assigning a craftsman"
-										value={InputCraftsman}
-										onChange={handleChangeCraftsman}
-									/>
-								</>
-							)}
-							{/* MODAL CRAFTSMAN */}
-							{SuggestedCraftsmen && (
-								<div className="absolute top-14 bg-white-40% border-2 border-white w-4/5 z-50 rounded-xl gap-1 flex flex-col shadow-sm transition-all duration-100">
-									{SuggestedCraftsmen.map((item, index) => (
-										<div
-											key={item.craftsman_id}
-											className="flex flex-raw items-center gap-2 px-5 py-3 hover:bg-white rounded-xl cursor-pointer"
-											onClick={() => {
-												handleSelectCraftsman(item);
-											}}>
-											<div className="w-8 h-8 relative rounded-full bg-slate-500">
-												<Image src={item.craftsman_image} alt="" fill className="rounded-full" />
-											</div>
-											<div className="flex flex-col items-center ">
-												<p className="text-black-default font-bold">{item.craftsman_name}</p>
-											</div>
-										</div>
-									))}
-								</div>
-							)}
-						</div>
-						<div className="mt-1 mb-2 flex items-center justify-between">
-							<Input
-								className="w-40 !mt-0 !mb-0"
-								type="number"
-								placeholder="Prices"
-								register={register("atelier_tarifs")}
-							/>
-							<div className="flex items-center opacity-50 h-full">Duration</div>
-							<div className="w-[121px] bg-white-40% py-5 rounded-2xl flex input input-bordered h-14">
-								<input
-									type="time"
-									{...register("atelier_heure_duree")}
-									className="bg-white-40% text-sm w-full opacity-50"
-								/>
-							</div>
 						</div>
 						<Input
-							type="number"
-							placeholder="Maximum number of participants"
-							register={register("atelier_nb_participant")}
+							className=""
+							type="text"
+							placeholder="Know-how"
+							// register={register("")}
 						/>
-						<Input
-							className="appearance-none"
-							type="Date"
-							placeholder="Date"
-							leftIcon={<CalendarIcon className="w-5 h-5 opacity-50" />}
-							register={register("atelier_artisan")}
-						/>
-						<Input
-							placeholder="Location"
-							leftIcon={<Place className="w-5 h-5 opacity-50" />}
-							register={register("atelier_artisan")}
+						<Textarea
+							className="!mt-2 h-full max-w-xs"
+							placeholder="Workshop description"
+							register={register("workshop_desc")}
 						/>
 					</div>
 					<Button content="Add" type="submit" className="" />
@@ -280,11 +195,6 @@ export default function FormWorkshop() {
 							/>
 						</div>
 					</div>
-					<Textarea
-						className="h-1/3 max-w-xs"
-						placeholder="Workshop description"
-						register={register("atelier_desc")}
-					/>
 				</div>
 			</form>
 		</div>

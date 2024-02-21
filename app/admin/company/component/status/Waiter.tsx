@@ -1,4 +1,3 @@
-import {Refresh} from "@/constants/link/icons";
 import React from "react";
 
 export default function Waiter() {

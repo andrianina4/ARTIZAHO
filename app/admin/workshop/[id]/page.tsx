@@ -6,8 +6,8 @@ import Button from "@/components/button";
 import AboutWorkshop from "./component/AboutWorkshop";
 import ListWorkshop from "./component/ListWorkshop";
 
-export default function page({params}: {params: {id: string}}) {
-	const [Content, setContent] = useState<string>("info");
+export default function page({params}: {params: {id: string; content: string}}) {
+	const [Content, setContent] = useState<string>((params.content = "info"));
 	const switchContent = () => {
 		setContent(Content === "info" ? "participant" : "info");
 	};
@@ -22,17 +22,13 @@ export default function page({params}: {params: {id: string}}) {
 					leftIcon={<LeftLine />}
 					className="!w-6 !h-6 !bg-transparent !text-brown font-bold "
 				/>
-				<span className="text-2xl font-semibold text-brown-80%">
-					Workshop {params.id} informations
-				</span>
+				<span className="text-2xl font-semibold text-brown-80%">Workshop {params.id} informations</span>
 			</div>
 			{/* CHOIX CONTENU */}
 			<div className="border-b-2 border-bronze flex gap-3 w-full font-semibold opacity-80">
 				{Content === "info" && (
 					<>
-						<div className="px-3 py-3 border-b-4 border-bronze text-brown">
-							Workshop informations
-						</div>
+						<div className="px-3 py-3 border-b-4 border-bronze text-brown">Workshop informations</div>
 						<div className="px-3 py-3 cursor-pointer" onClick={switchContent}>
 							Participants
 						</div>
@@ -43,9 +39,7 @@ export default function page({params}: {params: {id: string}}) {
 						<div className="px-3 py-3 cursor-pointer" onClick={switchContent}>
 							Workshop informations
 						</div>
-						<div className="px-3 py-3 border-b-4 border-bronze text-brown font-semibold">
-							Participants
-						</div>
+						<div className="px-3 py-3 border-b-4 border-bronze text-brown font-semibold">Participants</div>
 					</>
 				)}
 			</div>

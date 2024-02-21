@@ -1,0 +1,67 @@
+{
+	/* INPUT CRAFTSMAN */
+}
+{
+	/* <div className="bg-white-40% mt-1 mb-2 py-5 px-6 rounded-2xl gap-2 flex items-center input input-bordered h-14 font-manrope text-sm flex-1 w-full relative"> */
+}
+{
+	/* {SelectedCraftsman ? (
+    <div className="flex gap-2 items-center w-full">
+      <div
+        className="text-brown text-xl mr-2 cursor-pointer"
+        onClick={handleChangeResetCraftsman}>
+        <AddOutline className="w-5 h-5 opacity-50 rotate-45" />
+      </div>
+      <div className="w-8 h-8 relative rounded-full bg-slate-500 ">
+        <Image
+          src={SelectedCraftsman.craftsman_image}
+          alt=""
+          fill
+          className="rounded-full"
+        />
+      </div>
+      <div className="flex flex-col font-bold grow">
+        {SelectedCraftsman.craftsman_name}
+      </div>
+    </div>
+  ) : (
+    <>
+      <div className="text-brown text-xl mr-2">
+        <AddOutline className="w-5 h-5 opacity-50" />
+      </div>
+      <input
+        className="w-full bg-white-40% outline-none"
+        placeholder="Assigning a craftsman"
+        value={InputCraftsman}
+        onChange={handleChangeCraftsman}
+      />
+    </>
+  )} */
+}
+{
+	/* MODAL CRAFTSMAN */
+}
+{
+	/* {SuggestedCraftsmen && (
+    <div className="absolute top-14 bg-white-40% border-2 border-white w-4/5 z-50 rounded-xl gap-1 flex flex-col shadow-sm transition-all duration-100">
+      {SuggestedCraftsmen.map((item, index) => (
+        <div
+          key={item.craftsman_id}
+          className="flex flex-raw items-center gap-2 px-5 py-3 hover:bg-white rounded-xl cursor-pointer"
+          onClick={() => {
+            handleSelectCraftsman(item);
+          }}>
+          <div className="w-8 h-8 relative rounded-full bg-slate-500">
+            <Image src={item.craftsman_image} alt="" fill className="rounded-full" />
+          </div>
+          <div className="flex flex-col items-center ">
+            <p className="text-black-default font-bold">{item.craftsman_name}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  )} */
+}
+{
+	/* </div> */
+}

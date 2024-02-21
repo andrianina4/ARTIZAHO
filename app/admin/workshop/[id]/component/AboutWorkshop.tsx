@@ -26,7 +26,7 @@ const atelier = {
 };
 
 export default function AboutWorkshop() {
-	const {register, handleSubmit, reset} = useForm<FormAtelierData>({mode: "onChange"});
+	const {register, handleSubmit, reset} = useForm<FormAtelierData>({defaultValues: {workshop_name: "Bouquet"}});
 	const [readonly, setUpdate] = useState<boolean>(false);
 	const switchUpdateState = () => {
 		setUpdate(readonly ? false : true);
@@ -44,35 +44,14 @@ export default function AboutWorkshop() {
 			<div className="flex flex-col w-1/2">
 				<div className="flex flex-col h-full justify-between">
 					<div>
-						<Item
-							label="Name"
-							value={atelier.workshop_name}
-							readonly={readonly}
-							// register={register("workshop_name")}
-						/>
-						<Item
-							label="Craftsman"
-							value={atelier.workshop_artisan.name}
-							image={atelier.workshop_artisan.image}
-						/>
-						<Item label="Location" value={atelier.workshop_localisation} />
-						<Item label="Prices" value={atelier.workshop_tarifs} />
+						<Item label="Name" value={atelier.workshop_name} readonly={readonly} />
+						<Item label="Know-how" value={atelier.workshop_artisan.name} image={atelier.workshop_artisan.image} />
 						<div className="flex flex-row">
-							<div className="w-1/5 flex items-center opacity-60 font-bold"></div>
-							<div className="flex w-4/5 flex-row gap-20">
-								<div className="w-40 h-16  bg-white-40% mt-1 mb-2 flex items-center px-6 rounded-2xl input input-bordered gap-2">
-									<Time className="w-6 h-6 opacity-50" />
-									{atelier.workshop_heure_debut}
-								</div>
-								<div className="w-auto h-16 flex items-center mt-1 mb-2 gap-3">
-									<div className="items-center">Duration</div>
-									<div className="bg-white-40% w-36 h-full flex items-center px-6 rounded-2xl input input-bordered">
-										{atelier.workshop_heure_duree}
-									</div>
-								</div>
+							<div className="w-1/5 flex items-center opacity-60 font-bold">Description</div>
+							<div className="w-4/5 gap-2">
+								<Textarea placeholder="Description" />
 							</div>
 						</div>
-						<Item label="Participants" value={atelier.workshop_nb_participant} />
 					</div>
 					<div className="flex mb-8 gap-4">
 						<Button className="" content="Save" />
@@ -105,10 +84,6 @@ export default function AboutWorkshop() {
 							<div className="opacity-50">Add Pictures</div>
 						</div>
 					</div>
-				</div>
-				<div className="flex flex-col gap-2">
-					<div className="flex items-center opacity-60 font-bold">Description</div>
-					<Textarea placeholder="Description" />
 				</div>
 			</div>
 		</form>
