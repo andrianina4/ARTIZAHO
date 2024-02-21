@@ -160,7 +160,7 @@ export default function FormWorkshop() {
 							// register={register("")}
 						/>
 						<Textarea
-							className="!mt-2 h-full max-w-xs"
+							className="!mt-2 h-full"
 							placeholder="Workshop description"
 							register={register("workshop_desc")}
 						/>

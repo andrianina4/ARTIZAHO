@@ -49,12 +49,12 @@ export default function AboutWorkshop() {
 						<div className="flex flex-row">
 							<div className="w-1/5 flex pt-4 opacity-60 font-bold">Description</div>
 							<div className="w-4/5 gap-2">
-								<Textarea placeholder="Description" />
+								<Textarea className="h-48" placeholder="Description" />
 							</div>
 						</div>
 					</div>
 					<div className="flex mb-8 gap-4">
-						<Button className="" content="Save" />
+						<Button content="Save" />
 						<Button className="bg-transparent !text-black" content="Cancel" />
 					</div>
 				</div>
