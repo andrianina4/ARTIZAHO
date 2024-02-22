@@ -11,7 +11,7 @@ export default function WorkshopItem({workshop}: {workshop: IWrokshopItem}) {
 
 	return (
 		<Link
-			href={`/admin/workshop/${workshop.shop_id}`}
+			href={`/admin/workshop/${workshop.shop_id}/about`}
 			className="grid grid-cols-custom-9 text-sm font-bold bg-white items-center rounded-lg h-14 pl-4 my-1">
 			{/* WORKSHOP */}
 			<div className="font-bold opacity-90">{workshop.shop_name}</div>

@@ -59,3 +59,13 @@ export type ISuggestWorkshop = {
 	workshop_name: string;
 	workshop_know_how: string;
 };
+
+export type IPlanningItem = {
+	id: number;
+	date: string;
+	time_start: string;
+	time_end: string;
+	craftsman: {name: string; img: string};
+	location: string;
+	price: number;
+};

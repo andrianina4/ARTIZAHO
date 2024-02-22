@@ -2,14 +2,15 @@ import {FlowerOne} from "@/constants/link/icons";
 import {IParticipantWorkshop} from "@/types/IWorkshop";
 import React from "react";
 import ParticipantItem from "./component/ParticipantItem";
+import ListHeader from "@/components/ListHeader";
 
-const header = [
-	{label: "ID"},
-	{label: "Client Name"},
-	{label: "Workshop"},
-	{label: "Participants"},
-	{label: "Client Type"},
-	{label: "Reservation Date"},
+const headerList = [
+	{id: 1, name: "id", label: "ID"},
+	{id: 2, name: "client_name", label: "Client Name"},
+	{id: 3, name: "workshop", label: "Workshop"},
+	{id: 4, name: "participants", label: "Participants"},
+	{id: 5, name: "client_type", label: "Client Type"},
+	{id: 6, name: "reservation_date", label: "Reservation Date"},
 ];
 
 const Data: IParticipantWorkshop[] = [
@@ -57,13 +58,7 @@ const Data: IParticipantWorkshop[] = [
 export default function page({params}: {params: {id: string}}) {
 	return (
 		<div className="flex flex-col w-full px-4">
-			<div className="grid grid-cols-custom-7 ml-12 my-3">
-				{header.map((item, index) => (
-					<span className="text-sm text-gray-60% font-bold" key={index}>
-						{item.label}
-					</span>
-				))}
-			</div>
+			<ListHeader headerList={headerList} gridStyle="grid-cols-custom-7 ml-12 my-3" />
 			<div>
 				{Data.map((participant, index) => (
 					<ParticipantItem key={index} item={participant} />
