@@ -3,9 +3,35 @@ import axios, {AxiosResponse} from "axios";
 // ! Change if needed
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL_JSON_SERVER;
 
+const getToken = () => {
+	return localStorage.getItem("token");
+};
+
+// * Instance AXIOS
+export const instanceAxios = axios.create({
+	baseURL: BASE_URL,
+	headers: {
+		"Content-Type": "application/json",
+		Authorization: `Bearer ${getToken()}`,
+	},
+});
+
+instanceAxios.interceptors.response.use(
+	(response) => {
+		return response;
+	},
+	(error) => {
+		if (error.response.status === 401) {
+			localStorage.clear();
+			window.location.reload();
+		}
+		return Promise.reject(error);
+	}
+);
+
+// * GET
 export const getAll = (endpoint: string): Promise<AxiosResponse<any>> => {
-	// let params = 0;
-	return axios.get(`${BASE_URL}${endpoint}`);
+	return instanceAxios.get(`${endpoint}`);
 };
 
 // ? OHATRA

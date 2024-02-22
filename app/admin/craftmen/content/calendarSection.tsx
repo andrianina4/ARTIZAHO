@@ -2,7 +2,7 @@
 
 import React from "react";
 import CraftmanCalendar from "../component/calendar";
-import Item from "../../workshop/[id]/component/Item";
+import Item from "../../workshop/[id]/about/component/Item";
 import CraftmanCalendarItem from "../component/craftmanCalendarItem";
 import {craftmen2} from "@/data/temp/craftman2";
 

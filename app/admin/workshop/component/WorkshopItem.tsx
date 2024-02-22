@@ -1,4 +1,4 @@
-import {Duration, PeopleFill} from "@/constants/link/icons";
+import {CalendarIcon, Duration, PeopleFill} from "@/constants/link/icons";
 import {colorBackground, colorText} from "@/types/IColor";
 import {IWrokshopItem} from "@/types/IWorkshop";
 import Image from "next/image";
@@ -36,7 +36,12 @@ export default function WorkshopItem({workshop}: {workshop: IWrokshopItem}) {
 				<PeopleFill className="opacity-70" />
 				<div className="opacity-70">{workshop.shop_nb_participants}</div>
 			</div>
-			<div>Planning</div>
+			<div className="">
+				<div className="px-2 py-2 flex gap-2 items-center badge-lg bg-white-40% opacity-70">
+					<CalendarIcon className="w-5 h-5" />
+					Planning
+				</div>
+			</div>
 			<div>...</div>
 		</Link>
 	);

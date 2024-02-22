@@ -1,7 +1,7 @@
 import {FlowerOne} from "@/constants/link/icons";
 import {IParticipantWorkshop} from "@/types/IWorkshop";
 import React from "react";
-import ParticipantItem from "./ParticipantItem";
+import ParticipantItem from "./component/ParticipantItem";
 
 const header = [
 	{label: "ID"},
@@ -54,7 +54,7 @@ const Data: IParticipantWorkshop[] = [
 	},
 ];
 
-export default function ListWorkshop() {
+export default function page({params}: {params: {id: string}}) {
 	return (
 		<div className="flex flex-col w-full px-4">
 			<div className="grid grid-cols-custom-7 ml-12 my-3">

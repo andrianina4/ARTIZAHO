@@ -1,13 +1,14 @@
 "use client";
 
 import React, {useState} from "react";
-import {EditFill, FlowerOne, ImageAdd, More, Time} from "@/constants/link/icons";
+import {EditFill, ImageAdd, More} from "@/constants/link/icons";
 import Button from "@/components/button";
-import Item from "./Item";
+
 import {useForm} from "react-hook-form";
 import {FormAtelierData} from "@/app/schema/atelierSchema";
 import Textarea from "@/components/textarea";
 import Image from "next/image";
+import Item from "./component/Item";
 
 const atelier = {
 	workshop_id: 1,
@@ -25,7 +26,7 @@ const atelier = {
 	image: ["/temp/vase.png", "/temp/vase.png", "/temp/vase.png"],
 };
 
-export default function AboutWorkshop() {
+export default function Page({params}: {params: {id: string}}) {
 	const {register, handleSubmit, reset} = useForm<FormAtelierData>({defaultValues: {workshop_name: "Bouquet"}});
 	const [readonly, setUpdate] = useState<boolean>(false);
 	const switchUpdateState = () => {
