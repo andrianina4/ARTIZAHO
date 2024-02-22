@@ -1,4 +1,4 @@
-import {MiniCalendar} from "@/constants/link/icons";
+import {DateToday, MiniCalendar} from "@/constants/link/icons";
 import {IPlanningItem} from "@/types/IWorkshop";
 import Image from "next/image";
 import React from "react";
@@ -8,7 +8,7 @@ export default function PlanningItem({item}: {item: IPlanningItem}) {
 		<div className="grid grid-cols-custom-10 font-bold bg-white-40% items-center rounded-lg h-14 pl-4 my-1 ml-8">
 			{/* DATE */}
 			<div className="flex gap-2 items-center">
-				<MiniCalendar />
+				<DateToday className="w-5 h-5 text-brown" />
 				<div className="opacity-70">{item.date}</div>
 			</div>
 			{/* HEURE */}
