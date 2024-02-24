@@ -1,4 +1,5 @@
 import { Alarm, Place, Shop } from "@/constants/link/icons";
+import Link from "next/link";
 
 export default function HeaderWorkshop() {
   return (
@@ -28,10 +29,12 @@ export default function HeaderWorkshop() {
             </p>
           </div>
           <div>
-            <button className="btn bg-reddishBrown outline-none border-none hover:bg-reddishBrown font-extrabold text-whiteGray text-sm">
-              <Shop className="text-xl" />
-              Book the workshop
-            </button>
+            <Link href={"/reservation-date"}>
+              <button className="btn bg-reddishBrown outline-none border-none hover:bg-reddishBrown font-extrabold text-whiteGray text-sm">
+                <Shop className="text-xl" />
+                Book the workshop
+              </button>
+            </Link>
           </div>
         </div>
       </div>

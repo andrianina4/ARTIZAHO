@@ -1,10 +1,15 @@
 import { artizahoLogoWhiteVertical } from "@/constants/link/images";
+import link from "@/constants/utils/path";
 import Image from "next/image";
+import Link from "next/link";
 import { Dispatch, SetStateAction } from "react";
 
 type PropsMenu = {
   labelMenu: string;
-  sousMenu: string[];
+  sousMenu: {
+    path: string;
+    label: string;
+  }[];
 };
 const Menu = ({ labelMenu, sousMenu }: PropsMenu) => {
   return (
@@ -17,14 +22,19 @@ const Menu = ({ labelMenu, sousMenu }: PropsMenu) => {
       </div>
       <ul>
         {sousMenu.map((item) => (
-          <li key={item}>
-            <a
+          <li key={item.label}>
+            <Link
+              href={item.path}
+              className="font-manrope font-medium text-sm text-[#FFFFFF]"
+            >
+              {item.label}
+            </Link>
+            {/* <a
               className="font-manrope font-medium text-sm text-[#FFFFFF]"
               href=""
             >
-              {" "}
-              {item}
-            </a>
+              {item.label}
+            </a> */}
           </li>
         ))}
       </ul>
@@ -32,10 +42,9 @@ const Menu = ({ labelMenu, sousMenu }: PropsMenu) => {
   );
 };
 
-export default function SidebardHome({
-  setShowSidebar,
-}: {
-  setShowSidebar: Dispatch<SetStateAction<boolean>>;
+export default function SidebardHome({}: // setShowSidebar,
+{
+  // setShowSidebar?: Dispatch<SetStateAction<boolean>>;
 }) {
   return (
     <div className="w-[368px] h-[1028px] bg-brown p-8">
@@ -50,21 +59,27 @@ export default function SidebardHome({
         </div>
 
         <div className="flex flex-grow-[1] justify-end  ">
-          <button
-            className="btn btn-sm btn-circle btn-ghost  text-bronze "
-            onClick={() => setShowSidebar(false)}
-          >
-            X
-          </button>
+          <form method="dialog">
+            <button
+              className="btn btn-sm btn-circle btn-ghost  text-bronze "
+              // onClick={() => setShowSidebar(false)}
+            >
+              X
+            </button>
+          </form>
         </div>
       </div>
 
       <div className="flex flex-col gap-20">
         <Menu
           labelMenu="MENU"
-          sousMenu={["Accueil", "Qui sommes nous", "Nos ateliers"]}
+          sousMenu={[
+            { label: "Home", path: link.home },
+            { label: "About us", path: link.whoare },
+            { label: "Our workshops", path: link.ourWorkshops },
+          ]}
         />
-
+        {/* 
         <Menu
           labelMenu="ARTIZAHO"
           sousMenu={[
@@ -83,7 +98,7 @@ export default function SidebardHome({
             "FAQ",
             "Contact",
           ]}
-        />
+        /> */}
       </div>
     </div>
   );

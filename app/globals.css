@@ -1,11 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
 
 @font-face {
-	font-family: "MoonGet";
-	src: url("/assets/moon_get/moon_get-Heavy.otf") format("opentype"),
-		url("/assets/moon_get/moon_get-Heavy.ttf") format("truetype");
-	font-weight: normal;
-	font-style: normal;
+  font-family: "MoonGet";
+  src: url("/assets/moon_get/moon_get-Heavy.otf") format("opentype"),
+    url("/assets/moon_get/moon_get-Heavy.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }
 /* @font-face {
   font-family: "MoonGet";
@@ -18,47 +18,47 @@
 @tailwind utilities;
 
 @layer components {
-	/* For sidebar */
+  /* For sidebar */
 
-	.active,
-	.noactive {
-		@apply flex flex-row items-center h-14;
-	}
-	.active {
-		@apply text-brown-80% relative bg-white-40% ml-5 pl-5 rounded-l-full  before:absolute before:content-['']
+  .active,
+  .noactive {
+    @apply flex flex-row items-center h-14;
+  }
+  .active {
+    @apply text-brown-80% relative bg-white-40% ml-5 pl-5 rounded-l-full  before:absolute before:content-['']
      before:w-4 before:h-4 before:bg-transparent  before:right-0 before:-top-4 before:rounded-[0_0_20px_0] before:shadow-[10px_10px_0_10px_rgba(248,248,248,1)] 
      after:absolute after:content-[''] after:w-4 after:h-4 after:bg-transparent  after:right-0 after:-bottom-4 after:rounded-[0_20px_0_0] after:shadow-[10px_-10px_0_10px_rgba(248,248,248,1)];
-	}
-	.noactive {
-		@apply text-white  ml-3;
-	}
+  }
+  .noactive {
+    @apply text-white  ml-3;
+  }
 
-	/* For admin header list */
+  /* For admin header list */
 
-	.headerList {
-		@apply relative before:content-[''] before:absolute before:bg-white-40% before:h-4 before:w-4 before:rounded-[0_20px_0_0] before:bottom-0 before:left-0
+  .headerList {
+    @apply relative before:content-[''] before:absolute before:bg-white-40% before:h-4 before:w-4 before:rounded-[0_20px_0_0] before:bottom-0 before:left-0
      after:absolute after:content-[''] after:bg-white-40% after:h-4 after:w-4 after:bottom-0 after:right-0 after:rounded-[20px_0_0_0];
-	}
+  }
 }
 
 .test {
-	/* From https://css.glass */
-	background: rgba(255, 255, 255, 0.11);
-	border-radius: 16px;
-	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-	backdrop-filter: blur(26px);
-	-webkit-backdrop-filter: blur(8.3px);
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.11);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(26px);
+  -webkit-backdrop-filter: blur(8.3px);
 }
 
 .styleImg1 {
-	fill: url("/images/whoare1.jpeg") lightgray -0.061px 0px / 100.023% 100% no-repeat;
-	width: "527.597px";
-	height: "395.789px";
+  fill: url("/images/whoare1.jpeg") lightgray -0.061px 0px / 100.023% 100% no-repeat;
+  width: "527.597px";
+  height: "395.789px";
 }
 
 .borderVideo {
-	border: 16px solid rgba(236, 168, 83, 0.3);
-	border-radius: 24px;
+  border: 16px solid rgba(236, 168, 83, 0.3);
+  border-radius: 24px;
 }
 
 /* :root {
@@ -88,18 +88,21 @@ body {
 /* custom scroll */
 
 ::-webkit-scrollbar-track {
-	border-radius: 10px;
+  border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb {
-	background: #979797;
-	border-radius: 10px;
+  background: #979797;
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-	border-radius: 10px;
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar {
-	width: 10px; /* Largeur de la barre de défilement */
-	margin-left: 4px;
+  width: 10px; /* Largeur de la barre de défilement */
+  margin-left: 4px;
+}
+.slick-slider .slick-slide {
+  padding: 0 15px;
 }

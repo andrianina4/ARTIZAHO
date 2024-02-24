@@ -1,6 +1,6 @@
 import Image from "next/image";
 import artizahoLogo from "../public/images/artizahoLogo.png";
-import { Nuage } from "@/constants/link/svg";
+import { Nuage, Nuage3 } from "@/constants/link/svg";
 import NavBar from "@/components/nav-bar";
 import Footer from "@/components/footer";
 import { SearchIcon } from "@/constants/link/icons";
@@ -14,7 +14,7 @@ export default function Home() {
   // return <Sidebard />;
   return (
     <div className="w-[1440px]- mx-auto-">
-      <header className="flex flex-col bg-bg-accueil relative h-[756px]">
+      <header className="flex flex-col bg-bg-accueil relative h-[756px] z-[99999996]">
         <div className="h-full flex flex-col">
           <NavBar />
           <div className="flex justify-center text-center flex-col h-full items-center">
@@ -28,7 +28,7 @@ export default function Home() {
               craftsmanship. Leave with your own handmade creation!
             </p>
 
-            <div className=" p-5   mt-4 test ">
+            <div className=" p-5   mt-4 test z-[99999996]">
               <div className="bg-white px-4 py-1 w-full rounded-lg flex items-center justify-between">
                 <div className="flex items-center ">
                   <svg
@@ -220,7 +220,7 @@ export default function Home() {
           />
         </div>
 
-        <div className="videoPresentation">
+        <div className="videoPresentation mt-10">
           <Title
             title="The craftsman close at hand"
             className="mb-6 items-center"
