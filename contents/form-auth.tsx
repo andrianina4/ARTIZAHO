@@ -2,38 +2,72 @@
 
 import Button from "@/components/button";
 import Input from "@/components/input";
-import { TrajetLogin } from "@/constants/link/svg";
-import link from "@/constants/utils/path";
 import { useRouter } from "next/navigation";
-import React from "react";
-import { signIn, getCsrfToken } from "next-auth/react";
-import { GetServerSidePropsContext } from "next";
+import React, { useState } from "react";
+import { signIn } from "next-auth/react";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as Yup from "yup";
+
 type Props = {};
-
+type FormValue = {
+  email: string;
+  password: string;
+};
 function FormAuth({}: Props) {
-  const router = useRouter();
+  const [error, setError] = useState("");
 
-  async function handleSubmit(e: any) {
-    e.preventDefault();
+  const validationSchema = Yup.object().shape({
+    email: Yup.string().email().required(),
+    password: Yup.string().required(),
+  });
 
-    var form = document.getElementById("formRegister") as any;
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormValue>({
+    resolver: yupResolver<FormValue>(validationSchema),
+    mode: "onSubmit",
+  });
 
-    // Get form values
-    var username = form?.elements["username"].value;
-    var password = form?.elements["password"].value;
-    await signIn("credentials", {
-      username,
-      password,
+  const onSubmit = async (body: FormValue) => {
+    const res = await signIn("credentials", {
+      username: body.email,
+      password: body.password,
       callbackUrl: "/my-basket",
+      redirect: false,
     });
-    // router.push(link.reservationDate)
-  }
+
+    if (!res?.ok) {
+      setError(res?.error || "");
+    }
+  };
 
   return (
-    <form onSubmit={handleSubmit} id="formRegister">
-      <Input placeholder="Email address" name="username" />
-      <Input type="password" placeholder="Password" name="password" />
-      <button className="text-black-60% text-sm block w-full text-right hover:text-opacity-70 mb-5">
+    <form onSubmit={handleSubmit(onSubmit)} id="formRegister">
+      {error && (
+        <div className="pl-2 flex items-center gap-1 text-xs text-red-600 opacity-80 font-bold mt-2">
+          {error}
+        </div>
+      )}
+      <Input
+        placeholder="Email address"
+        name="username"
+        register={register("email")}
+        errorMessage={errors.email}
+      />
+      <Input
+        type="password"
+        placeholder="Password"
+        name="password"
+        errorMessage={errors.password}
+        register={register("password")}
+      />
+      <button
+        className="text-black-60% text-sm block w-full text-right hover:text-opacity-70 mb-5"
+        type="submit"
+      >
         Forgot your password?
       </button>
 
