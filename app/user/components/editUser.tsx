@@ -1,13 +1,38 @@
 import Button from "@/components/button";
 import Input from "@/components/input";
 import { Madagascar } from "@/constants/link/icons";
+import { ICurrentUser } from "@/types/user/ICurrentUser";
+import { IRequestToken } from "@/types/user/IRequestToken";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useSession } from "next-auth/react";
+import { useForm } from "react-hook-form";
+import * as Yup from "yup";
 
 type PropsEditUser = {
   isModal?: boolean;
 };
 
+type FormValue = {
+  first_name: string;
+  last_name: string;
+};
+
 export default function EditUser(props: PropsEditUser) {
   const { isModal = false } = props;
+  const { data: session } = useSession();
+  const userConnected = session?.user as ICurrentUser & IRequestToken;
+  const validationSchema = Yup.object().shape({
+    first_name: Yup.string().required(),
+    last_name: Yup.string().required(),
+  });
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormValue>({
+    resolver: yupResolver<FormValue>(validationSchema),
+    mode: "onSubmit",
+  });
   return (
     <div>
       <h4 className="font-manrope font-bold text-2xl text-bronze leading-[32.78px]">
@@ -170,72 +195,77 @@ export default function EditUser(props: PropsEditUser) {
           <span className="text-sm text-grey-60%">#50562M</span>
         </div>
         <div className=" w-full">
-          <div className="flex gap-[16px]">
-            <div className=" w-1/2">
-              <Input placeholder="Lastname" className="border-none " />
+          <form>
+            <div className="flex gap-[16px]">
+              <div className=" w-1/2">
+                <Input placeholder="Lastname" className="border-none " />
+              </div>
+              <div className=" w-1/2">
+                <Input placeholder="Firstname" className="border-none " />
+              </div>
             </div>
-            <div className=" w-1/2">
-              <Input placeholder="Firstname" className="border-none " />
+            <div className="flex gap-[16px] items-center">
+              <div className=" w-1/2">
+                <Input
+                  placeholder="Age"
+                  className="border-none"
+                  type="number"
+                />
+              </div>
+              <div className="w-1/2">
+                <select className="select  bg-white-40%  text-black-60%  w-full ">
+                  <option disabled selected>
+                    Pick your gender
+                  </option>
+                  <option>Male</option>
+                  <option>Female</option>
+                </select>
+              </div>
             </div>
-          </div>
-          <div className="flex gap-[16px] items-center">
-            <div className=" w-1/2">
-              <Input placeholder="Age" className="border-none" type="number" />
+            <div className="flex gap-[16px]">
+              <div className=" w-1/2">
+                <Input
+                  placeholder="Phone number"
+                  className="border-none "
+                  leftIcon={<Madagascar />}
+                />
+              </div>
+              <div className=" w-1/2">
+                <Input placeholder="Place" className="border-none " />
+              </div>
             </div>
-            <div className="w-1/2">
-              <select className="select  bg-white-40%  text-black-60%  w-full ">
-                <option disabled selected>
-                  Pick your gender
-                </option>
-                <option>Male</option>
-                <option>Female</option>
-              </select>
+            <div className="flex gap-[16px]">
+              <div className=" w-1/2">
+                <Input
+                  placeholder="Password"
+                  className="border-none "
+                  type="password"
+                />
+              </div>
             </div>
-          </div>
-          <div className="flex gap-[16px]">
-            <div className=" w-1/2">
-              <Input
-                placeholder="Phone number"
-                className="border-none "
-                leftIcon={<Madagascar />}
-              />
-            </div>
-            <div className=" w-1/2">
-              <Input placeholder="Place" className="border-none " />
-            </div>
-          </div>
-          <div className="flex gap-[16px]">
-            <div className=" w-1/2">
-              <Input
-                placeholder="Password"
-                className="border-none "
-                type="password"
-              />
-            </div>
-          </div>
+            <div className="flex gap-4 justify-end">
+              <div>
+                <Button content="Save" />
+              </div>
 
-          <div className="flex gap-4 justify-end">
-            <div>
-              <Button content="Save" />
+              {isModal ? (
+                <>
+                  <form method="dialog">
+                    <button className="btn">Cancel</button>
+                  </form>
+                </>
+              ) : (
+                <>
+                  <div>
+                    <Button
+                      content="Cancel"
+                      className="text-[#ECA853] bg-white"
+                    />
+                  </div>
+                </>
+              )}
             </div>
-
-            {isModal ? (
-              <>
-                <form method="dialog">
-                  <button className="btn">Cancel</button>
-                </form>
-              </>
-            ) : (
-              <>
-                <div>
-                  <Button
-                    content="Cancel"
-                    className="text-[#ECA853] bg-white"
-                  />
-                </div>
-              </>
-            )}
-          </div>
+          </form>
         </div>
       </div>
     </div>

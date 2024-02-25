@@ -81,7 +81,11 @@ function NavBar({ className, isWhite = false }: NavBarProps) {
                   <Down />
                 </div>
               </summary>
-              <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
+              <ul
+                className={`p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52 ${
+                  isWhite ? "text-brown" : "text-black"
+                }`}
+              >
                 <li
                   onClick={() => {
                     const updateProfile = document.getElementById(
