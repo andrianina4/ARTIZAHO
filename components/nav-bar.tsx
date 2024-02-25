@@ -11,6 +11,9 @@ import link from "@/constants/utils/path";
 import SidebardHome from "@/app/components/Sidebard";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
+import { useSession } from "next-auth/react";
+import { getServerSession } from "next-auth";
+import { options } from "@/app/api/auth/[...nextauth]/options";
 
 type NavBarProps = {
   className?: string;
@@ -20,6 +23,11 @@ type NavBarProps = {
 function NavBar({ className, isWhite = false }: NavBarProps) {
   // const [showSidebar, setShowSidebar] = useState(false);
   const pathname = usePathname();
+  const { data: session } = useSession();
+
+  // const session = getServerSession(options);
+
+  console.log("session", session?.user);
 
   const isActiveRoute = (includesPath: string) => {
     return pathname === includesPath ? (

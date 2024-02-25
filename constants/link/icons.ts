@@ -77,6 +77,7 @@ import Tools from "../../public/icons/clarity--tools-line.svg";
 import Danger from "../../public/icons/jam--triangle-danger-f.svg";
 import Person from "../../public/icons/fluent--person-24-filled.svg";
 import Location from "../../public/icons/location.svg";
+import Madagascar from "../../public/icons/madagascar.svg";
 export {
   MenuIcon,
   FacebookFIcon,
@@ -157,4 +158,5 @@ export {
   Enterprise,
   Danger,
   Location,
+  Madagascar,
 };
