@@ -1,19 +1,18 @@
 "use client";
 import {
+  DefaultUser,
+  Down,
   MenuIcon,
   ShoppingBagDuoTone,
   UserDuoTone,
 } from "@/constants/link/icons";
-import Image from "next/image";
 import LogoArtizaho from "./logo";
 import Link from "next/link";
 import link from "@/constants/utils/path";
 import SidebardHome from "@/app/components/Sidebard";
-import { useState } from "react";
 import { usePathname } from "next/navigation";
-import { useSession } from "next-auth/react";
-import { getServerSession } from "next-auth";
-import { options } from "@/app/api/auth/[...nextauth]/options";
+import { useSession, signOut } from "next-auth/react";
+import ModalEditUser from "@/app/user/components/modalEditUser";
 
 type NavBarProps = {
   className?: string;
@@ -21,13 +20,9 @@ type NavBarProps = {
 };
 
 function NavBar({ className, isWhite = false }: NavBarProps) {
-  // const [showSidebar, setShowSidebar] = useState(false);
   const pathname = usePathname();
   const { data: session } = useSession();
-
-  // const session = getServerSession(options);
-
-  console.log("session", session?.user);
+  const user = session?.user;
 
   const isActiveRoute = (includesPath: string) => {
     return pathname === includesPath ? (
@@ -62,7 +57,7 @@ function NavBar({ className, isWhite = false }: NavBarProps) {
         </ul>
 
         <ul
-          className={`flex gap-x-3  text-2xl ${
+          className={`flex gap-x-3  text-2xl items-center ${
             isWhite ? "text-brown" : "text-white"
           }`}
         >
@@ -71,16 +66,51 @@ function NavBar({ className, isWhite = false }: NavBarProps) {
               <ShoppingBagDuoTone />
             </li>
           </Link>
-          <Link href={link.login}>
-            <li>
-              <UserDuoTone />
-            </li>
-          </Link>
+          {!user ? (
+            <Link href={link.login}>
+              <li>
+                <UserDuoTone />
+              </li>
+            </Link>
+          ) : (
+            <details className="dropdown">
+              <summary className="m-1 btn bg-transparent border-none hover:bg-transparent">
+                <div className="flex items-center gap-2 cursor-pointer">
+                  <DefaultUser />
+                  <span className="text-[10px] ">{user.email}</span>
+                  <Down />
+                </div>
+              </summary>
+              <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
+                <li
+                  onClick={() => {
+                    const updateProfile = document.getElementById(
+                      "updateProfile"
+                    ) as HTMLDialogElement;
+                    updateProfile.showModal();
+                  }}
+                >
+                  <a>Update profile</a>
+                </li>
+                <li
+                  onClick={() =>
+                    signOut({
+                      callbackUrl: "/auth/login",
+                    })
+                  }
+                >
+                  <a>Logout</a>
+                </li>
+              </ul>
+            </details>
+          )}
           <li
             className="cursor-pointer"
             onClick={() => {
-              // setShowSidebar(true)
-              document?.getElementById("sidebarhome")?.showModal();
+              const sidebarhome = document?.getElementById(
+                "sidebarhome"
+              ) as HTMLDialogElement;
+              sidebarhome.showModal();
             }}
           >
             <MenuIcon />
@@ -88,25 +118,10 @@ function NavBar({ className, isWhite = false }: NavBarProps) {
         </ul>
 
         <dialog id="sidebarhome" className="modal left-[82%] modal-top ">
-          {/* <div className="modal-action">
-                <form method="dialog">
-                  <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
-                    ✕
-                  </button>
-                </form>
-              </div> */}
-          <SidebardHome
-          // setShowSidebar={setShowSidebar}
-          />
+          <SidebardHome />
         </dialog>
 
-        {/* <div
-          className={`absolute top-0 right-0 none z-50  ${
-            showSidebar ? "block" : "hidden"
-          }`}
-        >
-          <SidebardHome setShowSidebar={setShowSidebar} />
-        </div> */}
+        <ModalEditUser />
       </nav>
     </div>
   );

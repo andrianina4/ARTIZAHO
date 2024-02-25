@@ -78,6 +78,8 @@ import Danger from "../../public/icons/jam--triangle-danger-f.svg";
 import Person from "../../public/icons/fluent--person-24-filled.svg";
 import Location from "../../public/icons/location.svg";
 import Madagascar from "../../public/icons/madagascar.svg";
+import DefaultUser from "../../public/icons/defaultUser.svg";
+
 export {
   MenuIcon,
   FacebookFIcon,
@@ -159,4 +161,5 @@ export {
   Danger,
   Location,
   Madagascar,
+  DefaultUser,
 };

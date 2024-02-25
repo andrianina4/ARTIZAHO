@@ -7,6 +7,7 @@ import NavBar from "@/components/nav-bar";
 import { TrajetLogin } from "@/constants/link/svg";
 import link from "@/constants/utils/path";
 import FormAuth from "@/contents/form-auth";
+import { getSession, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import React from "react";
 
@@ -14,9 +15,15 @@ type LoginProps = {};
 
 function Login({}: LoginProps) {
   const router = useRouter();
-
+  const { data: session } = useSession();
+  const user = session?.user;
   function redirectRegister() {
     router.push(link.register);
+  }
+
+  if (user) {
+    router.push("/my-basket");
+    return null;
   }
 
   return (
