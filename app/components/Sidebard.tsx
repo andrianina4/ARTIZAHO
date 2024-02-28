@@ -47,7 +47,7 @@ export default function SidebardHome({}: // setShowSidebar,
   // setShowSidebar?: Dispatch<SetStateAction<boolean>>;
 }) {
   return (
-    <div className="w-[368px] h-[1028px] bg-brown p-8">
+    <div className="w-[368px] min-w-[368px] h-[1028px] bg-brown p-8">
       <div className="flex">
         <div>
           <Image

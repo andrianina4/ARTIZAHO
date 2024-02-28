@@ -1,3 +1,4 @@
+"use client";
 import SelectCustom from "@/components/Select";
 import Button from "@/components/button";
 import Input from "@/components/input";
