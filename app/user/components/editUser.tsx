@@ -1,6 +1,9 @@
+import SelectCustom from "@/components/Select";
 import Button from "@/components/button";
 import Input from "@/components/input";
 import { Madagascar } from "@/constants/link/icons";
+import { ACCOUNT_TYPE, GENDER } from "@/constants/utils";
+import { CreateUserDto } from "@/dto/user";
 import { uploadImage } from "@/services/user.service";
 import { ICurrentUser } from "@/types/user/ICurrentUser";
 import { IRequestToken } from "@/types/user/IRequestToken";
@@ -16,10 +19,7 @@ type PropsEditUser = {
   currentUser?: ICurrentUser & IRequestToken;
 };
 
-type FormValue = {
-  first_name: string;
-  last_name: string;
-};
+type FormValue = CreateUserDto;
 
 export default function EditUser(props: PropsEditUser) {
   const { isModal = false, currentUser } = props;
@@ -30,15 +30,25 @@ export default function EditUser(props: PropsEditUser) {
   const validationSchema = Yup.object().shape({
     first_name: Yup.string().required(),
     last_name: Yup.string().required(),
+    username: Yup.string().nullable(),
+    email: Yup.string().email().required(),
+    account_type: Yup.string().required(),
+    gender: Yup.string().required(),
+    dob: Yup.string().required(),
+    nif: Yup.string().nullable(),
+    phone_number: Yup.string().nullable(),
+    password: Yup.string().required(),
   });
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<FormValue>({
-    resolver: yupResolver<FormValue>(validationSchema),
+    resolver: yupResolver<FormValue>(validationSchema as any),
     mode: "onSubmit",
   });
+
+  const onSubmit = (body: FormValue) => {};
 
   return (
     <div>
@@ -47,7 +57,7 @@ export default function EditUser(props: PropsEditUser) {
       </h4>
 
       <div className="mt-10 flex gap-4">
-        <div className="flex flex-col justify-center- items-center w-[162px]  ">
+        <div className="flex flex-col justify-center items-center w-[162px]  ">
           <label className="cursor-pointer block" htmlFor="uploadImage">
             {file ? (
               <div className="avatar">
@@ -232,13 +242,23 @@ export default function EditUser(props: PropsEditUser) {
           )}
         </div>
         <div className=" w-full">
-          <form>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <div className="flex gap-[16px] mt-4">
               <div className=" w-1/2">
-                <Input placeholder="Lastname" className="border-none " />
+                <Input
+                  placeholder="Lastname"
+                  className="border-none "
+                  register={register("last_name")}
+                  errorMessage={errors.last_name}
+                />
               </div>
               <div className=" w-1/2">
-                <Input placeholder="Firstname" className="border-none " />
+                <Input
+                  placeholder="Firstname"
+                  className="border-none "
+                  register={register("first_name")}
+                  errorMessage={errors.first_name}
+                />
               </div>
             </div>
             <div className="flex gap-[16px] items-center mt-4">
@@ -247,54 +267,77 @@ export default function EditUser(props: PropsEditUser) {
                   placeholder="Birthday"
                   className="border-none"
                   type="date"
+                  register={register("dob")}
+                  errorMessage={errors.first_name}
                 />
               </div>
               <div className="w-1/2">
-                <select className="select  bg-white-40%  text-black-60%  w-full ">
-                  <option value={"M"}>Male</option>
-                  <option value={"F"}>Female</option>
-                </select>
+                <SelectCustom
+                  options={GENDER}
+                  register={register("gender")}
+                  errorMessage={errors.gender}
+                />
               </div>
             </div>
             <div className="flex gap-[16px] mt-4">
               <div className=" w-1/2">
-                <Input placeholder="Email" className="border-none " />
+                <Input
+                  placeholder="Email"
+                  className="border-none "
+                  register={register("email")}
+                  errorMessage={errors.email}
+                />
               </div>
               <div className=" w-1/2">
                 <Input
                   placeholder="Phone number"
                   className="border-none "
                   leftIcon={<Madagascar />}
+                  register={register("phone_number")}
+                  errorMessage={errors.phone_number}
                 />
               </div>
             </div>
 
             <div className="flex gap-[16px] mt-4">
               <div className=" w-1/2">
-                <Input placeholder="Username" className="border-none " />
+                <Input
+                  placeholder="Username"
+                  className="border-none "
+                  register={register("username")}
+                  errorMessage={errors.username}
+                />
               </div>
               <div className=" w-1/2">
                 <Input
                   placeholder="Password"
                   className="border-none "
                   type="password"
+                  register={register("password")}
+                  errorMessage={errors.password}
                 />
               </div>
             </div>
             <div className="flex gap-[16px] mt-4">
               <div className=" w-1/2">
-                <select className="select  bg-white-40%  text-black-60%  w-full ">
-                  <option value={"S"}>Simple user</option>
-                  <option value={"E"}>Entreprise</option>
-                </select>
+                <SelectCustom
+                  options={ACCOUNT_TYPE}
+                  register={register("account_type")}
+                  errorMessage={errors.account_type}
+                />
               </div>
               <div className=" w-1/2">
-                <Input placeholder="NIF" className="border-none " />
+                <Input
+                  placeholder="NIF"
+                  className="border-none "
+                  {...register("nif")}
+                  errorMessage={errors.nif}
+                />
               </div>
             </div>
             <div className="flex gap-4 justify-end mt-4">
               <div>
-                <Button content="Save" />
+                <Button content="Save" type="submit" />
               </div>
 
               {isModal ? (
