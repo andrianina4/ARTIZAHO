@@ -10,7 +10,7 @@ import { IRequestToken } from "@/types/user/IRequestToken";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import * as Yup from "yup";
 
@@ -39,16 +39,31 @@ export default function EditUser(props: PropsEditUser) {
     phone_number: Yup.string().nullable(),
     password: Yup.string().required(),
   });
+
   const {
     register,
     handleSubmit,
     formState: { errors },
+    setValue,
   } = useForm<FormValue>({
     resolver: yupResolver<FormValue>(validationSchema as any),
-    mode: "onSubmit",
   });
 
   const onSubmit = (body: FormValue) => {};
+
+  useEffect(() => {
+    if (editMode && currentUser) {
+      setValue("account_type", currentUser.account_type);
+      setValue("dob", currentUser.dob);
+      setValue("email", currentUser.email);
+      setValue("first_name", currentUser.first_name);
+      setValue("last_name", currentUser.last_name);
+      setValue("nif", currentUser.nif);
+      setValue("phone_number", currentUser.phone_number);
+      setValue("username", currentUser.username);
+      // setValue("password", currentUser.password);
+    }
+  }, [editMode, currentUser, setValue]);
 
   return (
     <div>
