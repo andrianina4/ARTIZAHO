@@ -233,7 +233,7 @@ export default function EditUser(props: PropsEditUser) {
         </div>
         <div className=" w-full">
           <form>
-            <div className="flex gap-[16px]">
+            <div className="flex gap-[16px] mt-4">
               <div className=" w-1/2">
                 <Input placeholder="Lastname" className="border-none " />
               </div>
@@ -241,7 +241,7 @@ export default function EditUser(props: PropsEditUser) {
                 <Input placeholder="Firstname" className="border-none " />
               </div>
             </div>
-            <div className="flex gap-[16px] items-center">
+            <div className="flex gap-[16px] items-center mt-4">
               <div className=" w-1/2">
                 <Input
                   placeholder="Birthday"
@@ -256,7 +256,7 @@ export default function EditUser(props: PropsEditUser) {
                 </select>
               </div>
             </div>
-            <div className="flex gap-[16px]">
+            <div className="flex gap-[16px] mt-4">
               <div className=" w-1/2">
                 <Input placeholder="Email" className="border-none " />
               </div>
@@ -269,7 +269,7 @@ export default function EditUser(props: PropsEditUser) {
               </div>
             </div>
 
-            <div className="flex gap-[16px]">
+            <div className="flex gap-[16px] mt-4">
               <div className=" w-1/2">
                 <Input placeholder="Username" className="border-none " />
               </div>
@@ -281,7 +281,7 @@ export default function EditUser(props: PropsEditUser) {
                 />
               </div>
             </div>
-            <div className="flex gap-[16px]">
+            <div className="flex gap-[16px] mt-4">
               <div className=" w-1/2">
                 <select className="select  bg-white-40%  text-black-60%  w-full ">
                   <option value={"S"}>Simple user</option>
@@ -292,7 +292,7 @@ export default function EditUser(props: PropsEditUser) {
                 <Input placeholder="NIF" className="border-none " />
               </div>
             </div>
-            <div className="flex gap-4 justify-end">
+            <div className="flex gap-4 justify-end mt-4">
               <div>
                 <Button content="Save" />
               </div>
