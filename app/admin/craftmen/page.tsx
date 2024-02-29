@@ -21,7 +21,7 @@ const selectItem: Array<ISelect> = [
 	{value: "name", label: "Name"},
 	{
 		value: "note",
-		label: "Note]",
+		label: "Note",
 	},
 ];
 
@@ -32,6 +32,8 @@ function Page({}: Props) {
 
 
 	const handleNext = () => {
+		console.log("suivant")
+		
 		setStep(step + 1);
 	  };
 	
@@ -70,7 +72,10 @@ function Page({}: Props) {
 
 				{/* Modal craftmen */}
 				<ModalLayout open={open} onClick={handleToogle} className="h-[650px] w-[830px]">
+					{/* Content one: à propos de l'artisan */}
 					{step===1 && <Content_one onNext={handleNext}/>}
+
+					{/* Content two: dispo de l'artisan */}
 					{step===2 && <Content_two onPrevious={handlePrevious}/>}
 				</ModalLayout>
 			</div>

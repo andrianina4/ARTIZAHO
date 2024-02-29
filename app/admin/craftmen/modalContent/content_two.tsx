@@ -11,35 +11,41 @@ import { useForm } from "react-hook-form"
 import { FormDataTest,Schema } from "@/app/schema/testSchema"
 import { useState } from "react"
 import {yupResolver} from "@hookform/resolvers/yup"
-import { useEffect,useRef } from "react"
-import { DateSelectArg } from "@fullcalendar/core/index.js"
+import { DateRange, DateRangeProps } from 'react-date-range';
+import { addDays, format } from 'date-fns';
+import 'react-date-range/dist/styles.css'; // main css file
+import 'react-date-range/dist/theme/default.css'; // theme css file
+
 
 
 type props={
     onPrevious: VoidFunction
 }
 
-
+interface Range {
+    startDate: Date ;
+    endDate: Date;
+    key: string;
+  }
 
 function Content_two({onPrevious}:props) {
 
-
-    const [selectedDate, setSelectedDate] = useState<{ start: string; end?: string } | null>(null);
-    
-    const handleClickDate =(info:DateSelectArg)=>{
-        const startDateStr = info.startStr;
-        const endDateStr = info.endStr || undefined; // end peut être undefined si une seule date est sélectionnée
-        setSelectedDate({ start: startDateStr, end: endDateStr });
-    }
-
-    const handleSendData = () => {
-        if (selectedDate) {
-          console.log("Selected Date Range:", selectedDate.start, selectedDate.end);
-        } else {
-          console.log("No date selected.");
+    const [state, setState] = useState<Range[]>([
+        {
+          startDate: new Date(),
+          endDate: addDays(new Date(),0),
+          key: 'selection'
         }
-      };
+      ]);
+      
+      const formattedStartDate = format(state[0].startDate, 'dd/MM/yyyy');
+      const formattedEndDate = format(state[0].endDate, 'dd/MM/yyyy');
     
+      const handleChange = (item: any) => {
+        setState([item.selection as Range]);
+        console.log('Start Date:', item.selection.startDate);
+        console.log('End Date:', item.selection.endDate);
+      };
    
     const{register, handleSubmit} =useForm<FormDataTest>({
         mode : 'onChange',
@@ -60,7 +66,14 @@ function Content_two({onPrevious}:props) {
             </div>
            
            <div className="flex h-full gap-2">
-                <CraftmanCalendar handleclickDate={handleClickDate}  className="w-3/5 bg-white-40% !px-4 rounded-xl !pb-8" />
+                <DateRange
+                    onChange={handleChange}
+                    
+                    moveRangeOnFirstSelection={false}
+                    months={1}
+                    ranges={state}
+                    direction="horizontal"
+                />;
                 <form className=" flex w-2/5 gap-2 h-fit items-center">
                     <div className="flex w-full items-center gap-2 bg-white-40% rounded-2xl px-2">
                         <label htmlFor="">De:</label>
@@ -79,7 +92,7 @@ function Content_two({onPrevious}:props) {
                         />
                          {/* <input id="blab" type="text" {...register('dateClicked')} value={dateClicked} /> */}
                     </div>
-                    <Button onClick={handleSendData}  leftIcon={<Check/>} className="!h-10 !w-10 !rounded-2xl"/>
+                    <Button   leftIcon={<Check/>} className="!h-10 !w-10 !rounded-2xl"/>
                 </form>
             </div>
             <div className="flex gap-4">

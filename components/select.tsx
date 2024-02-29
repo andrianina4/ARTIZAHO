@@ -1,11 +1,13 @@
 import {ISelect} from "@/types/IField";
 import React, {ChangeEventHandler} from "react";
+import { UseFormRegisterReturn } from "react-hook-form";
 
 type SelectProps = {
 	values: Array<ISelect>;
 	value?: string;
 	className?: String;
 	onChange?: ChangeEventHandler;
+	register?: UseFormRegisterReturn
 };
 
 function Select(props: SelectProps) {

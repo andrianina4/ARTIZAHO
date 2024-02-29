@@ -2,33 +2,56 @@
 
 import React from 'react'
 import { useState } from 'react';
+import { DateRange, DateRangeProps } from 'react-date-range';
+import { addDays, format } from 'date-fns';
+import 'react-date-range/dist/styles.css'; // main css file
+import 'react-date-range/dist/theme/default.css'; // theme css file
 
-type Props = {}
+type Props = {} & DateRangeProps
+
+interface Range {
+  startDate: Date ;
+  endDate: Date;
+  key: string;
+}
 
 function page({}: Props) {
 
+  const [state, setState] = useState<Range[]>([
+    {
+      startDate: new Date(),
+      endDate: addDays(new Date(),1),
+      key: 'selection'
+    }
+  ]);
+  
+  const formattedStartDate = format(state[0].startDate, 'dd/MM/yyyy');
+  const formattedEndDate = format(state[0].endDate, 'dd/MM/yyyy');
 
-  const [rating, setRating] = useState(4); // Mettez ici la valeur de la note
+  const handleChange = (item: any) => {
+    setState([item.selection as Range]);
+    console.log('Start Date:', item.selection.startDate);
+    console.log('End Date:', item.selection.endDate);
+  };
 
-  const handleRatingChange = (value:any) => {
-    setRating(value);
-  };  
+
   return (
-    <div className='flex items-center gap-6'>
-    <div className="rating rating-half rating-sm">
-      {[...Array(10)].map((_, index) => (
-        <input
-          key={index}
-          type="radio"
-          name="rating-10"
-          className={`bg-yellow-500 mask mask-star-2 mask-half-${(index % 2) + 1}`}
-          checked={index + 1 === rating*2}
-         
-        />
-      ))}
-    </div>
-    <div className='text-gray-60%'>{rating}/5</div>
-  </div>
+   <div>
+      <DateRange
+        onChange={handleChange}
+        
+        moveRangeOnFirstSelection={false}
+        months={1}
+        ranges={state}
+        direction="horizontal"
+      />;
+      <div>
+        Start Date: <input type="text" value={formattedStartDate} readOnly />
+      </div>
+      <div>
+        End Date: <input type="text" value={formattedEndDate} readOnly />
+      </div>
+   </div>
   )
 }
 
