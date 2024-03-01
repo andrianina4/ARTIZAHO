@@ -1,6 +1,7 @@
 "use client";
 
 import Button from "@/components/button";
+import { QueryClientProvider, QueryClient } from "react-query";
 import {AddImage, CalendarIcon, UserAdd, UserAddFill} from "@/constants/link/icons";
 import React, {useState} from "react";
 import ModalLayout from "@/components/modal";
@@ -24,6 +25,8 @@ const selectItem: Array<ISelect> = [
 		label: "Note",
 	},
 ];
+
+const queryClient = new QueryClient();
 
 function Page({}: Props) {
 	const [open, setOpen] = useState(false);
@@ -49,6 +52,7 @@ function Page({}: Props) {
 	};
 
 	return (
+		<QueryClientProvider client={queryClient}>
 		<div className=" h-full  flex flex-col  ">
 			<div className="flex flex-row justify-between items-center">
 				<div className="">
@@ -82,6 +86,7 @@ function Page({}: Props) {
 
 			<div className="h-[90%]">{content ? <ListSection /> : <CalendarSection />}</div>
 		</div>
+		</QueryClientProvider>
 	);
 }
 

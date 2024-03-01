@@ -8,18 +8,26 @@ export type ICraftman = {
 	gender: Gender
 };
 
-
 export type ICraftmanItem = {
-	craftman_name: string;
-	craftman_image: string;
-	craftman_domaine: string;
-	craftman_workshop: {
-		name: string;
-		icon: ReactNode;
-		color: string;
-	};
-	craftman_nb_client: number;
+	name: string;
+	image: string;
+	expertise: string
+	score:"5"
+	nbre_clients:"40"
 };
+
+
+// export type ICraftmanItem = {
+// 	craftman_name: string;
+// 	craftman_image: string;
+// 	craftman_domaine: string;
+// 	craftman_workshop: {
+// 		name: string;
+// 		icon: ReactNode;
+// 		color: string;
+// 	};
+// 	craftman_nb_client: number;
+// };
 
 export type ISuggestCraftman = {
 	craftsman_id: number;

@@ -37,9 +37,9 @@ function CraftemenItem({craftman}: {craftman: ICraftmanItem}) {
 				<div className="opacity-70">{craftman.craftman_nb_client}</div>
 			</div>
 			{/* STAR */}
-			<StarScore />
+			<StarScore /> 	
 			{/* DON'T KNOW */}
-			<button>...</button>
+			<button>See</button>
 		</div>
 	);
 }
