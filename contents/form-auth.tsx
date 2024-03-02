@@ -1,33 +1,80 @@
-'use client'
+"use client";
 
-import Button from '@/components/button'
-import Input from '@/components/input'
-import { TrajetLogin } from '@/constants/link/svg'
-import link from '@/constants/utils/path'
-import { useRouter } from 'next/navigation'
-import React from 'react'
+import Button from "@/components/button";
+import Input from "@/components/input";
+import { useRouter } from "next/navigation";
+import React, { useState } from "react";
+import { signIn } from "next-auth/react";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as Yup from "yup";
 
-type Props = {}
+type Props = {};
+type FormValue = {
+  email: string;
+  password: string;
+};
+function FormAuth({}: Props) {
+  const [error, setError] = useState("");
 
-function FormAuth({ }: Props) {
-    const router = useRouter()
+  const validationSchema = Yup.object().shape({
+    email: Yup.string().email().required(),
+    password: Yup.string().required(),
+  });
 
-    function handleSubmit() {
-        router.push(link.reservationDate)
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormValue>({
+    resolver: yupResolver<FormValue>(validationSchema),
+    mode: "onSubmit",
+  });
+
+  const onSubmit = async (body: FormValue) => {
+    const res = await signIn("credentials", {
+      username: body.email,
+      password: body.password,
+      callbackUrl: "/my-basket",
+      redirect: false,
+    });
+
+    if (!res?.ok) {
+      setError(res?.error || "");
     }
+  };
 
-    
-    return (
-        <form className=''>
-            <Input placeholder='Email address' />
-            <Input type='password' placeholder='Password' />
-            <button className='text-black-60% text-sm block w-full text-right hover:text-opacity-70 mb-5'>Forgot your password?</button>
+  return (
+    <form onSubmit={handleSubmit(onSubmit)} id="formRegister">
+      {error && (
+        <div className="pl-2 flex items-center gap-1 text-xs text-red-600 opacity-80 font-bold mt-2">
+          {error}
+        </div>
+      )}
+      <Input
+        placeholder="Email address"
+        name="username"
+        register={register("email")}
+        errorMessage={errors.email}
+      />
+      <Input
+        type="password"
+        placeholder="Password"
+        name="password"
+        errorMessage={errors.password}
+        register={register("password")}
+      />
+      <button
+        className="text-black-60% text-sm block w-full text-right hover:text-opacity-70 mb-5"
+        type="submit"
+      >
+        Forgot your password?
+      </button>
 
-            <div className='mt-20'></div>
-            <Button content='Sign in' onClick={handleSubmit} />
-            
-        </form>
-    )
+      <div className="mt-20"></div>
+      <Button content="Sign in" type="submit" />
+    </form>
+  );
 }
 
-export default FormAuth
+export default FormAuth;

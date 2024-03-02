@@ -1,5 +1,6 @@
 import "./globals.css";
-import type {Metadata} from "next";
+import type { Metadata } from "next";
+import Provider from "./provider";
 
 export const metadata: Metadata = {
   title: "Artizaho",
@@ -15,7 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en" data-theme="light">
       <body className="font-manrope relative text-black-default bg-white text-base ">
-        {children}
+        <Provider>{children}</Provider>
       </body>
     </html>
   );

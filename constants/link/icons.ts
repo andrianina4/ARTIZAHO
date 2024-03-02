@@ -76,13 +76,17 @@ import Enterprise from "../../public/icons/carbon--enterprise.svg";
 import Tools from "../../public/icons/clarity--tools-line.svg";
 import Danger from "../../public/icons/jam--triangle-danger-f.svg";
 import Person from "../../public/icons/fluent--person-24-filled.svg";
+import Location from "../../public/icons/location.svg";
+import Madagascar from "../../public/icons/madagascar.svg";
+import DefaultUser from "../../public/icons/defaultUser.svg";
+
 import Refresh from "../../public/icons/material-symbols--refresh.svg";
 export {
 	MenuIcon,
 	Refresh,
 	FacebookFIcon,
 	Tools,
-	Person,
+  Person,
 	InstagramIcon,
 	LinkedinIcon,
 	SearchIcon,
@@ -140,21 +144,24 @@ export {
 	People1,
 	PeopleCheck,
 	PeopleToolbox,
-	EllipseBrown,
-	PeopleFill,
-	Company,
-	HomeAdd,
-	Business,
-	NotifIcon,
-	DateToday,
-	TimeDuotone,
-	Close,
-	CheckMaterial,
-	Line,
-	Plus,
-	MiniToolbox,
-	MiniCalendar,
-	Duration,
-	Enterprise,
-	Danger,
+  EllipseBrown,
+  PeopleFill,
+  Company,
+  HomeAdd,
+  Business,
+  NotifIcon,
+  DateToday,
+  TimeDuotone,
+  Close,
+  CheckMaterial,
+  Line,
+  Plus,
+  MiniToolbox,
+  MiniCalendar,
+  Duration,
+  Enterprise,
+  Danger,
+  Location,
+  Madagascar,
+  DefaultUser,
 };

@@ -1,7 +1,10 @@
+"use client";
+
 import CardComponent from "@/components/CardComponent";
 import InputGroupMultiple from "@/components/InputGroupMultiple";
 import NavBar from "@/components/nav-bar";
 import { chunk } from "lodash";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 type PropsLabel = {
@@ -16,13 +19,15 @@ const Label = (props: PropsLabel) => {
         props.isActive
           ? "text-reddishBrown  font-bold  "
           : "text-brown font-medium opacity-[80%]"
-      }  font-manrope text-sm hover:cursor-pointer`}>
+      }  font-manrope text-sm hover:cursor-pointer`}
+    >
       {props.title}
     </span>
   );
 };
 
-export default function page() {
+export default function Page() {
+  const router = useRouter();
   const testGeneration = [1, 2, 3, 4, 5, 6, 7, 8];
   const split = chunk(testGeneration, 4);
   const labelList: string[] = [
@@ -32,6 +37,10 @@ export default function page() {
     "POTTERY",
     "ANTEMORO PAPER",
   ];
+
+  const handleClick = () => {
+    router.push("/our-workshops/details");
+  };
 
   return (
     <div className="bg-[#FFF] w-[1440px] mx-auto">
@@ -45,25 +54,16 @@ export default function page() {
         </div>
 
         <div className="tabs flex gap-[32px] justify-center">
-          <Label
-            title="ALL"
-            isActive={true}
-          />
+          <Label title="ALL" isActive={true} />
           {labelList.map((item, indexItem) => (
-            <Label
-              key={indexItem}
-              isActive={false}
-              title={item}
-            />
+            <Label key={indexItem} isActive={false} title={item} />
           ))}
         </div>
 
         <div className="flex flex-col justify-center items-center">
           {split.map((data, indexData) => {
             return (
-              <div
-                key={indexData}
-                className="flex">
+              <div key={indexData} className="flex">
                 {data.map((item, indexItem) => {
                   return (
                     <CardComponent
@@ -74,6 +74,7 @@ export default function page() {
                       place="Antananarivo"
                       price={15.0}
                       time="1:30"
+                      onClick={handleClick}
                     />
                   );
                 })}
