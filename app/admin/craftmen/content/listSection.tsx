@@ -5,6 +5,7 @@ import {FlowerOne} from "@/constants/link/icons";
 import ListHeader from "@/components/ListHeader";
 import {SearchContext} from "../../provider/SearchProvider";
 import axios from "axios";
+import { useQuery } from "react-query";
 
 const headerList = [
 	{id: 1, name: "name", label: "Name"},
@@ -14,31 +15,30 @@ const headerList = [
 	{id: 5, name: "rating", label: "Rating"},
 ];
 
-const fetchCraftmen = async () => {
-	const response = await axios.get<ICraftman>('');
+const getCraftmen = async () => {
+	const response = await axios.get<ICraftmanItem[]>('');
 	return response.data
   };
 
 
 export default function ListSection() {
 	
+	const{isLoading, data}= useQuery('getCraftmen',getCraftmen)
 	// * VALEURS PAR DEFAUT
-	const [Data, setData] = useState<ICraftmanItem[]>();
 
-	
 
 	// * FILTRE PAR SEARCH BAR
-	const [FilteredData, setFilteredData] = useState<ICraftmanItem>();
+	const [FilteredData, setFilteredData] = useState<ICraftmanItem[]>(data?.data || []);
 	const searchContext = useContext(SearchContext);
 	useEffect(() => {
-		const filteredValues = Data.filter((value) => {
+		const filteredValues = data?.data.filter((value:any) => {
 			if (
 				value.name
 					?.toLocaleLowerCase()
 					.includes(searchContext.Value.toLocaleLowerCase()) ||
 				value.expertise
 					?.toLocaleLowerCase()
-					.includes(searchContext.Value.toLocaleLowerCase()) ||
+					.includes(searchContext.Value.toLocaleLowerCase()) 
 				// value.craftman_workshop?.name
 				// 	?.toLocaleLowerCase()
 				// 	.includes(searchContext.Value.toLocaleLowerCase())

@@ -34,12 +34,40 @@ export  function useSendCraftman() {
 
 //URL encore à changer
 
-    const mutation= useMutation(async(data: FormCraftmanData)=>{
-      await axios.post("baseUrl", data)
+    const createCraftmanmutation= useMutation(async(data: FormCraftmanData)=>{
+     const response=  await axios.post("http://localhost:9237/api/v1/artisan/", data)
+      return response.data
+
     })
 
-    const onSubmit = (data: FormCraftmanData) => {
-      mutation.mutate(data);
+    const uploadImageMutation = useMutation(async (formdata: FormData) => {
+      const responseImage= await axios.post("http://localhost:9237/api/v1/artisan/{id}/upload_image", formdata,
+      {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      })
+
+      return responseImage.data
+    })
+
+    const onSubmit = async(data: FormCraftmanData) => {
+      try {
+        //envoyer info artisan
+        const createCraftman= await createCraftmanmutation.mutateAsync(data);
+
+        if(ImageToSend){
+          const formdata= new FormData();
+          formdata.append("image",ImageToSend);
+          formdata.append("id", createCraftman.id);
+          
+          //Envoyer image artisan
+          await uploadImageMutation.mutateAsync(formdata);
+        }
+        
+      } catch (error) {
+        console.log("Il ya une erreur",error);
+      }
     };
 
     return {register, handleSubmit, onSubmit, errors, ImagetoShow, handleInputFile, handleFileChange};
