@@ -1,33 +1,40 @@
-import {ISelect} from "@/types/IField";
-import React, {ChangeEventHandler} from "react";
+import { Danger } from "@/constants/link/icons";
 import { UseFormRegisterReturn } from "react-hook-form";
 
-type SelectProps = {
-	values: Array<ISelect>;
-	value?: string;
-	className?: String;
-	onChange?: ChangeEventHandler;
-	register?: UseFormRegisterReturn
+type PropsSelectCustom = {
+  className?: string;
+  register?: UseFormRegisterReturn;
+  readonly?: boolean;
+  errorMessage?: any;
+  options: { label: string; value: number | string }[];
 };
 
-function Select(props: SelectProps) {
-	const {values, value, className, onChange} = props;
+export default function SelectCustom({
+  className,
+  errorMessage,
+  readonly = false,
+  register,
+  options,
+}: PropsSelectCustom) {
+  return (
+    <div>
+      <select
+        className={`select  bg-white-40%  text-black-60%  w-full ${className}`}
+        {...register}
+        disabled={readonly}
+      >
+        {options.map((opt, index) => (
+          <option key={index} value={opt.value}>
+            {opt.label}
+          </option>
+        ))}
+      </select>
 
-	return (
-		<select
-			value={value}
-			onChange={onChange}
-			className={`select bg-white-40%  rounded-2xl h-14 font-manrope text-sm text-black-60%  w-full ${className}`}>
-			{values.map((item, index) => {
-				const {label, value} = item;
-				return (
-					<option key={index} value={value}>
-						{label}
-					</option>
-				);
-			})}
-		</select>
-	);
+      {errorMessage?.message && (
+        <div className="pl-2 flex items-center gap-1 text-xs text-red-600 opacity-80 font-bold mt-2">
+          <Danger className="w-3 h-3" /> <div>{errorMessage?.message}</div>
+        </div>
+      )}
+    </div>
+  );
 }
-
-export default Select;
