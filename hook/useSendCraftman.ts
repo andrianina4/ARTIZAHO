@@ -6,11 +6,15 @@ import { useState} from "react"
 import { CraftmanSchema, FormCraftmanData } from "@/app/schema/craftmanSchema";
 import {useMutation} from "react-query"
 import axios from "axios";
+import { axiosInstanceApi } from "@/axios";
+import { getSession } from "next-auth/react";
 
 export  function useSendCraftman() {
 
   const [ImagetoShow, setImagetoShow] = useState<string>();
 	const [ImageToSend, setImageToSend] = useState<any>();
+
+  const getUploadImageKey = (artisanId: number) => [`artisan`, artisanId, 'upload_image'];
 
     const {handleSubmit, register, formState:{errors} }= useForm({resolver: yupResolver(CraftmanSchema)});
 
@@ -35,13 +39,26 @@ export  function useSendCraftman() {
 //URL encore à changer
 
     const createCraftmanmutation= useMutation(async(data: FormCraftmanData)=>{
-     const response=  await axios.post("http://localhost:9237/api/v1/artisan/", data)
-      return response.data
+      const session = await getSession();
+
+      if(session){
+          const access_token = session.user.access_token
+
+          const response=  await axiosInstanceApi.post("/v1/artisan/", data,
+          {
+           headers: {
+             Authorization: `Bearer ${access_token}`,
+           },
+         }
+          )
+           return response.data
+      }
+    
 
     })
 
-    const uploadImageMutation = useMutation(async (formdata: FormData) => {
-      const responseImage= await axios.post("http://localhost:9237/api/v1/artisan/{id}/upload_image", formdata,
+    const uploadImageMutation = useMutation(async (formdata: FormData, artisanId:number) => {
+      const responseImage= await axiosInstanceApi.post(`/v1/artisan/${artisanId }/upload_image`, formdata,
       {
         headers: {
           'Content-Type': 'multipart/form-data',
@@ -49,7 +66,11 @@ export  function useSendCraftman() {
       })
 
       return responseImage.data
-    })
+    },
+    {
+      mutationKey: getUploadImageKey, 
+    }
+    )
 
     const onSubmit = async(data: FormCraftmanData) => {
       try {

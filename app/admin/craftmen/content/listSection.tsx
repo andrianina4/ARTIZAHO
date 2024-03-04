@@ -28,10 +28,10 @@ export default function ListSection() {
 
 
 	// * FILTRE PAR SEARCH BAR
-	const [FilteredData, setFilteredData] = useState<ICraftmanItem[]>(data?.data || []);
+	const [FilteredData, setFilteredData] = useState<ICraftmanItem[]>( []);
 	const searchContext = useContext(SearchContext);
 	useEffect(() => {
-		const filteredValues = data?.data.filter((value:any) => {
+		const filteredValues = data?.filter((value:any) => {
 			if (
 				value.name
 					?.toLocaleLowerCase()
@@ -46,7 +46,9 @@ export default function ListSection() {
 				return value;
 			}
 		});
-		setFilteredData(filteredValues);
+		if (filteredValues) {
+			setFilteredData(filteredValues);
+		}
 	}, [searchContext.Value]);
 
 	return (
