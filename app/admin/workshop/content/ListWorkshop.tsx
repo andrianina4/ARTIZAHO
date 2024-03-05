@@ -7,7 +7,7 @@ import {SearchContext} from "../../provider/SearchProvider";
 
 const headerList = [
 	{id: 1, name: "workshop", label: "Workshop"},
-	{id: 2, name: "knowhow", label: "Know-How"},
+	{id: 2, name: "know_how", label: "Know-How"},
 	{id: 3, name: "craftsman", label: "Craftsman"},
 	{id: 4, name: "participants", label: "Participants"},
 	{id: 5, name: "duration", label: "Duration"},
@@ -57,12 +57,8 @@ export default function ListWorkshop() {
 		const filteredValues = Data.filter((value) => {
 			if (
 				value.shop_name?.toLocaleLowerCase().includes(searchContext.Value.toLocaleLowerCase()) ||
-				value.shop_know_how
-					?.toLocaleLowerCase()
-					.includes(searchContext.Value.toLocaleLowerCase()) ||
-				value.shop_craftsman?.name
-					?.toLocaleLowerCase()
-					.includes(searchContext.Value.toLocaleLowerCase())
+				value.shop_know_how?.toLocaleLowerCase().includes(searchContext.Value.toLocaleLowerCase()) ||
+				value.shop_craftsman?.name?.toLocaleLowerCase().includes(searchContext.Value.toLocaleLowerCase())
 			) {
 				return value;
 			}

@@ -1,4 +1,4 @@
-import {Duration, PeopleFill} from "@/constants/link/icons";
+import {CalendarIcon, Duration, PeopleFill} from "@/constants/link/icons";
 import {colorBackground, colorText} from "@/types/IColor";
 import {IWrokshopItem} from "@/types/IWorkshop";
 import Image from "next/image";
@@ -11,18 +11,17 @@ export default function WorkshopItem({workshop}: {workshop: IWrokshopItem}) {
 
 	return (
 		<Link
-			href={`/admin/workshop/${workshop.shop_id}`}
+			href={`/admin/workshop/${workshop.shop_id}/about`}
 			className="grid grid-cols-custom-9 text-sm font-bold bg-white items-center rounded-lg h-14 pl-4 my-1">
 			{/* WORKSHOP */}
+			<div className="font-bold opacity-90">{workshop.shop_name}</div>
+			{/* KNOW-HOW */}
 			<div className="flex items-center gap-2">
-				<div
-					className={`w-7 h-7 flex items-center justify-center ${txt} ${bg} bg-opacity-30 rounded-lg`}>
+				<div className={`w-7 h-7 flex items-center justify-center ${txt} ${bg} bg-opacity-30 rounded-lg`}>
 					{workshop.shop_icon}
 				</div>
-				<p className="opacity-50">{workshop.shop_name}</p>
+				<p className="opacity-50">{workshop.shop_know_how}</p>
 			</div>
-			{/* KNOW-HOW */}
-			<div className="font-bold">{workshop.shop_know_how}</div>
 			{/* NOM et IMAGE */}
 			<div className="flex items-center gap-2">
 				<div className="w-[30px] h-[30px] relative rounded-full bg-slate-500">
@@ -37,10 +36,11 @@ export default function WorkshopItem({workshop}: {workshop: IWrokshopItem}) {
 				<PeopleFill className="opacity-70" />
 				<div className="opacity-70">{workshop.shop_nb_participants}</div>
 			</div>
-			{/* DURATION */}
-			<div className="flex gap-2 items-center">
-				<Duration className="w-5 h-5 text-brown" />
-				<div>{workshop.shop_duration}</div>
+			<div className="">
+				<div className="px-2 py-2 flex gap-2 items-center badge-lg bg-white-40% opacity-70">
+					<CalendarIcon className="w-5 h-5" />
+					Planning
+				</div>
 			</div>
 			<div>...</div>
 		</Link>

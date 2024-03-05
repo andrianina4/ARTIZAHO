@@ -41,7 +41,7 @@ export default function Page() {
 			{/* CONTENU */}
 			<ListWorkshop />
 			{/* POPUP ADD WORKSHOP */}
-			<ModalLayout open={open} onClick={handleToogle} className="w-auto h-4/5">
+			<ModalLayout open={open} onClick={handleToogle} className="w-auto h-2/3">
 				<FormWorkshop />
 			</ModalLayout>
 		</div>
