@@ -1,19 +1,21 @@
+"use client";
 import SelectCustom from "@/components/Select";
 import Button from "@/components/button";
 import Input from "@/components/input";
 import { Madagascar } from "@/constants/link/icons";
 import { ACCOUNT_TYPE, GENDER } from "@/constants/utils";
 import { CreateUserDto } from "@/dto/user";
-import { uploadImage } from "@/services/user.service";
+import { patchUser, uploadImage } from "@/services/user.service";
 import { ICurrentUser } from "@/types/user/ICurrentUser";
 import { IRequestToken } from "@/types/user/IRequestToken";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useMutation } from "@tanstack/react-query";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import * as Yup from "yup";
-
+import { SnackbarProvider, useSnackbar } from "notistack";
 type PropsEditUser = {
   isModal?: boolean;
   currentUser?: ICurrentUser & IRequestToken;
@@ -22,6 +24,7 @@ type PropsEditUser = {
 type FormValue = CreateUserDto;
 
 export default function EditUser(props: PropsEditUser) {
+  const { enqueueSnackbar } = useSnackbar();
   const { isModal = false, currentUser } = props;
   const editMode = currentUser ? true : false;
   // const { data: session } = useSession();
@@ -37,18 +40,61 @@ export default function EditUser(props: PropsEditUser) {
     dob: Yup.string().required(),
     nif: Yup.string().nullable(),
     phone_number: Yup.string().nullable(),
-    password: Yup.string().required(),
+    password: Yup.string().nullable(),
   });
+
   const {
     register,
     handleSubmit,
     formState: { errors },
+    setValue,
   } = useForm<FormValue>({
     resolver: yupResolver<FormValue>(validationSchema as any),
-    mode: "onSubmit",
   });
 
-  const onSubmit = (body: FormValue) => {};
+  const mudationPatch = useMutation({
+    mutationFn: (body: FormValue) => patchUser(body),
+    onSuccess: (data) => {
+      enqueueSnackbar("Update success");
+    },
+  });
+
+  const onSubmit = async (body: FormValue) => {
+    // if (editMode) mudationPatch.mutate(body);
+
+    try {
+      await patchUser(body);
+      enqueueSnackbar("Update success", {
+        variant: "success",
+        anchorOrigin: {
+          vertical: "top",
+          horizontal: "center",
+        },
+      });
+    } catch (error) {
+      enqueueSnackbar("Error", {
+        variant: "error",
+        anchorOrigin: {
+          vertical: "top",
+          horizontal: "center",
+        },
+      });
+    }
+  };
+
+  useEffect(() => {
+    if (editMode && currentUser) {
+      setValue("account_type", currentUser.account_type);
+      setValue("dob", currentUser.dob);
+      setValue("email", currentUser.email);
+      setValue("first_name", currentUser.first_name);
+      setValue("last_name", currentUser.last_name);
+      setValue("nif", currentUser.nif);
+      setValue("phone_number", currentUser.phone_number);
+      setValue("username", currentUser.username);
+      // setValue("password", currentUser.password);
+    }
+  }, [editMode, currentUser, setValue]);
 
   return (
     <div>
@@ -236,8 +282,10 @@ export default function EditUser(props: PropsEditUser) {
           </label>
           {editMode && (
             <>
-              <h6 className="font-bold text-base">Antonio Hery</h6>
-              <span className="text-sm text-grey-60%">#50562M</span>
+              <h6 className="font-bold text-base text-center">
+                {currentUser?.first_name} {currentUser?.last_name}
+              </h6>
+              <span className="text-sm text-grey-60%">{currentUser?.id}</span>
             </>
           )}
         </div>

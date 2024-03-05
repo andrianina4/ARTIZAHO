@@ -1,8 +1,9 @@
 import { StringDate } from "..";
+import { IImage } from "../IImage";
 
 export interface ICurrentUser {
   id: number;
-  images: [];
+  images: IImage[];
   first_name: string;
   last_name: string;
   is_active: boolean;

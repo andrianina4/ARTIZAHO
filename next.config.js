@@ -22,6 +22,30 @@ const nextConfig = {
 
     return config;
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "http",
+        hostname: "localhost",
+        port: "9237",
+        pathname: "/**",
+      },
+    ],
+  },
+  async rewrites() {
+    return [
+      {
+        source: "/image/:path*",
+        destination: `${process.env.BACKEND_URL}/:path*`, // Proxy to Backend image
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;
