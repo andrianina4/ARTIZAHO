@@ -56,16 +56,29 @@ export default function page() {
         </header>
 
         <section className="mt-2">
-          <div className="imgContainer flex gap-2">
+          <div className="imgContainer flex gap-2 h-[440px]">
             <div className=" w-1/2">
-              <Image src={imgTest} alt="ourWorkShop" objectFit="cover" />
+              <Image
+                src={imgTest}
+                alt="ourWorkShop"
+                className="h-[100%]"
+                objectFit="cover"
+              />
             </div>
-            <div className="flex flex-col w-1/2 gap-2 items-end">
-              <div className=" h-[216px]">
-                <Image src={our2} alt="our2" objectFit="cover" />
+            <div className="flex flex-col w-1/2 gap-2 ">
+              <div className="h-[216px] w-full">
+                <Image
+                  src={our2}
+                  alt="our2"
+                  className="w-[100%] object-cover h-[100%]"
+                />
               </div>
-              <div className=" h-[216px]">
-                <Image src={our1} alt="our1" objectFit="cover" />
+              <div className="h-[216px] w-full">
+                <Image
+                  src={our1}
+                  alt="our1"
+                  className="w-[100%] object-cover h-[100%]"
+                />
               </div>
             </div>
           </div>
@@ -76,13 +89,13 @@ export default function page() {
             </h5>
 
             <p className="font-normal text-xs text-brown mt-2">
-              Welcome to Hanta's boutique workshop, where you can learn how to
+              Welcome to Hanta s boutique workshop, where you can learn how to
               create exceptional floral arrangements. During this experience,
               you will discover a variety of foliage and flowers, and learn how
               to use them to create beautiful bouquets. <br /> <br />
               Hanta, an experienced florist, will guide you through the process.
               She will help you choose the right plants, prepare them and
-              assemble them. You'll also learn how to use a variety of tools and
+              assemble them. You ll also learn how to use a variety of tools and
               techniques.
             </p>
           </div>
@@ -131,7 +144,7 @@ export default function page() {
             </div>
           </dialog>
 
-          <div className="mt-10 relative">
+          {/* <div className="mt-10 relative">
             <div className="flex">
               {split.map((data, indexData) => {
                 return (
@@ -150,7 +163,7 @@ export default function page() {
                 );
               })}
             </div>
-          </div>
+          </div> */}
         </section>
       </main>
     </div>

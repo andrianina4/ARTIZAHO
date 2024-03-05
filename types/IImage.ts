@@ -4,7 +4,7 @@ export type IImage = {
   file_name: string;
   base_url: string;
   blurhash_code: string;
-  user: number;
+  user: number | null;
   artisan: null;
-  workshop: null;
+  workshop: number | null;
 };
