@@ -1,3 +1,4 @@
+"use client";
 import CardComponent from "@/components/CardComponent";
 import NavBar from "@/components/nav-bar";
 import PresentationTrainer from "@/components/presentation-trainer";
@@ -8,7 +9,7 @@ import {
   Place,
   Shop,
 } from "@/constants/link/icons";
-import { our1, our2, ourWorkShop } from "@/constants/link/images";
+import { imgTest, our1, our2, ourWorkShop } from "@/constants/link/images";
 import { trainers } from "@/data/temp/trainers";
 import Image from "next/image";
 import ModalDescriptionCard from "./ModalDescriptionCard";
@@ -24,17 +25,15 @@ export default function page() {
   };
   const split = [1, 2, 3, 4];
 
-  return <ModalDescriptionCard />;
-
-  // return <SidebardHome />;
+  // return <ModalDescriptionCard />;
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen relative">
       <header className="w-full max-w-page mx-auto">
         <NavBar isWhite />
       </header>
 
-      <main className="py-7 px-24  max-w-page mx-auto">
+      <main className="py-7 px-24  max-w-page mx-auto ">
         <header>
           <h4 className="uppercase font-moonGet font-extrabold text-xl text-brown">
             Workshop
@@ -54,54 +53,12 @@ export default function page() {
             </ul>
           </div>
           <HeaderWorkshop />
-          {/* <div className="flex items-center mt-4">
-            <div className="w-1/2">
-              <h4 className="font-manrope text-2xl">Vase bouquet</h4>
-
-              <div className="flex gap-4">
-                <div className="flex text-brown text-[10px] items-center font-bold gap-2">
-                  <Alarm /> Duration 1:30
-                </div>
-                <div>
-                  <div className="flex text-brown text-[10px] items-center font-bold gap-2">
-                    <Place />
-                    Antananarivo
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="w-1/2">
-              <div className="flex gap-5 justify-end items-center">
-                <div>
-                  <h4 className="text-reddishBrown text-[32px] font-[900]">
-                    35.00€
-                  </h4>
-
-                  <p className="text-brown text-xs font-normal">
-                    including <span className="font-bold">18.00€</span> for
-                    Mahefa
-                  </p>
-                </div>
-                <div>
-                  <button className="btn bg-reddishBrown outline-none border-none hover:bg-reddishBrown font-extrabold text-whiteGray text-sm">
-                    <Shop className="text-xl" />
-                    Book the workshop
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div> */}
         </header>
 
         <section className="mt-2">
           <div className="imgContainer flex gap-2">
             <div className=" w-1/2">
-              <Image
-                src={ourWorkShop}
-                alt="ourWorkShop"
-                // className="h-[440px]"
-                objectFit="cover"
-              />
+              <Image src={imgTest} alt="ourWorkShop" objectFit="cover" />
             </div>
             <div className="flex flex-col w-1/2 gap-2 items-end">
               <div className=" h-[216px]">
@@ -157,7 +114,24 @@ export default function page() {
             </div>
           </div>
 
-          <div className="mt-10">
+          <dialog id="my_modal_3" className="modal left-[56%] modal-top ">
+            <div className="modal-box min-h-screen w-[850px] ">
+              <div className="modal-action">
+                <form method="dialog">
+                  {/* if there is a button in form, it will close the modal */}
+                  <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+                    ✕
+                  </button>
+                </form>
+              </div>
+              {/* if there is a button in form, it will close the modal */}
+
+              {/* <h3 className="font-bold text-lg">Hello!</h3> */}
+              <ModalDescriptionCard />
+            </div>
+          </dialog>
+
+          <div className="mt-10 relative">
             <div className="flex">
               {split.map((data, indexData) => {
                 return (
@@ -169,6 +143,9 @@ export default function page() {
                     place="Antananarivo"
                     price={15.0}
                     time="1:30"
+                    onClick={() => {
+                      document?.getElementById("my_modal_3")?.showModal();
+                    }}
                   />
                 );
               })}

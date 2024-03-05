@@ -1,17 +1,12 @@
 import { ArrowLeft } from "@/constants/link/icons";
-import { whoare } from "@/constants/link/images";
+import { baobabWhoAre, whoare } from "@/constants/link/images";
 import Image from "next/image";
 
 export default function QuiNousSommes() {
   return (
-    <div className="h-[500px] flex items-center gap-40 ">
+    <div className="h-[500px] flex items-center gap-40  relative">
       <div>
-        <Image
-          src={whoare}
-          alt="whoare"
-          width={517}
-          height={364}
-        />
+        <Image src={whoare} alt="whoare" width={517} height={364} />
       </div>
       <div>
         <h4 className="font-moonGet font-extrabold text-xl text-brown tracking-[8%] leading-[36.74px]">
@@ -26,6 +21,10 @@ export default function QuiNousSommes() {
           Get to know us
           <ArrowLeft />
         </button>
+      </div>
+
+      <div className=" bg-transparent bottom-[-10%] absolute ">
+        <Image src={baobabWhoAre} alt="baobabWhoAre" />
       </div>
     </div>
   );

@@ -47,6 +47,9 @@ const config: Config = {
 				bronze: "#ECA853",
 				reddishBrown: "#C26143",
 				saumon: "#FFEADA",
+				"grey-60%": "#00000099",
+				yellow: "#FFC500",
+				blueDark: "#687D94",
 			},
 			backgroundImage: {
 				"bg-login":
