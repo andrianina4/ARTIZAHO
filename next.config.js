@@ -42,7 +42,7 @@ const nextConfig = {
     return [
       {
         source: "/image/:path*",
-        destination: `${BACKEND_URL}/:path*`, // Proxy to Backend
+        destination: `${process.env.BACKEND_URL}/:path*`, // Proxy to Backend image
       },
     ];
   },

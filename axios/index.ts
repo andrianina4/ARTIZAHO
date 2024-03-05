@@ -1,10 +1,14 @@
 import axios from "axios";
 import { getSession } from "next-auth/react";
-const backendUrl = process.env.BACKEND_URL;
-
+const backendUrl = process.env.BACKEND_URL; // || "http://localhost:9237";
 const axiosInstanceApi = axios.create({
+  // baseURL: "/backend/api",
   baseURL: backendUrl + "/api",
 });
+
+// const axiosInstanceApiClient = axios.create({
+//   baseURL: backendUrl + "/api",
+// });
 // instance.interceptors.response.use(
 //   (response) => {
 //     return response;
@@ -27,4 +31,9 @@ const getCurrentToken = async () => {
   return session?.user.access_token;
 };
 
-export { axiosInstanceApi, axiosInstance, getCurrentToken };
+export {
+  axiosInstanceApi,
+  axiosInstance,
+  getCurrentToken,
+  // axiosInstanceApiClient,
+};

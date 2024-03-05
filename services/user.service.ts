@@ -1,3 +1,4 @@
+import { axiosInstanceApiClient } from "@/app/axiosClient";
 import { axiosInstance, axiosInstanceApi, getCurrentToken } from "@/axios";
 import { CreateUserDto } from "@/dto/user";
 import { ICurrentUser } from "@/types/user/ICurrentUser";
@@ -37,7 +38,7 @@ export const getCurrentUserConnected = async (
 export const uploadImage = async () => {
   const access_token = await getCurrentToken();
 
-  const { data } = await axiosInstanceApi.get<ICurrentUser>(
+  const { data } = await axiosInstanceApiClient.get<ICurrentUser>(
     "/v1/user/current-user/",
     {
       headers: {
@@ -51,7 +52,7 @@ export const uploadImage = async () => {
 
 export const patchUser = async (body: CreateUserDto) => {
   const access_token = await getCurrentToken();
-  return axiosInstanceApi.patch(`/v1/user/update_info/`, body, {
+  return axiosInstanceApiClient.patch(`/v1/user/update_info/`, body, {
     headers: {
       Authorization: `Bearer ${access_token}`,
     },
