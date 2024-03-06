@@ -4,6 +4,7 @@ import { ReactNode, useState } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryStreamedHydration } from "@tanstack/react-query-next-experimental";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { SnackbarProvider } from "notistack";
 // const queryClient = new QueryClient();
 
 interface props {
@@ -15,7 +16,11 @@ export default function Provider({ children }: props) {
   return (
     <SessionProvider>
       <QueryClientProvider client={client}>
-        <ReactQueryStreamedHydration>{children}</ReactQueryStreamedHydration>{" "}
+        <ReactQueryStreamedHydration>
+          <SnackbarProvider autoHideDuration={4000}>
+            {children}
+          </SnackbarProvider>
+        </ReactQueryStreamedHydration>
         <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
     </SessionProvider>

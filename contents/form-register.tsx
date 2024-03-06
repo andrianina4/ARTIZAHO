@@ -5,11 +5,14 @@ import Input from "@/components/input";
 import Select from "@/components/select";
 import { ACCOUNT_TYPE, GENDER } from "@/constants/utils";
 import { CreateUserDto } from "@/dto/user";
+import { postUser } from "@/services/user.service";
 import { ISelect } from "@/types/IField";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useRouter } from "next/navigation";
+import { enqueueSnackbar } from "notistack";
 import React from "react";
 import { useForm } from "react-hook-form";
+import { useMutation } from "react-query";
 import * as Yup from "yup";
 
 type FormValue = CreateUserDto;
@@ -18,6 +21,8 @@ type Props = {};
 const choiceTypeOfMember = ACCOUNT_TYPE;
 
 function FormRegister({}: Props) {
+  const router = useRouter();
+
   const validationSchema = Yup.object().shape({
     first_name: Yup.string().required(),
     last_name: Yup.string().required(),
@@ -40,23 +45,48 @@ function FormRegister({}: Props) {
     phone_number: Yup.string().nullable(),
     password: Yup.string().nullable(),
   });
+
+  const mudationAdd = useMutation({
+    mutationFn: (body: FormValue) => {
+      return postUser(body);
+    },
+    onSuccess: (data) => {
+      enqueueSnackbar("Account create success", {
+        variant: "success",
+        anchorOrigin: {
+          vertical: "top",
+          horizontal: "center",
+        },
+        onClose: () => router.push("/auth/login"),
+      });
+    },
+    onError: (error) => {
+      console.log("error", error);
+      enqueueSnackbar("Error", {
+        variant: "error",
+        anchorOrigin: {
+          vertical: "top",
+          horizontal: "center",
+        },
+      });
+    },
+  });
   const {
     register,
     handleSubmit,
     formState: { errors },
-    // setValue,
   } = useForm<FormValue>({
     resolver: yupResolver<FormValue>(validationSchema as any),
   });
-  //   const router = useRouter();
 
   //   function redirectTerms() {
   //     router.push("");
   //   }
 
-  const onSubmit = (body: FormValue) => {};
+  const onSubmit = (body: FormValue) => {
+    mudationAdd.mutate(body);
+  };
 
-  console.log("errors", errors.last_name);
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
