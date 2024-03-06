@@ -94,19 +94,20 @@ export default function Page() {
             <Label key={indexItem} isActive={false} title={item} />
           ))}
         </div>
-        <div className="flex flex-col ">
+        <div className="flex flex-wrap gap-[16px] mt-6 mb-6">
           {data?.map((workshop, index) => {
             return (
               <CardComponent
                 key={index}
-                title={workshop.category}
-                description={workshop.description}
-                label={workshop.title}
-                place="Antananarivo"
-                price={workshop.workshop_info.base_price}
-                time="1:30"
+                workshop={workshop}
+                // title={workshop.category}
+                // description={workshop.description}
+                // label={workshop.title}
+                // place="Antananarivo"
+                // price={workshop.workshop_info.base_price}
+                // time="1:30"
                 onClick={handleClick}
-                images={workshop.images}
+                // images={workshop.images}
               />
             );
           })}

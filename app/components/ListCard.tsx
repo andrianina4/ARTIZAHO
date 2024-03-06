@@ -3,8 +3,15 @@
 import CardComponent from "@/components/CardComponent";
 import { getWorkShop } from "@/services/workshop.service";
 import { useQuery } from "react-query";
-
+import Slider, { Settings } from "react-slick";
 export default function ListCard() {
+  const settings: Settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 4,
+  };
   const { data, isLoading, isError } = useQuery({
     queryFn: () => getWorkShop(),
     queryKey: ["workshop"],
@@ -40,21 +47,16 @@ export default function ListCard() {
     );
   }
   return (
-    <>
-      {data?.map((workshop, index) => {
-        return (
-          <CardComponent
-            key={index}
-            title={workshop.category}
-            description={workshop.description}
-            label={workshop.title}
-            place="Antananarivo"
-            price={workshop.workshop_info.base_price}
-            time="1:30"
-            images={workshop.images}
-          />
-        );
-      })}
-    </>
+    <div className="slider-container mt-4">
+      <Slider {...settings}>
+        {data?.map((workshop, index) => {
+          return (
+            <div key={index}>
+              <CardComponent key={index} workshop={workshop} />
+            </div>
+          );
+        })}
+      </Slider>
+    </div>
   );
 }
