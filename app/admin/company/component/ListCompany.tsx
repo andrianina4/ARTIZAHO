@@ -8,37 +8,14 @@ import {getAllCompany} from "./Call/Company";
 import {useQuery} from "react-query";
 import ErrorPage from "./status/ErrorPage";
 import Waiter from "./status/Waiter";
+import ListHeader from "@/components/ListHeader";
 
-const headerList = ["Name", "Email", "Phone", "Location", "Created at"];
-
-const data: Array<ICompany> = [
-	{
-		company_name: "Codeo Travel",
-		company_image: "/temp/vase.png",
-		company_mail: "codeo@gmail.com",
-		company_tel: "0343403434",
-		company_location: "Antananarivo",
-		company_created_at: new Date(),
-		company_type: "company",
-	},
-	{
-		company_name: "Baobab Travel",
-		company_image: "/temp/vase.png",
-		company_mail: "baobab@gmail.com",
-		company_tel: "0343403434",
-		company_location: "Antananarivo",
-		company_created_at: new Date(),
-		company_type: "individuals",
-	},
-	{
-		company_name: "Travel Life",
-		company_image: "/temp/vase.png",
-		company_mail: "life@gmail.com",
-		company_tel: "0343403434",
-		company_location: "Antananarivo",
-		company_created_at: new Date(),
-		company_type: "company",
-	},
+const headerList = [
+	{id: 1, name: "name", label: "Name"},
+	{id: 2, name: "email", label: "Email"},
+	{id: 3, name: "phone", label: "Phone"},
+	{id: 4, name: "location", label: "Location"},
+	{id: 5, name: "created_at", label: "Created at"},
 ];
 
 export default function ListCompany() {
@@ -72,13 +49,7 @@ export default function ListCompany() {
 
 	return (
 		<>
-			<div className="grid grid-cols-custom-3 ml-4">
-				{headerList.map((item, index) => (
-					<span className="text-gray-60% font-bold text-sm" key={index}>
-						{item}
-					</span>
-				))}
-			</div>
+			<ListHeader headerList={headerList} gridStyle="grid-cols-custom-3 ml-4" />
 			{!isLoading || !isFetching ? (
 				<div>
 					{FilteredData?.map((company, index) => (

@@ -1,7 +1,10 @@
+import { axiosInstance, axiosInstanceApi } from "@/axios";
 import {
   getCurrentUserConnected,
   requestUserToken,
 } from "@/services/user.service";
+import { ICurrentUser } from "@/types/user/ICurrentUser";
+import { IRequestToken } from "@/types/user/IRequestToken";
 import { NextAuthOptions, User } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
@@ -15,16 +18,27 @@ export const options: NextAuthOptions = {
       },
       async authorize(credentials, req) {
         if (credentials) {
-          const resquestToken = await requestUserToken({
-            password: credentials.password,
-            username: credentials.username,
-          });
+          try {
+            // const { data: resquestToken } =
+            //   await axiosInstance.post<IRequestToken>("/token/auth/", {
+            //     email: credentials.username,
+            //     password: credentials.password,
+            //   });
 
-          const currentUser = await getCurrentUserConnected(
-            resquestToken.access_token
-          );
+            const resquestToken = await requestUserToken({
+              password: credentials.password,
+              username: credentials.username,
+            });
 
-          return { ...resquestToken, ...currentUser } as any;
+            const currentUser = await getCurrentUserConnected(
+              resquestToken.access_token
+            );
+
+            return { ...resquestToken, ...currentUser } as any;
+          } catch (error) {
+            console.log(error);
+            return null;
+          }
         } else {
           return null;
         }

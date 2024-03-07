@@ -1,4 +1,6 @@
-import { axiosInstance, axiosInstanceApi } from "@/axios";
+import { axiosInstanceApiClient } from "@/app/axiosClient";
+import { axiosInstance, axiosInstanceApi, getCurrentToken } from "@/axios";
+import { CreateUserDto } from "@/dto/user";
 import { ICurrentUser } from "@/types/user/ICurrentUser";
 import { IRequestToken } from "@/types/user/IRequestToken";
 import { getSession } from "next-auth/react";
@@ -34,22 +36,25 @@ export const getCurrentUserConnected = async (
 };
 
 export const uploadImage = async () => {
-  const session = await getSession();
+  const access_token = await getCurrentToken();
 
-  if (session) {
-    const access_token = session.user.access_token;
-
-    const { data } = await axiosInstanceApi.get<ICurrentUser>(
-      "/v1/user/current-user/",
-      {
-        headers: {
-          Authorization: `Bearer ${access_token}`,
-        },
-      }
-    );
-
-    return null;
-  }
+  const { data } = await axiosInstanceApiClient.get<ICurrentUser>(
+    "/v1/user/current-user/",
+    {
+      headers: {
+        Authorization: `Bearer ${access_token}`,
+      },
+    }
+  );
 
   return null;
+};
+
+export const patchUser = async (body: CreateUserDto) => {
+  const access_token = await getCurrentToken();
+  return axiosInstanceApiClient.patch(`/v1/user/update_info/`, body, {
+    headers: {
+      Authorization: `Bearer ${access_token}`,
+    },
+  });
 };
