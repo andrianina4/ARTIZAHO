@@ -4,6 +4,7 @@ import CardComponent from "@/components/CardComponent";
 import InputGroupMultiple from "@/components/InputGroupMultiple";
 import NavBar from "@/components/nav-bar";
 import { getWorkShop } from "@/services/workshop.service";
+import { IWorkShop } from "@/types/IWorkshop";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { chunk } from "lodash";
@@ -44,8 +45,8 @@ export default function Page() {
     "ANTEMORO PAPER",
   ];
 
-  const handleClick = () => {
-    router.push("/our-workshops/details");
+  const handleClick = (workshop: IWorkShop) => {
+    router.push(`/our-workshops/details/${workshop.id}`);
   };
 
   if (isLoading) {
@@ -106,7 +107,9 @@ export default function Page() {
                 // place="Antananarivo"
                 // price={workshop.workshop_info.base_price}
                 // time="1:30"
-                onClick={handleClick}
+                onClick={() => {
+                  handleClick(workshop);
+                }}
                 // images={workshop.images}
               />
             );
