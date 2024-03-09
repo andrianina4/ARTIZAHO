@@ -58,3 +58,12 @@ export const patchUser = async (body: CreateUserDto) => {
     },
   });
 };
+
+export const postUser = async (body: CreateUserDto) => {
+  const { data } = await axiosInstanceApiClient.post<ICurrentUser>(
+    `/v1/user/`,
+    body
+  );
+
+  return data;
+};
