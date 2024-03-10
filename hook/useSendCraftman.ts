@@ -1,12 +1,9 @@
-
-import { CreateUserDto } from './../dto/user/index';
 "use Client"
 import {useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useState} from "react"
 import { CraftmanSchema, FormCraftmanData } from "@/app/schema/craftmanSchema";
-import {ICraftman} from "@/types/ICraftman"
 import {useMutation} from "react-query"
 import axios from "axios";
 import { axiosInstanceApi } from "@/axios";
@@ -16,6 +13,10 @@ export  function useSendCraftman() {
 
   const [ImagetoShow, setImagetoShow] = useState<string>();
 	const [ImageToSend, setImageToSend] = useState<any>();
+
+  
+
+  const getUploadImageKey = (artisanId: number) => [`artisan`, artisanId, 'upload_image'];
 
     const {handleSubmit, register, formState:{errors} }= useForm({resolver: yupResolver(CraftmanSchema)});
 
@@ -37,29 +38,69 @@ export  function useSendCraftman() {
       }
     };
 
-// post info et image artisan
- const submitCraftman = async(data: ICraftman, image: File |null) => {
-  const response = await axiosInstanceApi.post('/v1/artisan',data, {
+//URL encore à changer
 
- })
+    const createCraftmanmutation= useMutation(async(data: FormCraftmanData)=>{
+      const session = await getSession();
 
- // obtenir le id de l'artisan créé
- const artisanId= response.data.id
+      if(session){
+          const access_token = session?.user.access_token
 
- // si image selctionnée
- if(ImageToSend){
-  const formData = new FormData();
-  formData.append('file',ImageToSend);
+          const response=  await axiosInstanceApi.post("/v1/artisan/", data,
+          {
+           headers: {
+             Authorization: `Bearer ${access_token}`,
+           },
+         }
+        )
 
-  await axiosInstanceApi.post(`/v1/artisan/${artisanId}/upload_image`, formData,
-  {headers: {
-    'Content-Type': 'multipart/form-data', // Set content type for image uploads
-    }
-  })
+        const artisanId = response.data.id
 
+        return { artisanId, artisanData: response.data}
+           
+      }
     
+
+    })
+
+   
+
+    const uploadImageMutation = useMutation(async (formdata: FormData) => {
+
+      
+
+      const responseImage= await axiosInstanceApi.post(`/v1/artisan/${artisanId }/upload_image`, formdata,
+      {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      })
+
+      return responseImage.data
+    },
+    
+    )
+
+    const onSubmit = async(data: FormCraftmanData) => {
+      try {
+        //envoyer info artisan
+        const createCraftman= await createCraftmanmutation.mutateAsync(data);
+
+        if(ImageToSend){
+          const formdata= new FormData();
+          formdata.append("image",ImageToSend);
+          formdata.append("id", createCraftman.id);
+          
+          const mutationData = { formdata, artisanId: createCraftman.id };
+          //Envoyer image artisan
+          await uploadImageMutation.mutateAsync(mutationData);
+        }
+        
+      } catch (error) {
+        console.log("Il ya une erreur",error);
+      }
+    };
+
+    return {register, handleSubmit, onSubmit, errors, ImagetoShow, handleInputFile, handleFileChange};
 }
-const mutationCraftman:any = useMutation(() => submitCraftman(data, ImageToSend));
-return { register, handleSubmit, errors, mutationCraftman, ImagetoShow, handleInputFile, handleFileChange};
-}
-}
+
