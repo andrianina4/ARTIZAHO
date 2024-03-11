@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import { StringDate } from ".";
+import { IImage } from "./IImage";
 
 export type IPanelWorkshop = {
   shop_id: number;
@@ -63,28 +64,29 @@ export type ISuggestWorkshop = {
 
 export type IWorkShop = {
   id: number;
-  artisan: {
+  workshop_info: {
     id: number;
-    images: [];
-    availabilities: [];
-    name: string;
-    description: string;
-    gender: string;
+    max_participants: number;
+    base_price: string;
+    discount: string;
+    currency: string;
+    created_at: StringDate;
+    workshop: number;
   };
-  max_participants: number;
-  base_price: string;
-  discount: string;
-  currency: string;
+  images: IImage[];
+  title: string;
+  description: string;
+  category: string;
   created_at: StringDate;
-  workshop: number;
+  updated_at: StringDate;
 };
 
 export type IPlanningItem = {
-	id: number;
-	date: string;
-	time_start: string;
-	time_end: string;
-	craftsman: {name: string; img: string};
-	location: string;
-	price: number;
+  id: number;
+  date: string;
+  time_start: string;
+  time_end: string;
+  craftsman: { name: string; img: string };
+  location: string;
+  price: number;
 };

@@ -10,8 +10,8 @@ export default function ModalDescriptionCard() {
         <h5 className="uppercase font-extrabold text-sm text-reddishBrown">
           floral
         </h5>
-
-        <HeaderWorkshop />
+        {/* <HeaderWorkshop /> */}
+        HeaderWorkshop component disabled server side rendering
       </header>
 
       <ImgSlider />

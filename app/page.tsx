@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import artizahoLogo from "../public/images/artizahoLogo.png";
 import { Nuage, Nuage3 } from "@/constants/link/svg";
@@ -9,7 +10,11 @@ import CardComponent from "@/components/CardComponent";
 import Comment from "@/components/Comment";
 import Title from "@/components/Title";
 import Sidebard from "./components/Sidebard";
-
+import ListCard from "./components/ListCard";
+import { QueryClient, QueryClientProvider } from "react-query";
+const queryClient = new QueryClient();
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 export default function Home() {
   // return <Sidebard />;
   return (
@@ -157,43 +162,11 @@ export default function Home() {
           </span>
         </div>
 
-        <div className="flex gap-[16px] justify-between ">
-          <CardComponent
-            title="Antemoro paper"
-            description="In this 2-hour workshop, learn how to make paper from typical Malagasy plant-based materials."
-            label="Antemoro paper : Envelope + card"
-            place="Antananarivo"
-            price={20.0}
-            time="1:30"
-          />
-
-          <CardComponent
-            title="Floral"
-            description="Welcome to Hanta's atelier-boutique, where you can learn how to create exceptional floral arrangements."
-            label="Floral : Bouquet in vase"
-            place="Antananarivo"
-            price={35.0}
-            time="1:30"
-          />
-
-          <CardComponent
-            title="Leather"
-            description="Lain, a passionate leatherworker, introduces you to the art of leatherwork by creating your own bracelet."
-            label="Leather : Bracelet"
-            place="Antananarivo"
-            price={15.0}
-            time="1:30"
-          />
-
-          <CardComponent
-            title="Beekeeping"
-            description="Discover the life of bees! Artizaho's beekeeping workshop offers you total immersion in the world of bees."
-            label="Introduction to beekeeping"
-            place="Antananarivo"
-            price={9.0}
-            time="1:30"
-          />
-        </div>
+        {/* <div className="flex gap-[16px] justify-between mt-4 "> */}
+        <QueryClientProvider client={queryClient}>
+          <ListCard />
+        </QueryClientProvider>
+        {/* </div> */}
 
         <Title
           title="Customer testimonials and reviews"

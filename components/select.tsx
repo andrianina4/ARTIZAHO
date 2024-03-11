@@ -17,7 +17,7 @@ export default function SelectCustom({
   options,
 }: PropsSelectCustom) {
   return (
-    <div>
+    <>
       <select
         className={`select  bg-white-40%  text-black-60%  w-full ${className}`}
         {...register}
@@ -35,6 +35,6 @@ export default function SelectCustom({
           <Danger className="w-3 h-3" /> <div>{errorMessage?.message}</div>
         </div>
       )}
-    </div>
+    </>
   );
 }
