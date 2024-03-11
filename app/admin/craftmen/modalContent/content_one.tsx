@@ -56,6 +56,7 @@ function Content_one({ onNext }: props) {
     onSubmit,
     errors,
     ImagetoShow,
+    ImageToSend,
     handleInputFile,
     handleFileChange,
   } = useSendCraftman();
@@ -83,7 +84,7 @@ function Content_one({ onNext }: props) {
             />
             <SelectCustom
               options={selectExpertiseItem}
-              register={register("exprtise")}
+              register={register("expertise")}
               className="input-bordered mt-2"
             />
             <SelectCustom

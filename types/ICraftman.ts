@@ -1,11 +1,14 @@
 import {ReactNode} from "react";
+import { IImage } from "./IImage";
 
-export type Gender="M"|"F"|"O"
+
 export type ICraftman = {
+	id:number
 	name: string;
 	description: string;
-	expertise: "Floral";
-	gender: Gender
+	expertise: string;
+	gender: string
+	image: IImage
 };
 
 export type ICraftmanItem = {

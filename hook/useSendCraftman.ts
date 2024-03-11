@@ -8,16 +8,11 @@ import { useMutation } from "react-query";
 import axios from "axios";
 import { axiosInstanceApi } from "@/axios";
 import { getSession } from "next-auth/react";
+import { postArtisan, uploadImageArtisan } from "@/services/artisan.service";
 
 export function useSendCraftman() {
   const [ImagetoShow, setImagetoShow] = useState<string>();
   const [ImageToSend, setImageToSend] = useState<any>();
-
-  const getUploadImageKey = (artisanId: number) => [
-    `artisan`,
-    artisanId,
-    "upload_image",
-  ];
 
   const {
     handleSubmit,
@@ -47,35 +42,14 @@ export function useSendCraftman() {
 
   //URL encore à changer
 
-  const createCraftmanmutation = useMutation(async (data: FormCraftmanData) => {
-    const session = await getSession();
+  const createCraftmanmutation = useMutation({
+    mutationFn: postArtisan
+  });
 
-    if (session) {
-      const access_token = session?.user.access_token;
-
-      const response = await axiosInstanceApi.post("/v1/artisan/", data, {
-        headers: {
-          Authorization: `Bearer ${access_token}`,
-        },
-      });
-
-      return response.data.id;
+  const uploadImageMutation = useMutation({
+    mutationFn:uploadImageArtisan
     }
-  });
-
-  const uploadImageMutation = useMutation(async () => {
-    const responseImage = await axiosInstanceApi.post(
-      `/v1/artisan/${artisanId}/upload_image`,
-      formdata,
-      {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      }
-    );
-
-    return responseImage.data;
-  });
+  );
 
   const onSubmit = async (data: FormCraftmanData) => {
     try {
@@ -102,6 +76,7 @@ export function useSendCraftman() {
     onSubmit,
     errors,
     ImagetoShow,
+    ImageToSend,
     handleInputFile,
     handleFileChange,
   };
