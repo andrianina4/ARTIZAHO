@@ -8,6 +8,7 @@ import {ISelect} from "@/types/IField";
 import React, {useState} from "react";
 import FormWorkshop from "./component/FormWorkshop";
 import ListWorkshop from "./content/ListWorkshop";
+import WorkshopProvider from "./provider";
 
 const selectItem: Array<ISelect> = [
 	{
@@ -28,22 +29,24 @@ export default function Page() {
 	};
 
 	return (
-		<div className="flex flex-col">
-			<div className="flex justify-between items-center">
-				<div className="flex gap-2 items-center">
-					<Button content="Add Workshop" leftIcon={<UserAddFill />} onClick={handleToogle} />
+		<WorkshopProvider>
+			<div className="flex flex-col">
+				<div className="flex justify-between items-center">
+					<div className="flex gap-2 items-center">
+						<Button content="Add Workshop" leftIcon={<UserAddFill />} onClick={handleToogle} />
+					</div>
+					<div className="flex flex-row items-center w-60 gap-7">
+						<div className="font-bold w-2/3">Filter by</div>
+						<Select options={selectItem} className="!bg-white !h-10 !rounded-xl" />
+					</div>
 				</div>
-				<div className="flex flex-row items-center w-60 gap-7">
-					<div className="font-bold w-2/3">Filter by</div>
-					<Select options={selectItem} className="!bg-white !h-10 !rounded-xl" />
-				</div>
+				{/* CONTENU */}
+				<ListWorkshop />
+				{/* POPUP ADD WORKSHOP */}
+				<ModalLayout open={open} onClick={handleToogle} className="w-auto h-2/3">
+					<FormWorkshop onClick={handleToogle} />
+				</ModalLayout>
 			</div>
-			{/* CONTENU */}
-			<ListWorkshop />
-			{/* POPUP ADD WORKSHOP */}
-			<ModalLayout open={open} onClick={handleToogle} className="w-auto h-2/3">
-				<FormWorkshop />
-			</ModalLayout>
-		</div>
+		</WorkshopProvider>
 	);
 }

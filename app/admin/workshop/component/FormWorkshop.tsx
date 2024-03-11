@@ -4,15 +4,13 @@ import Button from "@/components/button";
 import Input from "@/components/input";
 import Textarea from "@/components/textarea";
 import {ImageAdd, Toolbox} from "@/constants/link/icons";
-import {useForm, SubmitHandler} from "react-hook-form";
-import React, {useState} from "react";
-import {FormAtelierData} from "@/app/schema/atelierSchema";
 import Image from "next/image";
 import {ISuggestCraftman} from "@/types/ICraftman";
 import {ISuggestWorkshop} from "@/types/IWorkshop";
 import {useAutocompletionForCraftsman} from "@/hook/useAutocompletionForCraftsman";
 import {useAutocompletionNameWorkshop} from "@/hook/useAutocompletionNameWorkshop";
 import PopupHeader from "@/components/PopupHeader";
+import {AddWorkshop} from "@/hook/AddWorkshop";
 
 // FAKE
 const ListCraftsmen: ISuggestCraftman[] = [
@@ -67,61 +65,13 @@ const ListWorkshops: ISuggestWorkshop[] = [
 	// Add more wicked workshops here
 ];
 
-export default function FormWorkshop() {
+export default function FormWorkshop({onClick}: {onClick: VoidFunction}) {
 	// * Traitement du nom d'atelier
-	const {setBaseValues, SelectedValue, InputValue, handleChange, SuggestedValues, handleSelectValue} =
-		useAutocompletionNameWorkshop(ListWorkshops);
+	// const {setBaseValues, SelectedValue, InputValue, handleChange, SuggestedValues, handleSelectValue} =
+	// 	useAutocompletionNameWorkshop(ListWorkshops);
 
-	// * Traitement de l'artisan
-	const {
-		SelectedCraftsman,
-		handleChangeResetCraftsman,
-		InputCraftsman,
-		handleChangeCraftsman,
-		SuggestedCraftsmen,
-		handleSelectCraftsman,
-	} = useAutocompletionForCraftsman(ListCraftsmen);
-
-	// * Traitement des images
-	const [imagePreview, setImagePreview] = useState<string[]>([]);
-	const handleInputFile = () => {
-		setImagePreview([]);
-		const inputELement = document.querySelector("#input-file-atelier") as HTMLFormElement;
-		if (inputELement) {
-			inputELement.click();
-		}
-	};
-
-	const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		const arrayFile = e.target.files;
-		let tempTab: string[] = [];
-		if (arrayFile) {
-			for (let i = 0; i < arrayFile.length; i++) {
-				const file = arrayFile[i];
-				const imageUrl = URL.createObjectURL(file);
-				tempTab = [...tempTab, imageUrl];
-			}
-			setImagePreview(tempTab);
-		}
-	};
-
-	// * react hook form
-	const {register, handleSubmit, reset} = useForm<FormAtelierData>();
-	// const {
-	// 	register: fileRegister,
-	// 	handleSubmit: fileSubmit,
-	// 	control,
-	// 	reset: fileReset,
-	// } = useForm<FileData>();
-
-	// * SUBMIT
-	const onSubmit: SubmitHandler<FormAtelierData> = (data) => {
-		console.log(data);
-	};
-
-	const onSubmitFile: SubmitHandler<FormAtelierData> = (data) => {
-		console.log(data);
-	};
+	const {register, handleSubmit, onSubmit, errors, imagePreview, handleInputFile, handleFileChange} =
+		AddWorkshop(onClick);
 
 	return (
 		<div className="flex flex-col">
@@ -130,15 +80,15 @@ export default function FormWorkshop() {
 				<div className="flex flex-col justify-between w-96 ">
 					<div>
 						{/* INPUT NAME */}
-						<div className="bg-white-40% mt-2 py-5 px-6 rounded-2xl gap-2 flex items-center input input-bordered h-14 font-manrope text-sm flex-1 w-full relative">
+						{/* <div className="bg-white-40% mt-2 py-5 px-6 rounded-2xl gap-2 flex items-center input input-bordered h-14 font-manrope text-sm flex-1 w-full relative">
 							<input
 								className="w-full bg-white-40% outline-none"
 								placeholder="Title"
 								value={InputValue}
 								onChange={handleChange}
-							/>
-							{/* MODAL NAME */}
-							{SuggestedValues && (
+							/> */}
+						{/* MODAL NAME */}
+						{/* {SuggestedValues && (
 								<div className="absolute top-14 bg-white-40% border-2 border-white w-4/5 z-50 rounded-xl gap-1 flex flex-col shadow-sm">
 									{SuggestedValues.map((item) => (
 										<div
@@ -151,21 +101,25 @@ export default function FormWorkshop() {
 										</div>
 									))}
 								</div>
-							)}
-						</div>
+							)} */}
+						{/* </div> */}
+						<Input name="name" type="text" placeholder="Name" register={register("name")} errorMessage={errors.name} />
 						<Input
-							className=""
+							name="know_how"
 							type="text"
 							placeholder="Know-how"
-							// register={register("")}
+							register={register("know_how")}
+							errorMessage={errors.know_how}
 						/>
 						<Textarea
 							className="!mt-2 h-full"
+							name="desc"
 							placeholder="Workshop description"
-							register={register("workshop_desc")}
+							register={register("desc")}
+							errorMessage={errors.desc}
 						/>
 					</div>
-					<Button content="Add" type="submit" className="" />
+					<Button content="Add" type="submit" />
 				</div>
 				<div className="ml-14 flex flex-col w-96 gap-4">
 					<div className="text-base text-bronze font-bold">Galery</div>

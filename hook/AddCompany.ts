@@ -9,10 +9,7 @@ export function AddCompany(closePopup: () => void) {
 	// * VALIDATION YUP
 	const addCompanySchema = yup.object().shape({
 		name: yup.string().required("The company name is required"),
-		email: yup
-			.string()
-			.email("The email format seems to be invalid")
-			.required("The company email is required"),
+		email: yup.string().email("The email format seems to be invalid").required("The company email is required"),
 		phone_number: yup.string().required("The company phone number is required"),
 		nif: yup
 			.number()
@@ -42,6 +39,7 @@ export function AddCompany(closePopup: () => void) {
 		setImagetoShow(undefined);
 		setImageToSend(undefined);
 	};
+
 	// * Lorsqu'on change l'image
 	const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		if (e.target.files) {

@@ -6,17 +6,12 @@ import {usePathname} from "next/navigation";
 import {ReactNode} from "react";
 import NotificationProvider from "./provider/NotificationProvider";
 import SearchProvider from "./provider/SearchProvider";
-import {QueryClientProvider, QueryClient} from "react-query";
-
-const queryClient = new QueryClient();
 
 export default function Layout({children}: {children: React.ReactNode}) {
 	const pathname = usePathname();
 	let dynamicHeader: ReactNode;
 	if (pathname === "/admin")
-		dynamicHeader = (
-			<Header BigTitle="Welcome on our dashboard" LittleTitle="Hello Artizaho" searchBar={false} />
-		);
+		dynamicHeader = <Header BigTitle="Welcome on our dashboard" LittleTitle="Hello Artizaho" searchBar={false} />;
 	else if (pathname.startsWith("/admin/teams"))
 		dynamicHeader = <Header BigTitle="Teams" LittleTitle="List of all company members" />;
 	else if (pathname.startsWith("/admin/attendance"))
@@ -32,9 +27,7 @@ export default function Layout({children}: {children: React.ReactNode}) {
 	else if (pathname.startsWith("/admin/company"))
 		dynamicHeader = <Header BigTitle="Company" LittleTitle="List of Companies" />;
 	else if (pathname.startsWith("/admin/settings"))
-		dynamicHeader = (
-			<Header BigTitle="Settings" LittleTitle="Dashboard settings" searchBar={false} />
-		);
+		dynamicHeader = <Header BigTitle="Settings" LittleTitle="Dashboard settings" searchBar={false} />;
 	else dynamicHeader = <Header BigTitle="" LittleTitle="" />;
 
 	return (
@@ -45,10 +38,8 @@ export default function Layout({children}: {children: React.ReactNode}) {
 			<div className="w-full h-full flex flex-col gap-7">
 				<NotificationProvider>
 					<SearchProvider>
-						<QueryClientProvider client={queryClient}>
-							<div className="h-[10%]">{dynamicHeader}</div>
-							<div className=" h-[90%]">{children}</div>
-						</QueryClientProvider>
+						<div className="h-[10%]">{dynamicHeader}</div>
+						<div className=" h-[90%]">{children}</div>
 					</SearchProvider>
 				</NotificationProvider>
 			</div>
