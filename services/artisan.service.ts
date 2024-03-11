@@ -1,1 +1,3 @@
-import {} from ""
+export  const postArtisan = async() =>{
+    
+}

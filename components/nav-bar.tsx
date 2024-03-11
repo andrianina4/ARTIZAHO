@@ -82,13 +82,7 @@ function NavBar({ className, isWhite = false }: NavBarProps) {
                     <div className="avatar">
                       <div className="w-[24px] rounded-full">
                         <Image
-                          // src={
-                          //   "https://images.unsplash.com/flagged/photo-1573740144655-bbb6e88fb18a?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                          // }
                           src={getImgUrl(user.images)}
-                          // src={
-                          //   "http://localhost:9237/api/v1/media/users/be97b658-bea4-4922-bddf-f1946ef0d834.jpeg"
-                          // }
                           width={24}
                           height={24}
                           alt="user_image"
