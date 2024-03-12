@@ -12,59 +12,6 @@ import {useAutocompletionNameWorkshop} from "@/hook/useAutocompletionNameWorksho
 import PopupHeader from "@/components/PopupHeader";
 import {AddWorkshop} from "@/hook/AddWorkshop";
 
-// FAKE
-const ListCraftsmen: ISuggestCraftman[] = [
-	{
-		craftsman_id: 1,
-		craftsman_name: "John Doe",
-		craftsman_image: "/temp/trainer-1.jpeg",
-		craftsman_know_how: "Woodworking",
-	},
-	{
-		craftsman_id: 2,
-		craftsman_name: "Jane Smith",
-		craftsman_image: "/temp/trainer-1.jpeg",
-		craftsman_know_how: "Metalworking",
-	},
-	{
-		craftsman_id: 3,
-		craftsman_name: "Alice Johnson",
-		craftsman_image: "/temp/trainer-1.jpeg",
-		craftsman_know_how: "Pottery",
-	},
-	{
-		craftsman_id: 4,
-		craftsman_name: "Bob Brown",
-		craftsman_image: "/temp/trainer-1.jpeg",
-		craftsman_know_how: "Glassblowing",
-	},
-	{
-		craftsman_id: 5,
-		craftsman_name: "Emily Davis",
-		craftsman_image: "/temp/trainer-1.jpeg",
-		craftsman_know_how: "Jewelry Making",
-	},
-];
-
-const ListWorkshops: ISuggestWorkshop[] = [
-	{
-		workshop_id: 1,
-		workshop_name: "Bouquet en vase",
-		workshop_know_how: "Unleash the power of the dark side in your code",
-	},
-	{
-		workshop_id: 2,
-		workshop_name: "Bouquet tsy vase",
-		workshop_know_how: "Master the art of hacking and cyber mischief",
-	},
-	{
-		workshop_id: 3,
-		workshop_name: "Papier tsy tadidiko",
-		workshop_know_how: "Bend the rules of programming to your wicked will",
-	},
-	// Add more wicked workshops here
-];
-
 export default function FormWorkshop({onClick}: {onClick: VoidFunction}) {
 	// * Traitement du nom d'atelier
 	// const {setBaseValues, SelectedValue, InputValue, handleChange, SuggestedValues, handleSelectValue} =
@@ -80,30 +27,8 @@ export default function FormWorkshop({onClick}: {onClick: VoidFunction}) {
 				<div className="flex flex-col justify-between w-96 ">
 					<div>
 						{/* INPUT NAME */}
-						{/* <div className="bg-white-40% mt-2 py-5 px-6 rounded-2xl gap-2 flex items-center input input-bordered h-14 font-manrope text-sm flex-1 w-full relative">
-							<input
-								className="w-full bg-white-40% outline-none"
-								placeholder="Title"
-								value={InputValue}
-								onChange={handleChange}
-							/> */}
-						{/* MODAL NAME */}
-						{/* {SuggestedValues && (
-								<div className="absolute top-14 bg-white-40% border-2 border-white w-4/5 z-50 rounded-xl gap-1 flex flex-col shadow-sm">
-									{SuggestedValues.map((item) => (
-										<div
-											key={item.workshop_id}
-											className="flex flex-raw items-center px-5 py-3 rounded-xl hover:bg-white transition-all duration-100 cursor-pointer"
-											onClick={() => {
-												handleSelectValue(item);
-											}}>
-											{item.workshop_name}
-										</div>
-									))}
-								</div>
-							)} */}
-						{/* </div> */}
 						<Input name="name" type="text" placeholder="Name" register={register("name")} errorMessage={errors.name} />
+						{/* INPUT CATEGORY */}
 						<Input
 							name="know_how"
 							type="text"
@@ -111,6 +36,7 @@ export default function FormWorkshop({onClick}: {onClick: VoidFunction}) {
 							register={register("know_how")}
 							errorMessage={errors.know_how}
 						/>
+						{/* INPUT DESCRIPTION */}
 						<Textarea
 							className="!mt-2 h-full"
 							name="desc"
@@ -123,6 +49,7 @@ export default function FormWorkshop({onClick}: {onClick: VoidFunction}) {
 				</div>
 				<div className="ml-14 flex flex-col w-96 gap-4">
 					<div className="text-base text-bronze font-bold">Galery</div>
+					{/* INPUT IMAGES */}
 					<div className={`max-h-72 overflow-y-scroll flex flex-row flex-wrap gap-2`}>
 						{imagePreview.map((item, index) => (
 							<div key={index} className="w-40 h-32 relative rounded-2xl">

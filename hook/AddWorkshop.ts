@@ -5,6 +5,9 @@ import * as yup from "yup";
 import {useContext, useState} from "react";
 import {useForm} from "react-hook-form";
 import {WorkshopContext} from "@/app/admin/workshop/provider";
+import {IWorkShop, WorkshopDataToSend} from "@/types/IWorkshop";
+import {useMutation} from "@tanstack/react-query";
+import {postWorkShop} from "@/services/admin/adminWorkshop.service";
 
 type Tdata = {
 	name: string;
@@ -14,6 +17,17 @@ type Tdata = {
 
 export const AddWorkshop = (close: () => void) => {
 	const {addWorkshop} = useContext(WorkshopContext);
+	const {mutate} = useMutation({
+		mutationFn: (data: WorkshopDataToSend) => postWorkShop(data),
+		onMutate: (e) => console.log("mutate"),
+		onError: (e) => console.error(e.message),
+		onSuccess: (e) => {
+			console.log("success"), reset();
+			setImagePreview([]);
+			setImagetoSend([]);
+		},
+		onSettled: (e) => console.log("settled"),
+	});
 
 	// * VALIDATION YUP
 	const addWorkshopSchema = yup.object().shape({
@@ -61,17 +75,19 @@ export const AddWorkshop = (close: () => void) => {
 
 	// * SUBMIT
 	const onSubmit = (data: Tdata) => {
-		try {
-			console.log(data);
-			console.log(imagetoSend);
-		} catch (error) {
-			console.error(error);
-		} finally {
-			// close();
-			reset();
-			setImagePreview([]);
-			setImagetoSend([]);
-		}
+		const dataToSend: WorkshopDataToSend = {
+			title: data.name,
+			description: data.desc,
+			category: data.know_how,
+			workshop_info: {
+				max_participants: 100,
+				base_price: 0,
+				discount: 0.0,
+				currency: "EUR",
+			},
+		};
+		mutate(dataToSend);
+		// close();
 	};
 
 	return {

@@ -25,15 +25,6 @@ export default function WorkshopItem({workshop}: {workshop: IWorkShop}) {
 				</div>
 				<p className="opacity-50">{workshop.category}</p>
 			</div>
-			{/* NOM et IMAGE */}
-			{/* <div className="flex items-center gap-2">
-				<div className="w-[30px] h-[30px] relative rounded-full bg-slate-500">
-					<Image src={workshop?.} alt="" fill className="rounded-full" />
-				</div>
-				<div className="flex flex-col items-center ">
-					<p className="text-black-default font-bold">{workshop.shop_craftsman.name}</p>
-				</div>
-			</div> */}
 			{/* NB PARTICIPANT */}
 			<div className="flex gap-2 items-center">
 				<PeopleFill className="opacity-70" />
