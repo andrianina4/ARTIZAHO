@@ -2,17 +2,15 @@ import SelectCustom from "@/components/Select";
 import Button from "@/components/button";
 import Checkbox from "@/components/checkbox";
 import Input from "@/components/input";
-import Select from "@/components/select";
 import { ACCOUNT_TYPE, GENDER } from "@/constants/utils";
 import { CreateUserDto } from "@/dto/user";
 import { postUser } from "@/services/user.service";
-import { ISelect } from "@/types/IField";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import { enqueueSnackbar } from "notistack";
 import React from "react";
 import { useForm } from "react-hook-form";
-import { useMutation } from "react-query";
 import * as Yup from "yup";
 
 type FormValue = CreateUserDto;

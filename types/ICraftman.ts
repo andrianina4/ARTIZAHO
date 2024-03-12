@@ -8,7 +8,7 @@ export type ICraftman = {
   availabilities: [];
   name: string;
   description: string;
-  expertise: "Floral";
+  expertise: string;
   gender: Gender;
 };
 

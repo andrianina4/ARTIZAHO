@@ -1,4 +1,5 @@
 import { Alarm, People1, PeopleCheck, Star } from "@/constants/link/icons";
+import { ICraftman } from "@/types/ICraftman";
 import { ITrainer } from "@/types/IUser";
 import Image from "next/image";
 import React from "react";
@@ -12,6 +13,7 @@ type ICondition = {
 type PresentationTrainerProps = {
   trainer: ITrainer;
   condition?: ICondition;
+  artisan?: ICraftman;
 };
 
 const NUMBER_STARS = 5;
@@ -19,7 +21,7 @@ const WIDTH_IMAGE_TRAINER = 110;
 const HEIGHT_IMAGE_TRAINER = 160;
 
 function PresentationTrainer(props: PresentationTrainerProps) {
-  const { trainer, condition } = props;
+  const { trainer, condition, artisan } = props;
   const { star, about, name, photo, id } = trainer;
 
   return (
@@ -35,13 +37,13 @@ function PresentationTrainer(props: PresentationTrainerProps) {
         <div className="flex flex-col justify-between">
           <div>
             <h3 className="text-reddishBrown font-extrabold text-base">
-              With {name}
+              With {artisan?.name}
             </h3>
             <p className="text-brown text-xs font-normal ">
-              {about}{" "}
-              <span className="font-bold cursor-pointer text-reddishBrown">
+              {artisan?.description}
+              {/* <span className="font-bold cursor-pointer text-reddishBrown">
                 ...Read more
-              </span>
+              </span> */}
             </p>
           </div>
 
