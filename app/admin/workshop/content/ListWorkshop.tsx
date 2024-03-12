@@ -1,10 +1,10 @@
 import ListHeader from "@/components/ListHeader";
-import {FlowerOne} from "@/constants/link/icons";
-import {IWorkShop, IWrokshopItem} from "@/types/IWorkshop";
+import {IWorkShop} from "@/types/IWorkshop";
 import React, {useContext, useEffect, useState} from "react";
 import WorkshopItem from "../component/WorkshopItem";
 import {SearchContext} from "../../provider/SearchProvider";
-import {WorkshopContext} from "../provider";
+import {getWorkShop} from "@/services/workshop.service";
+import {useQuery} from "@tanstack/react-query";
 
 const headerList = [
 	{id: 1, name: "workshop", label: "Workshop"},
@@ -14,14 +14,17 @@ const headerList = [
 
 export default function ListWorkshop() {
 	// * VALEURS PAR DEFAUT
-	const {WorshopItems, isLoading, isError} = useContext(WorkshopContext);
+	const {data, isLoading, isError} = useQuery({
+		queryFn: () => getWorkShop(),
+		queryKey: ["adminWorkshop"],
+	});
 
 	// * FILTRE PAR SEARCH BAR
 	const [FilteredData, setFilteredData] = useState<IWorkShop[]>([]);
 	const searchContext = useContext(SearchContext);
 	useEffect(() => {
 		if (!isLoading) {
-			const filteredValues = WorshopItems.filter((value: IWorkShop) => {
+			const filteredValues = data!.filter((value: IWorkShop) => {
 				if (value.title?.toLocaleLowerCase().includes(searchContext.Value.toLocaleLowerCase())) {
 					return value;
 				}
@@ -29,6 +32,13 @@ export default function ListWorkshop() {
 			setFilteredData(filteredValues);
 		}
 	}, [searchContext.Value, isLoading]);
+
+	if (isLoading) {
+		return <div>Loading</div>;
+	}
+	if (isError) {
+		return <div>Error</div>;
+	}
 
 	return (
 		<>

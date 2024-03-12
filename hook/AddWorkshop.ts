@@ -4,9 +4,8 @@ import {yupResolver} from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import {useContext, useState} from "react";
 import {useForm} from "react-hook-form";
-import {WorkshopContext} from "@/app/admin/workshop/provider";
 import {IWorkShop, WorkshopDataToSend} from "@/types/IWorkshop";
-import {useMutation} from "@tanstack/react-query";
+import {useMutation, useQueryClient} from "@tanstack/react-query";
 import {postWorkShop} from "@/services/admin/adminWorkshop.service";
 
 type Tdata = {
@@ -16,17 +15,23 @@ type Tdata = {
 };
 
 export const AddWorkshop = (close: () => void) => {
-	const {addWorkshop} = useContext(WorkshopContext);
+	const queryClient = useQueryClient();
+
 	const {mutate} = useMutation({
 		mutationFn: (data: WorkshopDataToSend) => postWorkShop(data),
-		onMutate: (e) => console.log("mutate"),
-		onError: (e) => console.error(e.message),
 		onSuccess: (e) => {
 			console.log("success"), reset();
 			setImagePreview([]);
 			setImagetoSend([]);
 		},
-		onSettled: (e) => console.log("settled"),
+		onSettled: async (_, error) => {
+			if (error) {
+				console.error(error.message);
+			} else {
+				const res = await queryClient.invalidateQueries({queryKey: ["adminWorkshop"]});
+				console.log(res);
+			}
+		},
 	});
 
 	// * VALIDATION YUP

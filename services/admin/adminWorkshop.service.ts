@@ -1,8 +1,6 @@
 import {axiosInstanceApiClient} from "@/app/axiosClient";
 import {getCurrentToken} from "@/axios";
-import {IBackendResponse} from "@/types";
 import {IWorkShop, WorkshopDataToSend} from "@/types/IWorkshop";
-import {getSession} from "next-auth/react";
 
 export const postWorkShop = async (data: WorkshopDataToSend) => {
 	const access_token = await getCurrentToken();
