@@ -11,7 +11,7 @@ export const postArtisan = async (data: CreateArtisanDto) => {
     },
   });
 
-  return response.data.;
+  return response.data.id;
 };
 
 export const uploadImageArtisan = async (dataImage: CreateImageArtisanDto) => {

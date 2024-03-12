@@ -1,3 +1,4 @@
+import { CreateArtisanDto, CreateImageArtisanDto } from './../dto/artisan/index';
 "use Client";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -51,19 +52,21 @@ export function useSendCraftman() {
     }
   );
 
-  const onSubmit = async (data: FormCraftmanData) => {
+  const onSubmit = async ({data, imageData}: {data:CreateArtisanDto, imageData:CreateImageArtisanDto}) => {
     try {
       //envoyer info artisan
       const createCraftman = await createCraftmanmutation.mutateAsync(data);
+      console.log(data)
 
       if (ImageToSend) {
         const formdata = new FormData();
         formdata.append("image", ImageToSend);
-        formdata.append("id", createCraftman.id);
+        formdata.append("artisan", createCraftman.id);
 
-        const mutationData = { formdata, artisanId: createCraftman.id };
+        
         //Envoyer image artisan
-        await uploadImageMutation.mutateAsync(mutationData);
+        await uploadImageMutation.mutateAsync(imageData);
+        console.log(imageData)
       }
     } catch (error) {
       console.log("Il ya une erreur", error);
