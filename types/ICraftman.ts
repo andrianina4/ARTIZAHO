@@ -3,12 +3,13 @@ import { IImage } from "./IImage";
 
 
 export type ICraftman = {
-	id:number
-	name: string;
-	description: string;
-	expertise: string;
-	gender: string
-	image: IImage
+	id:number,
+	name: string,
+	description: string,
+	expertise: string,
+	gender: string,
+	image: IImage,
+	avalaibilities:[],
 };
 
 export type ICraftmanItem = {

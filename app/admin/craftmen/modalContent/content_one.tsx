@@ -57,7 +57,6 @@ function Content_one({ onNext }: props) {
     onSubmit,
     errors,
     ImagetoShow,
-    ImageToSend,
     handleInputFile,
     handleFileChange,
   } = useSendCraftman();

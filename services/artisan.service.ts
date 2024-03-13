@@ -15,6 +15,8 @@ export const postArtisan = async (data: CreateArtisanDto) => {
 };
 
 export const uploadImageArtisan = async (dataImage: CreateImageArtisanDto) => {
+
+  const access_token = getCurrentToken();
   const responseImage = await axiosInstanceApi.post(
     `/v1/artisan/${dataImage.artisan}/upload_image`,
     dataImage,
@@ -22,6 +24,7 @@ export const uploadImageArtisan = async (dataImage: CreateImageArtisanDto) => {
     {
       headers: {
         "Content-Type": "multipart/form-data",
+        Authorization: `Bearer ${access_token}`,
       },
     }
   );

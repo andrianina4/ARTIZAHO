@@ -15,18 +15,15 @@ import { DateRange, DateRangeProps } from "react-date-range";
 import { addDays, format } from "date-fns";
 import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
+import CalendarRange from "./calendarRange";
 
 type props = {
   onPrevious: VoidFunction;
 };
 
-interface Range {
-  startDate: Date;
-  endDate: Date;
-  key: string;
-}
 
-function Content_two({ onPrevious, DateVal, setDateVal }: any) {
+
+function Content_two({ onPrevious }: any) {
 //   const [state, setState] = useState<Range[]>([
 //     {
 //       startDate: new Date(),
@@ -38,23 +35,19 @@ function Content_two({ onPrevious, DateVal, setDateVal }: any) {
 //   const formattedStartDate = format(DateVal[0].startDate, "yyyy-MM-dd");
 //   const formattedEndDate = format(DateVal[0].endDate, "yyyy-MM-dd");
 
-useEffect(() => {
-    if (DateVal) {
-        setDateVal([
-            {
-              startDate: new Date(),
-              endDate: addDays(new Date(), 0),
-              key: "selection",
-            },
-          ])
-    }
-}, [])
+// useEffect(() => {
+//     if (DateVal) {
+//         setDateVal([
+//             {
+//               startDate: new Date(),
+//               endDate: addDays(new Date(), 0),
+//               key: "selection",
+//             },
+//           ])
+//     }
+// }, [])
 
-  const handleChange = (item: any) => {
-    setState([item.selection as Range]);
-    console.log("Start Date:", formattedStartDate);
-    console.log("End Date:", formattedEndDate);
-  };
+  
 
   const { register, handleSubmit } = useForm<FormDataTest>({
     mode: "onChange",
@@ -79,13 +72,7 @@ useEffect(() => {
       </div>
 
       <div className="flex h-full gap-2">
-        <DateRange
-          onChange={handleChange}
-          moveRangeOnFirstSelection={false}
-          months={1}
-          ranges={DateVal}
-          direction="horizontal"
-        />
+        <CalendarRange/>
         ;
         <form className=" flex w-2/5 gap-2 h-fit items-center">
           <div className="flex w-full items-center gap-2 bg-white-40% rounded-2xl px-2">
