@@ -5,6 +5,6 @@ export type IImage = {
   base_url: string;
   blurhash_code: string;
   user: number | null;
-  artisan: null;
+  artisan: number | null;
   workshop: number | null;
 };

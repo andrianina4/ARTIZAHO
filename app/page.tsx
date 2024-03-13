@@ -1,18 +1,11 @@
-"use client";
-import Image from "next/image";
-import artizahoLogo from "../public/images/artizahoLogo.png";
-import { Nuage, Nuage3 } from "@/constants/link/svg";
+import { Nuage } from "@/constants/link/svg";
 import NavBar from "@/components/nav-bar";
 import Footer from "@/components/footer";
 import { SearchIcon } from "@/constants/link/icons";
 import QuiNousSommes from "./accueil/QuiNousSommes";
-import CardComponent from "@/components/CardComponent";
 import Comment from "@/components/Comment";
 import Title from "@/components/Title";
-import Sidebard from "./components/Sidebard";
 import ListCard from "./components/ListCard";
-import { QueryClient, QueryClientProvider } from "react-query";
-const queryClient = new QueryClient();
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 export default function Home() {
@@ -162,11 +155,7 @@ export default function Home() {
           </span>
         </div>
 
-        {/* <div className="flex gap-[16px] justify-between mt-4 "> */}
-        <QueryClientProvider client={queryClient}>
-          <ListCard />
-        </QueryClientProvider>
-        {/* </div> */}
+        <ListCard />
 
         <Title
           title="Customer testimonials and reviews"

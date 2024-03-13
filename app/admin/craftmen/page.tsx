@@ -15,14 +15,21 @@ import Textarea from "@/components/textarea";
 import ImageCustom from "@/components/imageCustom";
 import CalendarSection from "./content/calendarSection";
 import ListSection from "./content/listSection";
-import SelectCustom from "@/components/select";
 import { addDays, format } from "date-fns";
 import { ISelect } from "@/types/IField";
 import { Vase } from "@/constants/link/images";
 import Content_one from "./modalContent/content_one";
 import Content_two from "./modalContent/content_two";
+import SelectCustom from "@/components/Select";
+import { ArtisanIdContextProvider } from "../provider/ArtisanIdProvider";
 
 type Props = {};
+
+interface Range {
+  startDate: Date;
+  endDate: Date;
+  key: string;
+}
 
 const selectItem: Array<ISelect> = [
   { value: "name", label: "Name" },
@@ -39,7 +46,7 @@ function Page({}: Props) {
   const [content, setContent] = useState(true);
   const [step, setStep] = useState(1);
 
-  const [DateState, setDateState] = useState();
+  // const [DateState, setDateState] = useState<Range[]>();
 
   const handleNext = () => {
     console.log("suivant");
@@ -90,22 +97,25 @@ function Page({}: Props) {
             onClick={handleToogle}
             className="h-[650px] w-[830px]"
           >
-            {/* Content one: à propos de l'artisan */}
-            {step === 1 && <Content_one onNext={handleNext} />}
+            <ArtisanIdContextProvider>
+              {/* Content one: à propos de l'artisan */}
+              {step === 1 && <Content_one onNext={handleNext} />}
 
-            {/* Content two: dispo de l'artisan */}
-            {step === 2 && (
-              <Content_two
-                onPrevious={handlePrevious}
-                DateVal={DateState}
-                setDateVal={setDateState}
-              />
-            )}
+              {/* Content two: dispo de l'artisan */}
+              {step === 2 && (
+                <Content_two />
+                // <Content_two
+                //   onPrevious={handlePrevious}
+                //   DateVal={DateState}
+                //   setDateVal={setDateState}
+                // />
+              )}
+            </ArtisanIdContextProvider>
           </ModalLayout>
         </div>
 
         <div className="h-[90%]">
-          {content ? <ListSection /> : <CalendarSection />}
+          <ListSection />
         </div>
       </div>
     </QueryClientProvider>

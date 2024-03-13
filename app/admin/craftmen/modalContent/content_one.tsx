@@ -18,6 +18,7 @@ import { useForm } from "react-hook-form";
 import { useSendCraftman } from "@/hook/useSendCraftman";
 import { FormCraftmanData } from "@/app/schema/craftmanSchema";
 import SelectCustom from "@/components/Select";
+import { CreateArtisanDto, CreateImageArtisanDto } from "@/dto/artisan";
 
 type props = {
   onNext: VoidFunction;
@@ -60,8 +61,8 @@ function Content_one({ onNext }: props) {
     handleFileChange,
   } = useSendCraftman();
 
-  const handleSendCraftaman = (data: FormCraftmanData) => {
-    onSubmit(data);
+  const handleSendCraftaman = ({data, imageData}: {data:CreateArtisanDto, imageData:CreateImageArtisanDto}) => {
+    onSubmit({data, imageData});
   };
 
   return (
@@ -73,7 +74,7 @@ function Content_one({ onNext }: props) {
         New craftman
       </div>
 
-      <form onSubmit={handleSubmit(handleSendCraftaman)}>
+      <form onSubmit={handleSubmit(()=>handleSendCraftaman)}>
         <div className="flex w-full gap-4">
           <div className="w-1/2 ">
             <Input
@@ -83,7 +84,7 @@ function Content_one({ onNext }: props) {
             />
             <SelectCustom
               options={selectExpertiseItem}
-              register={register("exprtise")}
+              register={register("expertise")}
               className="input-bordered mt-2"
             />
             <SelectCustom

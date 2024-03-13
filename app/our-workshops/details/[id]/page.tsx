@@ -44,6 +44,8 @@ export default async function page({
     duration: "1:30 hours",
   };
 
+  console.log("currentWorkshop", currentWorkshop);
+
   return (
     <div className="min-h-screen relative">
       <header className="w-full max-w-page mx-auto">

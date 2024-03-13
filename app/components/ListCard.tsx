@@ -2,7 +2,7 @@
 
 import CardComponent from "@/components/CardComponent";
 import { getWorkShop } from "@/services/workshop.service";
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 import Slider, { Settings } from "react-slick";
 export default function ListCard() {
   const settings: Settings = {
