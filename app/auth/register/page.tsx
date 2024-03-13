@@ -12,9 +12,6 @@ import FormRegister from "@/contents/form-register";
 import { ISelect } from "@/types/IField";
 import { useRouter } from "next/navigation";
 import React from "react";
-import { QueryClient, QueryClientProvider } from "react-query";
-
-const queryClient = new QueryClient();
 
 function Register() {
   const router = useRouter();
@@ -57,9 +54,7 @@ function Register() {
               </button>
             </div>
           </div>
-          <QueryClientProvider client={queryClient}>
-            <FormRegister />
-          </QueryClientProvider>
+          <FormRegister />
 
           <TrajetRegister className="absolute right-0 bottom-0" />
         </div>

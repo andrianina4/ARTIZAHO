@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import { StringDate } from ".";
 import { IImage } from "./IImage";
+import { ICraftman } from "./ICraftman";
 
 export type IPanelWorkshop = {
   shop_id: number;
@@ -89,4 +90,19 @@ export type IPlanningItem = {
   craftsman: { name: string; img: string };
   location: string;
   price: number;
+};
+
+export type IScheduleWorkshop = {
+  id: number;
+  workshop: IWorkShop;
+  artisan: ICraftman;
+  start_date: StringDate;
+  end_date: StringDate;
+  time: string;
+  duration: number;
+  available_places: number;
+  location: string;
+  is_available: boolean;
+  created_at: StringDate;
+  workshop_info: number;
 };
