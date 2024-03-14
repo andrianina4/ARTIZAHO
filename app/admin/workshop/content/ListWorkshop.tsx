@@ -15,8 +15,8 @@ const headerList = [
 export default function ListWorkshop() {
 	// * VALEURS PAR DEFAUT
 	const {data, isLoading, isError} = useQuery({
-		queryFn: () => getWorkShop(),
 		queryKey: ["adminWorkshop"],
+		queryFn: () => getWorkShop(),
 	});
 
 	// * FILTRE PAR SEARCH BAR
@@ -31,7 +31,7 @@ export default function ListWorkshop() {
 			});
 			setFilteredData(filteredValues);
 		}
-	}, [searchContext.Value, isLoading]);
+	}, [searchContext.Value, isLoading, data]);
 
 	if (isLoading) {
 		return <div>Loading</div>;
