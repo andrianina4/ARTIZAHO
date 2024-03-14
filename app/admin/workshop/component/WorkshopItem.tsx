@@ -1,22 +1,26 @@
 import {CalendarIcon, Duration, FlowerOne, PeopleFill} from "@/constants/link/icons";
+import {DeleteWorkshop} from "@/hook/AdminWorkshop/DeleteWorkshop";
 import {colorBackground, colorText} from "@/types/IColor";
 import {IWorkShop, IWrokshopItem} from "@/types/IWorkshop";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, {MouseEventHandler} from "react";
+import {useMutation} from "react-query";
 
 export default function WorkshopItem({workshop}: {workshop: IWorkShop}) {
+	const {handleDelete} = DeleteWorkshop(workshop.id);
+
 	// const bg: string = colorBackground[workshop.shop_color];
 	// const txt: string = colorText[workshop.shop_color];
 	const bg = "bg-bronze";
 	const txt = "text-bronze";
 
 	return (
-		<Link
-			href={`/admin/workshop/${workshop.id}/about`}
-			className="grid grid-cols-custom-9 text-sm font-bold bg-white items-center rounded-lg h-14 pl-4 my-1">
+		<div className="grid grid-cols-custom-9 text-sm font-bold bg-white items-center rounded-lg h-14 pl-4 my-1">
 			{/* WORKSHOP */}
-			<div className="font-bold opacity-90">{workshop.title}</div>
+			<div className="font-bold opacity-90">
+				<Link href={`/admin/workshop/${workshop.id}/about`}>{workshop.title}</Link>
+			</div>
 			{/* KNOW-HOW */}
 			<div className="flex items-center gap-2">
 				<div className={`w-7 h-7 flex items-center justify-center ${txt} ${bg} bg-opacity-30 rounded-lg`}>
@@ -36,7 +40,7 @@ export default function WorkshopItem({workshop}: {workshop: IWorkShop}) {
 					Planning
 				</div>
 			</div>
-			<div>...</div>
-		</Link>
+			<button onClick={handleDelete}>...</button>
+		</div>
 	);
 }

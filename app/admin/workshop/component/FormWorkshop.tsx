@@ -10,7 +10,7 @@ import {ISuggestWorkshop} from "@/types/IWorkshop";
 import {useAutocompletionForCraftsman} from "@/hook/useAutocompletionForCraftsman";
 import {useAutocompletionNameWorkshop} from "@/hook/useAutocompletionNameWorkshop";
 import PopupHeader from "@/components/PopupHeader";
-import {AddWorkshop} from "@/hook/AddWorkshop";
+import {AddWorkshop} from "@/hook/AdminWorkshop/AddWorkshop";
 
 export default function FormWorkshop({onClick}: {onClick: VoidFunction}) {
 	// * Traitement du nom d'atelier

@@ -20,7 +20,7 @@ export const AddWorkshop = (close: () => void) => {
 	const {mutate} = useMutation({
 		mutationFn: (data: WorkshopDataToSend) => postWorkShop(data),
 		onSuccess: (e) => {
-			console.log("success"), reset();
+			reset();
 			setImagePreview([]);
 			setImagetoSend([]);
 		},
@@ -28,8 +28,7 @@ export const AddWorkshop = (close: () => void) => {
 			if (error) {
 				console.error(error.message);
 			} else {
-				const res = await queryClient.invalidateQueries({queryKey: ["adminWorkshop"]});
-				console.log(res);
+				await queryClient.invalidateQueries({queryKey: ["adminWorkshop"]});
 			}
 		},
 	});
