@@ -2,9 +2,9 @@
 
 import {yupResolver} from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import {useContext, useState} from "react";
+import {useState} from "react";
 import {useForm} from "react-hook-form";
-import {IWorkShop, WorkshopDataToSend} from "@/types/IWorkshop";
+import {WorkshopDataToSend} from "@/types/IWorkshop";
 import {useMutation, useQueryClient} from "@tanstack/react-query";
 import {postWorkShop} from "@/services/admin/adminWorkshop.service";
 
@@ -91,7 +91,7 @@ export const AddWorkshop = (close: () => void) => {
 			},
 		};
 		mutate(dataToSend);
-		// close();
+		close();
 	};
 
 	return {

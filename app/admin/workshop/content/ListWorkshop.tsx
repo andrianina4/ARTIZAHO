@@ -3,8 +3,8 @@ import {IWorkShop} from "@/types/IWorkshop";
 import React, {useContext, useEffect, useState} from "react";
 import WorkshopItem from "../component/WorkshopItem";
 import {SearchContext} from "../../provider/SearchProvider";
-import {getWorkShop} from "@/services/workshop.service";
 import {useQuery} from "@tanstack/react-query";
+import {getWorkShopAdmin} from "@/services/admin/adminWorkshop.service";
 
 const headerList = [
 	{id: 1, name: "workshop", label: "Workshop"},
@@ -16,7 +16,7 @@ export default function ListWorkshop() {
 	// * VALEURS PAR DEFAUT
 	const {data, isLoading, isError} = useQuery({
 		queryKey: ["adminWorkshop"],
-		queryFn: () => getWorkShop(),
+		queryFn: () => getWorkShopAdmin(),
 	});
 
 	// * FILTRE PAR SEARCH BAR

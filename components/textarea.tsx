@@ -6,12 +6,13 @@ type TextareaProps = {
 	name?: string;
 	placeholder: string;
 	className?: string;
+	defaultValue?: string;
 	register?: UseFormRegisterReturn;
 	errorMessage?: any;
 };
 
 function Textarea(props: TextareaProps) {
-	const {placeholder, className, name, register, errorMessage} = props;
+	const {placeholder, className, name, register, defaultValue, errorMessage} = props;
 
 	return (
 		<div className="w-full flex flex-col">
@@ -20,6 +21,7 @@ function Textarea(props: TextareaProps) {
 				placeholder={placeholder}
 				name={name}
 				id={name}
+				defaultValue={defaultValue}
 				{...register}></textarea>
 			{errorMessage?.message && (
 				<div className="pl-2 flex items-center gap-1 text-xs text-red-600 opacity-80 font-bold">
