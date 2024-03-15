@@ -51,3 +51,11 @@ export const patchWorkShop = async (id: number, data: any) => {
 		},
 	});
 };
+
+export const getScheduleWorkshop = async (id: number) => {
+	const {
+		data: {results},
+	} = await axiosInstanceApiClient.get<IBackendResponse<any>>(`/v1/workshop/${id}/schedule`);
+
+	return results;
+};

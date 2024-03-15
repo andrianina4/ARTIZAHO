@@ -3,11 +3,13 @@
 import ListHeader from "@/components/ListHeader";
 import Button from "@/components/button";
 import {Add} from "@/constants/link/icons";
-import {IPlanningItem} from "@/types/IWorkshop";
+import {IPlanningItem, IScheduleWorkshop} from "@/types/IWorkshop";
 import React, {useState} from "react";
 import PlanningItem from "./component/PlanningItem";
 import ModalLayout from "@/components/modal";
 import FormPlanning from "./component/FormPlanning";
+import {useQuery} from "@tanstack/react-query";
+import {getScheduleWorkshop} from "@/services/admin/adminWorkshop.service";
 
 const headerList = [
 	{id: 1, name: "date", label: "Date"},
@@ -57,6 +59,12 @@ const data: IPlanningItem[] = [
 ];
 
 export default function page({params}: {params: {id: string}}) {
+	const {id} = params;
+	const {data, isLoading, isError} = useQuery({
+		queryKey: ["adminWorkshopSchedule"],
+		queryFn: () => getScheduleWorkshop(Number(id)),
+	});
+	console.log(data);
 	// * Popup add Atelier
 	const [open, setOpen] = useState(false);
 	const handleToogle = () => {
@@ -67,8 +75,8 @@ export default function page({params}: {params: {id: string}}) {
 		<div className="flex flex-col w-full px-4">
 			<ListHeader headerList={headerList} gridStyle="grid-cols-custom-10 ml-12 my-3" />
 			<div>
-				{data.map((participant, index) => (
-					<PlanningItem key={index} item={participant} />
+				{data?.map((item: IScheduleWorkshop, index: number) => (
+					<PlanningItem key={index} item={item} />
 				))}
 			</div>
 			<div className="mt-8 flex justify-center">
