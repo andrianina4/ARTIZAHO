@@ -5,10 +5,8 @@ import Input from "@/components/input";
 import Textarea from "@/components/textarea";
 import {ImageAdd, Toolbox} from "@/constants/link/icons";
 import Image from "next/image";
-import {ISuggestCraftman} from "@/types/ICraftman";
-import {ISuggestWorkshop} from "@/types/IWorkshop";
-import {useAutocompletionForCraftsman} from "@/hook/useAutocompletionForCraftsman";
-import {useAutocompletionNameWorkshop} from "@/hook/useAutocompletionNameWorkshop";
+// import {useAutocompletionForCraftsman} from "@/hook/useAutocompletionForCraftsman";
+// import {useAutocompletionNameWorkshop} from "@/hook/useAutocompletionNameWorkshop";
 import PopupHeader from "@/components/PopupHeader";
 import {AddWorkshop} from "@/hook/AdminWorkshop/AddWorkshop";
 

@@ -9,7 +9,7 @@ import {getWorkShopAdmin} from "@/services/admin/adminWorkshop.service";
 const headerList = [
 	{id: 1, name: "workshop", label: "Workshop"},
 	{id: 2, name: "know_how", label: "Know-How"},
-	{id: 4, name: "participants", label: "Participants"},
+	{id: 3, name: "participants", label: "Participants"},
 ];
 
 export default function ListWorkshop() {

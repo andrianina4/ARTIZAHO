@@ -6,7 +6,7 @@ import {useState} from "react";
 import {useForm} from "react-hook-form";
 import {WorkshopDataToSend} from "@/types/IWorkshop";
 import {useMutation, useQueryClient} from "@tanstack/react-query";
-import {postWorkShop} from "@/services/admin/adminWorkshop.service";
+import {postWorkShop, uploadImageWorkshop} from "@/services/admin/adminWorkshop.service";
 
 type Tdata = {
 	name: string;
@@ -15,21 +15,22 @@ type Tdata = {
 };
 
 export const AddWorkshop = (close: () => void) => {
+	const [imagePreview, setImagePreview] = useState<string[]>([]);
+	const [imagetoSend, setImagetoSend] = useState<FileList | null>(null);
+
 	const queryClient = useQueryClient();
 
 	const {mutate} = useMutation({
 		mutationFn: (data: WorkshopDataToSend) => postWorkShop(data),
-		onSuccess: (e) => {
+		onError: (err) => {
+			console.error(err.message);
+		},
+		onSettled: async (response) => {
+			if (imagetoSend) await uploadImageWorkshop(response!.data.id, imagetoSend);
+			await queryClient.invalidateQueries({queryKey: ["adminWorkshop"]});
 			reset();
 			setImagePreview([]);
-			setImagetoSend([]);
-		},
-		onSettled: async (_, error) => {
-			if (error) {
-				console.error(error.message);
-			} else {
-				await queryClient.invalidateQueries({queryKey: ["adminWorkshop"]});
-			}
+			setImagetoSend(null);
 		},
 	});
 
@@ -48,12 +49,10 @@ export const AddWorkshop = (close: () => void) => {
 		formState: {errors},
 	} = useForm({resolver: yupResolver(addWorkshopSchema)});
 
-	const [imagePreview, setImagePreview] = useState<string[]>([]);
-	const [imagetoSend, setImagetoSend] = useState<File[]>([]);
 	// * Traitement des images
 	const handleInputFile = () => {
 		setImagePreview([]);
-		setImagetoSend([]);
+		setImagetoSend(null);
 		const inputELement = document.querySelector("#input-file-atelier") as HTMLFormElement;
 		if (inputELement) {
 			inputELement.click();
@@ -63,22 +62,20 @@ export const AddWorkshop = (close: () => void) => {
 	// * Lorsqu'on change l'image
 	const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const arrayFile = e.target.files;
+		setImagetoSend(arrayFile);
 		if (arrayFile) {
 			let tempTab: string[] = [];
-			let images: File[] = [];
 			for (let i = 0; i < arrayFile.length; i++) {
 				const file = arrayFile[i];
-				images = [...images, file];
 				const imageUrl = URL.createObjectURL(file);
 				tempTab = [...tempTab, imageUrl];
 			}
 			setImagePreview(tempTab);
-			setImagetoSend(images);
 		}
 	};
 
 	// * SUBMIT
-	const onSubmit = (data: Tdata) => {
+	const onSubmit = async (data: Tdata) => {
 		const dataToSend: WorkshopDataToSend = {
 			title: data.name,
 			description: data.desc,

@@ -24,6 +24,19 @@ export const postWorkShop = async (data: WorkshopDataToSend) => {
 	});
 };
 
+export const uploadImageWorkshop = async (id: number, data: FileList) => {
+	const formData = new FormData();
+	for (let i = 0; i < data.length; i++) {
+		const item = data[i];
+		formData.append("images", item);
+	}
+	return await axiosInstanceApiClient.post(`/v1/workshop/${id}/upload_image/`, formData, {
+		headers: {
+			Authorization: `Bearer ${access_token}`,
+		},
+	});
+};
+
 export const deleteWorkShop = async (id: number) => {
 	return await axiosInstanceApiClient.delete<IWorkShop>(`/v1/workshop/${id}`, {
 		headers: {
