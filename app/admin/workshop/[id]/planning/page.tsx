@@ -91,7 +91,7 @@ export default function page({params}: {params: {id: string}}) {
 					<Button leftIcon={<Add />} content="Add a date for this workshop" onClick={handleToogle} />
 				</div>
 			</div>
-			<ModalLayout open={open} onClick={handleToogle} className="w-1/3 h-2/3">
+			<ModalLayout open={open} onClick={handleToogle} className="w-auto h-2/3">
 				<FormPlanning />
 			</ModalLayout>
 		</div>

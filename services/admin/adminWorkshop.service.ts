@@ -59,3 +59,15 @@ export const getScheduleWorkshop = async (id: number) => {
 
 	return results;
 };
+
+export const getArtisans = async () => {
+	const {
+		data: {results},
+	} = await axiosInstanceApiClient.get<IBackendResponse<any>>(`/v1/artisan/`, {
+		headers: {
+			Authorization: `Bearer ${access_token}`,
+		},
+	});
+
+	return results;
+};

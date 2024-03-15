@@ -3,7 +3,9 @@ import Button from "@/components/button";
 import Input from "@/components/input";
 import {Add, AddOutline} from "@/constants/link/icons";
 import {useAutocompletionForCraftsman} from "@/hook/useAutocompletionForCraftsman";
+import {getArtisans} from "@/services/admin/adminWorkshop.service";
 import {ISuggestCraftman} from "@/types/ICraftman";
+import {useQuery} from "@tanstack/react-query";
 import Image from "next/image";
 import React from "react";
 
@@ -41,6 +43,10 @@ const ListCraftsmen: ISuggestCraftman[] = [
 ];
 
 export default function FormPlanning() {
+	const {data, isLoading, isError} = useQuery({
+		queryKey: ["adminWorkshopArtisan"],
+		queryFn: () => getArtisans(),
+	});
 	// * Traitement de l'artisan
 	const {
 		SelectedCraftsman,
@@ -49,7 +55,7 @@ export default function FormPlanning() {
 		handleChangeCraftsman,
 		SuggestedCraftsmen,
 		handleSelectCraftsman,
-	} = useAutocompletionForCraftsman(ListCraftsmen);
+	} = useAutocompletionForCraftsman(data ? data : []);
 
 	return (
 		<form className="flex flex-col w-full">
@@ -64,9 +70,9 @@ export default function FormPlanning() {
 									<AddOutline className="w-5 h-5 opacity-80 rotate-45" />
 								</div>
 								<div className="w-10 h-10 relative rounded-full bg-slate-500 ">
-									<Image src={SelectedCraftsman.craftsman_image} alt="" fill className="rounded-full" />
+									<Image src={SelectedCraftsman.images[0]?.base_url} alt="" fill className="rounded-full" />
 								</div>
-								<div className="flex flex-col font-bold grow">{SelectedCraftsman.craftsman_name}</div>
+								<div className="flex flex-col font-bold grow">{SelectedCraftsman.name}</div>
 							</div>
 						) : (
 							<>
@@ -86,16 +92,16 @@ export default function FormPlanning() {
 							<div className=" w-full bg-white-40%  z-50 rounded-xl gap-1 flex flex-col  transition-all duration-100 absolute left-0 top-14">
 								{SuggestedCraftsmen.map((item, index) => (
 									<div
-										key={item.craftsman_id}
+										key={item.id}
 										className="flex flex-raw items-center gap-2 px-5 py-3 hover:bg-white rounded-xl cursor-pointer"
 										onClick={() => {
 											handleSelectCraftsman(item);
 										}}>
 										<div className="w-8 h-8 relative rounded-full bg-slate-500">
-											<Image src={item.craftsman_image} alt="" fill className="rounded-full" />
+											<Image src={item.images[0].base_url} alt="" fill className="rounded-full" />
 										</div>
 										<div className="flex flex-col items-center ">
-											<p className="text-black-default font-bold">{item.craftsman_name}</p>
+											<p className="text-black-default font-bold">{item.name}</p>
 										</div>
 									</div>
 								))}

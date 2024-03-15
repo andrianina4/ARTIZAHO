@@ -1,5 +1,5 @@
 import {DateToday, MiniCalendar} from "@/constants/link/icons";
-import {IPlanningItem, IScheduleWorkshop} from "@/types/IWorkshop";
+import {IScheduleWorkshop} from "@/types/IWorkshop";
 import Image from "next/image";
 import React from "react";
 
@@ -31,7 +31,7 @@ export default function PlanningItem({item}: {item: IScheduleWorkshop}) {
 				<div className="opacity-70">{item.location}</div>
 			</div>
 			{/* TYPE CLIENT */}
-			<div className="opacity-70">{item.workshop.workshop_info.base_price} €</div>
+			<div className="opacity-70">{item.workshop?.workshop_info.base_price} €</div>
 		</div>
 	);
 }
