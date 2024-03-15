@@ -10,6 +10,8 @@ import ModalLayout from "@/components/modal";
 import FormPlanning from "./component/FormPlanning";
 import {useQuery} from "@tanstack/react-query";
 import {getScheduleWorkshop} from "@/services/admin/adminWorkshop.service";
+import LoadingComponent from "@/app/_global/loading";
+import ErrorComponent from "@/app/_global/error";
 
 const headerList = [
 	{id: 1, name: "date", label: "Date"},
@@ -69,6 +71,12 @@ export default function page({params}: {params: {id: string}}) {
 	const handleToogle = () => {
 		setOpen(!open);
 	};
+
+	if (isLoading) {
+		return <LoadingComponent />;
+	} else if (isError) {
+		return <ErrorComponent />;
+	}
 
 	return (
 		<div className="flex flex-col w-full px-4">
