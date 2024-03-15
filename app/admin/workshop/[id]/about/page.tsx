@@ -22,31 +22,48 @@ export default function Page({params}: {params: {id: string}}) {
 		fn();
 	}, []);
 
-	const {register, handleSubmit, onSubmit, errors, handleInputFile} = UpdateWorkshop(Number(id));
+	const {register, handleSubmit, onSubmit, handleReset, errors, handleInputFile} = UpdateWorkshop(Number(id));
 
 	return (
 		<form className="flex flex-row w-full h-full px-12" onSubmit={handleSubmit(onSubmit)}>
 			<div className="flex flex-col w-1/2">
 				<div className="flex flex-col h-full justify-between">
 					<div>
-						<Item label="Name" name="name" defaultValue={Element?.title} register={register("name")} />
-						<Item label="Know-how" name="category" defaultValue={Element?.category} register={register("category")} />
+						<Item
+							label="Name"
+							name="name"
+							defaultValue={Element?.title}
+							register={register("name")}
+							errorMessage={errors.name?.message}
+						/>
+						<Item
+							label="Know-how"
+							name="category"
+							defaultValue={Element?.category}
+							register={register("category")}
+							errorMessage={errors.category?.message}
+						/>
 						<div className="pt-2 flex flex-row">
 							<div className="w-1/5 flex pt-4 opacity-60 font-bold">Description</div>
 							<div className="w-4/5 gap-2">
 								<Textarea
 									className="h-48"
 									placeholder="Description"
-									name="description"
+									name="desc"
 									defaultValue={Element?.description}
 									register={register("desc")}
+									errorMessage={errors.desc?.message}
 								/>
 							</div>
 						</div>
 					</div>
 					<div className="flex mb-8 gap-4">
 						<Button content="Save" type="submit" />
-						<Button className="bg-transparent !text-black" content="Cancel" />
+						<button
+							onClick={handleReset}
+							className="w-full py-3.5 px-4 text-sm rounded-2xl flex justify-center items-center bg-bronze bg-transparent text-black  hover:bg-bronze hover:bg-opacity-50 transition-all ease-linear duration-100">
+							Cancel
+						</button>
 					</div>
 				</div>
 			</div>

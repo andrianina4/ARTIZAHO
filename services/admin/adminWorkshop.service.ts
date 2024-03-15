@@ -4,7 +4,7 @@ import {IBackendResponse} from "@/types";
 import {IWorkShop, WorkshopDataToSend} from "@/types/IWorkshop";
 
 const access_token =
-	"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEwNDgwNjgwLCJpYXQiOjE3MTAzOTQyODAsImp0aSI6IjIyODllNmU4MWI2ODRlMzJiMTFhNjgwODMzYjgwMzU0IiwidXNlcl9pZCI6MX0.0BRlNVM9PwVTzXAIdYPilS5sKP-j60T4l_GWZQq5cgU";
+	"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEwNTY5MTQ0LCJpYXQiOjE3MTA0ODI3NDQsImp0aSI6IjFlNTJmNGIxNWFlZTQxMzM4NzRjNDEwZDE4OTgyMjA4IiwidXNlcl9pZCI6MX0.binctLVuDFrREZXRYkZR2QmEV7boaOXLjDszBLip4L8";
 
 // const access_token = await getCurrentToken();
 

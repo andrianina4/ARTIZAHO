@@ -2,15 +2,11 @@
 
 import {yupResolver} from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import {useContext, useState} from "react";
 import {useForm} from "react-hook-form";
-import {IWorkShop, WorkshopDataToSend} from "@/types/IWorkshop";
-import {useMutation, useQueryClient} from "@tanstack/react-query";
+import {useMutation} from "@tanstack/react-query";
 import {patchWorkShop} from "@/services/admin/adminWorkshop.service";
 
 export const UpdateWorkshop = (id: number) => {
-	const queryClient = useQueryClient();
-
 	const {mutate} = useMutation({
 		mutationFn: (data: any) => patchWorkShop(id, data),
 		onError: (e) => {
@@ -44,11 +40,15 @@ export const UpdateWorkshop = (id: number) => {
 		const dataToSend = {
 			title: data.name,
 			description: data.desc,
-			category: data.know_how,
+			category: data.category,
 		};
 		console.log(data);
 		mutate(dataToSend);
 	};
 
-	return {register, handleSubmit, onSubmit, errors, handleInputFile};
+	const handleReset = () => {
+		reset();
+	};
+
+	return {register, handleSubmit, onSubmit, handleReset, errors, handleInputFile};
 };
