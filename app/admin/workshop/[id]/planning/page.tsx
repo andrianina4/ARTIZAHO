@@ -64,7 +64,6 @@ export default function page({params}: {params: {id: string}}) {
 		queryKey: ["adminWorkshopSchedule"],
 		queryFn: () => getScheduleWorkshop(Number(id)),
 	});
-	console.log(data);
 	// * Popup add Atelier
 	const [open, setOpen] = useState(false);
 	const handleToogle = () => {
