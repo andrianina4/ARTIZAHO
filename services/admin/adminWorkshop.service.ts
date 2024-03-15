@@ -1,5 +1,4 @@
 import {axiosInstanceApiClient} from "@/app/axiosClient";
-import {getCurrentToken} from "@/axios";
 import {IBackendResponse} from "@/types";
 import {IWorkShop, WorkshopDataToSend} from "@/types/IWorkshop";
 

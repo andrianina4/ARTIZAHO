@@ -1,7 +1,7 @@
 "use client";
 
 import React, {useEffect, useState} from "react";
-import {EditFill, ImageAdd} from "@/constants/link/icons";
+import {EditFill, ImageAdd, More} from "@/constants/link/icons";
 import Button from "@/components/button";
 import Textarea from "@/components/textarea";
 import Image from "next/image";
@@ -10,6 +10,8 @@ import {IWorkShop} from "@/types/IWorkshop";
 import {UpdateWorkshop} from "@/hook/AdminWorkshop/UpdateWorkshop";
 import {getWorkShopAdmin} from "@/services/admin/adminWorkshop.service";
 import LoadingComponent from "@/app/_global/loading";
+import {getImgUrl} from "@/services/index.service";
+import {IImage} from "@/types/IImage";
 
 export default function Page({params}: {params: {id: string}}) {
 	const [Element, setElement] = useState<IWorkShop | undefined>();
@@ -73,14 +75,14 @@ export default function Page({params}: {params: {id: string}}) {
 			<div className="w-1/3 pl-7 flex flex-col gap-4">
 				<div className="text-brown font-bold">Gallery</div>
 				<div className="max-h-72 flex flex-row flex-wrap gap-4 overflow-y-scroll">
-					{/* {atelier.image.map((image, index) => (
+					{Element?.images.map((image: IImage, index) => (
 						<div key={index} className="w-40 h-32 relative rounded-2xl">
-							<Image src={image} alt="image" fill className="rounded-2xl" />
+							<Image src={`/image/api/v1${image.base_url}`} alt="image" fill className="rounded-2xl" />
 							<div className="bg-bronze shrink-0 w-auto h-auto rounded-full absolute top-3 right-3 cursor-pointer">
 								<More className="w-4 h-4 text-white" />
 							</div>
 						</div>
-					))} */}
+					))}
 					<div
 						className="w-40 h-32 gap-2 bg-white-40% rounded-2xl flex items-center input input-bordered flex-col justify-center cursor-pointer"
 						onClick={() => {
