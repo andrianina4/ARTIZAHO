@@ -3,11 +3,13 @@ import EditUser from "./editUser";
 import { ICurrentUser } from "@/types/user/ICurrentUser";
 import { IRequestToken } from "@/types/user/IRequestToken";
 
-type props = {};
+type props = {
+  userConnected?: ICurrentUser;
+};
 
-export default function ModalEditUser(props: props) {
-  const { data: session } = useSession();
-  const userConnected = session?.user as ICurrentUser & IRequestToken;
+export default function ModalEditUser({ userConnected }: props) {
+  // const { data: session } = useSession();
+  // const userConnected = session?.user as ICurrentUser & IRequestToken;
   return (
     <dialog className="modal" id="updateProfile">
       <div className="modal-box bg-white w-[980px] max-w-[980px]">

@@ -18,4 +18,8 @@ export const GENDER = [
     label: "Female",
     value: "F",
   },
+  {
+    label: "Unknown",
+    value: "O",
+  },
 ];

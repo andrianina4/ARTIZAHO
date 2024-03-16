@@ -11,7 +11,7 @@ import { getWorkShopSchedule } from "@/services/workshop.service";
 import { useQuery } from "@tanstack/react-query";
 import LoadingComponent from "@/app/_global/loading";
 import ErrorComponent from "@/app/_global/error";
-import { format } from "date-fns";
+import { addSeconds, format } from "date-fns";
 
 type Props = {};
 
@@ -79,10 +79,16 @@ function PropositionDate({
         <div className="ml-14 flex justify-between gap-x-10">
           <div className="w-3/5">
             {datas?.map((item, index) => {
+              const datetimeStart = new Date(`${item.start_date} ${item.time}`);
+              const datetimeEnd = addSeconds(datetimeStart, item.duration);
+
               return (
                 <DateItem
                   date={format(new Date(item.start_date), "EEEE, MMM d, yyyy")}
-                  slots="16h30 - 17h00 [###]"
+                  slots={`${format(datetimeStart, "h:mm").replace(
+                    ":",
+                    "h"
+                  )} - ${format(datetimeEnd, "h:mm").replace(":", "h")}`}
                   remainingSpace={item.available_places}
                   isSelected
                   workshopSchedule={item}

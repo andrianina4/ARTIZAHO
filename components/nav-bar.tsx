@@ -15,6 +15,8 @@ import { useSession, signOut } from "next-auth/react";
 import ModalEditUser from "@/app/user/components/modalEditUser";
 import Image from "next/image";
 import { getImgUrl } from "@/services/index.service";
+import { useQuery } from "@tanstack/react-query";
+import { getCurrentUserConnectedClient } from "@/services/user.service";
 
 type NavBarProps = {
   className?: string;
@@ -24,7 +26,14 @@ type NavBarProps = {
 function NavBar({ className, isWhite = false }: NavBarProps) {
   const pathname = usePathname();
   const { data: session } = useSession();
-  const user = session?.user;
+  const userSession = session?.user;
+
+  const { data: user } = useQuery({
+    queryFn: () => getCurrentUserConnectedClient(),
+    queryKey: ["currentUser"],
+    retryOnMount: false,
+    enabled: userSession ? true : false,
+  });
 
   const isActiveRoute = (includesPath: string) => {
     return pathname === includesPath ? (
@@ -142,7 +151,7 @@ function NavBar({ className, isWhite = false }: NavBarProps) {
           <SidebardHome />
         </dialog>
 
-        <ModalEditUser />
+        <ModalEditUser userConnected={user} />
       </nav>
     </div>
   );

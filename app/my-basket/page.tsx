@@ -32,8 +32,8 @@ function Shopping({}: Props) {
 
           <div className="ml-9 flex justify-between gap-x-20 mt-5">
             <div className="w-3/5">
-              <ShoppingCart />
-              <ShoppingCart />
+              {/* <ShoppingCart />
+              <ShoppingCart /> */}
               <Button
                 leftIcon={<Add />}
                 content="Ajouter plus d'atelier"

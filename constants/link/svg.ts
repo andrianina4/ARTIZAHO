@@ -5,6 +5,7 @@ import Nuage3 from "../../public/svg/nuage3.svg";
 import TrajetLogin from "../../public/svg/trajet-login.svg";
 import TrajetRegister from "../../public/svg/trajet-register.svg";
 import Quote from "../../public/svg/quote.svg";
+import DefaultProfile from "../../public/svg/defaultProfile.svg";
 
 export {
   artizahoLogo,
@@ -14,4 +15,5 @@ export {
   TrajetRegister,
   Quote,
   Nuage3,
+  DefaultProfile,
 };
