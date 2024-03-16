@@ -1,61 +1,38 @@
+import LoadingComponent from "@/app/_global/loading";
 import PopupHeader from "@/components/PopupHeader";
 import Button from "@/components/button";
 import Input from "@/components/input";
 import {Add, AddOutline} from "@/constants/link/icons";
 import {useAutocompletionForCraftsman} from "@/hook/useAutocompletionForCraftsman";
 import {getArtisans} from "@/services/admin/adminWorkshop.service";
-import {ISuggestCraftman} from "@/types/ICraftman";
 import {useQuery} from "@tanstack/react-query";
 import Image from "next/image";
-import React from "react";
-
-const ListCraftsmen: ISuggestCraftman[] = [
-	{
-		craftsman_id: 1,
-		craftsman_name: "John Doe",
-		craftsman_image: "/temp/trainer-1.jpeg",
-		craftsman_know_how: "Woodworking",
-	},
-	{
-		craftsman_id: 2,
-		craftsman_name: "Jane Smith",
-		craftsman_image: "/temp/trainer-1.jpeg",
-		craftsman_know_how: "Metalworking",
-	},
-	{
-		craftsman_id: 3,
-		craftsman_name: "Alice Johnson",
-		craftsman_image: "/temp/trainer-1.jpeg",
-		craftsman_know_how: "Pottery",
-	},
-	{
-		craftsman_id: 4,
-		craftsman_name: "Bob Brown",
-		craftsman_image: "/temp/trainer-1.jpeg",
-		craftsman_know_how: "Glassblowing",
-	},
-	{
-		craftsman_id: 5,
-		craftsman_name: "Emily Davis",
-		craftsman_image: "/temp/trainer-1.jpeg",
-		craftsman_know_how: "Jewelry Making",
-	},
-];
+import React, {useEffect} from "react";
 
 export default function FormPlanning() {
 	const {data, isLoading, isError} = useQuery({
 		queryKey: ["adminWorkshopArtisan"],
 		queryFn: () => getArtisans(),
 	});
-	// * Traitement de l'artisan
+
 	const {
+		setBaseCraftsman,
 		SelectedCraftsman,
 		handleChangeResetCraftsman,
 		InputCraftsman,
 		handleChangeCraftsman,
 		SuggestedCraftsmen,
 		handleSelectCraftsman,
-	} = useAutocompletionForCraftsman(data ? data : []);
+	} = useAutocompletionForCraftsman();
+
+	// * Traitement de l'artisan
+	useEffect(() => {
+		if (data) {
+			setBaseCraftsman(data);
+		}
+	}, [data]);
+
+	// if (isLoading) return <LoadingComponent />;
 
 	return (
 		<form className="flex flex-col w-full">
@@ -70,7 +47,7 @@ export default function FormPlanning() {
 									<AddOutline className="w-5 h-5 opacity-80 rotate-45" />
 								</div>
 								<div className="w-10 h-10 relative rounded-full bg-slate-500 ">
-									<Image src={SelectedCraftsman.images[0]?.base_url} alt="" fill className="rounded-full" />
+									<Image src={SelectedCraftsman?.images[0]?.base_url} alt="" fill className="rounded-full" />
 								</div>
 								<div className="flex flex-col font-bold grow">{SelectedCraftsman.name}</div>
 							</div>
@@ -98,7 +75,7 @@ export default function FormPlanning() {
 											handleSelectCraftsman(item);
 										}}>
 										<div className="w-8 h-8 relative rounded-full bg-slate-500">
-											<Image src={item.images[0].base_url} alt="" fill className="rounded-full" />
+											<Image src={item.images[0]?.base_url} alt="" fill className="rounded-full" />
 										</div>
 										<div className="flex flex-col items-center ">
 											<p className="text-black-default font-bold">{item.name}</p>

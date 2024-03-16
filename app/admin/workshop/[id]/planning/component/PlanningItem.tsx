@@ -1,5 +1,6 @@
 import {DateToday, MiniCalendar} from "@/constants/link/icons";
 import {IScheduleWorkshop} from "@/types/IWorkshop";
+import {getEndTime} from "@/utils/Format";
 import Image from "next/image";
 import React from "react";
 
@@ -15,7 +16,7 @@ export default function PlanningItem({item}: {item: IScheduleWorkshop}) {
 			<div className="flex gap-3 items-center opacity-70">
 				<div>{item.time}</div>
 				<div>|</div>
-				<div>{item.time}</div>
+				<div>{getEndTime(item.time, item.duration)}</div>
 			</div>
 			{/* NOM et IMAGE */}
 			<div className="flex items-center gap-2">

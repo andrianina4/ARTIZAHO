@@ -1,9 +1,9 @@
 import {ICraftman} from "@/types/ICraftman";
 import React, {useState} from "react";
 
-export function useAutocompletionForCraftsman(ListCraftsmen: ICraftman[]) {
+export function useAutocompletionForCraftsman() {
 	// liste des artisans de base
-	const [BaseCraftsmen, setBaseCraftsman] = useState<ICraftman[]>(ListCraftsmen);
+	const [BaseCraftsmen, setBaseCraftsman] = useState<ICraftman[]>([]);
 	// liste des artisans suggerer
 	const [SuggestedCraftsmen, setSuggestedCraftsmen] = useState<ICraftman[] | undefined>();
 	// control input artisan et gerer suggestions
@@ -11,7 +11,6 @@ export function useAutocompletionForCraftsman(ListCraftsmen: ICraftman[]) {
 	const handleChangeCraftsman = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setInputCraftsman(e.target.value);
 		if (e.target.value != "") {
-			console.log(BaseCraftsmen[0]);
 			const filteredCraftman = BaseCraftsmen.filter((craftsman) =>
 				craftsman?.name?.toLowerCase().includes(e.target.value.toLocaleLowerCase())
 			);
@@ -32,6 +31,7 @@ export function useAutocompletionForCraftsman(ListCraftsmen: ICraftman[]) {
 		setInputCraftsman("");
 	};
 	return {
+		setBaseCraftsman,
 		SelectedCraftsman,
 		handleChangeResetCraftsman,
 		InputCraftsman,
