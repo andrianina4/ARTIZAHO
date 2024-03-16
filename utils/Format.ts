@@ -10,7 +10,8 @@ export const formatToDMY = (date: Date | string) => {
 	}).format(date);
 };
 
-export const formatToHMS = (date: Date) => {
+export const formatToHMS = (date: Date | string) => {
+	if (typeof date === "string") date = new Date(date);
 	return new Intl.DateTimeFormat("en-US", {
 		hour: "numeric",
 		minute: "numeric",
@@ -34,16 +35,24 @@ export const formatNumber = (number: number): string => {
 };
 
 export function getEndTime(startTimeStr: string, durationSeconds: number): string {
-	// Parse the start time string into a Date object
-	const startTime = new Date(`1970-01-01T${startTimeStr}:00Z`);
-
-	// Create a timespan object representing the duration
+	const startTime = new Date(`1970-01-01T${startTimeStr}`);
 	const endTime = new Date(startTime.getTime() + durationSeconds * 1000);
-
-	// Format the end time as "HH:MM:SS"
 	return endTime.toLocaleTimeString("en-US", {
 		hour: "2-digit",
 		minute: "2-digit",
 		second: "2-digit",
 	});
+}
+
+export function convertTime(timeString: string): string {
+	const [hours, minutes, seconds] = timeString.split(":");
+
+	// Convert hours to 12-hour format
+	const newHours = Number(hours) % 12 || 12;
+
+	// Set AM/PM indicator
+	const amPm = Number(hours) >= 12 ? "PM" : "AM";
+
+	// Format the output string (optional for seconds)
+	return `${newHours.toString().padStart(2, "0")}:${minutes}:${seconds ? seconds : "00"} ${amPm}`;
 }
