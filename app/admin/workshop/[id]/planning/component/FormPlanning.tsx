@@ -1,3 +1,4 @@
+import ErrorComponent from "@/app/_global/error";
 import LoadingComponent from "@/app/_global/loading";
 import PopupHeader from "@/components/PopupHeader";
 import Button from "@/components/button";
@@ -35,7 +36,11 @@ export default function FormPlanning({id, close}: {id: number; close: () => void
 
 	const {register, handleSubmit, onSubmit, errors} = AddScheduleWorkshop(id, SelectedCraftsman, close);
 
-	// if (isLoading) return <LoadingComponent />;
+	if (isLoading) {
+		return <LoadingComponent />;
+	} else if (isError) {
+		return <ErrorComponent />;
+	}
 
 	return (
 		<form className="flex flex-col w-full" onSubmit={handleSubmit(onSubmit)}>
