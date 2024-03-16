@@ -1,15 +1,6 @@
-import CardComponent from "@/components/CardComponent";
 import NavBar from "@/components/nav-bar";
-import PresentationTrainer from "@/components/presentation-trainer";
-import {
-  Alarm,
-  People1,
-  PeopleCheck,
-  Place,
-  Shop,
-} from "@/constants/link/icons";
-import { imgTest, our1, our2, ourWorkShop } from "@/constants/link/images";
-import { trainers } from "@/data/temp/trainers";
+
+import { imgTest, our1, our2 } from "@/constants/link/images";
 import Image from "next/image";
 import ModalDescriptionCard from "../ModalDescriptionCard";
 import HeaderWorkshop from "../../components/HeaderWorkshop";
@@ -17,6 +8,7 @@ import Link from "next/link";
 import { axiosInstanceApi } from "@/axios";
 import { IBackendResponse } from "@/types";
 import { IWorkShop } from "@/types/IWorkshop";
+import { getByImgUrl, getImgUrl } from "@/services/index.service";
 
 export default async function page({
   params,
@@ -36,13 +28,6 @@ export default async function page({
   const currentWorkshop = results.find((item) => item.id === Number(id));
 
   if (!currentWorkshop) return "Not found";
-
-  const trainer = trainers[0];
-  const condition = {
-    ageRequired: "15",
-    countMembers: "2 to 3 participants",
-    duration: "1:30 hours",
-  };
 
   console.log("currentWorkshop", currentWorkshop);
 
@@ -76,13 +61,25 @@ export default async function page({
 
         <section className="mt-2">
           <div className="imgContainer flex gap-2 h-[440px]">
-            <div className=" w-1/2">
-              <Image
-                src={imgTest}
-                alt="ourWorkShop"
-                className="h-[100%]"
-                objectFit="cover"
-              />
+            <div className=" w-1/2 relative">
+              {currentWorkshop.images.length > 0 ? (
+                <Image
+                  src={getByImgUrl(currentWorkshop.images[0])}
+                  alt="ourWorkShop"
+                  objectFit="cover"
+                  fill
+                  className="h-[100%] object-cover"
+                  // width={517}
+                  // height={440}
+                />
+              ) : (
+                <Image
+                  src={imgTest}
+                  alt="ourWorkShop"
+                  className="h-[100%]"
+                  objectFit="cover"
+                />
+              )}
             </div>
             <div className="flex flex-col w-1/2 gap-2 ">
               <div className="h-[216px] w-full">
@@ -112,7 +109,7 @@ export default async function page({
             </p>
           </div>
 
-          <div className="mt-10 flex">
+          {/* <div className="mt-10 flex">
             <div className="w-2/3">
               <PresentationTrainer trainer={trainer} /> [###]
             </div>
@@ -138,7 +135,7 @@ export default async function page({
                 </ul>
               </div>
             </div>
-          </div>
+          </div> */}
 
           <dialog id="my_modal_3" className="modal left-[56%] modal-top ">
             <div className="modal-box min-h-screen w-[850px] ">

@@ -9,6 +9,7 @@ import { axiosInstanceApi } from "@/axios";
 import { IBackendResponse } from "@/types";
 import { IScheduleWorkshop } from "@/types/IWorkshop";
 import { getSession } from "next-auth/react";
+import ShoppingCart from "@/components/shopping-cart-item";
 
 type Props = {};
 
@@ -36,6 +37,8 @@ async function ValidationDate({
 
   if (!currentWorkshopSchedule) return "Not found";
 
+  console.log("currentWorkshopSchedule", currentWorkshopSchedule);
+
   return (
     <div className="min-h-screen">
       <header className="w-full max-w-page mx-auto">
@@ -54,10 +57,14 @@ async function ValidationDate({
         <p className="ml-9  text-brown text-sm mt-2 mb-10">
           Booking information
         </p>
-        <div className="ml-9 flex justify-between gap-x-10">
-          <Form />
 
-          <div className="flex-1">
+        <div className="flex gap-6">
+          <div className="w-1/2">
+            <ShoppingCart isBottom scheduleWorkshop={currentWorkshopSchedule} />
+
+            <Form />
+          </div>
+          <div className="w-1/2">
             <PresentationTrainer
               trainer={trainer}
               artisan={currentWorkshopSchedule.artisan}

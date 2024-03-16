@@ -7,9 +7,9 @@ export default function HeaderWorkshop(props: { workshop: IWorkShop }) {
   return (
     <div className="flex items-center mt-4">
       <div className="w-1/2">
-        <h4 className="font-manrope text-2xl">{workshop.title}</h4>
+        <h4 className="font-manrope text-2xl font-bold">{workshop.title}</h4>
 
-        <div className="flex gap-4">
+        {/* <div className="flex gap-4">
           <div className="flex text-brown text-[10px] items-center font-bold gap-2">
             <Alarm /> Duration 1:30 [###]
           </div>
@@ -19,7 +19,7 @@ export default function HeaderWorkshop(props: { workshop: IWorkShop }) {
               Antananarivo [###]
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
       <div className="w-1/2">
         <div className="flex gap-5 justify-end items-center">
@@ -28,10 +28,10 @@ export default function HeaderWorkshop(props: { workshop: IWorkShop }) {
               {workshop.workshop_info.base_price}€
             </h4>
 
-            <p className="text-brown text-xs font-normal">
+            {/* <p className="text-brown text-xs font-normal">
               including <span className="font-bold">18.00€</span> for Mahefa
               [###]
-            </p>
+            </p> */}
           </div>
           <div>
             <Link href={`/reservation-date/${workshop.id}`}>

@@ -17,7 +17,13 @@ export default function Provider({ children }: props) {
     <SessionProvider>
       <QueryClientProvider client={client}>
         <ReactQueryStreamedHydration>
-          <SnackbarProvider autoHideDuration={4000}>
+          <SnackbarProvider
+            autoHideDuration={4000}
+            anchorOrigin={{
+              horizontal: "center",
+              vertical: "top",
+            }}
+          >
             {children}
           </SnackbarProvider>
         </ReactQueryStreamedHydration>

@@ -5,11 +5,10 @@ import { ReservationButton } from "../../../contents/modal";
 
 export default function Form() {
   return (
-    <div className="w-3/5">
-      <ShoppingCart isBottom />
+    <div>
       <div className="h-10"></div>
 
-      <div className="w-10/12 my-5">
+      <div className="my-5">
         <Input
           label="Your telephone number"
           id="phone"
@@ -17,7 +16,7 @@ export default function Form() {
           placeholder="Tel"
         />
       </div>
-      <div className="w-10/12 my-5">
+      <div className=" my-5">
         <Input
           label="Réservation name"
           id="reservationName"
@@ -26,7 +25,7 @@ export default function Form() {
         />
       </div>
 
-      <div className="w-10/12 my-5">
+      <div className=" my-5">
         Workshop location
         <div className="flex gap-2 items-center text-grey-60% mt-3">
           <Location /> Antananarivo Madagascar
