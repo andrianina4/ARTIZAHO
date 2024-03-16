@@ -1,11 +1,17 @@
 import {axiosInstanceApiClient} from "@/app/axiosClient";
 import {IBackendResponse} from "@/types";
-import {IWorkShop, WorkshopDataToSend} from "@/types/IWorkshop";
+import {IScheduleToSend, IWorkShop, WorkshopDataToSend} from "@/types/IWorkshop";
 
 const access_token =
 	"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEwNjgxODU3LCJpYXQiOjE3MTA1OTU0NTcsImp0aSI6IjY3MGQxM2VhODQ4MTRmYmNiNmQ1ZTM3ZGZmYzJiOTk4IiwidXNlcl9pZCI6MX0.qo5UXNq9DlgDWIOtANMDDBEtMGCR-HvELE3KtX6yMB8";
 
 // const access_token = await getCurrentToken();
+
+const headers = {
+	headers: {
+		Authorization: `Bearer ${access_token}`,
+	},
+};
 
 export const getWorkShopAdmin = async () => {
 	const {
@@ -16,11 +22,7 @@ export const getWorkShopAdmin = async () => {
 };
 
 export const postWorkShop = async (data: WorkshopDataToSend) => {
-	return await axiosInstanceApiClient.post<IWorkShop>(`/v1/workshop/`, data, {
-		headers: {
-			Authorization: `Bearer ${access_token}`,
-		},
-	});
+	return await axiosInstanceApiClient.post<IWorkShop>(`/v1/workshop/`, data, headers);
 };
 
 export const uploadImageWorkshop = async (id: number, data: FileList) => {
@@ -29,27 +31,15 @@ export const uploadImageWorkshop = async (id: number, data: FileList) => {
 		const item = data[i];
 		formData.append("images", item);
 	}
-	return await axiosInstanceApiClient.post(`/v1/workshop/${id}/upload_image/`, formData, {
-		headers: {
-			Authorization: `Bearer ${access_token}`,
-		},
-	});
+	return await axiosInstanceApiClient.post(`/v1/workshop/${id}/upload_image/`, formData, headers);
 };
 
 export const deleteWorkShop = async (id: number) => {
-	return await axiosInstanceApiClient.delete<IWorkShop>(`/v1/workshop/${id}`, {
-		headers: {
-			Authorization: `Bearer ${access_token}`,
-		},
-	});
+	return await axiosInstanceApiClient.delete<IWorkShop>(`/v1/workshop/${id}`, headers);
 };
 
 export const patchWorkShop = async (id: number, data: any) => {
-	return await axiosInstanceApiClient.patch<IWorkShop>(`/v1/workshop/${id}/`, data, {
-		headers: {
-			Authorization: `Bearer ${access_token}`,
-		},
-	});
+	return await axiosInstanceApiClient.patch<IWorkShop>(`/v1/workshop/${id}/`, data, headers);
 };
 
 export const getScheduleWorkshop = async (id: number) => {
@@ -60,14 +50,14 @@ export const getScheduleWorkshop = async (id: number) => {
 	return results;
 };
 
+export const postScheduleWorkshop = async (id: number, data: IScheduleToSend) => {
+	return await axiosInstanceApiClient.post(`/v1/workshop/${id}/schedule/`, data, headers);
+};
+
 export const getArtisans = async () => {
 	const {
 		data: {results},
-	} = await axiosInstanceApiClient.get<IBackendResponse<any>>(`/v1/artisan/`, {
-		headers: {
-			Authorization: `Bearer ${access_token}`,
-		},
-	});
+	} = await axiosInstanceApiClient.get<IBackendResponse<any>>(`/v1/artisan/`, headers);
 
 	return results;
 };

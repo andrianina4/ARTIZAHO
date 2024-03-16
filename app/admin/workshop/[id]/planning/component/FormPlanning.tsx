@@ -3,13 +3,14 @@ import PopupHeader from "@/components/PopupHeader";
 import Button from "@/components/button";
 import Input from "@/components/input";
 import {Add, AddOutline} from "@/constants/link/icons";
+import {AddScheduleWorkshop} from "@/hook/AdminWorkshop/AddScheduleWorkshop";
 import {useAutocompletionForCraftsman} from "@/hook/useAutocompletionForCraftsman";
 import {getArtisans} from "@/services/admin/adminWorkshop.service";
 import {useQuery} from "@tanstack/react-query";
 import Image from "next/image";
 import React, {useEffect} from "react";
 
-export default function FormPlanning() {
+export default function FormPlanning({id, close}: {id: number; close: () => void}) {
 	const {data, isLoading, isError} = useQuery({
 		queryKey: ["adminWorkshopArtisan"],
 		queryFn: () => getArtisans(),
@@ -32,10 +33,12 @@ export default function FormPlanning() {
 		}
 	}, [data]);
 
+	const {register, handleSubmit, onSubmit, errors} = AddScheduleWorkshop(id, SelectedCraftsman, close);
+
 	// if (isLoading) return <LoadingComponent />;
 
 	return (
-		<form className="flex flex-col w-full">
+		<form className="flex flex-col w-full" onSubmit={handleSubmit(onSubmit)}>
 			<PopupHeader icon={<Add className="w-6 h-6" />} title="New Workshop" />
 			<div className="h-full flex flex-col w-full justify-between">
 				<div className="flex flex-col gap-4">
@@ -92,8 +95,8 @@ export default function FormPlanning() {
 							<Input
 								placeholder="Location"
 								name="location"
-								// register={register("location")}
-								// errorMessage={errors.location}
+								register={register("location")}
+								errorMessage={errors.location}
 							/>
 							<Input
 								placeholder="Price"
@@ -110,14 +113,16 @@ export default function FormPlanning() {
 							<Input
 								placeholder="Date"
 								name="date"
-								// register={register("location")}
-								// errorMessage={errors.location}
+								type="date"
+								register={register("date")}
+								errorMessage={errors.date}
 							/>
 							<Input
 								placeholder="Time"
 								name="time"
-								// register={register("location")}
-								// errorMessage={errors.location}
+								type="time"
+								register={register("time")}
+								errorMessage={errors.time}
 							/>
 						</div>
 					</div>

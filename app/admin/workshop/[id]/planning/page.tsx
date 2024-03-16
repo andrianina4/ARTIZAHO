@@ -92,7 +92,7 @@ export default function page({params}: {params: {id: string}}) {
 				</div>
 			</div>
 			<ModalLayout open={open} onClick={handleToogle} className="w-auto h-2/3">
-				<FormPlanning />
+				<FormPlanning id={Number(id)} close={handleToogle} />
 			</ModalLayout>
 		</div>
 	);
