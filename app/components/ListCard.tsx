@@ -49,13 +49,14 @@ export default function ListCard() {
   return (
     <div className="slider-container mt-4">
       <Slider {...settings}>
-        {data?.map((workshop, index) => {
-          return (
-            <div key={index}>
-              <CardComponent key={index} workshop={workshop} />
-            </div>
-          );
-        })}
+        {data &&
+          data?.map((workshop, index) => {
+            return (
+              <div key={index}>
+                <CardComponent key={index} workshop={workshop} />
+              </div>
+            );
+          })}
       </Slider>
     </div>
   );

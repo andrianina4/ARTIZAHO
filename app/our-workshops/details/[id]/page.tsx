@@ -9,6 +9,8 @@ import { axiosInstanceApi } from "@/axios";
 import { IBackendResponse } from "@/types";
 import { IWorkShop } from "@/types/IWorkshop";
 import { getByImgUrl, getImgUrl } from "@/services/index.service";
+import ListArtisantWorkshop from "../components/ListArtisantWorkshop";
+import Trainer from "@/components/Trainer";
 
 export default async function page({
   params,
@@ -28,8 +30,6 @@ export default async function page({
   const currentWorkshop = results.find((item) => item.id === Number(id));
 
   if (!currentWorkshop) return "Not found";
-
-  console.log("currentWorkshop", currentWorkshop);
 
   return (
     <div className="min-h-screen relative">
@@ -69,8 +69,6 @@ export default async function page({
                   objectFit="cover"
                   fill
                   className="h-[100%] object-cover"
-                  // width={517}
-                  // height={440}
                 />
               ) : (
                 <Image
@@ -107,6 +105,10 @@ export default async function page({
             <p className="font-normal text-xs text-brown mt-2">
               {currentWorkshop.description}
             </p>
+          </div>
+
+          <div className="mt-4">
+            <ListArtisantWorkshop id={Number(id)} />
           </div>
 
           {/* <div className="mt-10 flex">

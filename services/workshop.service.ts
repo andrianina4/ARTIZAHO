@@ -1,8 +1,12 @@
 import { axiosInstanceApiClient } from "@/app/axiosClient";
-import { getCurrentToken } from "@/axios";
-import { CreateCustomWorkshop } from "@/dto/workshop";
+import { axiosInstanceApi, getCurrentToken } from "@/axios";
+import { CreateBookWorkShop, CreateCustomWorkshop } from "@/dto/workshop";
 import { IBackendResponse } from "@/types";
-import { IScheduleWorkshop, IWorkShop } from "@/types/IWorkshop";
+import {
+  IScheduleWorkshop,
+  IWorkShop,
+  WorkshopBooked,
+} from "@/types/IWorkshop";
 import { getSession } from "next-auth/react";
 
 export const getWorkShop = async () => {
@@ -25,6 +29,16 @@ export const getWorkShopSchedule = async (id: number) => {
   return results;
 };
 
+export const getWorkShopScheduleServer = async (id: number) => {
+  const {
+    data: { results },
+  } = await axiosInstanceApi.get<IBackendResponse<IScheduleWorkshop[]>>(
+    `/v1/workshop/${id}/schedule`
+  );
+
+  return results;
+};
+
 export const postWorkshopCustom = async ({
   id,
   body,
@@ -32,3 +46,39 @@ export const postWorkshopCustom = async ({
   id: number;
   body: CreateCustomWorkshop;
 }) => {};
+
+export const postBookWorkshop = async ({
+  idSCheduleWorkshop,
+  body,
+}: {
+  idSCheduleWorkshop: number;
+  body: CreateBookWorkShop;
+}) => {
+  const access_token = await getCurrentToken();
+
+  const { data } = await axiosInstanceApiClient.post<IBackendResponse<unknown>>(
+    `/v1/workshop/scheduled_workshop/${idSCheduleWorkshop}/booking/`,
+    body,
+    {
+      headers: {
+        Authorization: `Bearer ${access_token}`,
+      },
+    }
+  );
+
+  return data;
+};
+
+export const getBookWorkshop = async () => {
+  const access_token = await getCurrentToken();
+
+  const { data } = await axiosInstanceApiClient.get<
+    IBackendResponse<WorkshopBooked[]>
+  >(`/v1/user/reservation/`, {
+    headers: {
+      Authorization: `Bearer ${access_token}`,
+    },
+  });
+
+  return data;
+};

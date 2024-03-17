@@ -60,9 +60,13 @@ async function ValidationDate({
 
         <div className="flex gap-6">
           <div className="w-1/2">
-            <ShoppingCart isBottom scheduleWorkshop={currentWorkshopSchedule} />
+            <ShoppingCart
+              isBottom
+              scheduleWorkshop={currentWorkshopSchedule}
+              disabledDelete
+            />
 
-            <Form />
+            <Form currentWorkshopSchedule={currentWorkshopSchedule} />
           </div>
           <div className="w-1/2">
             <PresentationTrainer

@@ -1,4 +1,5 @@
 import { Alarm, People1, PeopleCheck, Star } from "@/constants/link/icons";
+import { getImgUrl } from "@/services/index.service";
 import { ICraftman } from "@/types/ICraftman";
 import { ITrainer } from "@/types/IUser";
 import Image from "next/image";
@@ -27,13 +28,29 @@ function PresentationTrainer(props: PresentationTrainerProps) {
   return (
     <div className={`flex ${condition ? "gap-2 items-center" : ""}`}>
       <article className={`flex gap-x-5`}>
-        <Image
-          src={photo}
-          alt={`trainer-${id}`}
-          width={WIDTH_IMAGE_TRAINER}
-          height={HEIGHT_IMAGE_TRAINER}
-          className="rounded-[64px]"
-        />
+        {artisan && artisan.images.length > 0 ? (
+          <Image
+            src={getImgUrl(artisan.images)}
+            alt={`trainer-${id}`}
+            width={WIDTH_IMAGE_TRAINER}
+            height={HEIGHT_IMAGE_TRAINER}
+            className="rounded-[64px] object-cover"
+          />
+        ) : (
+          <div className="avatar placeholder">
+            <div className="bg-neutral text-neutral-content rounded-full w-24">
+              <span className="text-3xl uppercase">{artisan?.name[0]}</span>
+            </div>
+          </div>
+          // <Image
+          //   src={photo}
+          //   alt={`trainer-${id}`}
+          //   width={WIDTH_IMAGE_TRAINER}
+          //   height={HEIGHT_IMAGE_TRAINER}
+          //   className="rounded-[64px] object-cover"
+          // />
+        )}
+
         <div className="flex flex-col justify-between">
           <div>
             <h3 className="text-reddishBrown font-extrabold text-base">

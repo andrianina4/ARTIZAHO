@@ -1,16 +1,7 @@
-"use client";
-
-import CardComponent from "@/components/CardComponent";
 import InputGroupMultiple from "@/components/InputGroupMultiple";
 import NavBar from "@/components/nav-bar";
-import { getWorkShop } from "@/services/workshop.service";
-import { IWorkShop } from "@/types/IWorkshop";
-import { useQuery } from "@tanstack/react-query";
-import { useRouter } from "next/navigation";
-import React, { useEffect } from "react";
-import Error from "../_global/loading";
-import LoadingComponent from "../_global/loading";
-import ErrorComponent from "../_global/error";
+import React from "react";
+import ListCard from "./components/ListCard";
 
 type PropsLabel = {
   title: string;
@@ -32,12 +23,6 @@ const Label = (props: PropsLabel) => {
 };
 
 export default function Page() {
-  const { data, isLoading, isError } = useQuery({
-    queryFn: () => getWorkShop(),
-    queryKey: ["workshop"],
-    retryOnMount: false,
-  });
-  const router = useRouter();
   const labelList: string[] = [
     "FLORAL",
     "LEATHER",
@@ -45,18 +30,6 @@ export default function Page() {
     "POTTERY",
     "ANTEMORO PAPER",
   ];
-
-  const handleClick = (workshop: IWorkShop) => {
-    router.push(`/our-workshops/details/${workshop.id}`);
-  };
-
-  if (isLoading) {
-    return <LoadingComponent />;
-  }
-
-  if (isError) {
-    return <ErrorComponent />;
-  }
 
   return (
     <div className="bg-[#FFF] w-[1440px] mx-auto">
@@ -75,25 +48,8 @@ export default function Page() {
             <Label key={indexItem} isActive={false} title={item} />
           ))}
         </div>
-        <div className="flex flex-wrap gap-[16px] mt-6 mb-6">
-          {data?.map((workshop, index) => {
-            return (
-              <CardComponent
-                key={index}
-                workshop={workshop}
-                // title={workshop.category}
-                // description={workshop.description}
-                // label={workshop.title}
-                // place="Antananarivo"
-                // price={workshop.workshop_info.base_price}
-                // time="1:30"
-                onClick={() => {
-                  handleClick(workshop);
-                }}
-                // images={workshop.images}
-              />
-            );
-          })}
+        <div className="flex flex-wrap gap-[16px] mt-6 mb-6 ">
+          <ListCard />
         </div>
       </div>
     </div>

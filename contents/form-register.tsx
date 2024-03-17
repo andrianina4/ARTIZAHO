@@ -68,8 +68,9 @@ function FormRegister({ currentUser }: Props) {
     onSuccess: (data) => {
       enqueueSnackbar("Account create success", {
         variant: "success",
-        onClose: () => router.push("/auth/login"),
       });
+
+      router.push("/auth/login");
     },
     onError: (error: any) => {
       console.log("error", error);
@@ -134,7 +135,6 @@ function FormRegister({ currentUser }: Props) {
 
   return (
     <>
-      <button onClick={() => enqueueSnackbar("dazdadzad")}>Test</button>
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
         <div className="w-1/2">
           <SelectCustom
