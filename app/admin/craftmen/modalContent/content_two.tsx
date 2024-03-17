@@ -1,3 +1,4 @@
+"use client";
 import { Check, Date } from "@/constants/link/icons";
 import ModalItem from "../component/modalItem";
 import { UserAdd } from "@/constants/link/icons";
@@ -21,33 +22,16 @@ type props = {
   onPrevious: VoidFunction;
 };
 
-
-
 function Content_two({ onPrevious }: any) {
-//   const [state, setState] = useState<Range[]>([
-//     {
-//       startDate: new Date(),
-//       endDate: addDays(new Date(), 0),
-//       key: "selection",
-//     },
-//   ]);
+  const [show, setShow] = useState<Boolean>(false);
 
-//   const formattedStartDate = format(DateVal[0].startDate, "yyyy-MM-dd");
-//   const formattedEndDate = format(DateVal[0].endDate, "yyyy-MM-dd");
+  const handleButtonClickA = () => {
+    setShow(true);
+  };
 
-// useEffect(() => {
-//     if (DateVal) {
-//         setDateVal([
-//             {
-//               startDate: new Date(),
-//               endDate: addDays(new Date(), 0),
-//               key: "selection",
-//             },
-//           ])
-//     }
-// }, [])
-
-  
+  const handleButtonClickB = () => {
+    setShow(false);
+  };
 
   const { register, handleSubmit } = useForm<FormDataTest>({
     mode: "onChange",
@@ -70,28 +54,36 @@ function Content_two({ onPrevious }: any) {
         />
         <ModalItem leftIcon={<Date />} text="Hour" className="w-1/2" />
       </div>
-
+      {!show && <Button onClick={handleButtonClickA} content="Button A" className=" bg-transparent hover:bg-white-40% !text-brown-80% font-bold w-1/2" />}
       <div className="flex h-full gap-2">
-        <CalendarRange/>
-        ;
-        <form className=" flex w-2/5 gap-2 h-fit items-center">
-          <div className="flex w-full items-center gap-2 bg-white-40% rounded-2xl px-2">
-            <label htmlFor="">De:</label>
-            <input
-              type="time"
-              className="bg-transparent text-sm w-full  h-[70px] rounded-2xl "
-              {...register("start")}
-            />
-            <label htmlFor="">Au:</label>
-            <input
-              type="time"
-              className="bg-transparent text-sm w-full  h-[70px] rounded-2xl"
-              {...register("end")}
-            />
-            {/* <input id="blab" type="text" {...register('dateClicked')} value={dateClicked} /> */}
-          </div>
-          <Button leftIcon={<Check />} className="!h-10 !w-10 !rounded-2xl" />
-        </form>
+       
+        {show && (
+          <>
+            <CalendarRange />
+            <form className=" flex w-2/5 gap-2 h-fit items-center">
+              <div className="flex w-full items-center gap-2 bg-white-40% rounded-2xl px-2">
+                <label htmlFor="">De:</label>
+                <input
+                  type="time"
+                  className="bg-transparent text-sm w-full  h-[70px] rounded-2xl "
+                  {...register("start")}
+                />
+                <label htmlFor="">Au:</label>
+                <input
+                  type="time"
+                  className="bg-transparent text-sm w-full  h-[70px] rounded-2xl"
+                  {...register("end")}
+                />
+                {/* <input id="blab" type="text" {...register('dateClicked')} value={dateClicked} /> */}
+              </div>
+              <Button
+                leftIcon={<Check />}
+                className="!h-10 !w-10 !rounded-2xl"
+                onClick={handleButtonClickB}
+              />
+            </form>
+          </>
+        )}
       </div>
       <div className="flex gap-4">
         <Button content="Cancel" />
