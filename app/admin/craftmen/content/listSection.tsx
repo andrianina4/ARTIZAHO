@@ -6,6 +6,8 @@ import ListHeader from "@/components/ListHeader";
 import {SearchContext} from "../../provider/SearchProvider";
 import axios from "axios";
 import { useQuery } from "react-query";
+import { getArtisan } from "@/services/artisan.service";
+import { getArtisans } from "@/services/admin/adminWorkshop.service";
 
 const headerList = [
 	{id: 1, name: "name", label: "Name"},
@@ -15,23 +17,24 @@ const headerList = [
 	{id: 5, name: "rating", label: "Rating"},
 ];
 
-const getCraftmen = async () => {
-	const response = await axios.get<ICraftmanItem[]>('');
-	return response.data
-  };
+
 
 
 export default function ListSection() {
 	
-	const{isLoading, data}= useQuery('getCraftmen',getCraftmen)
+	const{isLoading,isError, data}= useQuery({
+		queryKey:["Craftman"],
+		queryFn:()=>getArtisan()
+		
+	})
 	// * VALEURS PAR DEFAUT
 
 
 	// * FILTRE PAR SEARCH BAR
-	const [FilteredData, setFilteredData] = useState<ICraftmanItem[]>( []);
+	const [FilteredData, setFilteredData] = useState<ICraftman[]>( []);
 	const searchContext = useContext(SearchContext);
 	useEffect(() => {
-		const filteredValues = data?.filter((value:any) => {
+		const filteredValues = data?.filter((value:ICraftman) => {
 			if (
 				value.name
 					?.toLocaleLowerCase()
@@ -49,7 +52,7 @@ export default function ListSection() {
 		if (filteredValues) {
 			setFilteredData(filteredValues);
 		}
-	}, [searchContext.Value]);
+	}, [searchContext.Value, isLoading, data]);
 
 	return (
 		<>

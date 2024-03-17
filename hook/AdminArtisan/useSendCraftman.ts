@@ -1,4 +1,4 @@
-import { CreateArtisanDto, CreateImageArtisanDto } from './../dto/artisan/index';
+import { CreateArtisanDto, CreateImageArtisanDto } from '../../dto/artisan/index';
 "use Client";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";

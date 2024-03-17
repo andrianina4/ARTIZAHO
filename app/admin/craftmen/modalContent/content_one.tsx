@@ -15,7 +15,7 @@ import Button from "@/components/button";
 import AddImageRound from "@/components/AddImageRound";
 
 import { useForm } from "react-hook-form";
-import { useSendCraftman } from "@/hook/useSendCraftman";
+import { useSendCraftman } from "@/hook/AdminArtisan/useSendCraftman";
 import { FormCraftmanData } from "@/app/schema/craftmanSchema";
 import SelectCustom from "@/components/Select";
 import { CreateArtisanDto, CreateImageArtisanDto } from "@/dto/artisan";

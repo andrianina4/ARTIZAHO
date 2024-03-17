@@ -5,4 +5,4 @@ export type CreateImageArtisanDto = Omit<
   IImage,
   "id" | "folder_name" | "base_url" | "blurhash_code" | "user" | "workshop"
 >;
-export type CreateArtisanDto = Omit<ICraftman,"id"| "image" >
+export type CreateArtisanDto = Omit<ICraftman,"id"| "images"| "availabilities" >
