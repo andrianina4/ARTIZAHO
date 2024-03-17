@@ -2,18 +2,27 @@ import Button from "@/components/button";
 import Input from "@/components/input";
 import { Paypal, Visa } from "@/constants/link/icons";
 import { Mvola, OrangeMoney } from "@/constants/link/images";
+import { WorkshopBooked } from "@/types/IWorkshop";
 import Image from "next/image";
 import React from "react";
 
-type Props = {};
+type Props = {
+  bookedWorkShop: WorkshopBooked[];
+};
 
-function Recapitulation({}: Props) {
+function Recapitulation({ bookedWorkShop }: Props) {
+  const sous_total = bookedWorkShop.reduce(
+    (prev, curr) =>
+      prev + Number(curr.workshop_bookable.workshop.workshop_info.base_price),
+    0
+  );
+
   return (
     <div className="flex flex-col gap-y-5">
       <div className="bg-white-40% rounded-3xl py-5 px-8">
         <div className="flex justify-between pt-5 pb-3 px-2 border-b-2 border-b-[#00000014]">
           <span>Sub-total</span>
-          <span className="font-bold">00.00€</span>
+          <span className="font-bold">{sous_total}.00€</span>
         </div>
 
         <div className="flex justify-between pt-5 pb-3 px-2 border-b-2 border-b-[#00000014]">
@@ -32,7 +41,7 @@ function Recapitulation({}: Props) {
 
         <div className="flex justify-between text-2xl mt-10">
           <span>Total</span>
-          <span className="font-bold">00.00€</span>
+          <span className="font-bold">{sous_total}.00€</span>
         </div>
       </div>
 

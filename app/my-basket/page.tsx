@@ -19,10 +19,12 @@ function Shopping({}: Props) {
 
   const { data, isLoading, isError } = useQuery({
     queryFn: () => getBookWorkshop(),
-    queryKey: ["workshop"],
+    queryKey: ["bookedWorkshop"],
     retryOnMount: false,
     enabled: user ? true : false,
   });
+
+  console.log("data Andrianina", data);
 
   return (
     <div className="min-h-screen">
@@ -54,8 +56,7 @@ function Shopping({}: Props) {
                     />
                   );
                 })}
-              {/* <ShoppingCart />
-              <ShoppingCart /> */}
+
               <Button
                 leftIcon={<Add />}
                 content="Ajouter plus d'atelier"
@@ -63,9 +64,11 @@ function Shopping({}: Props) {
               />
             </div>
 
-            <div className="flex-1">
-              <Recapitulation />
-            </div>
+            {data && (
+              <div className="flex-1">
+                <Recapitulation bookedWorkShop={data.results} />
+              </div>
+            )}
           </div>
         </main>
       ) : (
