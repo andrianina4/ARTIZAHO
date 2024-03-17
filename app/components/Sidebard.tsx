@@ -47,7 +47,7 @@ export default function SidebardHome({}: // setShowSidebar,
   // setShowSidebar?: Dispatch<SetStateAction<boolean>>;
 }) {
   return (
-    <div className="w-[368px] min-w-[368px] h-[1028px] bg-brown p-8">
+    <div className="w-[368px] min-w-[368px] max-w-[368px] h-[1028px] bg-brown p-8">
       <div className="flex">
         <div>
           <Image
@@ -79,26 +79,26 @@ export default function SidebardHome({}: // setShowSidebar,
             { label: "Our workshops", path: link.ourWorkshops },
           ]}
         />
-        {/* 
+
         <Menu
           labelMenu="ARTIZAHO"
           sousMenu={[
-            "Artizaho Entreprise",
-            "Artizaho à la maison",
-            "Nos partenaires",
+            { label: "Artizaho Company", path: "" },
+            { label: "Artizaho at home", path: "" },
+            { label: "Our partners", path: "" },
           ]}
         />
 
         <Menu
-          labelMenu="NOUS REJOINDRE"
+          labelMenu="JOIN US"
           sousMenu={[
-            "Rejoindre notre équipe",
-            "Rejoindre notre Collectif",
-            "Nos partenaires",
-            "FAQ",
-            "Contact",
+            { label: "Join our team", path: "" },
+            { label: "Join our Collective", path: "" },
+            { label: "Our partners", path: "" },
+            { label: "FAQ", path: "" },
+            { label: "Contact", path: "" },
           ]}
-        /> */}
+        />
       </div>
     </div>
   );
