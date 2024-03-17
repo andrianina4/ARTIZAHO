@@ -1,4 +1,5 @@
 import { Delete, Place, Time } from "@/constants/link/icons";
+import { getImgUrl } from "@/services/index.service";
 import { IScheduleWorkshop } from "@/types/IWorkshop";
 import { addSeconds, format, formatDistance } from "date-fns";
 import fr from "date-fns/locale/fr";
@@ -8,9 +9,14 @@ import React from "react";
 type ShoppingCartProps = {
   isBottom?: boolean;
   scheduleWorkshop: IScheduleWorkshop;
+  disabledDelete?: boolean;
 };
 
-function ShoppingCart({ isBottom, scheduleWorkshop }: ShoppingCartProps) {
+function ShoppingCart({
+  isBottom,
+  scheduleWorkshop,
+  disabledDelete = false,
+}: ShoppingCartProps) {
   const { workshop } = scheduleWorkshop;
   const { workshop_info } = workshop;
 
@@ -25,12 +31,21 @@ function ShoppingCart({ isBottom, scheduleWorkshop }: ShoppingCartProps) {
       className={`flex gap-x-3 mb-10 ${isBottom ? "relative mb-12" : ""}`}
     >
       <div className="relative w-[130px] h-[110px] object-cover">
-        <Image
-          src={"/temp/vase.png"}
-          alt={`shopping-1`}
-          fill
-          className="rounded-3xl"
-        />
+        {workshop.images.length > 0 ? (
+          <Image
+            src={getImgUrl(workshop.images)}
+            alt={`shopping-1`}
+            fill
+            className="rounded-3xl"
+          />
+        ) : (
+          <Image
+            src={"/temp/vase.png"}
+            alt={`shopping-1`}
+            fill
+            className="rounded-3xl"
+          />
+        )}
       </div>
 
       <div className="flex-1 flex flex-col justify-between">
@@ -39,9 +54,11 @@ function ShoppingCart({ isBottom, scheduleWorkshop }: ShoppingCartProps) {
             <p className="text-black-default font-bold">{workshop.title}</p>
             <p className="flex items-center gap-x-5 text-brown font-bold">
               <span>{workshop_info.base_price} €</span>
-              <span className="text-xl">
-                <Delete />
-              </span>
+              {!disabledDelete && (
+                <span className="text-xl">
+                  <Delete />
+                </span>
+              )}
             </p>
           </div>
           <div className="flex gap-x-5 text-brown font-bold">

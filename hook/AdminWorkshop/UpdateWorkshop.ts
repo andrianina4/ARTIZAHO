@@ -5,6 +5,7 @@ import * as yup from "yup";
 import {useForm} from "react-hook-form";
 import {useMutation} from "@tanstack/react-query";
 import {patchWorkShop} from "@/services/admin/adminWorkshop.service";
+import {enqueueSnackbar} from "notistack";
 
 export const UpdateWorkshop = (id: number) => {
 	const {mutate} = useMutation({
@@ -12,13 +13,16 @@ export const UpdateWorkshop = (id: number) => {
 		onError: (e) => {
 			console.error(e.message);
 		},
+		onSuccess: (data) => {
+			enqueueSnackbar("Update success", {variant: "success"});
+		},
 	});
 
 	// * VALIDATION YUP
 	const updateWorkshopSchema = yup.object().shape({
-		name: yup.string().required("This field is required"),
-		category: yup.string().required("This field required"),
-		desc: yup.string().required("This field is required"),
+		name: yup.string(),
+		category: yup.string(),
+		desc: yup.string(),
 	});
 
 	// * react hook form

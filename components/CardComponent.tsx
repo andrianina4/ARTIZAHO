@@ -1,4 +1,3 @@
-"use client";
 import { Alarm, Heart, Place } from "@/constants/link/icons";
 import { art, imgDefault } from "@/constants/link/images";
 import { getImgUrl } from "@/services/index.service";
@@ -89,13 +88,13 @@ export default function CardComponent(props: PropsCard) {
           {description}
         </p>
         <p className="text-brown font-bold text-[10px] font-manrope flex gap-5 items-center">
-          <div className="flex items-center">
+          {/* <div className="flex items-center">
             <Alarm />
-            {/* {time} */}
-          </div>
-          <div className="flex items-center">
+            01h30
+          </div> */}
+          <div className="flex items-center gap-1">
             <Place />
-            {/* {place} */}
+            Antananarivo
           </div>
         </p>
       </div>

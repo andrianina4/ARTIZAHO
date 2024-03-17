@@ -6,3 +6,9 @@ export type CreateCustomWorkshop = {
   number_of_participants: number;
   location: string;
 };
+
+export type CreateBookWorkShop = {
+  number_of_participants: number;
+  reservation_name: string;
+  phone_number: string;
+};

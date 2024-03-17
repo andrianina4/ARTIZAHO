@@ -63,6 +63,7 @@ export default function Page({params}: {params: {id: string}}) {
 						<Button content="Save" type="submit" />
 						<button
 							onClick={handleReset}
+							type="button"
 							className="w-full py-3.5 px-4 text-sm rounded-2xl flex justify-center items-center bg-bronze bg-transparent text-black  hover:bg-bronze hover:bg-opacity-50 transition-all ease-linear duration-100">
 							Cancel
 						</button>
