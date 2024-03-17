@@ -9,12 +9,14 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 
-type Props = {};
+type Props = {
+  urlCallback?: string;
+};
 type FormValue = {
   email: string;
   password: string;
 };
-function FormAuth({}: Props) {
+function FormAuth({ urlCallback }: Props) {
   const [error, setError] = useState("");
 
   const validationSchema = Yup.object().shape({
@@ -35,7 +37,7 @@ function FormAuth({}: Props) {
     const res = await signIn("credentials", {
       username: body.email,
       password: body.password,
-      callbackUrl: "/my-basket",
+      callbackUrl: urlCallback ? urlCallback : "/my-basket",
       redirect: false,
     });
 
