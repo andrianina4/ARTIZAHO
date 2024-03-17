@@ -2,7 +2,11 @@ import { axiosInstanceApiClient } from "@/app/axiosClient";
 import { axiosInstanceApi, getCurrentToken } from "@/axios";
 import { CreateBookWorkShop, CreateCustomWorkshop } from "@/dto/workshop";
 import { IBackendResponse } from "@/types";
-import { IScheduleWorkshop, IWorkShop } from "@/types/IWorkshop";
+import {
+  IScheduleWorkshop,
+  IWorkShop,
+  WorkshopBooked,
+} from "@/types/IWorkshop";
 import { getSession } from "next-auth/react";
 
 export const getWorkShop = async () => {
@@ -61,6 +65,20 @@ export const postBookWorkshop = async ({
       },
     }
   );
+
+  return data;
+};
+
+export const getBookWorkshop = async () => {
+  const access_token = await getCurrentToken();
+
+  const { data } = await axiosInstanceApiClient.get<
+    IBackendResponse<WorkshopBooked[]>
+  >(`/v1/user/reservation/`, {
+    headers: {
+      Authorization: `Bearer ${access_token}`,
+    },
+  });
 
   return data;
 };

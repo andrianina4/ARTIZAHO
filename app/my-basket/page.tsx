@@ -6,12 +6,23 @@ import { Add, ArrowLeft } from "@/constants/link/icons";
 import React from "react";
 import Recapitulation from "./contents/recapitulation";
 import { useSession } from "next-auth/react";
+import { getBookWorkshop } from "@/services/workshop.service";
+import { useQuery } from "@tanstack/react-query";
+import LoadingComponent from "../_global/loading";
+import ErrorComponent from "../_global/error";
 
 type Props = {};
 
 function Shopping({}: Props) {
   const { data: session } = useSession();
   const user = session?.user;
+
+  const { data, isLoading, isError } = useQuery({
+    queryFn: () => getBookWorkshop(),
+    queryKey: ["workshop"],
+    retryOnMount: false,
+    enabled: user ? true : false,
+  });
 
   return (
     <div className="min-h-screen">
@@ -27,11 +38,22 @@ function Shopping({}: Props) {
               content={<ArrowLeft />}
               className="!bg-transparent w-min !text-brown !text-2xl !p-0"
             />
-            <span>Panier d&apos;achat</span>
+            <span>Shopping cart</span>
           </div>
 
           <div className="ml-9 flex justify-between gap-x-20 mt-5">
             <div className="w-3/5">
+              {isLoading && <LoadingComponent />}
+              {isError && <ErrorComponent />}
+              {data &&
+                data.results.map((item, index) => {
+                  return (
+                    <ShoppingCart
+                      key={index}
+                      scheduleWorkshop={item.workshop_bookable}
+                    />
+                  );
+                })}
               {/* <ShoppingCart />
               <ShoppingCart /> */}
               <Button
