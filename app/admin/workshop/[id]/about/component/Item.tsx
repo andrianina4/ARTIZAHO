@@ -1,24 +1,30 @@
 import Input from "@/components/input";
+import {error} from "console";
 import React, {ReactNode} from "react";
 import {UseFormRegisterReturn} from "react-hook-form";
 
 type ItemProps = {
 	label: string;
-	value: string | number;
-	rightIcon?: ReactNode;
-	image?: string;
-	readonly?: boolean;
+	name: string;
+	defaultValue?: string | number;
 	register?: UseFormRegisterReturn;
+	errorMessage?: any;
 };
 
-export default function Item({label, value, rightIcon, image, readonly, register}: ItemProps) {
+export default function Item({label, name, defaultValue, register, errorMessage}: ItemProps) {
 	let styleBox = "w-4/5 gap-2";
-	image ? (styleBox = styleBox + " font-bold") : null;
+	// image ? (styleBox = styleBox + " font-bold") : null;
 	return (
 		<div className="flex flex-row">
 			<div className="w-1/5 flex items-center opacity-60 font-bold">{label}</div>
 			<div className={styleBox}>
-				<Input placeholder={label} value={value} readonly={readonly} register={register} />
+				<Input
+					name={name}
+					placeholder={label}
+					defaultValue={defaultValue}
+					register={register}
+					errorMessage={errorMessage}
+				/>
 			</div>
 		</div>
 	);

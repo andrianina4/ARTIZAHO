@@ -3,20 +3,20 @@ import {IWorkShop} from "@/types/IWorkshop";
 import React, {useContext, useEffect, useState} from "react";
 import WorkshopItem from "../component/WorkshopItem";
 import {SearchContext} from "../../provider/SearchProvider";
-import {getWorkShop} from "@/services/workshop.service";
 import {useQuery} from "@tanstack/react-query";
+import {getWorkShopAdmin} from "@/services/admin/adminWorkshop.service";
 
 const headerList = [
 	{id: 1, name: "workshop", label: "Workshop"},
 	{id: 2, name: "know_how", label: "Know-How"},
-	{id: 4, name: "participants", label: "Participants"},
+	{id: 3, name: "participants", label: "Participants"},
 ];
 
 export default function ListWorkshop() {
 	// * VALEURS PAR DEFAUT
 	const {data, isLoading, isError} = useQuery({
-		queryFn: () => getWorkShop(),
 		queryKey: ["adminWorkshop"],
+		queryFn: () => getWorkShopAdmin(),
 	});
 
 	// * FILTRE PAR SEARCH BAR
@@ -31,7 +31,7 @@ export default function ListWorkshop() {
 			});
 			setFilteredData(filteredValues);
 		}
-	}, [searchContext.Value, isLoading]);
+	}, [searchContext.Value, isLoading, data]);
 
 	if (isLoading) {
 		return <div>Loading</div>;

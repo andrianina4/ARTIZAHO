@@ -50,7 +50,13 @@ export const uploadImage = async () => {
   return null;
 };
 
-export const patchUser = async (body: CreateUserDto) => {
+export const patchUser = async (
+  body: Omit<CreateUserDto, "password"> & {
+    password?: string;
+  }
+) => {
+  if (!body.password) delete body.password;
+
   const access_token = await getCurrentToken();
   return axiosInstanceApiClient.patch(`/v1/user/update_info/`, body, {
     headers: {
@@ -66,4 +72,50 @@ export const postUser = async (body: CreateUserDto) => {
   );
 
   return data;
+};
+
+export const getCurrentUserConnectedClient = async () => {
+  const access_token = await getCurrentToken();
+
+  const { data } = await axiosInstanceApiClient.get<ICurrentUser>(
+    "/v1/user/current-user/",
+    {
+      headers: {
+        Authorization: `Bearer ${access_token}`,
+      },
+    }
+  );
+
+  return data;
+};
+
+export const uploadImageProfileClient = async (
+  profileId: number,
+  images: FileList
+) => {
+  const formData = new FormData();
+
+  if (images && images.length > 0) {
+    const access_token = await getCurrentToken();
+
+    for (let i = 0; i < images.length; i++) {
+      const item = images[i];
+      formData.append("images", item);
+    }
+
+    await axiosInstanceApiClient.post(
+      `/v1/user/${profileId}/upload_image/`,
+      formData,
+      {
+        headers: {
+          Authorization: `Bearer ${access_token}`,
+          "Content-Type": "multipart/form-data",
+        },
+      }
+    );
+
+    return "";
+  }
+
+  return "";
 };
