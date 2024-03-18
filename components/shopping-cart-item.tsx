@@ -103,7 +103,7 @@ function ShoppingCart({
             <span className="text-base">
               <Time />
             </span>{" "}
-            2 persons
+            {scheduleWorkshop.available_places} persons
           </p>
         </div>
       </div>
