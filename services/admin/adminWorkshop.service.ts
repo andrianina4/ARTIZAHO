@@ -3,7 +3,7 @@ import {IBackendResponse} from "@/types";
 import {IScheduleToSend, IWorkShop, WorkshopDataToSend} from "@/types/IWorkshop";
 
 const access_token =
-	"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEwNzgyMjA0LCJpYXQiOjE3MTA2OTU4MDQsImp0aSI6ImM0ZjAwMDYxMzZiMTQ1NWU5YjJiOGVmMTE5NzAzNjQ3IiwidXNlcl9pZCI6MX0.TauLeFFXfwk_LoIHH-UcTWMyNxKe9LCie7aVFWFcViQ";
+	"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEwODM4NzMwLCJpYXQiOjE3MTA3NTIzMzAsImp0aSI6IjgwNGUwOWM3MDRjMzQzOGI5ODYwODIyYzRjOTM0MzE0IiwidXNlcl9pZCI6MX0.X-BWTKr5JT82QkpxPweDZTFvF1yfp_1VdLiJfnP2w0c";
 
 // const access_token = await getCurrentToken();
 
