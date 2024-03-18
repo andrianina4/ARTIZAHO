@@ -82,7 +82,7 @@ export const AddWorkshop = (close: () => void) => {
 			category: data.know_how,
 			workshop_info: {
 				max_participants: 100,
-				base_price: 0,
+				base_price: 16,
 				discount: 0.0,
 				currency: "EUR",
 			},
