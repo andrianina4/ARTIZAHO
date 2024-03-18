@@ -1,6 +1,6 @@
 import { IImage } from "./IImage";
 
-export type Gender = "M" | "F" | "O";
+//export type Gender = "M" | "F" | "O";
 export type ICraftman = {
   id: number;
   images: IImage[];
@@ -8,7 +8,7 @@ export type ICraftman = {
   name: string;
   description: string;
   expertise: string;
-  gender: Gender;
+  gender: string;
 };
 
 export type ICraftmanItem = {

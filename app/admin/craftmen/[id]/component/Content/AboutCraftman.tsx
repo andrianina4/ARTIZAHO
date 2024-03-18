@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Input from '@/components/input'
 import Textarea from '@/components/textarea'
 import ProgressBar from '@/components/progress-bar'
@@ -11,46 +11,48 @@ import { useQuery, useMutation } from "react-query";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { ICraftman } from '@/types/ICraftman'
+import { getArtisanDetail } from '@/services/artisan.service'
+import useUpdateCraftman from '@/hook/AdminArtisan/useUpdateCraftman'
 
+type props={
+	id:string
+}
 
+function AboutCraftman({id}:props) {
 
-function AboutCraftman() {
+	const{data}= useQuery({
+		queryKey:["Craftman"],
+		queryFn:()=> getArtisanDetail(id)
+	})
 
-	const { data: craftman, error, isLoading } = useQuery<ICraftman>(["craftman", id], async () => {
-		const response = await axios.get(`{BASE_URL}/api/artisan/${id}`);
-		return response.data;
-	  });
+	const [formData, setFormData]= useState<ICraftman | undefined>()
+
+	useEffect(() => {
+		if (data) {
+		  setFormData(data);
+		}
+	  }, [data]);
+	
 	  
-	  const { register, handleSubmit,formState: errors } = useForm<ICraftman>({
-		defaultValues: craftman,
-	  });
-	  
-	  const mutation= useMutation(async(data: ICraftman)=>{
-		await axios.patch("baseUrl", data)
-	  })
-  
-	  const onSubmit = (data: ICraftman) => {
-		mutation.mutate(data);
-	  };
+	 const {register, handleSubmit, onSubmit, errors} = useUpdateCraftman(id)	  
 
-	  const handleSendCraftaman=(data: ICraftman)=>{
-		onSubmit(data)
-	}
+
+	 
   return (
     <div className=" flex mx-12 my-6 gap-2">
 				<div className="flex flex-col w-3/5">
-					<form onSubmit={handleSendCraftaman}>
+					<form onSubmit={handleSubmit(onSubmit)}>
 						<InputContainer title="Name">
-							<Input placeholder="Name..." className="w-4/5 " />
+							<Input  register={register("name")} placeholder="Name..." className="w-4/5" defaultValue={formData?.name} />
 							<button type='submit' className="ml-6 text-gray-60% hover:bg-white-40% py-2 px-2 rounded-full text-2xl ">
 								<EditFill />
 							</button>
 						</InputContainer>
 						<InputContainer title="Know-how">
-							<Input placeholder="Know-how..." className="w-4/5 " />
+							<Input  register={register("knowhow")} placeholder="Know-how..." className="w-4/5 " defaultValue={formData?.expertise} />
 						</InputContainer>
 						<InputContainer title="Description">
-							<Textarea placeholder="Description..." className="!w-4/5 mt-2 " />
+							<Textarea register={register("description")} placeholder="Description..." className="!w-4/5 mt-2 " defaultValue={formData?.description} />
 						</InputContainer>
 					</form>
 					<div>
@@ -78,7 +80,7 @@ function AboutCraftman() {
 								<Users />
 							</span>
 							<span>Total Client</span>
-							<span>15</span>
+							<span>20</span>
 						</div>
 					</ProfileCard>
 				</div>

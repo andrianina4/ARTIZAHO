@@ -99,17 +99,17 @@ function Page({}: Props) {
           >
             <ArtisanIdContextProvider>
               {/* Content one: à propos de l'artisan */}
-              {step === 1 && <Content_one onNext={handleNext} />}
-
+              {/* {step === 1 && <Content_one onNext={handleNext} />} */}
+              <Content_one onClick={handleToogle}/>
               {/* Content two: dispo de l'artisan */}
-              {step === 2 && (
+              {/* {step === 2 && (
                 <Content_two />
                 // <Content_two
                 //   onPrevious={handlePrevious}
                 //   DateVal={DateState}
                 //   setDateVal={setDateState}
                 // />
-              )}
+              )} */}
             </ArtisanIdContextProvider>
           </ModalLayout>
         </div>

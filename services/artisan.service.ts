@@ -21,12 +21,16 @@ export const postArtisan = async (data: CreateArtisanDto) => {
   return response.data.id;
 };
 
-export const uploadImageArtisan = async (dataImage: CreateImageArtisanDto) => {
+export const uploadImageArtisan = async (id:number, file:File) => {
 
   const access_token = getCurrentToken();
+
+  const formData= new FormData()
+  formData.append("images", file)
+
   const responseImage = await axiosInstanceApi.post(
-    `/v1/artisan/${dataImage.artisan}/upload_image/`,
-    dataImage,
+    `/v1/artisan/${id}/upload_image/`,
+    formData,
 
     {
       headers: {
@@ -38,7 +42,7 @@ export const uploadImageArtisan = async (dataImage: CreateImageArtisanDto) => {
   return responseImage.data;
 };
 
-export const patchArtisan = async(id: number, data:any)=>{
+export const patchArtisan = async(id: string, data:any)=>{
   return await axiosInstanceApi.patch<CreateArtisanDto>(`/v1/artisan/${id}/`, data, headers)
 }
 
@@ -47,6 +51,13 @@ export const getArtisan = async()=>{
 
   return results
 }
+
+export const getArtisanDetail = async (id:string)=>{
+  const {data:{results}}= await axiosInstanceApiClient.get<IBackendResponse<ICraftman>>(`/v1/artisan/${id}/`)
+
+  return results
+}
+
 
 export const deleteArtisan = async( id:number)=>{
   return await axiosInstanceApiClient.delete<ICraftman>(`/v1/artisan/${id}/`, headers)
