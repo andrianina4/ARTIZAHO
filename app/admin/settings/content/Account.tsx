@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import InputContainer from "../../craftmen/information/component/InputContainer";
 import Input from "@/components/input";
 import Button from "@/components/button";
 import ProfileCard from "@/components/ProfileCard";
@@ -9,12 +8,12 @@ import {Vase} from "@/constants/link/images";
 import {AddImage, Person} from "@/constants/link/icons";
 import {UpdateAdmin} from "@/hook/UpdateAdmin";
 import AddImageRound from "@/components/AddImageRound";
+import InputContainer from "../../craftmen/[id]/component/InputContainer";
 
 type Props = {};
 
 function Account({}: Props) {
-	const {register, handleSubmit, onSubmit, errors, ImagetoShow, handleInputFile, handleFileChange} =
-		UpdateAdmin();
+	const {register, handleSubmit, onSubmit, errors, ImagetoShow, handleInputFile, handleFileChange} = UpdateAdmin();
 
 	return (
 		<div className=" flex h-full bg-white rounded-3xl px-20 py-10 ">
