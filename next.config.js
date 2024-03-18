@@ -36,6 +36,12 @@ const nextConfig = {
         port: "9237",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "scontent.ftmm2-1.fna.fbcdn.net",
+        port: "",
+        pathname: "/**",
+      },
     ],
   },
   async rewrites() {
