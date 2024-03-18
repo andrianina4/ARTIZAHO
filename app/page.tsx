@@ -155,7 +155,9 @@ export default function Home() {
           </span>
         </div>
 
-        <ListCard />
+        <div className="mt-2">
+          <ListCard />
+        </div>
 
         <Title
           title="Customer testimonials and reviews"

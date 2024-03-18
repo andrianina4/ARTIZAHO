@@ -46,6 +46,19 @@ export default function ListCard() {
       </div>
     );
   }
+
+  return (
+    <>
+      {data &&
+        data?.map((workshop, index) => {
+          return (
+            <div key={index}>
+              <CardComponent key={index} workshop={workshop} />
+            </div>
+          );
+        })}
+    </>
+  );
   return (
     <div className="slider-container mt-4">
       <Slider {...settings}>
