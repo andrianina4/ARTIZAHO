@@ -4,7 +4,7 @@ import {yupResolver} from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import {useForm} from "react-hook-form";
 import {enqueueSnackbar} from "notistack";
-import {useMutation} from "react-query";
+import {useMutation} from "@tanstack/react-query";
 
 function useUpdateCraftman(id: string) {
 	const {mutate} = useMutation({
