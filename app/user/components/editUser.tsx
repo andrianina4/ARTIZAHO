@@ -34,12 +34,9 @@ export default function EditUser(props: PropsEditUser) {
   const { enqueueSnackbar } = useSnackbar();
   const { currentUser } = props;
   const editMode = currentUser ? true : false;
-  // const { data: session } = useSession();
-  // const userConnected = session?.user as ICurrentUser & IRequestToken;
   const [file, setFile] = useState("");
-
   const queryClient = useQueryClient();
-  console.log("currentUser", currentUser);
+
   return (
     <div>
       <h4 className="font-manrope font-bold text-2xl text-bronze leading-[32.78px]">

@@ -1,6 +1,9 @@
 import axios from "axios";
 import { getSession } from "next-auth/react";
 const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL; // || "http://localhost:9237";
+
+console.log("AXIOS SERVER", backendUrl);
+
 const axiosInstanceApi = axios.create({
   // baseURL: "/backend/api",
   baseURL: backendUrl + "/api",

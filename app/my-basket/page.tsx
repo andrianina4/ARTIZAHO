@@ -24,8 +24,6 @@ function Shopping({}: Props) {
     enabled: user ? true : false,
   });
 
-  console.log("data Andrianina", data);
-
   return (
     <div className="min-h-screen">
       <header className="w-full max-w-page mx-auto">
