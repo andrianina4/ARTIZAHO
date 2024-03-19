@@ -7,12 +7,10 @@ import ProfileCard from "@/components/ProfileCard";
 import StarScore from "@/components/star-score";
 import InputContainer from "../InputContainer";
 import {EditFill, AddImage, Heart, Users} from "@/constants/link/icons";
-import {useQuery, useMutation} from "react-query";
-import {useForm} from "react-hook-form";
-import axios from "axios";
 import {ICraftman} from "@/types/ICraftman";
 import {getArtisanDetail} from "@/services/artisan.service";
 import useUpdateCraftman from "@/hook/AdminArtisan/useUpdateCraftman";
+import {useQuery} from "@tanstack/react-query";
 
 type props = {
 	id: string;
