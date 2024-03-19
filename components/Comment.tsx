@@ -6,9 +6,10 @@ type PropsComment = {
   comment: string;
   author: string;
   role: string;
+  img?: string;
 };
 export default function Comment(props: PropsComment) {
-  const { author, comment, role } = props;
+  const { author, comment, role, img } = props;
   return (
     <div className="w-[527px] h-[275px] relative rounded-[12px] bg-[#FFFEFD] shadow-card flex flex-col justify-center ">
       <div className="absolute top-0 left-[-5%]">
@@ -19,7 +20,7 @@ export default function Comment(props: PropsComment) {
 
         <div className="flex gap-[12px] items-center mt-10">
           <Image
-            src={imgProfile}
+            src={img ? img : imgProfile}
             alt="imgProfile"
             className="rounded-full"
             height={58}

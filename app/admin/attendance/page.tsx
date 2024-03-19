@@ -9,15 +9,7 @@ import {FlowerOne} from "@/constants/link/icons";
 import {IAttendance} from "@/types/IAttendance";
 import {SearchContext} from "../provider/SearchProvider";
 
-const headerList = [
-	"ID",
-	"Client Name",
-	"Workshop",
-	"Participants",
-	"Client Type",
-	"Reservation Date",
-	"Status",
-];
+const headerList = ["ID", "Client Name", "Workshop", "Participants", "Client Type", "Reservation Date", "Status"];
 
 const selectItem: Array<ISelect> = [
 	{
@@ -96,7 +88,7 @@ function page() {
 				<div className="bg-white text-brown px-2.5 py-2 rounded-lg h-10">Reservations</div>
 				<div className="flex flex-row items-center w-60 gap-7">
 					<div className="font-bold w-2/3   ">Filter by</div>
-					<Select values={selectItem} className="!bg-white !h-10 !rounded-xl" />
+					<Select options={selectItem} className="!bg-white !h-10 !rounded-xl" />
 				</div>
 			</div>
 			<Divider />

@@ -155,7 +155,9 @@ export default function Home() {
           </span>
         </div>
 
-        <ListCard />
+        <div className="mt-2">
+          <ListCard />
+        </div>
 
         <Title
           title="Customer testimonials and reviews"
@@ -164,21 +166,23 @@ export default function Home() {
 
         <div className="temoignage flex gap-[30px] mb-4">
           <Comment
-            author="Guy Hawkins"
+            author="Jon Doe"
             role="President of Sales"
-            comment="We're showcasing Malagasy craftsmen and reviving their culture and know-how through a series of workshops open to the public."
+            comment="I must say, I'm thoroughly impressed by how you've approached this topic in your comment. Your analysis is both insightful and well-articulated. You've managed to express your ideas in a clear and convincing manner"
           />
 
           <Comment
-            author="Kristin Watson"
-            role="Marketing Coordinator"
-            comment="We're showcasing Malagasy craftsmen and reviving their culture and know-how through a series of workshops open to the public."
+            img="https://scontent.ftmm2-1.fna.fbcdn.net/v/t39.30808-6/272776472_2175289085973104_8171929990065539083_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeEz2MeCJWUpSZKf_X1GJEpumZoJoc3ZI56Zmgmhzdkjng7XG2RUq47OX7kFuAsiFJDER8odkUjDJlPdLXZmSteh&_nc_ohc=C0G0YVzSGLYAX-QeC_X&_nc_oc=AQlnDUVxDw7KUL8HExD7EVJy70pFlYcbTOBNlbK7G3LI2CD9UHFZhPIt3T3q3mFYhlw&_nc_ht=scontent.ftmm2-1.fna&oh=00_AfDgN_SR77gGDZe8h42nABgCIS298zckXYNJKTW_RHawQw&oe=65FD3847"
+            author="Finoana"
+            role="Lead developer"
+            comment="The artisans on this site are awesome! Their creations exude joy and passion. It's so cool to own something that has been made with so much love and talent!"
           />
 
           <Comment
-            author="Jerome Bell"
-            role="Web Designer"
-            comment="We're showcasing Malagasy craftsmen and reviving their culture and know-how through a series of workshops open to the public."
+            img="https://scontent.ftmm2-1.fna.fbcdn.net/v/t1.6435-9/36283339_2090974364494014_4139320064899809280_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeFHCNWzpmDYSpl0N55bN_-1d-vLT9xtgGx368tP3G2AbF_2UK4vKVuL_VqvGrvT8G_rvJ9Dnxxm5nP35gwDz7QJ&_nc_ohc=BTrzEroVEIEAX9iUhLA&_nc_ht=scontent.ftmm2-1.fna&oh=00_AfAc0sgTzsJ7N6a_ufWgvBYPwfgFglqlFP6Yh3joEDFF_Q&oe=661F8D7E"
+            author="Onja"
+            role="Business developer"
+            comment="I love how reasonable the prices are for the activities on this site! It's wonderful to have access to exciting things to do without spending a fortune. It makes trying new things so much easier!"
           />
         </div>
 

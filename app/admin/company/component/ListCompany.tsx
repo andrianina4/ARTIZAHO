@@ -5,10 +5,10 @@ import {ICompany} from "@/types/ICompany";
 import CompanyItem from "./component/CompanyItem";
 import {SearchContext} from "../../provider/SearchProvider";
 import {getAllCompany} from "./Call/Company";
-import {useQuery} from "react-query";
 import ErrorPage from "./status/ErrorPage";
 import Waiter from "./status/Waiter";
 import ListHeader from "@/components/ListHeader";
+import {useQuery} from "@tanstack/react-query";
 
 const headerList = [
 	{id: 1, name: "name", label: "Name"},
@@ -20,7 +20,11 @@ const headerList = [
 
 export default function ListCompany() {
 	// * React Query
-	const {isLoading, data, isError, error, isFetching, refetch} = useQuery("getCompany", getAllCompany);
+	const {isLoading, data, isError, error, isFetching, refetch} = useQuery({
+		queryFn: () => getAllCompany(),
+		queryKey: ["listCompany"],
+		retryOnMount: false,
+	});
 	const refresh = () => {
 		refetch();
 	};
