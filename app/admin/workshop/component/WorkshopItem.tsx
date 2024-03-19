@@ -5,9 +5,8 @@ import {IWorkShop, IWrokshopItem} from "@/types/IWorkshop";
 import Image from "next/image";
 import Link from "next/link";
 import React, {MouseEventHandler} from "react";
-import {useMutation} from "react-query";
 
-export default function  WorkshopItem({workshop}: {workshop: IWorkShop}) {
+export default function WorkshopItem({workshop}: {workshop: IWorkShop}) {
 	const {handleDelete} = DeleteWorkshop(workshop.id);
 
 	// const bg: string = colorBackground[workshop.shop_color];

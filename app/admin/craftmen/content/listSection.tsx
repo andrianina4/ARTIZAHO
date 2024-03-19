@@ -1,14 +1,12 @@
 import React, {useContext, useEffect, useState} from "react";
 import CraftemenItem from "../craftemenItem";
 import {ICraftman, ICraftmanItem} from "@/types/ICraftman";
-import {FlowerOne} from "@/constants/link/icons";
 import ListHeader from "@/components/ListHeader";
 import {SearchContext} from "../../provider/SearchProvider";
-import axios from "axios";
-import {useQuery} from "react-query";
 import {getArtisan} from "@/services/artisan.service";
 import ErrorComponent from "@/app/_global/error";
 import LoadingComponent from "@/app/_global/loading";
+import {useQuery} from "@tanstack/react-query";
 
 const headerList = [
 	{id: 1, name: "name", label: "Name"},
@@ -20,10 +18,9 @@ const headerList = [
 
 export default function ListSection() {
 	const {isLoading, isError, data} = useQuery({
-		queryKey: ["Craftman"],
+		queryKey: ["AdminCraftman"],
 		queryFn: () => getArtisan(),
 	});
-	// * VALEURS PAR DEFAUT
 
 	// * FILTRE PAR SEARCH BAR
 	const [FilteredData, setFilteredData] = useState<ICraftman[]>([]);
