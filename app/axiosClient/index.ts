@@ -1,8 +1,25 @@
 import axios from "axios";
-const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:9237";
+import { signOut } from "next-auth/react";
+const backendUrl =
+  process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:9237";
 
 const axiosInstanceApiClient = axios.create({
-	baseURL: backendUrl + "/api",
+  baseURL: backendUrl + "/api",
 });
 
-export {axiosInstanceApiClient};
+axiosInstanceApiClient.interceptors.response.use(
+  (response) => {
+    return response;
+  },
+  (error) => {
+    if (error.response.status === 401) {
+      //   localStorage.clear();
+      //   window.location.reload();
+      console.log("Lany Token");
+      signOut({ redirect: true, callbackUrl: "/" });
+    }
+    return Promise.reject(error);
+  }
+);
+
+export { axiosInstanceApiClient };
