@@ -5,7 +5,7 @@ import Checkbox from "@/components/checkbox";
 import Footer from "@/components/footer";
 import Input from "@/components/input";
 import NavBar from "@/components/nav-bar";
-import Select from "@/components/select";
+import Select from "@/components/Select";
 import { TrajetRegister } from "@/constants/link/svg";
 import link from "@/constants/utils/path";
 import FormRegister from "@/contents/form-register";
