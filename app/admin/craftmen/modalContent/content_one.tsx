@@ -18,10 +18,11 @@ import { useForm } from "react-hook-form";
 import { useSendCraftman } from "@/hook/AdminArtisan/useSendCraftman";
 import { FormCraftmanData } from "@/app/schema/craftmanSchema";
 import SelectCustom from "@/components/Select";
-import { CreateArtisanDto, CreateImageArtisanDto } from "@/dto/artisan";
+
 
 type props = {
-  onNext: VoidFunction;
+  //onNext?: VoidFunction;
+  onClick:VoidFunction
 };
 
 const selectGenderItem: Array<ISelect> = [
@@ -50,7 +51,7 @@ const selectExpertiseItem: Array<ISelect> = [
   },
 ];
 
-function Content_one({ onNext }: props) {
+function Content_one({onClick}:props) {
   const {
     register,
     handleSubmit,
@@ -61,9 +62,7 @@ function Content_one({ onNext }: props) {
     handleFileChange,
   } = useSendCraftman();
 
-  const handleSendCraftaman = ({data, imageData}: {data:CreateArtisanDto, imageData:CreateImageArtisanDto}) => {
-    onSubmit({data, imageData});
-  };
+  
 
   return (
     <div className=" flex flex-col  justify-between w-full">
@@ -74,7 +73,7 @@ function Content_one({ onNext }: props) {
         New craftman
       </div>
 
-      <form onSubmit={handleSubmit(()=>handleSendCraftaman)}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div className="flex w-full gap-4">
           <div className="w-1/2 ">
             <Input
@@ -110,7 +109,7 @@ function Content_one({ onNext }: props) {
         </div>
         <div className="flex gap-8">
           <Button content="Cancel" />
-          <Button type="submit" content="Next" onClick={onNext} />
+          <Button type="submit" content="Save" onClick={onClick} />
         </div>
       </form>
     </div>

@@ -6,11 +6,12 @@ import { AddImage, ArrowLeft, EditFill, FlowerOne, Heart, Users } from '@/consta
 import React, { useState } from 'react'
 import AboutCraftman from './component/Content/AboutCraftman';
 import Avalaibility from './component/Content/Avalaibility';
+import { useRouter } from 'next/router'
 
 
-type Props = {};
 
-function Page(props: Props) {
+
+function Page({params}:{params:{id: string}}) {
 
 	const[content, setContent]=useState(1)
 	const switchContent = () => {
@@ -46,7 +47,7 @@ function Page(props: Props) {
 				)}
 			</div>
 			<Divider />
-			{content===1 && <AboutCraftman/> }
+			{content===1 && <AboutCraftman id={params.id}/> }
 			{content===2 && <Avalaibility/> }
 		</div>
 	);

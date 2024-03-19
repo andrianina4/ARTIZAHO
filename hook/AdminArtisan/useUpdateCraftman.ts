@@ -4,10 +4,17 @@ import { useMutation } from "react-query";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
+import { enqueueSnackbar } from "notistack";
 
-function useUpdateCraftman(id: number) {
+function useUpdateCraftman(id: string) {
   const { mutate } = useMutation({
     mutationFn: (data: any) => patchArtisan(id, data),
+    onError: (e) => {
+			console.log("error");
+		},
+		onSuccess: (data) => {
+			enqueueSnackbar("Update success", {variant: "success"});
+		},
   });
 
   const required = "This field is required";

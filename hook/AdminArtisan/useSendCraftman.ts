@@ -1,5 +1,8 @@
-import { CreateArtisanDto, CreateImageArtisanDto } from '../../dto/artisan/index';
-"use Client";
+import {
+  CreateArtisanDto,
+  CreateImageArtisanDto,
+} from "../../dto/artisan/index";
+("use Client");
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -10,6 +13,8 @@ import axios from "axios";
 import { axiosInstanceApi } from "@/axios";
 import { getSession } from "next-auth/react";
 import { postArtisan, uploadImageArtisan } from "@/services/artisan.service";
+import { QueryClient, useQueryClient } from "@tanstack/react-query";
+import { enqueueSnackbar } from "notistack";
 
 export function useSendCraftman() {
   const [ImagetoShow, setImagetoShow] = useState<string>();
@@ -41,46 +46,35 @@ export function useSendCraftman() {
     }
   };
 
-  //URL encore à changer
+  const queryClient = useQueryClient();
 
-  const createCraftmanmutation = useMutation({
-    mutationFn: postArtisan
+  const { mutate } = useMutation({
+    mutationFn: (data: CreateArtisanDto) => postArtisan(data),
+    onError: (err) => {
+      console.log("error");
+    },
+    onSettled: async (response) => {
+      if (ImageToSend) {
+        await uploadImageArtisan(response?.data.id, ImageToSend);
+      }
+      await queryClient.invalidateQueries({ queryKey: ["Craftman"] });
+      setImageToSend(null);
+    },
+    onSuccess: (data) => {
+			enqueueSnackbar("Update success", {variant: "success"});
+		},
   });
 
-  const uploadImageMutation = useMutation({
-    mutationFn:uploadImageArtisan
-    }
-  );
-
-  const onSubmit = async ({data, imageData}: {data:CreateArtisanDto, imageData:CreateImageArtisanDto}) => {
-    try {
-      //envoyer info artisan
-      const createCraftman = await createCraftmanmutation.mutateAsync(data);
-      console.log(data)
-
-      if (ImageToSend) {
-        const formdata = new FormData();
-        formdata.append("image", ImageToSend);
-        formdata.append("artisan", createCraftman.id);
-
-        
-        //Envoyer image artisan
-        await uploadImageMutation.mutateAsync(imageData);
-        console.log(imageData)
-      }
-    } catch (error) {
-      console.log("Il ya une erreur", error);
-    }
-  };
-
+  const onSubmit = async(data: CreateArtisanDto )=>{
+    mutate(data)
+  }
   return {
-    register,
-    handleSubmit,
-    onSubmit,
-    errors,
-    ImagetoShow,
-    ImageToSend,
-    handleInputFile,
-    handleFileChange,
-  };
+		register,
+		handleSubmit,
+		onSubmit,
+		errors,
+		ImagetoShow,
+		handleInputFile,
+		handleFileChange,
+	};
 }
