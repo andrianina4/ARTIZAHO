@@ -1,5 +1,5 @@
 import { Alarm, Heart, Place } from "@/constants/link/icons";
-import { art, imgDefault } from "@/constants/link/images";
+import { art, imgDefault, NotImage } from "@/constants/link/images";
 import { getImgUrl } from "@/services/index.service";
 import { IImage } from "@/types/IImage";
 import { IWorkShop } from "@/types/IWorkshop";
@@ -46,7 +46,7 @@ export default function CardComponent(props: PropsCard) {
       <div className="imageContainer relative">
         <div>
           <Image
-            src={images.length ? getImgUrl(images) : imgDefault}
+            src={images.length ? getImgUrl(images) : NotImage}
             alt="art"
             width={304}
             height={244}

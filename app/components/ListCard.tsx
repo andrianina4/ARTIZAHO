@@ -6,11 +6,11 @@ import { useQuery } from "@tanstack/react-query";
 import Slider, { Settings } from "react-slick";
 export default function ListCard() {
   const settings: Settings = {
-    dots: true,
+    // dots: true,
     infinite: true,
-    speed: 500,
+    // speed: 500,
     slidesToShow: 4,
-    slidesToScroll: 4,
+    // slidesToScroll: 1,
   };
   const { data, isLoading, isError } = useQuery({
     queryFn: () => getWorkShop(),
@@ -47,18 +47,18 @@ export default function ListCard() {
     );
   }
 
-  return (
-    <>
-      {data &&
-        data?.map((workshop, index) => {
-          return (
-            <div key={index}>
-              <CardComponent key={index} workshop={workshop} />
-            </div>
-          );
-        })}
-    </>
-  );
+  // return (
+  //   <>
+  //     {data &&
+  //       data?.map((workshop, index) => {
+  //         return (
+  //           <div key={index}>
+  //             <CardComponent key={index} workshop={workshop} />
+  //           </div>
+  //         );
+  //       })}
+  //   </>
+  // );
   return (
     <div className="slider-container mt-4">
       <Slider {...settings}>
