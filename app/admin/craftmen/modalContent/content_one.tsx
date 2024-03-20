@@ -41,7 +41,8 @@ const selectExpertiseItem: Array<ISelect> = [
 ];
 
 function Content_one({onClick}: props) {
-	const {register, handleSubmit, onSubmit, errors, ImagetoShow, handleInputFile, handleFileChange} = useSendCraftman();
+	const {register, handleSubmit, handleReset, onSubmit, errors, ImagetoShow, handleInputFile, handleFileChange} =
+		useSendCraftman();
 
 	return (
 		<div className="flex flex-col w-full">
@@ -73,8 +74,13 @@ function Content_one({onClick}: props) {
 					</div>
 				</div>
 				<div className="flex gap-8">
-					<Button content="Cancel" />
 					<Button type="submit" content="Save" onClick={onClick} />
+					<button
+						onClick={handleReset}
+						type="button"
+						className="w-full py-3.5 px-4 text-sm rounded-2xl flex justify-center items-center bg-bronze bg-transparent text-black  hover:bg-bronze hover:bg-opacity-50 transition-all ease-linear duration-100">
+						Cancel
+					</button>
 				</div>
 			</form>
 		</div>

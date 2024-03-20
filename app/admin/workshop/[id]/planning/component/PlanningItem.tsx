@@ -1,4 +1,4 @@
-import {DateToday, MiniCalendar} from "@/constants/link/icons";
+import {DateToday} from "@/constants/link/icons";
 import {getImgUrl} from "@/services/index.service";
 import {IScheduleWorkshop} from "@/types/IWorkshop";
 import {convertTime, getEndTime} from "@/utils/Format";

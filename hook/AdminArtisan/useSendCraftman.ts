@@ -61,10 +61,15 @@ export function useSendCraftman() {
 		mutate(data);
 	};
 
+	const handleReset = () => {
+		reset();
+	};
+
 	return {
 		register,
 		handleSubmit,
 		onSubmit,
+		handleReset,
 		errors,
 		ImagetoShow,
 		handleInputFile,
