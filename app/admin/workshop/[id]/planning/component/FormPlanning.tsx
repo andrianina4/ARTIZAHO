@@ -7,6 +7,7 @@ import {Add, AddOutline} from "@/constants/link/icons";
 import {AddScheduleWorkshop} from "@/hook/AdminWorkshop/AddScheduleWorkshop";
 import {useAutocompletionForCraftsman} from "@/hook/useAutocompletionForCraftsman";
 import {getArtisans} from "@/services/admin/adminWorkshop.service";
+import {getImgUrl} from "@/services/index.service";
 import {useQuery} from "@tanstack/react-query";
 import Image from "next/image";
 import React, {useEffect} from "react";
@@ -56,7 +57,7 @@ export default function FormPlanning({id, close}: {id: number; close: () => void
 								</div>
 								<div className="relative w-8 h-8 rounded-full bg-neutral flex items-center justify-center  text-neutral-content">
 									{SelectedCraftsman?.images?.length > 0 ? (
-										<Image src={SelectedCraftsman?.images[0]?.base_url} className="" alt="acc_image" fill />
+										<Image src={getImgUrl(SelectedCraftsman?.images)} className="rounded-full" alt="acc_image" fill />
 									) : (
 										<span className="text-lg uppercase">{SelectedCraftsman.name[0]}</span>
 									)}
@@ -88,7 +89,7 @@ export default function FormPlanning({id, close}: {id: number; close: () => void
 										}}>
 										<div className="relative w-8 h-8 rounded-full bg-neutral flex items-center justify-center  text-neutral-content">
 											{item?.images?.length > 0 ? (
-												<Image src={item?.images[0]?.base_url} className="" alt="acc_image" fill />
+												<Image src={getImgUrl(item?.images)} className="rounded-full" alt="acc_image" fill />
 											) : (
 												<span className="text-lg uppercase">{item.name[0]}</span>
 											)}

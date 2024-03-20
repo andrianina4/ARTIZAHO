@@ -44,17 +44,19 @@ export const postArtisan = async (data: CreateArtisanDto) => {
 	return response.data.id;
 };
 
-export const uploadImageArtisan = async (id: number, file: File) => {
+export const uploadImageArtisan = async (id: number, file: FileList) => {
 	const access_token = await getCurrentToken();
 	const formData = new FormData();
-	formData.append("images", file);
-	const responseImage = await axiosInstanceApi.post(`/v1/artisan/${id}/upload_image/`, formData, {
+	for (let i = 0; i < file.length; i++) {
+		const item = file[i];
+		formData.append("images", item);
+	}
+	return await axiosInstanceApi.post(`/v1/artisan/${id}/upload_image/`, formData, {
 		headers: {
 			"Content-Type": "multipart/form-data",
 			Authorization: `Bearer ${access_token}`,
 		},
 	});
-	return responseImage.data;
 };
 
 export const patchArtisan = async (id: string, data: any) => {

@@ -6,6 +6,7 @@ import {ICraftman} from "@/types/ICraftman";
 import {colorBackground, colorText} from "@/types/IColor";
 import useDeleteCraftman from "@/hook/AdminArtisan/useDeleteCraftman";
 import Link from "next/link";
+import {getImgUrl} from "@/services/index.service";
 
 function CraftemenItem({craftman}: {craftman: ICraftman}) {
 	// const bg: string = colorBackground[craftman.craftman_workshop.color];
@@ -18,9 +19,9 @@ function CraftemenItem({craftman}: {craftman: ICraftman}) {
 		<div className="grid grid-cols-custom-2 text-sm font-bold bg-white items-center rounded-lg h-14 pl-4 my-1">
 			{/* NOM et IMAGE */}
 			<div className="flex items-center gap-2">
-				<div className="relative w-8 h-8 rounded-full bg-neutral flex items-center justify-center  text-neutral-content">
+				<div className="relative w-8 h-8 rounded-full bg-neutral flex items-center justify-center text-neutral-content">
 					{craftman?.images?.length > 0 ? (
-						<Image src={craftman?.images[0]?.base_url} className="" alt="acc_image" fill />
+						<Image src={getImgUrl(craftman?.images)} className="rounded-full" alt="acc_image" fill />
 					) : (
 						<span className="text-lg uppercase">{craftman.name[0]}</span>
 					)}

@@ -1,4 +1,5 @@
 import {DateToday, MiniCalendar} from "@/constants/link/icons";
+import {getImgUrl} from "@/services/index.service";
 import {IScheduleWorkshop} from "@/types/IWorkshop";
 import {convertTime, getEndTime} from "@/utils/Format";
 import Image from "next/image";
@@ -22,7 +23,7 @@ export default function PlanningItem({item}: {item: IScheduleWorkshop}) {
 			<div className="flex items-center gap-2">
 				<div className="relative w-8 h-8 rounded-full bg-neutral flex items-center justify-center  text-neutral-content">
 					{item.artisan?.images?.length > 0 ? (
-						<Image src={item.artisan?.images[0]?.base_url} className="" alt="acc_image" fill />
+						<Image src={getImgUrl(item.artisan?.images)} className="rounded-full" alt="acc_image" fill />
 					) : (
 						<span className="text-lg uppercase">{item.artisan.name[0]}</span>
 					)}

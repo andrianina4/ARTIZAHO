@@ -10,7 +10,7 @@ import {enqueueSnackbar} from "notistack";
 
 export function useSendCraftman() {
 	const [ImagetoShow, setImagetoShow] = useState<string>();
-	const [ImageToSend, setImageToSend] = useState<any>();
+	const [ImageToSend, setImageToSend] = useState<FileList | null>();
 
 	const {
 		handleSubmit,
@@ -33,7 +33,7 @@ export function useSendCraftman() {
 			// * Traitement image a afficher
 			setImagetoShow(URL.createObjectURL(e.target.files[0]));
 			// * Traitement image a envoyer
-			setImageToSend(e.target.files[0]);
+			setImageToSend(e.target.files);
 		}
 	};
 
@@ -49,7 +49,7 @@ export function useSendCraftman() {
 			console.error(err.message);
 		},
 		onSettled: async (response) => {
-			if (ImageToSend) await uploadImageArtisan(response?.data.id, ImageToSend);
+			if (ImageToSend) await uploadImageArtisan(response, ImageToSend);
 			await queryClient.invalidateQueries({queryKey: ["AdminCraftman"]});
 			setImagetoShow("");
 			setImageToSend(null);

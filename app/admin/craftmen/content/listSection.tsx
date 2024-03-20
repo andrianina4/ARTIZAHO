@@ -26,7 +26,6 @@ export default function ListSection() {
 	const [FilteredData, setFilteredData] = useState<ICraftman[]>([]);
 	const searchContext = useContext(SearchContext);
 	useEffect(() => {
-		console.log(data);
 		const filteredValues = data?.filter((value: ICraftman) => {
 			if (
 				value.name?.toLocaleLowerCase().includes(searchContext.Value.toLocaleLowerCase()) ||
