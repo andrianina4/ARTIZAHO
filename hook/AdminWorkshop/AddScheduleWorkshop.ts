@@ -7,6 +7,7 @@ import {IScheduleToSend} from "@/types/IWorkshop";
 import {useMutation, useQueryClient} from "@tanstack/react-query";
 import {postScheduleWorkshop} from "@/services/admin/adminWorkshop.service";
 import {ICraftman} from "@/types/ICraftman";
+import {enqueueSnackbar} from "notistack";
 
 type Tdata = {
 	name: string;
@@ -19,7 +20,11 @@ export const AddScheduleWorkshop = (id: number, craftsman: ICraftman | undefined
 
 	const {mutate} = useMutation({
 		mutationFn: (data: IScheduleToSend) => postScheduleWorkshop(id, data),
+		onSuccess: () => {
+			enqueueSnackbar("Workshop schedule successfully created", {variant: "success"});
+		},
 		onError: (err) => {
+			enqueueSnackbar("An error has occurred, watch console for details", {variant: "error"});
 			console.error(err.message);
 		},
 		onSettled: async (response) => {

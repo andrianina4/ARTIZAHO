@@ -13,12 +13,12 @@ export const DeleteWorkshop = (id: number) => {
 		onSuccess: (e) => {
 			enqueueSnackbar("Delete success", {variant: "success"});
 		},
-		onSettled: async (_, error) => {
-			if (error) {
-				console.error(error.message);
-			} else {
-				await queryClient.invalidateQueries({queryKey: ["adminWorkshop"]});
-			}
+		onError: (err) => {
+			enqueueSnackbar("An error has occurred, watch console for details", {variant: "error"});
+			console.error(err.message);
+		},
+		onSettled: async (response) => {
+			await queryClient.invalidateQueries({queryKey: ["adminWorkshop"]});
 		},
 	});
 

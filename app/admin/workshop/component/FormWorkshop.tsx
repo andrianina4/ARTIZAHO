@@ -5,16 +5,10 @@ import Input from "@/components/input";
 import Textarea from "@/components/textarea";
 import {ImageAdd, Toolbox} from "@/constants/link/icons";
 import Image from "next/image";
-// import {useAutocompletionForCraftsman} from "@/hook/useAutocompletionForCraftsman";
-// import {useAutocompletionNameWorkshop} from "@/hook/useAutocompletionNameWorkshop";
 import PopupHeader from "@/components/PopupHeader";
 import {AddWorkshop} from "@/hook/AdminWorkshop/AddWorkshop";
 
 export default function FormWorkshop({onClick}: {onClick: VoidFunction}) {
-	// * Traitement du nom d'atelier
-	// const {setBaseValues, SelectedValue, InputValue, handleChange, SuggestedValues, handleSelectValue} =
-	// 	useAutocompletionNameWorkshop(ListWorkshops);
-
 	const {register, handleSubmit, onSubmit, errors, imagePreview, handleInputFile, handleFileChange} =
 		AddWorkshop(onClick);
 
