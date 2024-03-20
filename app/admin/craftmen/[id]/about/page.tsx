@@ -37,7 +37,7 @@ export default function Page({params}: {params: {id: string}}) {
 	return (
 		<form className="flex flex-row w-full h-full px-12">
 			<div className="flex flex-col w-1/2">
-				<div className="flex flex-col h-full justify-between">
+				<div className="flex flex-col justify-between">
 					<div>
 						<Item
 							label="Name"
@@ -57,7 +57,7 @@ export default function Page({params}: {params: {id: string}}) {
 							<div className="w-1/5 flex pt-4 opacity-60 font-bold">Description</div>
 							<div className="w-4/5 gap-2">
 								<Textarea
-									className="h-48"
+									className="h-40"
 									placeholder="Description"
 									name="desc"
 									defaultValue={data?.description}
@@ -67,7 +67,7 @@ export default function Page({params}: {params: {id: string}}) {
 							</div>
 						</div>
 					</div>
-					<div className="flex mb-8 gap-4">
+					{/* <div className="flex mb-8 gap-4">
 						<Button content="Save" type="submit" />
 						<button
 							// onClick={handleReset}
@@ -75,17 +75,18 @@ export default function Page({params}: {params: {id: string}}) {
 							className="w-full py-3.5 px-4 text-sm rounded-2xl flex justify-center items-center bg-bronze bg-transparent text-black  hover:bg-bronze hover:bg-opacity-50 transition-all ease-linear duration-100">
 							Cancel
 						</button>
-					</div>
+					</div> */}
 				</div>
-			</div>
-			<div>
-				<div className="text-brown text-lg font-bold ">
-					<span>Workshop performance</span>
-				</div>
+				{/* MISY PROGRESS BAR */}
 				<div>
-					<ProgressBar color="blue" leftIcon={<Heart />} text="Bouquet en vase" number={5} />
-					<ProgressBar color="green" leftIcon={<Heart />} text="Bouquet en vase" number={5} />
-					<ProgressBar color="bronze" leftIcon={<Heart />} text="Bouquet en vase" number={5} />
+					<div className="text-brown text-lg font-bold ">
+						<span>Workshop performance</span>
+					</div>
+					<div>
+						<ProgressBar color="blue" leftIcon={<Heart />} text="Bouquet en vase" number={5} />
+						<ProgressBar color="green" leftIcon={<Heart />} text="Bouquet en vase" number={5} />
+						<ProgressBar color="bronze" leftIcon={<Heart />} text="Bouquet en vase" number={5} />
+					</div>
 				</div>
 			</div>
 			<div className="flex justify-center w-14 pt-5 pl-5 ">
