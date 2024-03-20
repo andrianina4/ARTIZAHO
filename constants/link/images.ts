@@ -18,6 +18,7 @@ import our1 from "../../public/images/our1.png";
 import our2 from "../../public/images/our2.png";
 import Vase from "../../public/temp/vase.png";
 import imgDefault from "../../public/images/imgDefault.jpeg";
+import NotImage from "../../public/images/ImageDefault.jpg";
 
 export {
   artizahoWhite,
@@ -40,4 +41,5 @@ export {
   imgVideo,
   imgTest,
   imgDefault,
+  NotImage,
 };

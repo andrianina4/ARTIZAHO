@@ -1,6 +1,6 @@
 import NavBar from "@/components/nav-bar";
 
-import { imgTest, our1, our2 } from "@/constants/link/images";
+import { imgTest, NotImage, our1, our2 } from "@/constants/link/images";
 import Image from "next/image";
 import ModalDescriptionCard from "../ModalDescriptionCard";
 import HeaderWorkshop from "../../components/HeaderWorkshop";
@@ -81,18 +81,34 @@ export default async function page({
             </div>
             <div className="flex flex-col w-1/2 gap-2 ">
               <div className="h-[216px] w-full">
-                <Image
-                  src={our2}
-                  alt="our2"
-                  className="w-[100%] object-cover h-[100%]"
-                />
+                {currentWorkshop.images[1] ? (
+                  <Image
+                    src={getByImgUrl(currentWorkshop.images[1])}
+                    alt="our2"
+                    className="w-[100%] object-cover h-[100%]"
+                  />
+                ) : (
+                  <Image
+                    src={NotImage}
+                    alt="our2"
+                    className="w-[100%] object-cover h-[100%]"
+                  />
+                )}
               </div>
               <div className="h-[216px] w-full">
-                <Image
-                  src={our1}
-                  alt="our1"
-                  className="w-[100%] object-cover h-[100%]"
-                />
+                {currentWorkshop.images[2] ? (
+                  <Image
+                    src={getByImgUrl(currentWorkshop.images[2])}
+                    alt="our2"
+                    className="w-[100%] object-cover h-[100%]"
+                  />
+                ) : (
+                  <Image
+                    src={NotImage}
+                    alt="our2"
+                    className="w-[100%] object-cover h-[100%]"
+                  />
+                )}
               </div>
             </div>
           </div>
