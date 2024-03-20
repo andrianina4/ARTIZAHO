@@ -18,26 +18,13 @@ function CraftemenItem({craftman}: {craftman: ICraftman}) {
 		<div className="grid grid-cols-custom-2 text-sm font-bold bg-white items-center rounded-lg h-14 pl-4 my-1">
 			{/* NOM et IMAGE */}
 			<div className="flex items-center gap-2">
-				{craftman.images.length > 0 ? (
-					<div className="relative w-11 h-11 rounded-full bg-slate-500">
-						<Image
-							src={craftman.images[0]?.base_url}
-							className="w-11 h-11 rounded-full bg-slate-500"
-							alt="acc_image"
-							fill
-						/>
-					</div>
-				) : (
-					<div className="w-11 h-11 flex items-center justify-center bg-neutral text-neutral-content rounded-full">
+				<div className="relative w-8 h-8 rounded-full bg-neutral flex items-center justify-center  text-neutral-content">
+					{craftman?.images?.length > 0 ? (
+						<Image src={craftman?.images[0]?.base_url} className="" alt="acc_image" fill />
+					) : (
 						<span className="text-lg uppercase">{craftman.name[0]}</span>
-					</div>
-				)}
-				{/* <div className="w-[30px] h-[30px] rounded-full bg-slate-500 relative">
-					
-					<div className="bg-neutral text-neutral-content rounded-full w-[45px]">
-						<span className="text-lg uppercase">{craftman.name[0]}</span>
-					</div>
-				</div> */}
+					)}
+				</div>
 				<div className="flex flex-col">
 					<div className="font-bold">
 						<Link href={`/admin/craftman/${craftman.id}`}>{craftman.name}</Link>

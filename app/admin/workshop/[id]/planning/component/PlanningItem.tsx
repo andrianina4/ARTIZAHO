@@ -20,9 +20,14 @@ export default function PlanningItem({item}: {item: IScheduleWorkshop}) {
 			</div>
 			{/* NOM et IMAGE */}
 			<div className="flex items-center gap-2">
-				<div className="w-[30px] h-[30px] relative rounded-full bg-slate-500">
-					<Image src={item.artisan?.images[0]?.base_url} alt="" fill className="rounded-full" />
+				<div className="relative w-8 h-8 rounded-full bg-neutral flex items-center justify-center  text-neutral-content">
+					{item.artisan?.images?.length > 0 ? (
+						<Image src={item.artisan?.images[0]?.base_url} className="" alt="acc_image" fill />
+					) : (
+						<span className="text-lg uppercase">{item.artisan.name[0]}</span>
+					)}
 				</div>
+
 				<div className="flex flex-col items-center ">
 					<p className="text-black-default font-bold">{item.artisan?.name}</p>
 				</div>
