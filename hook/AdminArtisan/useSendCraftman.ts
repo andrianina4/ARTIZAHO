@@ -15,6 +15,7 @@ export function useSendCraftman() {
 	const {
 		handleSubmit,
 		register,
+		reset,
 		formState: {errors},
 	} = useForm({resolver: yupResolver(CraftmanSchema)});
 
@@ -40,24 +41,26 @@ export function useSendCraftman() {
 
 	const {mutate} = useMutation({
 		mutationFn: (data: CreateArtisanDto) => postArtisan(data),
+		onSuccess: () => {
+			enqueueSnackbar("Craftsman created with success", {variant: "success"});
+		},
 		onError: (err) => {
-			console.log("error");
+			enqueueSnackbar("An error has occurred, watch console for details", {variant: "error"});
+			console.error(err.message);
 		},
 		onSettled: async (response) => {
-			if (ImageToSend) {
-				await uploadImageArtisan(response?.data.id, ImageToSend);
-			}
+			if (ImageToSend) await uploadImageArtisan(response?.data.id, ImageToSend);
 			await queryClient.invalidateQueries({queryKey: ["AdminCraftman"]});
+			setImagetoShow("");
 			setImageToSend(null);
-		},
-		onSuccess: (data) => {
-			enqueueSnackbar("Update success", {variant: "success"});
+			reset();
 		},
 	});
 
 	const onSubmit = async (data: CreateArtisanDto) => {
 		mutate(data);
 	};
+
 	return {
 		register,
 		handleSubmit,

@@ -5,10 +5,7 @@ import Textarea from "@/components/textarea";
 import {ISelect} from "@/types/IField";
 import Button from "@/components/button";
 import AddImageRound from "@/components/AddImageRound";
-
-import {useForm} from "react-hook-form";
 import {useSendCraftman} from "@/hook/AdminArtisan/useSendCraftman";
-import {FormCraftmanData} from "@/app/schema/craftmanSchema";
 import SelectCustom from "@/components/Select";
 import PopupHeader from "@/components/PopupHeader";
 
@@ -34,11 +31,11 @@ const selectGenderItem: Array<ISelect> = [
 
 const selectExpertiseItem: Array<ISelect> = [
 	{
-		value: "Floral",
+		value: "FLORAL",
 		label: "Floral",
 	},
 	{
-		value: "Cuir",
+		value: "CUIR",
 		label: "Cuir",
 	},
 ];
@@ -60,7 +57,7 @@ function Content_one({onClick}: props) {
 						/>
 						<SelectCustom options={selectGenderItem} register={register("gender")} className="input-bordered mt-2" />
 						<Textarea
-							placeholder="About the craftman "
+							placeholder="About the craftman"
 							className="h-48 mt-2"
 							register={register("description")}
 							errorMessage={errors.description}
