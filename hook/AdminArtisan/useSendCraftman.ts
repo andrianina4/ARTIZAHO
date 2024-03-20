@@ -10,11 +10,12 @@ import {enqueueSnackbar} from "notistack";
 
 export function useSendCraftman() {
 	const [ImagetoShow, setImagetoShow] = useState<string>();
-	const [ImageToSend, setImageToSend] = useState<any>();
+	const [ImageToSend, setImageToSend] = useState<FileList | null>();
 
 	const {
 		handleSubmit,
 		register,
+		reset,
 		formState: {errors},
 	} = useForm({resolver: yupResolver(CraftmanSchema)});
 
@@ -32,7 +33,7 @@ export function useSendCraftman() {
 			// * Traitement image a afficher
 			setImagetoShow(URL.createObjectURL(e.target.files[0]));
 			// * Traitement image a envoyer
-			setImageToSend(e.target.files[0]);
+			setImageToSend(e.target.files);
 		}
 	};
 
@@ -40,28 +41,35 @@ export function useSendCraftman() {
 
 	const {mutate} = useMutation({
 		mutationFn: (data: CreateArtisanDto) => postArtisan(data),
+		onSuccess: () => {
+			enqueueSnackbar("Craftsman created with success", {variant: "success"});
+		},
 		onError: (err) => {
-			console.log("error");
+			enqueueSnackbar("An error has occurred, watch console for details", {variant: "error"});
+			console.error(err.message);
 		},
 		onSettled: async (response) => {
-			if (ImageToSend) {
-				await uploadImageArtisan(response?.data.id, ImageToSend);
-			}
+			if (ImageToSend) await uploadImageArtisan(response, ImageToSend);
 			await queryClient.invalidateQueries({queryKey: ["AdminCraftman"]});
+			setImagetoShow("");
 			setImageToSend(null);
-		},
-		onSuccess: (data) => {
-			enqueueSnackbar("Update success", {variant: "success"});
+			reset();
 		},
 	});
 
 	const onSubmit = async (data: CreateArtisanDto) => {
 		mutate(data);
 	};
+
+	const handleReset = () => {
+		reset();
+	};
+
 	return {
 		register,
 		handleSubmit,
 		onSubmit,
+		handleReset,
 		errors,
 		ImagetoShow,
 		handleInputFile,

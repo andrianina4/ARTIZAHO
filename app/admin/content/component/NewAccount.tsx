@@ -1,5 +1,5 @@
 import {Down} from "@/constants/link/icons";
-import React, {ChangeEvent, MouseEventHandler, useState} from "react";
+import React, {useState} from "react";
 import People from "./component/People";
 import {INewAccount} from "@/types/INewAccount";
 
@@ -7,32 +7,14 @@ const ListNewAcc: Array<INewAccount> = [
 	{
 		acc_name: "Safidy",
 		acc_mail: "safidy@gmail.com",
-		acc_image: "temp/vase.png",
+		acc_image: "/temp/vase.png",
 		acc_type: "company",
 	},
 	{
 		acc_name: "Onja",
 		acc_mail: "onja@gmail.com",
-		acc_image: "temp/vase.png",
+		acc_image: "/temp/vase.png",
 		acc_type: "individual",
-	},
-	{
-		acc_name: "Nick",
-		acc_mail: "nick@gmail.com",
-		acc_image: "temp/vase.png",
-		acc_type: "company",
-	},
-	{
-		acc_name: "Nick",
-		acc_mail: "nick@gmail.com",
-		acc_image: "temp/vase.png",
-		acc_type: "individual",
-	},
-	{
-		acc_name: "Nick",
-		acc_mail: "nick@gmail.com",
-		acc_image: "temp/vase.png",
-		acc_type: "company",
 	},
 ];
 

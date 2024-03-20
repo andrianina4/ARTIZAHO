@@ -10,11 +10,12 @@ import {enqueueSnackbar} from "notistack";
 export const UpdateWorkshop = (id: number) => {
 	const {mutate} = useMutation({
 		mutationFn: (data: any) => patchWorkShop(id, data),
-		onError: (e) => {
-			console.error(e.message);
-		},
 		onSuccess: (data) => {
 			enqueueSnackbar("Update success", {variant: "success"});
+		},
+		onError: (err) => {
+			enqueueSnackbar("An error has occurred, watch console for details", {variant: "error"});
+			console.error(err.message);
 		},
 	});
 

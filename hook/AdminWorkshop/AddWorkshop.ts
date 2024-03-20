@@ -7,6 +7,7 @@ import {useForm} from "react-hook-form";
 import {WorkshopDataToSend} from "@/types/IWorkshop";
 import {useMutation, useQueryClient} from "@tanstack/react-query";
 import {postWorkShop, uploadImageWorkshop} from "@/services/admin/adminWorkshop.service";
+import {enqueueSnackbar} from "notistack";
 
 type Tdata = {
 	name: string;
@@ -22,7 +23,11 @@ export const AddWorkshop = (close: () => void) => {
 
 	const {mutate} = useMutation({
 		mutationFn: (data: WorkshopDataToSend) => postWorkShop(data),
+		onSuccess: () => {
+			enqueueSnackbar("Workshop created with success", {variant: "success"});
+		},
 		onError: (err) => {
+			enqueueSnackbar("An error has occurred, watch console for details", {variant: "error"});
 			console.error(err.message);
 		},
 		onSettled: async (response) => {

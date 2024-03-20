@@ -20,16 +20,14 @@ export const getArtisan = async () => {
 
 export const getArtisanDetail = async (id: string) => {
 	const access_token = await getCurrentToken();
-	const {
-		data: {results},
-	} = await axiosInstanceApiClient.get<IBackendResponse<ICraftman>>(`/v1/artisan/${id}/`, {
+	const {data} = await axiosInstanceApiClient.get(`/v1/artisan/${id}/`, {
 		headers: {
 			"Content-Type": "multipart/form-data",
 			Authorization: `Bearer ${access_token}`,
 		},
 	});
 
-	return results;
+	return data;
 };
 
 export const postArtisan = async (data: CreateArtisanDto) => {
@@ -44,17 +42,19 @@ export const postArtisan = async (data: CreateArtisanDto) => {
 	return response.data.id;
 };
 
-export const uploadImageArtisan = async (id: number, file: File) => {
+export const uploadImageArtisan = async (id: number, file: FileList) => {
 	const access_token = await getCurrentToken();
 	const formData = new FormData();
-	formData.append("images", file);
-	const responseImage = await axiosInstanceApi.post(`/v1/artisan/${id}/upload_image/`, formData, {
+	for (let i = 0; i < file.length; i++) {
+		const item = file[i];
+		formData.append("images", item);
+	}
+	return await axiosInstanceApi.post(`/v1/artisan/${id}/upload_image/`, formData, {
 		headers: {
 			"Content-Type": "multipart/form-data",
 			Authorization: `Bearer ${access_token}`,
 		},
 	});
-	return responseImage.data;
 };
 
 export const patchArtisan = async (id: string, data: any) => {

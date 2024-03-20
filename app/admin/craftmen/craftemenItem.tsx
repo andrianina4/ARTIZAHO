@@ -6,25 +6,29 @@ import {ICraftman} from "@/types/ICraftman";
 import {colorBackground, colorText} from "@/types/IColor";
 import useDeleteCraftman from "@/hook/AdminArtisan/useDeleteCraftman";
 import Link from "next/link";
+import {getImgUrl} from "@/services/index.service";
 
 function CraftemenItem({craftman}: {craftman: ICraftman}) {
-		// const bg: string = colorBackground[craftman.craftman_workshop.color];
-		// const txt: string = colorText[craftman.craftman_workshop.color];
-		const bg = "bg-bronze";
-		const txt = "text-bronze";
+	// const bg: string = colorBackground[craftman.craftman_workshop.color];
+	// const txt: string = colorText[craftman.craftman_workshop.color];
+	const bg = "bg-bronze";
+	const txt = "text-bronze";
 
-
-		const {handleDelete}=useDeleteCraftman(craftman.id)
+	const {handleDelete} = useDeleteCraftman(craftman.id);
 	return (
 		<div className="grid grid-cols-custom-2 text-sm font-bold bg-white items-center rounded-lg h-14 pl-4 my-1">
 			{/* NOM et IMAGE */}
 			<div className="flex items-center gap-2">
-				<div className="w-[30px] h-[30px] rounded-full bg-slate-500 relative">
-					<Image src={""} alt={`shopping-1`} fill className="rounded-full" />
+				<div className="relative w-8 h-8 rounded-full bg-neutral flex items-center justify-center text-neutral-content">
+					{craftman?.images?.length > 0 ? (
+						<Image src={getImgUrl(craftman?.images)} className="rounded-full" alt="acc_image" fill />
+					) : (
+						<span className="text-lg uppercase">{craftman.name[0]}</span>
+					)}
 				</div>
 				<div className="flex flex-col">
 					<div className="font-bold">
-						<Link href={`/admin/craftman/${craftman.id}`}>{craftman.name}</Link>
+						<Link href={`/admin/craftmen/${craftman.id}`}>{craftman.name}</Link>
 					</div>
 					<p className="font-normal opacity-50">{craftman.expertise}</p>
 				</div>
@@ -33,8 +37,7 @@ function CraftemenItem({craftman}: {craftman: ICraftman}) {
 			<div>{craftman.expertise}</div>
 			{/* WORKSHOP */}
 			<div className="flex items-center gap-2">
-				<div
-					className={`w-7 h-7 flex items-center justify-center ${txt} ${bg} bg-opacity-30 rounded-lg`}>
+				<div className={`w-7 h-7 flex items-center justify-center ${txt} ${bg} bg-opacity-30 rounded-lg`}>
 					<FlowerOne />
 				</div>
 				<p className="opacity-50">Bouquet en vase</p>
@@ -45,7 +48,7 @@ function CraftemenItem({craftman}: {craftman: ICraftman}) {
 				<div className="opacity-70">20</div>
 			</div>
 			{/* STAR */}
-			<StarScore /> 	
+			<StarScore />
 			{/* DON'T KNOW */}
 			<button onClick={handleDelete}>...</button>
 		</div>

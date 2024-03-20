@@ -5,10 +5,7 @@ import Textarea from "@/components/textarea";
 import {ISelect} from "@/types/IField";
 import Button from "@/components/button";
 import AddImageRound from "@/components/AddImageRound";
-
-import {useForm} from "react-hook-form";
 import {useSendCraftman} from "@/hook/AdminArtisan/useSendCraftman";
-import {FormCraftmanData} from "@/app/schema/craftmanSchema";
 import SelectCustom from "@/components/Select";
 import PopupHeader from "@/components/PopupHeader";
 
@@ -34,17 +31,18 @@ const selectGenderItem: Array<ISelect> = [
 
 const selectExpertiseItem: Array<ISelect> = [
 	{
-		value: "Floral",
+		value: "FLORAL",
 		label: "Floral",
 	},
 	{
-		value: "Cuir",
+		value: "CUIR",
 		label: "Cuir",
 	},
 ];
 
 function Content_one({onClick}: props) {
-	const {register, handleSubmit, onSubmit, errors, ImagetoShow, handleInputFile, handleFileChange} = useSendCraftman();
+	const {register, handleSubmit, handleReset, onSubmit, errors, ImagetoShow, handleInputFile, handleFileChange} =
+		useSendCraftman();
 
 	return (
 		<div className="flex flex-col w-full">
@@ -60,7 +58,7 @@ function Content_one({onClick}: props) {
 						/>
 						<SelectCustom options={selectGenderItem} register={register("gender")} className="input-bordered mt-2" />
 						<Textarea
-							placeholder="About the craftman "
+							placeholder="About the craftman"
 							className="h-48 mt-2"
 							register={register("description")}
 							errorMessage={errors.description}
@@ -76,8 +74,13 @@ function Content_one({onClick}: props) {
 					</div>
 				</div>
 				<div className="flex gap-8">
-					<Button content="Cancel" />
 					<Button type="submit" content="Save" onClick={onClick} />
+					<button
+						onClick={handleReset}
+						type="button"
+						className="w-full py-3.5 px-4 text-sm rounded-2xl flex justify-center items-center bg-bronze bg-transparent text-black  hover:bg-bronze hover:bg-opacity-50 transition-all ease-linear duration-100">
+						Cancel
+					</button>
 				</div>
 			</form>
 		</div>
