@@ -9,8 +9,6 @@ import Item from "./component/Item";
 import {IWorkShop} from "@/types/IWorkshop";
 import {UpdateWorkshop} from "@/hook/AdminWorkshop/UpdateWorkshop";
 import {getWorkShopAdmin} from "@/services/admin/adminWorkshop.service";
-import LoadingComponent from "@/app/_global/loading";
-import {getImgUrl} from "@/services/index.service";
 import {IImage} from "@/types/IImage";
 
 export default function Page({params}: {params: {id: string}}) {

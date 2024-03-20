@@ -5,6 +5,8 @@ import WorkshopItem from "../component/WorkshopItem";
 import {SearchContext} from "../../provider/SearchProvider";
 import {useQuery} from "@tanstack/react-query";
 import {getWorkShopAdmin} from "@/services/admin/adminWorkshop.service";
+import ErrorComponent from "@/app/_global/error";
+import LoadingComponent from "@/app/_global/loading";
 
 const headerList = [
 	{id: 1, name: "workshop", label: "Workshop"},
@@ -34,10 +36,10 @@ export default function ListWorkshop() {
 	}, [searchContext.Value, isLoading, data]);
 
 	if (isLoading) {
-		return <div>Loading</div>;
+		return <LoadingComponent />;
 	}
 	if (isError) {
-		return <div>Error</div>;
+		return <ErrorComponent />;
 	}
 
 	return (

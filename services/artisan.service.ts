@@ -20,16 +20,14 @@ export const getArtisan = async () => {
 
 export const getArtisanDetail = async (id: string) => {
 	const access_token = await getCurrentToken();
-	const {
-		data: {results},
-	} = await axiosInstanceApiClient.get<IBackendResponse<ICraftman>>(`/v1/artisan/${id}/`, {
+	const {data} = await axiosInstanceApiClient.get(`/v1/artisan/${id}/`, {
 		headers: {
 			"Content-Type": "multipart/form-data",
 			Authorization: `Bearer ${access_token}`,
 		},
 	});
 
-	return results;
+	return data;
 };
 
 export const postArtisan = async (data: CreateArtisanDto) => {

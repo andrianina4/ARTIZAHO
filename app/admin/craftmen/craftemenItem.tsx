@@ -28,7 +28,7 @@ function CraftemenItem({craftman}: {craftman: ICraftman}) {
 				</div>
 				<div className="flex flex-col">
 					<div className="font-bold">
-						<Link href={`/admin/craftman/${craftman.id}`}>{craftman.name}</Link>
+						<Link href={`/admin/craftmen/${craftman.id}`}>{craftman.name}</Link>
 					</div>
 					<p className="font-normal opacity-50">{craftman.expertise}</p>
 				</div>
