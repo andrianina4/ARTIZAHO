@@ -10,6 +10,8 @@ import {IWorkShop} from "@/types/IWorkshop";
 import {UpdateWorkshop} from "@/hook/AdminWorkshop/UpdateWorkshop";
 import {getWorkShopAdmin} from "@/services/admin/adminWorkshop.service";
 import {IImage} from "@/types/IImage";
+import SelectCustom from "@/components/Select";
+import {selectExpertiseItem} from "@/constants/data/SelectFormValues";
 
 export default function Page({params}: {params: {id: string}}) {
 	const [Element, setElement] = useState<IWorkShop | undefined>();
@@ -36,13 +38,18 @@ export default function Page({params}: {params: {id: string}}) {
 							register={register("name")}
 							errorMessage={errors.name?.message}
 						/>
-						<Item
-							label="Know-how"
-							name="category"
-							defaultValue={Element?.category}
-							register={register("category")}
-							errorMessage={errors.category?.message}
-						/>
+						<div className="pt-2 flex flex-row">
+							<div className="w-1/5 flex pt-4 opacity-60 font-bold">Know-how</div>
+							<div className="w-4/5 gap-2">
+								<SelectCustom
+									options={selectExpertiseItem}
+									className="input-bordered"
+									defaultValue={Element?.category}
+									register={register("category")}
+									errorMessage={errors.category?.message}
+								/>
+							</div>
+						</div>
 						<div className="pt-2 flex flex-row">
 							<div className="w-1/5 flex pt-4 opacity-60 font-bold">Description</div>
 							<div className="w-4/5 gap-2">
