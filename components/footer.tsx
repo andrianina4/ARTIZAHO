@@ -7,12 +7,14 @@ import {
 } from "@/constants/link/icons";
 import { Nuage } from "@/constants/link/svg";
 
-type Props = {};
+type Props = {
+  large?: boolean;
+};
 
-function Footer({}: Props) {
+function Footer({ large = false }: Props) {
   return (
-    <footer>
-      <Nuage className="w-full -mb-80" />
+    <footer className="relative mt-10 ">
+      <Nuage className={`w-full absolute  bottom-[36%] lg:block sm:hidden`} />
       <div className="bg-brown">
         <div className="pt-24 pb-7 px-24 flex gap-x-24 w-full max-w-page mx-auto">
           <div className="flex flex-col gap-y-6">

@@ -8,10 +8,12 @@ import Title from "@/components/Title";
 import ListCard from "./components/ListCard";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Image from "next/image";
+import { baobabWhoAre } from "@/constants/link/images";
 export default function Home() {
   // return <Sidebard />;
   return (
-    <div className="w-[1440px]- mx-auto-">
+    <div className="max-w-screen-large-width mx-auto">
       <header className="flex flex-col bg-bg-accueil relative h-[756px] z-[99999996]">
         <div className="h-full flex flex-col">
           <NavBar />
@@ -137,19 +139,16 @@ export default function Home() {
         </div>
 
         {/* <div className="absolute w-full bottom-[-34%]"> */}
-        <div className="absolute w-full bottom-[-45%]">
+        <div className="absolute w-full bottom-[-32%] lg:block sm:hidden">
           <Nuage className="w-full" />
         </div>
       </header>
 
-      <div className="mx-auto w-[1440px]">
+      <div className="mx-auto max-w-screen-large-width mb-32">
         <QuiNousSommes />
 
         <div className="flex flex-col items-start gap-[12px]">
           <Title title="New products" />
-          {/* <h4 className="uppercase text-xl text-brown font-moonGet font-extrabold tracking-[8%]">
-            
-          </h4> */}
           <span className="font-manrope text-sm font-normal text-brown">
             List of new workshops
           </span>
@@ -192,8 +191,11 @@ export default function Home() {
             className="mb-6 items-center"
           />
 
-          <div className="">
+          <div className="relative">
             <div className="mx-auto bg-bg-accueil-video w-[837px] h-[464px] bg-cover bg-no-repeat borderVideo bg- "></div>
+            <div className=" bg-transparent bottom-[-10%] absolute ">
+              <Image src={baobabWhoAre} alt="baobabWhoAre" />
+            </div>
           </div>
         </div>
       </div>

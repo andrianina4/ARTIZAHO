@@ -43,15 +43,15 @@ function NavBar({ className, isWhite = false }: NavBarProps) {
   return (
     <div className="relative">
       <nav
-        className={`flex justify-between items-center py-7 px-24 w-full max-w-page mx-auto ${className}`}
+        className={`flex justify-between items-center py-7 lg:px-24 sm:px-10 w-full max-w-page mx-auto ${className}`}
       >
         <Link href={link.home}>
           <LogoArtizaho isColor={isWhite} />
         </Link>
         <ul
           className={`flex gap-x-8  opacity-60  ${
-            isWhite ? "text-brown" : "text-whiteGray"
-          }`}
+            isWhite ? "text-brown" : "text-whiteGray "
+          }  sm:hidden lg:flex`}
         >
           <Link href={link.home}>
             <li>HOME</li>
@@ -66,11 +66,10 @@ function NavBar({ className, isWhite = false }: NavBarProps) {
             {isActiveRoute("/our-workshops")}
           </Link>
         </ul>
-
         <ul
           className={`flex gap-x-3  text-2xl items-center ${
             isWhite ? "text-brown" : "text-white"
-          }`}
+          }  sm:hidden lg:flex`}
         >
           <Link href={link.myBasket}>
             <li>
@@ -147,10 +146,29 @@ function NavBar({ className, isWhite = false }: NavBarProps) {
           </li>
         </ul>
 
-        <dialog id="sidebarhome" className="modal left-[82%] modal-top ">
+        <ul
+          className={`flex gap-x-3  text-2xl items-center ${
+            isWhite ? "text-brown" : "text-white"
+          } lg:hidden`}
+        >
+          <li
+            className="cursor-pointer"
+            onClick={() => {
+              const sidebarhome = document?.getElementById(
+                "sidebarhome"
+              ) as HTMLDialogElement;
+              sidebarhome.showModal();
+            }}
+          >
+            <MenuIcon />
+          </li>
+        </ul>
+        <dialog
+          id="sidebarhome"
+          className="modal left-[82%]- modal-top h-screen place-items-end"
+        >
           <SidebardHome />
         </dialog>
-
         <ModalEditUser userConnected={user} />
       </nav>
     </div>

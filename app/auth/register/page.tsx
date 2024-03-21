@@ -21,12 +21,12 @@ function Register() {
   }
 
   return (
-    <div className="min-h-screen bg-bg-register bg-cover flex flex-col">
+    <div className="min-h-screen bg-bg-register bg-cover flex flex-col  max-w-page mx-auto ">
       <header>
         <NavBar />
       </header>
 
-      <main className="flex-1 py-7 px-24 flex justify-between gap-x-5 w-full max-w-page mx-auto">
+      <main className="flex-1 py-7 px-24 flex justify-between gap-x-5 w-full max-w-page mx-auto mb-32">
         <div className="text-white mt-20">
           <h1 className="font-moonGet font-extrabold text-4xl leading-relaxed">
             CREATE YOUR ACCOUNT

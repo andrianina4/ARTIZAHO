@@ -27,12 +27,12 @@ function Login({}: LoginProps) {
   }
 
   return (
-    <div className="min-h-screen bg-bg-login bg-cover flex flex-col">
+    <div className="min-h-screen bg-bg-login bg-cover flex flex-col max-w-screen-large-width mx-auto">
       <header className="w-full max-w-page mx-auto">
         <NavBar />
       </header>
 
-      <main className="flex-1 py-7 px-24 flex justify-between w-full max-w-page mx-auto">
+      <main className="flex-1 py-7 px-24 flex justify-between w-full max-w-page mx-auto mb-32">
         <div className="text-white mt-20">
           <h1 className="font-moonGet font-extrabold text-4xl leading-relaxed">
             LOG IN
