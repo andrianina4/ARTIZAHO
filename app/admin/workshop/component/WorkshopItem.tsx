@@ -40,12 +40,14 @@ export default function WorkshopItem({workshop}: {workshop: IWorkShop}) {
 			{/* TSY AIKO LOATRA FA LE ZAVATRA INY */}
 			<details className="dropdown">
 				<summary className="btn bg-transparent border-none shadow-none hover:bg-transparent">...</summary>
-				<ul className="p-2 shadow menu dropdown-content z-[1] right-0 bg-base-100 rounded-box w-52">
+				<ul className="p-2 shadow menu dropdown-content z-[1] right-1/2 bg-base-100 rounded-box w-40">
 					<li>
-						<Link href={`/admin/workshop/${workshop.id}/about`}>See more</Link>
+						<Link href={`/admin/workshop/${workshop.id}/about`} className="opacity-75">
+							See more
+						</Link>
 					</li>
 					<li onClick={handleDelete}>
-						<a>Delete</a>
+						<a className="opacity-75 text-red-600">Delete</a>
 					</li>
 				</ul>
 			</details>

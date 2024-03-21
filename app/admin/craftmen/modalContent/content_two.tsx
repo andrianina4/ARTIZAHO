@@ -1,97 +1,95 @@
 "use client";
-import { Check, Date } from "@/constants/link/icons";
-import ModalItem from "../component/modalItem";
-import { UserAdd } from "@/constants/link/icons";
+import {Check, Date} from "@/constants/link/icons";
+import ModalItem from "../[id]/availability/components/modalItem";
+import {UserAdd} from "@/constants/link/icons";
 import Calendar from "../../catalogue/component/Calendar";
 import FullCalendar from "@fullcalendar/react";
 import CraftmanCalendar from "../component/calendar";
 import Input from "@/components/input";
 import Button from "@/components/button";
 import * as yup from "yup";
-import { useForm } from "react-hook-form";
-import { FormDataTest, Schema } from "@/app/schema/testSchema";
-import { useEffect, useState } from "react";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { DateRange, DateRangeProps } from "react-date-range";
-import { addDays, format } from "date-fns";
+import {useForm} from "react-hook-form";
+import {FormDataTest, Schema} from "@/app/schema/testSchema";
+import {useEffect, useState} from "react";
+import {yupResolver} from "@hookform/resolvers/yup";
+import {DateRange, DateRangeProps} from "react-date-range";
+import {addDays, format} from "date-fns";
 import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import CalendarRange from "./calendarRange";
 
 type props = {
-  onPrevious: VoidFunction;
+	onPrevious: VoidFunction;
 };
 
-function Content_two({ onPrevious }: any) {
-  const [show, setShow] = useState<Boolean>(false);
+function Content_two({onPrevious}: any) {
+	const [show, setShow] = useState<Boolean>(false);
 
-  const handleButtonClickA = () => {
-    setShow(true);
-  };
+	const handleButtonClickA = () => {
+		setShow(true);
+	};
 
-  const handleButtonClickB = () => {
-    setShow(false);
-  };
+	const handleButtonClickB = () => {
+		setShow(false);
+	};
 
-  const { register, handleSubmit } = useForm<FormDataTest>({
-    mode: "onChange",
-    resolver: yupResolver(Schema),
-  });
-  return (
-    <div className="flex flex-col gap-2 w-full">
-      <div className="flex items-center text-bronze text-2xl font-semibold gap-4 ">
-        <span>
-          <UserAdd />
-        </span>
-        New craftman
-      </div>
+	const {register, handleSubmit} = useForm<FormDataTest>({
+		mode: "onChange",
+		resolver: yupResolver(Schema),
+	});
 
-      <div className="flex w-full gap-2">
-        <ModalItem
-          leftIcon={<Date />}
-          text="Avalaibility date"
-          className="w-1/2"
-        />
-        <ModalItem leftIcon={<Date />} text="Hour" className="w-1/2" />
-      </div>
-      {!show && <Button onClick={handleButtonClickA} content="Button A" className=" bg-transparent hover:bg-white-40% !text-brown-80% font-bold w-1/2" />}
-      <div className="flex h-full gap-2">
-       
-        {show && (
-          <>
-            <CalendarRange />
-            <form className=" flex w-2/5 gap-2 h-fit items-center">
-              <div className="flex w-full items-center gap-2 bg-white-40% rounded-2xl px-2">
-                <label htmlFor="">De:</label>
-                <input
-                  type="time"
-                  className="bg-transparent text-sm w-full  h-[70px] rounded-2xl "
-                  {...register("start")}
-                />
-                <label htmlFor="">Au:</label>
-                <input
-                  type="time"
-                  className="bg-transparent text-sm w-full  h-[70px] rounded-2xl"
-                  {...register("end")}
-                />
-                {/* <input id="blab" type="text" {...register('dateClicked')} value={dateClicked} /> */}
-              </div>
-              <Button
-                leftIcon={<Check />}
-                className="!h-10 !w-10 !rounded-2xl"
-                onClick={handleButtonClickB}
-              />
-            </form>
-          </>
-        )}
-      </div>
-      <div className="flex gap-4">
-        <Button content="Cancel" />
-        <Button content="Previous " onClick={onPrevious} />
-        <Button content="Save" />
-      </div>
-    </div>
-  );
+	return (
+		<div className="flex flex-col gap-2 w-full">
+			<div className="flex items-center text-bronze text-2xl font-semibold gap-4 ">
+				<span>
+					<UserAdd />
+				</span>
+				New craftman
+			</div>
+
+			<div className="flex w-full gap-2">
+				<ModalItem leftIcon={<Date />} text="Avalaibility date" className="w-1/2" />
+				<ModalItem leftIcon={<Date />} text="Hour" className="w-1/2" />
+			</div>
+			{!show && (
+				<Button
+					onClick={handleButtonClickA}
+					content="Button A"
+					className=" bg-transparent hover:bg-white-40% !text-brown-80% font-bold w-1/2"
+				/>
+			)}
+			<div className="flex h-full gap-2">
+				{show && (
+					<>
+						<CalendarRange />
+						<form className=" flex w-2/5 gap-2 h-fit items-center">
+							<div className="flex w-full items-center gap-2 bg-white-40% rounded-2xl px-2">
+								<label htmlFor="">De:</label>
+								<input
+									type="time"
+									className="bg-transparent text-sm w-full  h-[70px] rounded-2xl "
+									{...register("start")}
+								/>
+								<label htmlFor="">Au:</label>
+								<input
+									type="time"
+									className="bg-transparent text-sm w-full  h-[70px] rounded-2xl"
+									{...register("end")}
+								/>
+								{/* <input id="blab" type="text" {...register('dateClicked')} value={dateClicked} /> */}
+							</div>
+							<Button leftIcon={<Check />} className="!h-10 !w-10 !rounded-2xl" onClick={handleButtonClickB} />
+						</form>
+					</>
+				)}
+			</div>
+			<div className="flex gap-4">
+				<Button content="Cancel" />
+				<Button content="Previous " onClick={onPrevious} />
+				<Button content="Save" />
+			</div>
+		</div>
+	);
 }
 
 export default Content_two;

@@ -58,8 +58,8 @@ function Page({}: Props) {
 					<div className="">
 						<Button leftIcon={<UserAddFill />} content="Add craftman" className="" onClick={handleToogle} />
 					</div>
-					<div className="flex flex-row items-center w-auto gap-7">
-						<div className="font-bold w-2/3 ">Filter by</div>
+					<div className="flex flex-row items-center w-60 gap-7">
+						<div className="font-bold w-2/3">Filter by</div>
 						<SelectCustom options={selectItem} className="!bg-white !h-10 !rounded-xl" />
 					</div>
 
