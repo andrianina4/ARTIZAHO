@@ -10,7 +10,7 @@ import {enqueueSnackbar} from "notistack";
 export const UpdateWorkshop = (id: number) => {
 	const {mutate} = useMutation({
 		mutationFn: (data: any) => patchWorkShop(id, data),
-		onSuccess: (data) => {
+		onSuccess: () => {
 			enqueueSnackbar("Update success", {variant: "success"});
 		},
 		onError: (err) => {
@@ -47,7 +47,6 @@ export const UpdateWorkshop = (id: number) => {
 			description: data.desc,
 			category: data.category,
 		};
-		console.log(data);
 		mutate(dataToSend);
 	};
 

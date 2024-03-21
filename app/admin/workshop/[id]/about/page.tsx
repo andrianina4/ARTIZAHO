@@ -12,19 +12,31 @@ import {getWorkShopAdmin} from "@/services/admin/adminWorkshop.service";
 import {IImage} from "@/types/IImage";
 import SelectCustom from "@/components/Select";
 import {selectExpertiseItem} from "@/constants/data/SelectFormValues";
+import {useQuery} from "@tanstack/react-query";
+import LoadingComponent from "@/app/_global/loading";
+import ErrorComponent from "@/app/_global/error";
 
 export default function Page({params}: {params: {id: string}}) {
-	const [Element, setElement] = useState<IWorkShop | undefined>();
 	const {id} = params;
-	useEffect(() => {
-		const fn = async () => {
-			const results = await getWorkShopAdmin();
-			setElement(results.find((item) => item.id === Number(id)));
-		};
-		fn();
-	}, [id]);
+
+	const {data, isError} = useQuery({
+		queryKey: ["adminWorkshop"],
+		queryFn: () => getWorkShopAdmin(),
+	});
 
 	const {register, handleSubmit, onSubmit, handleReset, errors, handleInputFile} = UpdateWorkshop(Number(id));
+
+	const [Element, setElement] = useState<IWorkShop | undefined>();
+	const [Load, setLoad] = useState<boolean>(true);
+	useEffect(() => {
+		if (data) {
+			setElement(data.find((item) => item.id === Number(id)));
+			setLoad(false);
+		}
+	}, [data]);
+
+	if (Load) return <LoadingComponent />;
+	if (isError) return <ErrorComponent />;
 
 	return (
 		<form className="flex flex-row w-full h-full px-12" onSubmit={handleSubmit(onSubmit)}>

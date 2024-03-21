@@ -15,7 +15,6 @@ const headerList = [
 ];
 
 export default function ListWorkshop() {
-	// * VALEURS PAR DEFAUT
 	const {data, isLoading, isError} = useQuery({
 		queryKey: ["adminWorkshop"],
 		queryFn: () => getWorkShopAdmin(),
