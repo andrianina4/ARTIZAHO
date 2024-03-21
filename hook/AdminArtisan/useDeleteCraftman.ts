@@ -20,7 +20,7 @@ export default function useDeleteCraftman(id: number) {
 		},
 	});
 
-	const handleDelete: MouseEventHandler<HTMLButtonElement> = async (e: any) => {
+	const handleDelete: MouseEventHandler<HTMLElement> = async (e: any) => {
 		mutate(id);
 	};
 	return {handleDelete};
