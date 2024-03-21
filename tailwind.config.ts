@@ -10,7 +10,7 @@ const config: Config = {
     extend: {
       gridTemplateColumns: {
         custom: "5% 15% 20% 10% 10% 15% 15% 5%",
-        "custom-2": "15% 10% 30% 15% 20% 5%",
+        "custom-2": "20% 15% 20% 15% 20% 10%",
         "custom-3": "20% 20% 15% 20% 15% 5%",
         "custom-4": "20% 40% 25% 15%",
         "custom-5": "30% 45% 25%",

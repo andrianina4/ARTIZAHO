@@ -1,5 +1,6 @@
+"use Client";
+
 import {CreateArtisanDto} from "../../dto/artisan/index";
-("use Client");
 import {useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
 import {useState} from "react";
