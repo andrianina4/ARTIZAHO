@@ -12,6 +12,8 @@ import ErrorComponent from "@/app/_global/error";
 import ProgressBar from "@/components/progress-bar";
 import ProfilCratsman from "./components/ProfilCratsman";
 import useUpdateCraftman from "@/hook/AdminArtisan/useUpdateCraftman";
+import SelectCustom from "@/components/Select";
+import {selectExpertiseItem} from "@/constants/data/SelectFormValues";
 
 type TProps = {
 	id: string;
@@ -45,13 +47,17 @@ export default function Page({params}: {params: {id: string}}) {
 							register={register("name")}
 							errorMessage={errors.name?.message}
 						/>
-						<Item
-							label="Know-how"
-							name="category"
-							defaultValue={data?.expertise}
-							register={register("expertise")}
-							errorMessage={errors.expertise?.message}
-						/>
+						<div className="pt-2 flex flex-row">
+							<div className="w-1/5 flex pt-4 opacity-60 font-bold">Expertise</div>
+							<div className="w-4/5 gap-2">
+								<SelectCustom
+									options={selectExpertiseItem}
+									defaultValue={data?.expertise}
+									register={register("expertise")}
+									className="input-bordered"
+								/>
+							</div>
+						</div>
 						<div className="pt-2 flex flex-row">
 							<div className="w-1/5 flex pt-4 opacity-60 font-bold">Description</div>
 							<div className="w-4/5 gap-2">
