@@ -1,127 +1,78 @@
 "use client";
-import {Check, Date} from "@/constants/link/icons";
+
+import {Check, DateToday, TimeFill, UserAddFill} from "@/constants/link/icons";
 import ModalItem from "../[id]/availability/components/modalItem";
-import {UserAdd} from "@/constants/link/icons";
-import Calendar from "../../catalogue/component/Calendar";
-import FullCalendar from "@fullcalendar/react";
-import CraftmanCalendar from "../component/calendar";
-import Input from "@/components/input";
 import Button from "@/components/button";
-import * as yup from "yup";
 import {useForm} from "react-hook-form";
 import {FormDataTest, Schema} from "@/app/schema/testSchema";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import {yupResolver} from "@hookform/resolvers/yup";
-import {DateRange, DateRangeProps} from "react-date-range";
-import {addDays, format} from "date-fns";
 import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
-import CalendarRange from "./calendarRange";
+import PopupHeader from "@/components/PopupHeader";
+import {useSetAvailability} from "@/hook/AdminArtisan/useSetAvailability";
+import {DateRange} from "react-date-range";
 
-type props = {
-	onPrevious: VoidFunction;
-};
-
-function Content_two({onPrevious}: any) {
+export default function Content_two({id, closePopup}: {id: number; closePopup: VoidFunction}) {
 	const [show, setShow] = useState<Boolean>(false);
+	const handleClick = () => setShow(!show);
 
-	const handleButtonClickA = () => {
-		setShow(true);
-	};
-
-	const handleButtonClickB = () => {
-		setShow(false);
-	};
-
-	const {register, handleSubmit} = useForm<FormDataTest>({
-		mode: "onChange",
-		resolver: yupResolver(Schema),
-	});
+	const {register, handleSubmit, onSubmit, handleReset, state, handleChange} = useSetAvailability(Number(id));
 
 	return (
-		<div className="flex flex-col gap-2 w-full">
-			<div className="flex items-center text-bronze text-2xl font-semibold gap-4 ">
-				<span>
-					<UserAdd />
-				</span>
-				New craftman
-			</div>
+		<div className="flex flex-col w-full">
+			<PopupHeader icon={<UserAddFill className="w-6 h-6" />} title="Set availability" />
+			<div className="h-full flex flex-col justify-between">
+				<div className="w-full flex flex-col gap-4">
+					<div className="flex w-full gap-2">
+						<ModalItem leftIcon={<DateToday className="w-5 h-5" />} text="Avalaibility date" className="w-1/2" />
+						<ModalItem leftIcon={<TimeFill className="w-5 h-5" />} text="Hour" className="w-1/2" />
+					</div>
 
-			<div className="flex w-full gap-2">
-				<ModalItem leftIcon={<Date />} text="Avalaibility date" className="w-1/2" />
-				<ModalItem leftIcon={<Date />} text="Hour" className="w-1/2" />
-			</div>
-			{!show && (
-				<Button
-					onClick={handleButtonClickA}
-					content="Button A"
-					className=" bg-transparent hover:bg-white-40% !text-brown-80% font-bold w-1/2"
-				/>
-			)}
-			<div className="flex h-full gap-2">
-				{show && (
-					<>
-						<CalendarRange />
-						<form className=" flex w-2/5 gap-2 h-fit items-center">
-							<div className="flex w-full items-center gap-2 bg-white-40% rounded-2xl px-2">
-								<label htmlFor="">De:</label>
-								<input
-									type="time"
-									className="bg-transparent text-sm w-full  h-[70px] rounded-2xl "
-									{...register("start")}
+					<div className="">
+						{show ? (
+							<div className="flex flex-row w-full gap-2">
+								<DateRange
+									className="w-full"
+									onChange={handleChange}
+									color="#ECA853"
+									moveRangeOnFirstSelection={false}
+									months={1}
+									ranges={state}
+									direction="horizontal"
 								/>
-								<label htmlFor="">Au:</label>
-								<input
-									type="time"
-									className="bg-transparent text-sm w-full  h-[70px] rounded-2xl"
-									{...register("end")}
-								/>
-								{/* <input id="blab" type="text" {...register('dateClicked')} value={dateClicked} /> */}
+								<div className="w-full flex flex-col">
+									<form className="flex gap-2 justify-end items-center" onSubmit={handleSubmit(onSubmit)}>
+										<div className="px-6 py-4 w-full h-fit flex justify-around items-center gap-2 bg-white-40% rounded-2xl">
+											<label htmlFor="">From :</label>
+											<input type="time" className=" bg-transparent text-sm outline-none" {...register("start")} />
+											<label htmlFor="">To :</label>
+											<input type="time" className="bg-transparent outline-none" {...register("end")} />
+										</div>
+										<Button leftIcon={<Check />} className="!h-10 !w-10 !rounded-2xl" type="submit" />
+									</form>
+								</div>
 							</div>
-							<Button leftIcon={<Check />} className="!h-10 !w-10 !rounded-2xl" onClick={handleButtonClickB} />
-						</form>
-					</>
-				)}
-			</div>
-			<div className="flex gap-4">
-				<Button content="Cancel" />
-				<Button content="Previous " onClick={onPrevious} />
-				<Button content="Save" />
+						) : (
+							<Button
+								onClick={handleClick}
+								content="Add date"
+								className="bg-transparent hover:bg-white-40% !text-brown-80% font-bold"
+							/>
+						)}
+					</div>
+				</div>
+
+				<div className="flex gap-4">
+					<Button type="submit" content="Save" onClick={closePopup} />
+					<button
+						// ! onClick={handleReset}
+						type="button"
+						className="w-full py-3.5 px-4 text-sm rounded-2xl flex justify-center items-center bg-bronze bg-transparent text-black  hover:bg-bronze hover:bg-opacity-50 transition-all ease-linear duration-100">
+						Cancel
+					</button>
+				</div>
 			</div>
 		</div>
 	);
 }
-
-export default Content_two;
-
-//   const [dateClicked, setDateClicked]= useState('')
-//   const inputRef = useRef<any>(null);
-
-//   useEffect(() => {
-//       console.log("Nouvelle valeur de dateClicked :", dateClicked);
-
-//   }, [dateClicked]);
-//   // Se déclenche lorsque dateClicked change
-//   const handleClickDate =(info:any)=>{
-//      const dateCl= document.querySelector('#blab')
-//      if (dateCl) {
-//       dateCl.focus();
-//   }
-
-//       console.log('Date cliquée :', info.dateStr);
-//       setDateClicked(info.dateStr)
-//       console.log("go", dateClicked)
-
-//   }
-//   let dateok=dateClicked
-//   console.log("ok",dateok)
-//   const addCraft = (data: FormDataTest) => {
-//       console.log("2")
-//       console.log(data); // Vous pouvez soumettre les données ici
-//     };
-
-//   const postdata=()=>{
-//       console.log("1")
-//       handleSubmit(addCraft)()
-//       console.log("3")
-//   }
