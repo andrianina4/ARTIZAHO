@@ -17,7 +17,7 @@ interface Range {
 	key: string;
 }
 
-export function useSetAvailability(id: number) {
+export function useSetAvailability(id: number, closePopup: () => void) {
 	// * VALIDATION YUP
 	const availabitySchema = yup.object().shape({
 		start: yup.mixed(),
@@ -44,6 +44,7 @@ export function useSetAvailability(id: number) {
 		setState([item.selection as Range]);
 	};
 
+	// * REACT-QUERY
 	const queryClient = useQueryClient();
 	const {mutate} = useMutation({
 		mutationFn: (data: IAvailabilityToSend) => postAvailability(id, data),
@@ -56,6 +57,7 @@ export function useSetAvailability(id: number) {
 		},
 		onSettled: async (response) => {
 			await queryClient.invalidateQueries({queryKey: ["Craftman"]});
+			closePopup();
 		},
 	});
 
@@ -71,7 +73,7 @@ export function useSetAvailability(id: number) {
 			],
 		};
 		console.log(dataToSend);
-		// mutate(dataToSend);
+		mutate(dataToSend);
 	};
 
 	const handleReset = () => {

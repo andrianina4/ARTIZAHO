@@ -17,7 +17,10 @@ export default function Content_two({id, closePopup}: {id: number; closePopup: V
 	const [show, setShow] = useState<Boolean>(false);
 	const handleClick = () => setShow(!show);
 
-	const {register, handleSubmit, onSubmit, handleReset, state, handleChange} = useSetAvailability(Number(id));
+	const {register, handleSubmit, onSubmit, handleReset, state, handleChange} = useSetAvailability(
+		Number(id),
+		closePopup
+	);
 
 	return (
 		<div className="flex flex-col w-full">
@@ -45,7 +48,7 @@ export default function Content_two({id, closePopup}: {id: number; closePopup: V
 									<form className="flex gap-2 justify-end items-center" onSubmit={handleSubmit(onSubmit)}>
 										<div className="px-6 py-4 w-full h-fit flex justify-around items-center gap-2 bg-white-40% rounded-2xl">
 											<label htmlFor="">From :</label>
-											<input type="time" className=" bg-transparent text-sm outline-none" {...register("start")} />
+											<input type="time" className=" bg-transparentW outline-none" {...register("start")} />
 											<label htmlFor="">To :</label>
 											<input type="time" className="bg-transparent outline-none" {...register("end")} />
 										</div>
