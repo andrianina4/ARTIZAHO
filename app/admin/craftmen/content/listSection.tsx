@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useState} from "react";
 import CraftemenItem from "../craftemenItem";
-import {ICraftman, ICraftmanItem} from "@/types/ICraftman";
+import {ICraftman} from "@/types/ICraftman";
 import ListHeader from "@/components/ListHeader";
 import {SearchContext} from "../../provider/SearchProvider";
 import {getArtisan} from "@/services/artisan.service";

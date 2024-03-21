@@ -15,11 +15,9 @@ export default function WorkshopItem({workshop}: {workshop: IWorkShop}) {
 	const txt = "text-bronze";
 
 	return (
-		<div className="grid grid-cols-custom-9 text-sm font-bold bg-white items-center rounded-lg h-14 pl-4 my-1">
+		<div className="grid grid-cols-custom-9 text-sm font-bold hover:bg-white items-center rounded-lg h-14 pl-4 my-1">
 			{/* WORKSHOP */}
-			<div className="font-bold opacity-90">
-				<Link href={`/admin/workshop/${workshop.id}/about`}>{workshop.title}</Link>
-			</div>
+			<div className="font-bold opacity-90">{workshop.title}</div>
 			{/* KNOW-HOW */}
 			<div className="flex items-center gap-2">
 				<div className={`w-7 h-7 flex items-center justify-center ${txt} ${bg} bg-opacity-30 rounded-lg`}>
@@ -39,7 +37,20 @@ export default function WorkshopItem({workshop}: {workshop: IWorkShop}) {
 					Planning
 				</div>
 			</div>
-			<button onClick={handleDelete}>...</button>
+			{/* TSY AIKO LOATRA FA LE ZAVATRA INY */}
+			<details className="dropdown">
+				<summary className="btn bg-transparent border-none shadow-none hover:bg-transparent">...</summary>
+				<ul className="p-2 shadow menu dropdown-content z-[1] right-1/2 bg-base-100 rounded-box w-40">
+					<li>
+						<Link href={`/admin/workshop/${workshop.id}/about`} className="opacity-75">
+							See more
+						</Link>
+					</li>
+					<li onClick={handleDelete}>
+						<a className="opacity-75 text-red-600">Delete</a>
+					</li>
+				</ul>
+			</details>
 		</div>
 	);
 }

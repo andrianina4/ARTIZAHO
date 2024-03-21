@@ -15,8 +15,9 @@ function CraftemenItem({craftman}: {craftman: ICraftman}) {
 	const txt = "text-bronze";
 
 	const {handleDelete} = useDeleteCraftman(craftman.id);
+
 	return (
-		<div className="grid grid-cols-custom-2 text-sm font-bold bg-white items-center rounded-lg h-14 pl-4 my-1">
+		<div className="grid grid-cols-custom-2 text-sm font-bold hover:bg-white items-center rounded-lg h-14 pl-4 my-1">
 			{/* NOM et IMAGE */}
 			<div className="flex items-center gap-2">
 				<div className="relative w-8 h-8 rounded-full bg-neutral flex items-center justify-center text-neutral-content">
@@ -27,9 +28,7 @@ function CraftemenItem({craftman}: {craftman: ICraftman}) {
 					)}
 				</div>
 				<div className="flex flex-col">
-					<div className="font-bold">
-						<Link href={`/admin/craftmen/${craftman.id}/about`}>{craftman.name}</Link>
-					</div>
+					<div className="font-bold">{craftman.name}</div>
 					<p className="font-normal opacity-50">{craftman.expertise}</p>
 				</div>
 			</div>
@@ -50,7 +49,19 @@ function CraftemenItem({craftman}: {craftman: ICraftman}) {
 			{/* STAR */}
 			<StarScore />
 			{/* DON'T KNOW */}
-			<button onClick={handleDelete}>...</button>
+			<details className="dropdown">
+				<summary className="btn bg-transparent border-none shadow-none hover:bg-transparent">...</summary>
+				<ul className="p-2 shadow menu dropdown-content z-[1] right-1/2 bg-base-100 rounded-box w-40">
+					<li>
+						<Link href={`/admin/craftmen/${craftman.id}/about`} className="opacity-75">
+							See more
+						</Link>
+					</li>
+					<li onClick={handleDelete}>
+						<a className="opacity-75 text-red-600">Delete</a>
+					</li>
+				</ul>
+			</details>
 		</div>
 	);
 }

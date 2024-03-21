@@ -8,37 +8,12 @@ import AddImageRound from "@/components/AddImageRound";
 import {useSendCraftman} from "@/hook/AdminArtisan/useSendCraftman";
 import SelectCustom from "@/components/Select";
 import PopupHeader from "@/components/PopupHeader";
+import {selectExpertiseItem, selectGenderItem} from "@/constants/data/SelectFormValues";
 
 type props = {
 	onNext?: VoidFunction;
 	onClick: VoidFunction;
 };
-
-const selectGenderItem: Array<ISelect> = [
-	{
-		value: "M",
-		label: "Male",
-	},
-	{
-		value: "F",
-		label: "Female",
-	},
-	{
-		value: "O",
-		label: "Others",
-	},
-];
-
-const selectExpertiseItem: Array<ISelect> = [
-	{
-		value: "FLORAL",
-		label: "Floral",
-	},
-	{
-		value: "CUIR",
-		label: "Cuir",
-	},
-];
 
 function Content_one({onClick}: props) {
 	const {register, handleSubmit, handleReset, onSubmit, errors, ImagetoShow, handleInputFile, handleFileChange} =

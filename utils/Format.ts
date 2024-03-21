@@ -46,13 +46,12 @@ export function getEndTime(startTimeStr: string, durationSeconds: number): strin
 
 export function convertTime(timeString: string): string {
 	const [hours, minutes, seconds] = timeString.split(":");
-
-	// Convert hours to 12-hour format
 	const newHours = Number(hours) % 12 || 12;
-
-	// Set AM/PM indicator
 	const amPm = Number(hours) >= 12 ? "PM" : "AM";
-
-	// Format the output string (optional for seconds)
 	return `${newHours.toString().padStart(2, "0")}:${minutes}:${seconds ? seconds : "00"} ${amPm}`;
 }
+
+export const formatDateForAvailability = (dateString: string): string => {
+	const [year, month, day] = dateString.split("-");
+	return `${day}/${month}/${year}`;
+};

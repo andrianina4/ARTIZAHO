@@ -4,9 +4,12 @@ import {yupResolver} from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import {useForm} from "react-hook-form";
 import {enqueueSnackbar} from "notistack";
-import {useMutation} from "@tanstack/react-query";
+import {useMutation, useQueryClient} from "@tanstack/react-query";
+import {ICraftmanUpdate} from "@/types/ICraftman";
 
-function useUpdateCraftman(id: string) {
+function useUpdateCraftman(id: number) {
+	const queryClient = useQueryClient();
+
 	const {mutate} = useMutation({
 		mutationFn: (data: any) => patchArtisan(id, data),
 		onError: (e) => {
@@ -15,32 +18,35 @@ function useUpdateCraftman(id: string) {
 		onSuccess: (data) => {
 			enqueueSnackbar("Update success", {variant: "success"});
 		},
+		onSettled: async (response) => {
+			await queryClient.invalidateQueries({queryKey: ["Craftman"]});
+		},
 	});
 
 	const required = "This field is required";
 
 	const updateArtisanSchema = yup.object().shape({
 		name: yup.string().required(required),
-		knowhow: yup.string().required(required),
+		expertise: yup.string().required(required),
 		description: yup.string().required(required),
 	});
 
 	const {
 		register,
 		handleSubmit,
+		reset,
 		formState: {errors},
 	} = useForm({resolver: yupResolver(updateArtisanSchema)});
 
-	const onSubmit = (data: any) => {
-		const updateArtisan = {
-			name: data.name,
-			expertise: data.expertise,
-			description: data.description,
-		};
-		mutate(updateArtisan);
+	const onSubmit = (data: ICraftmanUpdate) => {
+		mutate(data);
 	};
 
-	return {register, handleSubmit, onSubmit, errors};
+	const handleReset = () => {
+		reset();
+	};
+
+	return {register, handleSubmit, onSubmit, handleReset, errors};
 }
 
 export default useUpdateCraftman;

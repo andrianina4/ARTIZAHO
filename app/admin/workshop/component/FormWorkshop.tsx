@@ -7,6 +7,8 @@ import {ImageAdd, Toolbox} from "@/constants/link/icons";
 import Image from "next/image";
 import PopupHeader from "@/components/PopupHeader";
 import {AddWorkshop} from "@/hook/AdminWorkshop/AddWorkshop";
+import SelectCustom from "@/components/Select";
+import {selectExpertiseItem} from "@/constants/data/SelectFormValues";
 
 export default function FormWorkshop({onClick}: {onClick: VoidFunction}) {
 	const {register, handleSubmit, onSubmit, errors, imagePreview, handleInputFile, handleFileChange} =
@@ -21,10 +23,9 @@ export default function FormWorkshop({onClick}: {onClick: VoidFunction}) {
 						{/* INPUT NAME */}
 						<Input name="name" type="text" placeholder="Name" register={register("name")} errorMessage={errors.name} />
 						{/* INPUT CATEGORY */}
-						<Input
-							name="know_how"
-							type="text"
-							placeholder="Know-how"
+						<SelectCustom
+							options={selectExpertiseItem}
+							className="input-bordered mt-2"
 							register={register("know_how")}
 							errorMessage={errors.know_how}
 						/>
