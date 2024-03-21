@@ -1,18 +1,17 @@
 "use client";
 
 import Textarea from "@/components/textarea";
-import {AddImage, EditFill, Heart, ImageAdd, More, People, People1, Person, Users} from "@/constants/link/icons";
+import {AddImage, EditFill, Heart} from "@/constants/link/icons";
 import {getArtisanDetail} from "@/services/artisan.service";
 import {useQuery} from "@tanstack/react-query";
-import Image from "next/image";
 import React from "react";
 import Item from "./components/Item";
 import Button from "@/components/button";
 import LoadingComponent from "@/app/_global/loading";
 import ErrorComponent from "@/app/_global/error";
 import ProgressBar from "@/components/progress-bar";
-import StarScore from "@/components/star-score";
-import {getImgUrl} from "@/services/index.service";
+import ProfilCratsman from "./components/ProfilCratsman";
+import useUpdateCraftman from "@/hook/AdminArtisan/useUpdateCraftman";
 
 type TProps = {
 	id: string;
@@ -25,7 +24,7 @@ export default function Page({params}: {params: {id: string}}) {
 		queryFn: () => getArtisanDetail(id),
 	});
 
-	// const {register, handleSubmit, onSubmit, handleReset, errors, handleInputFile} = useUpdateCraftman(Number(id));
+	const {register, handleSubmit, onSubmit, handleReset, errors} = useUpdateCraftman(Number(id));
 
 	if (isLoading) {
 		return <LoadingComponent />;
@@ -35,23 +34,23 @@ export default function Page({params}: {params: {id: string}}) {
 	}
 
 	return (
-		<form className="flex flex-row w-full h-full px-12">
+		<form className="flex flex-row w-full h-full px-12" onSubmit={handleSubmit(onSubmit)}>
 			<div className="flex flex-col w-1/2">
-				<div className="flex flex-col justify-between">
+				<div className="flex flex-col gap-5">
 					<div>
 						<Item
 							label="Name"
 							name="name"
 							defaultValue={data?.name}
-							// register={register("name")}
-							// errorMessage={errors.name?.message}
+							register={register("name")}
+							errorMessage={errors.name?.message}
 						/>
 						<Item
 							label="Know-how"
 							name="category"
 							defaultValue={data?.expertise}
-							// register={register("expertise")}
-							// errorMessage={errors.expertise?.message}
+							register={register("expertise")}
+							errorMessage={errors.expertise?.message}
 						/>
 						<div className="pt-2 flex flex-row">
 							<div className="w-1/5 flex pt-4 opacity-60 font-bold">Description</div>
@@ -61,21 +60,22 @@ export default function Page({params}: {params: {id: string}}) {
 									placeholder="Description"
 									name="desc"
 									defaultValue={data?.description}
-									// register={register("description")}
-									// errorMessage={errors.description?.message}
+									register={register("description")}
+									errorMessage={errors.description?.message}
 								/>
 							</div>
 						</div>
 					</div>
-					{/* <div className="flex mb-8 gap-4">
+					{/* BUTTONS */}
+					<div className="flex mb-8 gap-4">
 						<Button content="Save" type="submit" />
 						<button
-							// onClick={handleReset}
+							onClick={handleReset}
 							type="button"
 							className="w-full py-3.5 px-4 text-sm rounded-2xl flex justify-center items-center bg-bronze bg-transparent text-black  hover:bg-bronze hover:bg-opacity-50 transition-all ease-linear duration-100">
 							Cancel
 						</button>
-					</div> */}
+					</div>
 				</div>
 				{/* MISY PROGRESS BAR */}
 				<div>
@@ -93,41 +93,8 @@ export default function Page({params}: {params: {id: string}}) {
 				<EditFill className="w-6 h-6 opacity-50" />
 			</div>
 			{/* PROFIL */}
-			<div className={`flex flex-col w-80  bg-white-40% items-center gap-4 rounded-3xl pt-5 pb-14`}>
-				<div className="flex flex-col items-center gap-4">
-					<div className="flex justify-center pt-5 w-96">
-						<input type="file" id="input-file-company" hidden />
-						<div className="flex items-center justify-center p-5 w-40 h-40 rounded-full relative bg-[#D9D9D9]">
-							{data.images.length > 0 ? (
-								<Image src={getImgUrl(data?.images)} alt="image" fill className="rounded-full" />
-							) : (
-								<>
-									<Person className="w-full h-full text-gray-400" />
-								</>
-							)}
-							<div
-								className="flex items-center justify-center p-2 bg-bronze text-white rounded-full absolute bottom-0 right-0 cursor-pointer"
-								// onClick={handleInputFile}
-							>
-								<AddImage className="w-6 h-6" />
-							</div>
-						</div>
-					</div>
-					{/* NOM ET KNOW-HOW */}
-					<span className="text-lg font-bold">{data.name}</span>
-					<span className="text-lg font-bold opacity-60">{data.expertise}</span>
-					{/* STAR */}
-					<div className="flex justify-center bg-white  rounded-3xl w-48 h-10 ">
-						<StarScore />
-					</div>
-					<div className="flex justify-center items-center gap-2 bg-white  rounded-3xl w-48 h-10  ">
-						<span>
-							<People className="w-5 h-5 opacity-80" />
-						</span>
-						<span>Total Client</span>
-						<span className="font-bold">20</span>
-					</div>
-				</div>
+			<div>
+				<ProfilCratsman data={data!} />
 			</div>
 		</form>
 	);

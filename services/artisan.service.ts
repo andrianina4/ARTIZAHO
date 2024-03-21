@@ -1,6 +1,6 @@
 import {CreateArtisanDto} from "./../dto/artisan/index";
 import {axiosInstanceApi, getCurrentToken} from "@/axios";
-import {ICraftman} from "@/types/ICraftman";
+import {ICraftman, ICraftmanUpdate} from "@/types/ICraftman";
 import {axiosInstanceApiClient} from "@/app/axiosClient";
 import {IBackendResponse} from "@/types";
 
@@ -20,7 +20,7 @@ export const getArtisan = async () => {
 
 export const getArtisanDetail = async (id: string) => {
 	const access_token = await getCurrentToken();
-	const {data} = await axiosInstanceApiClient.get(`/v1/artisan/${id}/`, {
+	const {data} = await axiosInstanceApiClient.get<ICraftman>(`/v1/artisan/${id}/`, {
 		headers: {
 			"Content-Type": "multipart/form-data",
 			Authorization: `Bearer ${access_token}`,
@@ -57,7 +57,7 @@ export const uploadImageArtisan = async (id: number, file: FileList) => {
 	});
 };
 
-export const patchArtisan = async (id: string, data: any) => {
+export const patchArtisan = async (id: number, data: ICraftmanUpdate) => {
 	const access_token = await getCurrentToken();
 	return await axiosInstanceApi.patch<CreateArtisanDto>(`/v1/artisan/${id}/`, data, {
 		headers: {
@@ -69,7 +69,7 @@ export const patchArtisan = async (id: string, data: any) => {
 
 export const deleteArtisan = async (id: number) => {
 	const access_token = await getCurrentToken();
-	return await axiosInstanceApiClient.delete<ICraftman>(`/v1/artisan/${id}/`, {
+	return await axiosInstanceApiClient.delete(`/v1/artisan/${id}/`, {
 		headers: {
 			"Content-Type": "multipart/form-data",
 			Authorization: `Bearer ${access_token}`,

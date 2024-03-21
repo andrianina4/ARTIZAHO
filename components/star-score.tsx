@@ -23,7 +23,8 @@ function StarScore({}: Props) {
 							name="rating"
 							className={`bg-yellow mask mask-star-2 ${index % 2 === 0 ? "mask-half-1" : "mask-half-2"}`}
 							checked={index + 1 === rating * 2}
-							onChange={() => handleChangeRating(4)}
+							readOnly
+							// onChange={() => handleChangeRating(4)}
 						/>
 					);
 				})}
