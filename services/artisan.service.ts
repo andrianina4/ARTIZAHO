@@ -1,6 +1,6 @@
 import {CreateArtisanDto} from "./../dto/artisan/index";
 import {axiosInstanceApi, getCurrentToken} from "@/axios";
-import {ICraftman, ICraftmanUpdate} from "@/types/ICraftman";
+import {IAvailability, IAvailabilityToSend, ICraftman, ICraftmanUpdate} from "@/types/ICraftman";
 import {axiosInstanceApiClient} from "@/app/axiosClient";
 import {IBackendResponse} from "@/types";
 
@@ -72,6 +72,15 @@ export const deleteArtisan = async (id: number) => {
 	return await axiosInstanceApiClient.delete(`/v1/artisan/${id}/`, {
 		headers: {
 			"Content-Type": "multipart/form-data",
+			Authorization: `Bearer ${access_token}`,
+		},
+	});
+};
+
+export const postAvailability = async (id: number, data: IAvailabilityToSend) => {
+	const access_token = await getCurrentToken();
+	return await axiosInstanceApiClient.post<IAvailability>(`/v1/artisan/${id}/availability/`, data, {
+		headers: {
 			Authorization: `Bearer ${access_token}`,
 		},
 	});

@@ -8,6 +8,8 @@ import {enqueueSnackbar} from "notistack";
 import {addDays, format} from "date-fns";
 import * as yup from "yup";
 import {yupResolver} from "@hookform/resolvers/yup";
+import {postAvailability} from "@/services/artisan.service";
+import {IAvailabilityToSend} from "@/types/ICraftman";
 
 interface Range {
 	startDate: Date;
@@ -43,9 +45,8 @@ export function useSetAvailability(id: number) {
 	};
 
 	const queryClient = useQueryClient();
-
 	const {mutate} = useMutation({
-		// mutationFn: (data: CreateArtisanDto) => (data),
+		mutationFn: (data: IAvailabilityToSend) => postAvailability(id, data),
 		onSuccess: () => {
 			enqueueSnackbar("Availabity set", {variant: "success"});
 		},
@@ -59,9 +60,18 @@ export function useSetAvailability(id: number) {
 	});
 
 	const onSubmit = (data: any) => {
-		console.log(data);
-		console.log(state);
-		// mutate(data);
+		const dataToSend: IAvailabilityToSend = {
+			start_date: state[0].startDate.toISOString().split("T")[0],
+			end_date: state[0].endDate.toISOString().split("T")[0],
+			hours: [
+				{
+					start_time: data.start,
+					end_time: data.start,
+				},
+			],
+		};
+		console.log(dataToSend);
+		// mutate(dataToSend);
 	};
 
 	const handleReset = () => {
