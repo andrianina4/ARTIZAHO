@@ -41,12 +41,9 @@ export default function layout({params, children}: {params: {id: string}; childr
 		<div className="flex flex-col w-full h-full gap-4 bg-white rounded-3xl pt-8 px-8">
 			{/* HEADER AVEC RETOUR */}
 			<div className="flex items-center gap-4">
-				<Button
-					content=""
-					isBackButton
-					leftIcon={<LeftLine />}
-					className="!w-6 !h-6 !bg-transparent !text-brown font-bold "
-				/>
+				<Link href="/admin/craftmen" passHref>
+					<Button content="" leftIcon={<LeftLine />} className="!w-6 !h-6 !bg-transparent !text-brown font-bold " />
+				</Link>
 				<span className="text-2xl font-semibold text-brown-80%">Craftsman informations</span>
 			</div>
 			{/* CHOIX CONTENU */}
