@@ -36,7 +36,7 @@ export interface IAvailability {
 	artisan: number;
 }
 
-interface IHour {
+export interface IHour {
 	id: number;
 	start_time: string;
 	end_time: string;
