@@ -8,5 +8,6 @@ services:
       - 3000:3000
     env_file:
       - ./.env.production
+    restart: always
     # environment:
     #   - VITE_BACKEND_URL=http://backend:5000
