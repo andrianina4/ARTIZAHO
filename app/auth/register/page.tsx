@@ -26,9 +26,9 @@ function Register() {
         <NavBar />
       </header>
 
-      <main className="flex-1 py-7 px-24 flex justify-between gap-x-5 w-full max-w-page mx-auto mb-32">
-        <div className="text-white mt-20">
-          <h1 className="font-moonGet font-extrabold text-4xl leading-relaxed">
+      <main className="flex-1 py-7 sm:px-2 md:px-24 flex justify-between gap-x-5 w-full max-w-page mx-auto mb-32 lg:flex-row sm:flex-col sm:gap-10 lg:gap-0">
+        <div className="text-white mt-20 lg:mr-4">
+          <h1 className="font-moonGet font-extrabold sm:text-lg md:text-4xl leading-relaxed">
             CREATE YOUR ACCOUNT
             <br />
             AND JOIN US

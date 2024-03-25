@@ -31,7 +31,7 @@ function Shopping({}: Props) {
       </header>
 
       {user ? (
-        <main className="py-7 px-24  max-w-page mx-auto">
+        <main className="py-7 lg:px-24 sm:px-5  max-w-page mx-auto">
           <div className="text-2xl font-bold text-brown flex items-center gap-x-3">
             <Button
               isBackButton
@@ -41,8 +41,8 @@ function Shopping({}: Props) {
             <span>Shopping cart</span>
           </div>
 
-          <div className="ml-9 flex justify-between gap-x-20 mt-5">
-            <div className="w-3/5">
+          <div className="lg:ml-9 flex justify-between gap-x-20 mt-5 lg:flex-row sm:flex-col">
+            <div className="lg:w-3/5">
               {isLoading && <LoadingComponent />}
               {isError && <ErrorComponent />}
               {data &&

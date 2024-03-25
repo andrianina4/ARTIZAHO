@@ -28,15 +28,18 @@ function ShoppingCart({
 
   return (
     <article
-      className={`flex gap-x-3 mb-10 ${isBottom ? "relative mb-12" : ""}`}
+      className={`flex gap-x-3 mb-10 lg:flex-row sm:flex-col ${
+        isBottom ? "relative mb-12" : ""
+      }`}
     >
-      <div className="relative w-[130px] h-[110px] object-cover">
+      <div className="relative lg:w-[130px] h-[110px] object-cover">
         {workshop.images.length > 0 ? (
           <Image
             src={getImgUrl(workshop.images)}
             alt={`shopping-1`}
             fill
             className="rounded-3xl"
+            objectFit="cover"
           />
         ) : (
           <Image
@@ -44,6 +47,7 @@ function ShoppingCart({
             alt={`shopping-1`}
             fill
             className="rounded-3xl"
+            objectFit="cover"
           />
         )}
       </div>
@@ -82,8 +86,8 @@ function ShoppingCart({
         </div>
 
         <div
-          className={`flex justify-between ${
-            isBottom ? "absolute -bottom-12 left-0" : ""
+          className={`sm:mt-4 lg:mt-0  flex justify-between sm:flex-col lg:flex-row sm:gap-5 lg:gap-0 ${
+            isBottom ? "lg:absolute -bottom-12 left-0" : ""
           }`}
         >
           <p className="bg-reddishBrown text-white font-semibold py-2 px-4 rounded-lg mr-2 flex items-center justify-center gap-x-2">

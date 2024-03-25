@@ -28,20 +28,22 @@ function DateItem(props: DateItemProps) {
 
   return (
     <div className="flex justify-between items-center mb-8">
-      <div className="flex items-center">
+      <div className="flex items-center sm:flex-col md:flex-row">
         <div
-          className={`h-8 w-3  rounded-r-md mr-5 ${
+          className={`hidden md:block h-8 w-3  rounded-r-md mr-5 ${
             isSelected ? "bg-reddishBrown" : ""
           }`}
         ></div>
-        <p className="uppercase w-56 text-brown text-base font-bold">{date}</p>
+        <p className="uppercase md:w-56 text-brown text-base font-bold">
+          {date}
+        </p>
         <p className="bg-reddishBrown text-white font-semibold py-2 px-4 rounded-lg mr-2 w-44 flex items-center justify-center gap-x-2">
           <span className="text-base">
             <Time />
           </span>{" "}
           {slots}
         </p>
-        <p className="bg-reddishBrown text-white font-semibold py-2 px-4 rounded-lg mr-2 w-40 flex items-center justify-center gap-x-2">
+        <p className="hidden bg-reddishBrown text-white font-semibold py-2 px-4 rounded-lg mr-2 w-40 md:flex items-center justify-center gap-x-2">
           <span className="text-base">
             <People />
           </span>{" "}

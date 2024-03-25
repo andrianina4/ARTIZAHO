@@ -61,7 +61,7 @@ function PropositionDate({
         <NavBar isWhite />
       </header>
 
-      <main className="py-7 px-24  max-w-page mx-auto">
+      <main className="py-7 lg:px-24 sm:px-5  max-w-page mx-auto">
         <div className="text-2xl font-bold text-brown flex items-center gap-x-3">
           <Button
             isBackButton
@@ -70,14 +70,14 @@ function PropositionDate({
           />
           <span>When would you like to do this activity ?</span>
         </div>
-        <p className="ml-14  text-black-default text-sm mt-5">
+        <p className="lg:ml-14  text-black-default text-sm mt-5">
           Choose the number of people taking part in the workshop
         </p>
-        <div className="ml-14 mb-10">
+        <div className="lg:ml-14 mb-10">
           <ChoiceNumberPersonne countChange={countChange} count={count} />
         </div>
-        <div className="ml-14 flex justify-between gap-x-10">
-          <div className="w-3/5">
+        <div className="lg:ml-14 flex justify-between gap-x-10 lg:flex-row sm:flex-col">
+          <div className="lg:w-3/5">
             {datas?.map((item, index) => {
               const datetimeStart = new Date(`${item.start_date} ${item.time}`);
               const datetimeEnd = addSeconds(datetimeStart, item.duration);

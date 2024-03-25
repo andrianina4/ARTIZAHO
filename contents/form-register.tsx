@@ -136,14 +136,14 @@ function FormRegister({ currentUser }: Props) {
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
-        <div className="w-1/2">
+        <div className="lg:w-1/2 sm:w-full">
           <SelectCustom
             options={ACCOUNT_TYPE}
             register={register("account_type")}
             errorMessage={errors.account_type}
           />
         </div>
-        <div className="flex gap-3">
+        <div className="flex lg:gap-3 lg:flex-row sm:flex-col sm:gap-0">
           <Input
             placeholder="Lastname"
             register={register("last_name")}
@@ -156,7 +156,7 @@ function FormRegister({ currentUser }: Props) {
           />
         </div>
 
-        <div className="flex gap-3">
+        <div className="flex lg:gap-3 lg:flex-row sm:flex-col sm:gap-0">
           <Input
             placeholder="Username"
             register={register("username")}
@@ -169,7 +169,7 @@ function FormRegister({ currentUser }: Props) {
           />
         </div>
 
-        <div className="flex gap-3">
+        <div className="flex lg:gap-3 lg:flex-row sm:flex-col sm:gap-0">
           <Input
             placeholder="Email"
             type="email"
@@ -185,7 +185,7 @@ function FormRegister({ currentUser }: Props) {
           />
         </div>
 
-        <div className="flex gap-3 items-center">
+        <div className="flex lg:gap-3 lg:flex-row sm:flex-col sm:gap-0 items-center sm:mt-4 lg:mt-0">
           <SelectCustom
             options={GENDER}
             register={register("gender")}
@@ -198,7 +198,7 @@ function FormRegister({ currentUser }: Props) {
           />
         </div>
 
-        <div className="w-1/2">
+        <div className="lg:w-1/2 sm:w-full">
           <Input
             placeholder="Password"
             type="password"
@@ -227,7 +227,7 @@ function FormRegister({ currentUser }: Props) {
             />
           </div>
         )}
-        <div className="w-1/2 mt-4">
+        <div className="lg:w-1/2 sm:w-full mt-4">
           <Button
             content={editMode ? "Update  account" : "Create your account"}
             type="submit"

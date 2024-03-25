@@ -13,12 +13,12 @@ import { baobabWhoAre } from "@/constants/link/images";
 export default function Home() {
   // return <Sidebard />;
   return (
-    <div className="max-w-screen-large-width mx-auto">
+    <div className="max-w-screen-large-width  mx-auto">
       <header className="flex flex-col bg-bg-accueil relative h-[756px] z-[99999996]">
         <div className="h-full flex flex-col">
           <NavBar />
           <div className="flex justify-center text-center flex-col h-full items-center">
-            <h4 className="sm:text-lg md:text-[32px]  font-moonGet uppercase font-extrabold text-[#F6F6F6]  w-[714px] tracking-[6%] md:leading-relaxed ">
+            <h4 className="sm:text-lg md:text-[32px]  font-moonGet uppercase font-extrabold text-[#F6F6F6]  lg:w-[714px] tracking-[6%] md:leading-relaxed ">
               DISCOVER THE EXPERTISE <br /> OF OUR PASSIONATE CRAFTSMEN!
             </h4>
 

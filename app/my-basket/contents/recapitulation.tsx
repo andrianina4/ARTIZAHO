@@ -19,7 +19,7 @@ function Recapitulation({ bookedWorkShop }: Props) {
 
   return (
     <div className="flex flex-col gap-y-5">
-      <div className="bg-white-40% rounded-3xl py-5 px-8">
+      <div className="bg-white-40% rounded-3xl py-5 lg:px-8 sm:px-0">
         <div className="flex justify-between pt-5 pb-3 px-2 border-b-2 border-b-[#00000014]">
           <span>Sub-total</span>
           <span className="font-bold">{sous_total}.00€</span>

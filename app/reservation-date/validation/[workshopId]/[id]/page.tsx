@@ -45,7 +45,7 @@ async function ValidationDate({
         <NavBar isWhite />
       </header>
 
-      <main className="py-7 px-24  max-w-page mx-auto">
+      <main className="py-7 lg:px-24 sm:px-5  max-w-page mx-auto">
         <div className="text-2xl font-bold text-brown flex items-center gap-x-3">
           <Button
             isBackButton
@@ -58,8 +58,8 @@ async function ValidationDate({
           Booking information
         </p>
 
-        <div className="flex gap-6">
-          <div className="w-1/2">
+        <div className="flex gap-6 lg:flex-row sm:flex-col">
+          <div className="lg:w-1/2">
             <ShoppingCart
               isBottom
               scheduleWorkshop={currentWorkshopSchedule}
@@ -68,7 +68,7 @@ async function ValidationDate({
 
             <Form currentWorkshopSchedule={currentWorkshopSchedule} />
           </div>
-          <div className="w-1/2">
+          <div className="lg:w-1/2">
             <PresentationTrainer
               trainer={trainer}
               artisan={currentWorkshopSchedule.artisan}

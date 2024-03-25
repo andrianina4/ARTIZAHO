@@ -32,9 +32,9 @@ function Login({}: LoginProps) {
         <NavBar />
       </header>
 
-      <main className="flex-1 py-7 px-24 flex justify-between w-full max-w-page mx-auto mb-32">
+      <main className="flex-1 py-7 sm:px-2 md:px-24 flex justify-between w-full max-w-page mx-auto mb-32 lg:flex-row sm:flex-col sm:gap-10 lg:gap-0">
         <div className="text-white mt-20">
-          <h1 className="font-moonGet font-extrabold text-4xl leading-relaxed">
+          <h1 className="font-moonGet font-extrabold sm:text-lg md:text-4xl leading-relaxed">
             LOG IN
             <br />
             TO YOUR ACCOUNT
@@ -43,7 +43,7 @@ function Login({}: LoginProps) {
             Please enter your e-mail address and password.
           </p>
         </div>
-        <div className="w-1/2 pt-12 bg-white rounded-3xl  pb-24 px-11 relative">
+        <div className="lg:w-1/2 sm:w-full pt-12 bg-white rounded-3xl  pb-24 px-11 relative">
           <h4 className="text-brown text-base font-extrabold mb-6">Sign in</h4>
           <FormAuth />
           <div className="flex gap-x-2 my-6">

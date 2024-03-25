@@ -32,23 +32,23 @@ export default function Page() {
   ];
 
   return (
-    <div className="bg-[#FFF] w-[1440px] mx-auto">
+    <div className="bg-[#FFF] max-w-screen-large-width mx-auto sm:px-5 lg:px-0">
       <header>
         <NavBar isWhite={true} />
       </header>
 
       <div className="bodyContainer ">
-        <div className="inputContainer w-[949px] mx-auto ">
+        <div className="inputContainer lg:w-[949px] mx-auto hidden lg:block ">
           <InputGroupMultiple />
         </div>
 
-        <div className="tabs flex gap-[32px] justify-center">
+        <div className="tabs flex gap-[32px] justify-center sm:overflow-scroll lg:overflow-auto">
           <Label title="ALL" isActive={true} />
           {labelList.map((item, indexItem) => (
             <Label key={indexItem} isActive={false} title={item} />
           ))}
         </div>
-        <div className="flex flex-wrap gap-[16px] mt-6 mb-6 ">
+        <div className="flex flex-wrap gap-[16px] mt-6 mb-6 md:flex-row sm:flex-col ">
           <ListCard />
         </div>
       </div>

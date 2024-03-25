@@ -37,7 +37,7 @@ export default async function page({
         <NavBar isWhite />
       </header>
 
-      <main className="py-7 px-24  max-w-page mx-auto ">
+      <main className="py-7 lg:px-24 sm:px-10  max-w-page mx-auto ">
         <header>
           <h4 className="uppercase font-moonGet font-extrabold text-xl text-brown">
             Workshop
@@ -59,9 +59,9 @@ export default async function page({
           <HeaderWorkshop workshop={currentWorkshop} />
         </header>
 
-        <section className="mt-2">
-          <div className="imgContainer flex gap-2 h-[440px]">
-            <div className=" w-1/2 relative">
+        <section className="lg:mt-2 sm:mt-5">
+          <div className="imgContainer flex gap-2 h-[440px] ">
+            <div className="sm:w-screen lg:w-1/2 relative">
               {currentWorkshop.images.length > 0 ? (
                 <Image
                   src={getByImgUrl(currentWorkshop.images[0])}
@@ -79,7 +79,7 @@ export default async function page({
                 />
               )}
             </div>
-            <div className="flex flex-col w-1/2 gap-2 ">
+            <div className="sm:hidden lg:flex  sm:flex-col lg:flex-col lg:w-1/2 gap-2 ">
               <div className="h-[216px] w-full">
                 {currentWorkshop.images[1] ? (
                   <Image
