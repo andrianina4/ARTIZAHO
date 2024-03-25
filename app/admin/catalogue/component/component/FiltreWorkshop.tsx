@@ -1,33 +1,21 @@
 "use client";
 
-import {FlowerOne, Line, Plus} from "@/constants/link/icons";
-import {IPanelWorkshop} from "@/types/IWorkshop";
+import {Line, Plus} from "@/constants/link/icons";
+import {IWorkShop} from "@/types/IWorkshop";
 import React, {useContext, useState} from "react";
 import WorkshopItem from "./WorkshopItem";
 import {CalendarEventsContext} from "../provider/CalendarEventsProvider";
-
-const listWorkshop: IPanelWorkshop[] = [
-	{
-		shop_id: 1,
-		shop_name: "Bouquet en vase",
-		shop_icon: <FlowerOne />,
-		shop_color: "bronze",
-	},
-	{
-		shop_id: 2,
-		shop_name: "Bouquet sur mousse",
-		shop_icon: <FlowerOne />,
-		shop_color: "green",
-	},
-	{
-		shop_id: 3,
-		shop_name: "Bouquet en vase",
-		shop_icon: <FlowerOne />,
-		shop_color: "blue",
-	},
-];
+import {getWorkShopAdmin} from "@/services/admin/adminWorkshop.service";
+import {useQuery} from "@tanstack/react-query";
+import LoadingComponent from "@/app/_global/loading";
+import ErrorComponent from "@/app/_global/error";
 
 export default function FiltreWorkshop() {
+	const {data, isLoading, isError} = useQuery({
+		queryKey: ["adminWorkshop"],
+		queryFn: () => getWorkShopAdmin(),
+	});
+
 	const EventsFromContext = useContext(CalendarEventsContext);
 	// *  Control the checkboxes
 	const [checked, setChecked] = useState<{[key: number]: boolean}>({});
@@ -49,6 +37,9 @@ export default function FiltreWorkshop() {
 		setShow(!Show);
 	};
 
+	if (isLoading) return <LoadingComponent />;
+	if (isError) return <ErrorComponent />;
+
 	return (
 		<div className="w-52">
 			<div className="flex items-center justify-between font-bold mt-7 mb-3">
@@ -59,15 +50,15 @@ export default function FiltreWorkshop() {
 			</div>
 			{Show && (
 				<div className="flex flex-col gap-1">
-					{listWorkshop.map((item, index) => (
+					{data?.map((item: IWorkShop, index) => (
 						<div key={index} className="flex flex-row items-center gap-2">
 							<input
 								key={index}
 								className="checkbox border-[#917155] checked:border-bronze [--chkbg:theme(colors.bronze)] [--chkfg:white]"
 								type="checkbox"
-								id={item.shop_id.toString()}
-								checked={checked[item.shop_id]}
-								onChange={() => handleChecked(item.shop_id)}
+								id={item.id.toString()}
+								checked={checked[item.id]}
+								onChange={() => handleChecked(item.id)}
 							/>
 							<WorkshopItem workshop={item} />
 						</div>
