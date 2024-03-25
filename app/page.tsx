@@ -18,17 +18,17 @@ export default function Home() {
         <div className="h-full flex flex-col">
           <NavBar />
           <div className="flex justify-center text-center flex-col h-full items-center">
-            <h4 className="font-moonGet uppercase font-extrabold text-[#F6F6F6] text-[32px] w-[714px] tracking-[6%] leading-relaxed">
+            <h4 className="font-moonGet uppercase font-extrabold text-[#F6F6F6] text-[32px] w-[714px] tracking-[6%] leading-relaxed sm:text-lg">
               DISCOVER THE EXPERTISE <br /> OF OUR PASSIONATE CRAFTSMEN!
             </h4>
 
-            <p className="font-manrope text-[#F6F6F6] text-sm w-[714px]">
+            <p className="font-manrope text-[#F6F6F6] text-sm w-[714px] sm:text-xs">
               Talented professionals welcome you to their unique workshops
               workshops to share their art and <br />
               craftsmanship. Leave with your own handmade creation!
             </p>
 
-            <div className=" p-5   mt-4 test z-[99999996]">
+            <div className=" p-5   mt-4 test z-[99999996] sm:hidden lg:block">
               <div className="bg-white px-4 py-1 w-full rounded-lg flex items-center justify-between">
                 <div className="flex items-center ">
                   <svg
