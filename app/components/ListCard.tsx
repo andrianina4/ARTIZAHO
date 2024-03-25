@@ -11,6 +11,33 @@ export default function ListCard() {
     // speed: 500,
     slidesToShow: 4,
     // slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 428,
+        settings: {
+          slidesToShow: 1,
+          initialSlide: 1,
+        },
+      },
+      {
+        breakpoint: 350,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+      {
+        breakpoint: 800,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 4,
+        },
+      },
+    ],
   };
   const { data, isLoading, isError } = useQuery({
     queryFn: () => getWorkShop(),

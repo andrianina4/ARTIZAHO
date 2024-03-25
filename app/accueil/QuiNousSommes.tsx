@@ -4,8 +4,8 @@ import Image from "next/image";
 
 export default function QuiNousSommes() {
   return (
-    <div className="h-[500px] flex items-center gap-40  relative">
-      <div>
+    <div className="lg:h-[500px] sm:my-10 flex items-center gap-40  relative sm:p-5 lg:p-0">
+      <div className="hidden lg:block">
         <Image src={whoare} alt="whoare" width={517} height={364} />
       </div>
       <div>

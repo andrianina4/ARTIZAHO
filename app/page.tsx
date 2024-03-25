@@ -18,11 +18,11 @@ export default function Home() {
         <div className="h-full flex flex-col">
           <NavBar />
           <div className="flex justify-center text-center flex-col h-full items-center">
-            <h4 className="font-moonGet uppercase font-extrabold text-[#F6F6F6] text-[32px] w-[714px] tracking-[6%] leading-relaxed sm:text-lg">
+            <h4 className="sm:text-lg md:text-[32px]  font-moonGet uppercase font-extrabold text-[#F6F6F6]  w-[714px] tracking-[6%] md:leading-relaxed ">
               DISCOVER THE EXPERTISE <br /> OF OUR PASSIONATE CRAFTSMEN!
             </h4>
 
-            <p className="font-manrope text-[#F6F6F6] text-sm w-[714px] sm:text-xs">
+            <p className="font-manrope text-[#F6F6F6] sm:text-xs md:text-sm md:w-[714px] ">
               Talented professionals welcome you to their unique workshops
               workshops to share their art and <br />
               craftsmanship. Leave with your own handmade creation!
@@ -147,7 +147,7 @@ export default function Home() {
       <div className="mx-auto max-w-screen-large-width mb-32">
         <QuiNousSommes />
 
-        <div className="flex flex-col items-start gap-[12px]">
+        <div className="flex flex-col items-start gap-[12px] sm:p-5 lg:p-0">
           <Title title="New products" />
           <span className="font-manrope text-sm font-normal text-brown">
             List of new workshops
@@ -160,10 +160,10 @@ export default function Home() {
 
         <Title
           title="Customer testimonials and reviews"
-          className="mb-6 mt-6 items-center"
+          className="mb-6 mt-6 items-center "
         />
 
-        <div className="temoignage flex gap-[30px] mb-4">
+        <div className="temoignage flex gap-[30px] mb-4 sm:mt-5 sm:flex-col  sm:p-8 lg:p-0 lg:mt-0 lg:flex-row sm:items-center">
           <Comment
             author="Jon Doe"
             role="President of Sales"
@@ -192,7 +192,7 @@ export default function Home() {
           />
 
           <div className="relative">
-            <div className="mx-auto bg-bg-accueil-video w-[837px] h-[464px] bg-cover bg-no-repeat borderVideo bg- "></div>
+            <div className="mx-auto bg-bg-accueil-video lg:w-[837px] h-[464px] bg-cover bg-no-repeat borderVideo bg- "></div>
             <div className=" bg-transparent bottom-[-10%] absolute ">
               <Image src={baobabWhoAre} alt="baobabWhoAre" />
             </div>

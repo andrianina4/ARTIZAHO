@@ -11,11 +11,11 @@ type PropsComment = {
 export default function Comment(props: PropsComment) {
   const { author, comment, role, img } = props;
   return (
-    <div className="w-[527px] h-[275px] relative rounded-[12px] bg-[#FFFEFD] shadow-card flex flex-col justify-center ">
+    <div className="md:w-[527px] h-[275px] relative rounded-[12px] bg-[#FFFEFD] shadow-card flex flex-col justify-center ">
       <div className="absolute top-0 left-[-5%]">
         <Quote />
       </div>
-      <div className="p-4 mt-6">
+      <div className="p-4 sm:mt-14 md:mt-6">
         <p className="text-brown text-sm font-normal ">{comment}</p>
 
         <div className="flex gap-[12px] items-center mt-10">
