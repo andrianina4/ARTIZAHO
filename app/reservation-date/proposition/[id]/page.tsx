@@ -118,8 +118,8 @@ function PropositionDate({
         <NavBar isWhite />
       </header>
 
-      <main className="py-7 px-24 flex justify-between items-center gap-x-20 w-full max-w-page mx-auto">
-        <section className="w-1/2">
+      <main className="py-7 lg:px-24  sm:px-5 flex justify-between items-center lg:gap-x-20 w-full max-w-page mx-auto">
+        <section className="lg:w-1/2 sm:w-full">
           <div className="text-2xl font-bold text-brown flex items-center gap-x-3">
             <Button
               isBackButton

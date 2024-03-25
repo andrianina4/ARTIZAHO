@@ -85,8 +85,8 @@ function Feedback({}: Props) {
         <NavBar />
       </header>
 
-      <main className="flex-1 py-7 px-24 w-full max-w-page mx-auto flex justify-center z-50 ">
-        <div className="h-[70vh] w-4/5 bg-white rounded-3xl py-14 px-24 relative">
+      <main className="flex-1 py-7 lg:px-24 sm:px-2 w-full lg:max-w-page mx-auto flex justify-center z-50 ">
+        <div className="lg:h-[70vh] lg:w-4/5 bg-white rounded-3xl py-14 lg:px-24 sm:px-5 relative sm:w-full">
           <h1 className="font-moonGet text-xl text-bronze font-extrabold tracking-widest text-center">
             SHARE YOUR EXPERIENCE WITH OUR WORKSHOPS
           </h1>
@@ -100,16 +100,18 @@ function Feedback({}: Props) {
             className="my-5 h-60"
           />
 
-          <div className="flex gap-[97px]">
+          <div className="flex lg:gap-[97px] lg:flex-row sm:flex-col sm:gap-5 sm:mb-4 ">
             <Rating label="Note for workshop" />
             <Rating label="Note for artisans" />
           </div>
 
-          <Button
-            leftIcon={<SendDuotone className="text-4xl" />}
-            content="Send"
-            className="absolute bottom-14 right-24 w-min text-lg"
-          />
+          <div className="w-min float-right">
+            <Button
+              leftIcon={<SendDuotone className="text-4xl" />}
+              content="Send"
+              className="py-1 text-lg"
+            />
+          </div>
         </div>
       </main>
     </div>
