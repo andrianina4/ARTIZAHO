@@ -29,31 +29,11 @@ const selectItem: Array<ISelect> = [
 
 function Page({}: Props) {
 	const [open, setOpen] = useState(false);
-	const [content, setContent] = useState(true);
-	const [step, setStep] = useState(1);
-
-	// const [DateState, setDateState] = useState<Range[]>();
-
-	const handleNext = () => {
-		console.log("suivant");
-
-		setStep(step + 1);
-	};
-
-	const handlePrevious = () => {
-		setStep(step - 1);
-	};
-
-	const handleToogle = () => {
-		setOpen(!open);
-	};
-	const switchContent = () => {
-		setContent(!content);
-	};
+	const handleToogle = () => setOpen(!open);
 
 	return (
 		<>
-			<div className=" h-full  flex flex-col  ">
+			<div className="h-full flex flex-col">
 				<div className="flex flex-row justify-between items-center">
 					<div className="">
 						<Button leftIcon={<UserAddFill />} content="Add craftman" className="" onClick={handleToogle} />
@@ -62,26 +42,13 @@ function Page({}: Props) {
 						<div className="font-bold w-2/3">Filter by</div>
 						<SelectCustom options={selectItem} className="!bg-white !h-10 !rounded-xl" />
 					</div>
-
 					{/* Modal craftmen */}
 					<ModalLayout open={open} onClick={handleToogle} className="h-[650px] w-[830px]">
 						<ArtisanIdContextProvider>
-							{/* Content one: à propos de l'artisan */}
-							{/* {step === 1 && <Content_one onNext={handleNext} />} */}
 							<Content_one onClick={handleToogle} />
-							{/* Content two: dispo de l'artisan */}
-							{/* {step === 2 && (
-                <Content_two />
-                // <Content_two
-                //   onPrevious={handlePrevious}
-                //   DateVal={DateState}
-                //   setDateVal={setDateState}
-                // />
-              )} */}
 						</ArtisanIdContextProvider>
 					</ModalLayout>
 				</div>
-
 				<div className="h-[90%]">
 					<ListSection />
 				</div>

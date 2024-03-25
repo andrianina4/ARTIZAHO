@@ -1,7 +1,8 @@
-"use client";
-
 import React, {Context, createContext, useState} from "react";
-import {CalendarEvents} from "@/types/IWorkshop";
+import {CalendarEvents, IWorkShop} from "@/types/IWorkshop";
+import {useQueries} from "@tanstack/react-query";
+import {getWorkShopAdmin} from "@/services/admin/adminWorkshop.service";
+import {getArtisan} from "@/services/artisan.service";
 
 type CalendarEventsContextType = {
 	InitialEvents: Array<CalendarEvents> | null;
@@ -81,7 +82,17 @@ export const CalendarEventsContext: Context<any> = createContext<CalendarEventsC
 });
 
 export default function CalendarEventsProvider({children}: {children: React.ReactNode}) {
-	const [WorkEvents, setWorkEvents] = useState<CalendarEvents[]>(initialWorkshopEvents);
+	const results = useQueries({
+		queries: [
+			{queryKey: ["adminWorkshop"], queryFn: () => getWorkShopAdmin()},
+			{queryKey: ["AdminCraftman"], queryFn: () => getArtisan()},
+		],
+	});
+
+	console.log(results[0].data);
+	console.log(results[1].data);
+
+	const [WorkEvents, setWorkEvents] = useState<IWorkShop[] | undefined>(results[0].data);
 	const [CraftEvents, setCraftEvents] = useState<CalendarEvents[]>(initialCraftsmenEvents);
 	const [InitialEvents, setInitialEvents] = useState<CalendarEvents[]>([
 		...initialWorkshopEvents,
@@ -94,8 +105,8 @@ export default function CalendarEventsProvider({children}: {children: React.Reac
 	// * Filtre Atelier
 	const filterByWorkshop = (id: number) => {
 		setBeforeEvents(FilteredEvents);
-		const temp: CalendarEvents[] = WorkEvents.filter((event) => event.id === id);
-		setFilteredEvents([...FilteredEvents, ...temp]);
+		// const temp: CalendarEvents[] = WorkEvents.filter((event) => event.id === id);
+		// setFilteredEvents([...FilteredEvents, ...temp]);
 	};
 	const removeFilterByWorkshop = (id: number) => {
 		const temp: CalendarEvents[] = InitialEvents.filter((event) => event.id === id);
