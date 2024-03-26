@@ -7,7 +7,7 @@ export interface IAttendance {
 	number_of_participants: number;
 	workshop_bookable: WorkshopBookable;
 	payment_status: string;
-	custom_workshop: null; // Assuming null for custom_workshop
+	custom_workshop: string | null; // Assuming null for custom_workshop
 }
 
 interface WorkshopBookable {

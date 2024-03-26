@@ -43,14 +43,14 @@ function AttendanceItem({attendance}: {attendance: IAttendance}) {
 	return (
 		<div className="grid grid-cols-custom text-sm font-bold bg-white items-center rounded-lg h-14 pl-4 my-1 ">
 			{/* ID */}
-			<span className="opacity-70">{formatNumber(attendance.id)}</span>
+			<span className="opacity-70">{formatNumber(attendance?.id)}</span>
 			{/* NOM et IMAGE */}
 			<div className="flex items-center gap-2">
-				<div className="w-[30px] h-[30px] relative rounded-full bg-slate-500">
-					<span className="text-lg uppercase"></span>
+				<div className="w-[30px] h-[30px] relative rounded-full bg-slate-500 flex items-center justify-center text-neutral-content font-bold">
+					<span className="text-lg uppercase">N</span>
 				</div>
 				<div className="flex flex-col items-center ">
-					<p className="text-black-default font-bold">{}</p>
+					<p className="text-black-default font-bold">NAME</p>
 				</div>
 			</div>
 			{/* WORKSHOP */}
@@ -59,17 +59,17 @@ function AttendanceItem({attendance}: {attendance: IAttendance}) {
 					{/* {attendance.workshop_bookable.workshop_icon} */}
 					<FlowerOne />
 				</div>
-				<p className="opacity-50">{attendance.workshop_bookable.workshop.title}</p>
+				<p className="opacity-50">{attendance?.workshop_bookable?.workshop?.title}</p>
 			</div>
 			{/* NB PARTICIPANT */}
 			<div className="flex gap-2 items-center">
 				<PeopleFill className="opacity-70" />
-				<div className="opacity-70">{attendance.number_of_participants}</div>
+				<div className="opacity-70">{attendance?.number_of_participants}</div>
 			</div>
 			{/* TYPE CLIENT */}
-			<div className="opacity-70">{attendance.custom_workshop ? "Individuals" : "Company"}</div>
+			<div className="opacity-70">{attendance?.custom_workshop ? "Company" : "Individuals"}</div>
 			{/* DATE RESERVATION */}
-			<div className="opacity-70">{formatToDMY(attendance.workshop_bookable.created_at)}</div>
+			<div className="opacity-70">{formatToDMY(attendance?.workshop_bookable?.created_at)}</div>
 			{/* STATUS */}
 			<Select
 				options={selectItem}

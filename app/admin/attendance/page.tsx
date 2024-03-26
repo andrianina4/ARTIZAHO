@@ -28,7 +28,7 @@ const selectItem: Array<ISelect> = [
 function Page() {
 	// * VALEURS PAR DEFAUT
 	const {data, isLoading, isError} = useQuery({
-		queryKey: ["adminClient"],
+		queryKey: ["adminAttendance"],
 		queryFn: () => getAttendanceAdmin(),
 	});
 
@@ -38,7 +38,7 @@ function Page() {
 	useEffect(() => {
 		if (!isLoading) {
 			const filteredValues = data!.filter((value) =>
-				value.workshop_bookable.workshop.title?.toLocaleLowerCase().includes(searchContext.Value.toLocaleLowerCase())
+				value?.workshop_bookable?.workshop?.title?.toLocaleLowerCase().includes(searchContext.Value.toLocaleLowerCase())
 			);
 			setFilteredData(filteredValues);
 		}
