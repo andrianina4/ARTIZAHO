@@ -20,17 +20,19 @@ export default function ListClient() {
 	const [FilteredData, setFilteredData] = useState<IClient[]>([]);
 	const searchContext = useContext(SearchContext);
 	useEffect(() => {
-		const filteredValues = data!.filter((value) => {
-			if (
-				value.first_name?.toLocaleLowerCase().includes(searchContext.Value.toLocaleLowerCase()) ||
-				value.last_name?.toLocaleLowerCase().includes(searchContext.Value.toLocaleLowerCase()) ||
-				value.email?.toLocaleLowerCase().includes(searchContext.Value.toLocaleLowerCase()) ||
-				value.username?.toLocaleLowerCase().includes(searchContext.Value.toLocaleLowerCase())
-			) {
-				return value;
-			}
-		});
-		setFilteredData(filteredValues);
+		if (!isLoading) {
+			const filteredValues = data!.filter((value) => {
+				if (
+					value.first_name?.toLocaleLowerCase().includes(searchContext.Value.toLocaleLowerCase()) ||
+					value.last_name?.toLocaleLowerCase().includes(searchContext.Value.toLocaleLowerCase()) ||
+					value.email?.toLocaleLowerCase().includes(searchContext.Value.toLocaleLowerCase()) ||
+					value.username?.toLocaleLowerCase().includes(searchContext.Value.toLocaleLowerCase())
+				) {
+					return value;
+				}
+			});
+			setFilteredData(filteredValues);
+		}
 	}, [searchContext.Value, isLoading, data]);
 
 	if (isLoading) return <LoadingComponent />;
