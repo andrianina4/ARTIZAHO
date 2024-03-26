@@ -1,71 +1,47 @@
 "use client";
 
-import React, { useContext, useEffect, useState } from "react";
+import React, {useContext, useEffect, useState} from "react";
 import ClientItem from "../component/clientItem";
-import { IClient } from "@/types/IClient";
-import { SearchContext } from "../../provider/SearchProvider";
-
-const data: Array<IClient> = [
-  {
-    client_name: "Antonio Hery",
-    client_image: "/temp/vase.png",
-    client_mail: "antonio@gmail.com",
-    client_tel: "0343403434",
-    client_location: "Antananarivo",
-    client_created_at: new Date(),
-    client_type: "company",
-  },
-  {
-    client_name: "Nick Steven",
-    client_image: "/temp/vase.png",
-    client_mail: "nick@gmail.com",
-    client_tel: "0343403434",
-    client_location: "Antananarivo",
-    client_created_at: new Date(),
-    client_type: "individuals",
-  },
-  {
-    client_name: "Onja Nirina",
-    client_image: "/temp/vase.png",
-    client_mail: "onja@gmail.com",
-    client_tel: "0343403434",
-    client_location: "Antananarivo",
-    client_created_at: new Date(),
-    client_type: "company",
-  },
-];
+import {IClient} from "@/types/IClient";
+import {SearchContext} from "../../provider/SearchProvider";
+import {useQuery} from "@tanstack/react-query";
+import {getClientAdmin} from "@/services/admin/adminClient.service";
+import LoadingComponent from "@/app/_global/loading";
+import ErrorComponent from "@/app/_global/error";
 
 export default function ListClient() {
-  // * VALEURS PAR DEFAUT
-  const [Data, setData] = useState<IClient[]>(data);
+	// * VALEURS PAR DEFAUT
+	const {data, isLoading, isError} = useQuery({
+		queryKey: ["adminClient"],
+		queryFn: () => getClientAdmin(),
+	});
 
-  // * FILTRE PAR SEARCH BAR
-  const [FilteredData, setFilteredData] = useState<IClient[]>([]);
-  const searchContext = useContext(SearchContext);
-  useEffect(() => {
-    const filteredValues = Data.filter((value) => {
-      if (
-        value.client_name
-          ?.toLocaleLowerCase()
-          .includes(searchContext.Value.toLocaleLowerCase()) ||
-        value.client_mail
-          ?.toLocaleLowerCase()
-          .includes(searchContext.Value.toLocaleLowerCase()) ||
-        value.client_location
-          ?.toLocaleLowerCase()
-          .includes(searchContext.Value.toLocaleLowerCase())
-      ) {
-        return value;
-      }
-    });
-    setFilteredData(filteredValues);
-  }, [Data, searchContext.Value]);
+	// * FILTRE PAR SEARCH BAR
+	const [FilteredData, setFilteredData] = useState<IClient[]>([]);
+	const searchContext = useContext(SearchContext);
+	useEffect(() => {
+		const filteredValues = data!.filter((value) => {
+			if (
+				value.first_name?.toLocaleLowerCase().includes(searchContext.Value.toLocaleLowerCase()) ||
+				value.last_name?.toLocaleLowerCase().includes(searchContext.Value.toLocaleLowerCase()) ||
+				value.email?.toLocaleLowerCase().includes(searchContext.Value.toLocaleLowerCase()) ||
+				value.username?.toLocaleLowerCase().includes(searchContext.Value.toLocaleLowerCase())
+			) {
+				return value;
+			}
+		});
+		setFilteredData(filteredValues);
+	}, [searchContext.Value, isLoading, data]);
 
-  return (
-    <div>
-      {FilteredData.map((client, index) => (
-        <ClientItem key={index} client={client} />
-      ))}
-    </div>
-  );
+	if (isLoading) return <LoadingComponent />;
+
+	if (isError) return <ErrorComponent />;
+
+	return (
+		<div>
+			{FilteredData.map((client, index) => (
+				<ClientItem key={index} client={client} />
+			))}
+		</div>
+	);
 }
