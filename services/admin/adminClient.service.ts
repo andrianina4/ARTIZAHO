@@ -15,3 +15,12 @@ export const getClientAdmin = async () => {
 
 	return results;
 };
+
+export const deleteClient = async (id: number) => {
+	const access_token = await getCurrentToken();
+	return await axiosInstanceApiClient.delete(`/v1/user/${id}/`, {
+		headers: {
+			Authorization: `Bearer ${access_token}`,
+		},
+	});
+};
