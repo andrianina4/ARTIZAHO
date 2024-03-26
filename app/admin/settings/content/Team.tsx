@@ -6,27 +6,32 @@ import Input from "@/components/input";
 import Button from "@/components/button";
 import {Add, Check} from "@/constants/link/icons";
 import {AddAdmin} from "@/hook/AddAdmin";
+import {getClientAdmin} from "@/services/admin/adminClient.service";
+import {useQuery} from "@tanstack/react-query";
+import ErrorComponent from "@/app/_global/error";
+import LoadingComponent from "@/app/_global/loading";
+import {IClient} from "@/types/IClient";
 
-export type IAdmin = {
-	admin_name: string;
-	admin_img: string;
-	admin_mail: string;
-};
-
-const listAdmin: IAdmin[] = [
-	{
-		admin_name: "Admin 1",
-		admin_img: "/temp/trainer-1.jpeg",
-		admin_mail: "admin1@example.com",
-	},
-	{
-		admin_name: "Admin 2",
-		admin_img: "/temp/trainer-1.jpeg",
-		admin_mail: "admin2@example.com",
-	},
-];
+// const listAdmin: IAdmin[] = [
+// 	{
+// 		admin_name: "Admin 1",
+// 		admin_img: "/temp/trainer-1.jpeg",
+// 		admin_mail: "admin1@example.com",
+// 	},
+// 	{
+// 		admin_name: "Admin 2",
+// 		admin_img: "/temp/trainer-1.jpeg",
+// 		admin_mail: "admin2@example.com",
+// 	},
+// ];
 
 function Team() {
+	// * VALEURS PAR DEFAUT
+	const {data, isLoading, isError} = useQuery({
+		queryKey: ["adminClient"],
+		queryFn: () => getClientAdmin(),
+	});
+
 	const [isVisible, setIsVisible] = useState<boolean>(false);
 	const toggleForm = () => {
 		setIsVisible(!isVisible);
@@ -34,16 +39,15 @@ function Team() {
 
 	const {register, handleSubmit, onSubmit, errors} = AddAdmin(toggleForm);
 
+	if (isLoading) return <LoadingComponent />;
+
+	if (isError) return <ErrorComponent />;
+
 	return (
 		<div className="flex flex-col h-full bg-white rounded-3xl px-20 py-10">
 			<div>
-				{listAdmin.map((item, index) => (
-					<SettingItem
-						key={index}
-						admin_name={item.admin_name}
-						admin_img={item.admin_img}
-						admin_mail={item.admin_mail}
-					/>
+				{data?.map((item: IClient, index) => (
+					<SettingItem key={index} client={item} />
 				))}
 				{isVisible && (
 					<form className="flex items-center gap-2" onSubmit={handleSubmit(onSubmit)}>
@@ -61,11 +65,7 @@ function Team() {
 							register={register("admin_mail")}
 							errorMessage={errors.admin_mail}
 						/>
-						<Button
-							type="submit"
-							leftIcon={<Check />}
-							className="!w-14 h-14 bg-white-40% !text-green"
-						/>
+						<Button type="submit" leftIcon={<Check />} className="!w-14 h-14 bg-white-40% !text-green" />
 					</form>
 				)}
 				<Button
