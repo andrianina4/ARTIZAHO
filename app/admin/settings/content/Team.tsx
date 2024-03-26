@@ -12,19 +12,6 @@ import ErrorComponent from "@/app/_global/error";
 import LoadingComponent from "@/app/_global/loading";
 import {IClient} from "@/types/IClient";
 
-// const listAdmin: IAdmin[] = [
-// 	{
-// 		admin_name: "Admin 1",
-// 		admin_img: "/temp/trainer-1.jpeg",
-// 		admin_mail: "admin1@example.com",
-// 	},
-// 	{
-// 		admin_name: "Admin 2",
-// 		admin_img: "/temp/trainer-1.jpeg",
-// 		admin_mail: "admin2@example.com",
-// 	},
-// ];
-
 function Team() {
 	// * VALEURS PAR DEFAUT
 	const {data, isLoading, isError} = useQuery({
@@ -46,9 +33,11 @@ function Team() {
 	return (
 		<div className="flex flex-col h-full bg-white rounded-3xl px-20 py-10">
 			<div>
-				{data?.map((item: IClient, index) => (
-					<SettingItem key={index} client={item} />
-				))}
+				{data?.map((item: IClient, index) => {
+					if (item.is_active && item.is_super_admin) {
+						return <SettingItem key={index} client={item} />;
+					}
+				})}
 				{isVisible && (
 					<form className="flex items-center gap-2" onSubmit={handleSubmit(onSubmit)}>
 						<Input

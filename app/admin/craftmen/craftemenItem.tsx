@@ -20,7 +20,7 @@ function CraftemenItem({craftman}: {craftman: ICraftman}) {
 		<div className="grid grid-cols-custom-2 text-sm font-bold hover:bg-white items-center rounded-lg h-14 pl-4 my-1">
 			{/* NOM et IMAGE */}
 			<div className="flex items-center gap-2">
-				<div className="relative w-8 h-8 rounded-full bg-neutral flex items-center justify-center text-neutral-content">
+				<div className="relative w-8 h-8 rounded-full bg-slate-500 flex items-center justify-center text-neutral-content">
 					{craftman?.images?.length > 0 ? (
 						<Image src={getImgUrl(craftman?.images)} className="rounded-full" alt="acc_image" fill />
 					) : (

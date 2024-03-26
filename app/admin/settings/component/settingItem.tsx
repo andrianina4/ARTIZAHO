@@ -11,7 +11,7 @@ function SettingItem({client}: {client: IClient}) {
 					{client?.images?.length > 0 ? (
 						<Image src={getImgUrl(client?.images)} className="rounded-full" alt="acc_image" fill />
 					) : (
-						<span className="text-lg uppercase">{client.username[0]}</span>
+						<span className="text-lg uppercase">{client?.username[0]}</span>
 					)}
 				</div>
 				<p className="font-bold">

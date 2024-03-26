@@ -42,7 +42,7 @@ export default function ListClient() {
 	return (
 		<div>
 			{FilteredData.map((client: IClient, index) => {
-				if (!client.is_super_admin) {
+				if (client.is_active && !client.is_super_admin) {
 					return <ClientItem key={index} client={client} />;
 				}
 			})}
